@@ -1,0 +1,114 @@
+ISOCENTRO — instalar esta versão na clínica
+
+O PROGRAMA MUDOU DE NOME: o Radioteraficha agora se chama ISOCENTRO, e o
+executável é ISOCENTRO.exe. Os atalhos que apontam para Radioteraficha.exe
+precisam ser refeitos. Configuração, usuários e fichas continuam valendo: as
+variáveis antigas (RADIOTERAFICHA_*, FICHAPY_*) ainda são lidas. Se a
+concentradora já tem a tarefa "Radioteraficha - varredura", ela continua
+apontando para o exe antigo: recriar com o nome novo ao trocar a versão.
+
+NOVIDADE DESTA VERSÃO: a capa passa a sair do SISTEMA (banco de dados da
+Varian), e não mais dos relatórios exportados. Isso resolve as duas coisas que
+vinham falhando: o agendador que parava, e os dois CSV com janelas de período
+diferentes (599 pacientes de cadastro contra 13 080 de prescrições — quem
+ficava fora saía sem sexo, convênio, contato, CID e intenção).
+
+Feche o programa em TODAS as estações antes de copiar arquivos.
+
+
+0. PRIMEIRO ACESSO: APONTAR O SERVIÇO (só admin, uma vez)
+
+   Abra o programa, entre como admin e vá em:
+
+       Configurações  ->  aba Serviço
+
+   Preencha:
+
+       Sistema (banco de dados) ...... SRVINSIGHT
+       Relatórios exportados ......... a pasta dos .csv/.mhtml
+       Simulações .................... a raiz das simulações
+
+   Clique em "Testar o banco" ANTES de salvar. Ele conecta de verdade e diz o
+   que houve — é também a prova de que o driver e a rede da estação estão bons.
+   Depois, "Salvar".
+
+   Isso vale para TODAS as estações que compartilham a pasta do programa: não
+   é preciso repetir em cada máquina. Cada campo mostra quem apontou e quando.
+
+   Para desligar o banco e voltar aos relatórios: apague o campo Sistema.
+
+
+1. COMO A CAPA É MONTADA AGORA (três degraus)
+
+   1o  BANCO — o normal. Cadastro, prescrição e a foto 3x4 vêm do variandw,
+       por paciente. Não há janela de período.
+
+   2o  ESPELHO — cada paciente lido do banco fica guardado em espelho_capa\.
+       Se o banco não responder, a capa sai daí, COM AVISO na tela dizendo a
+       data e a hora daquela leitura. Espelho vencido (60 dias) não é usado.
+
+   3o  RELATÓRIOS — último recurso, se o banco estiver fora E o paciente nunca
+       tiver sido lido nesta instalação. Também com aviso.
+
+   Nenhuma capa vinda de reserva sai calada: o aviso aparece em primeiro lugar
+   na lista, com a data do dado.
+
+
+2. REQUISITOS NA ESTAÇÃO
+
+   - Acesso de rede ao SRVINSIGHT (192.0.2.3), porta 1433.
+   - Estação no domínio CLINICA. A conexão usa a conta do Windows de quem
+     está logado; NÃO há senha guardada em lugar nenhum.
+   - Driver ODBC de SQL Server. O que vem com o Windows serve — foi medido
+     contra o banco real e devolve acentuação correta.
+
+   Se o banco não responder, o programa não trava: cai no espelho e avisa.
+
+
+3. COPIAR DA INSTALAÇÃO ANTIGA PARA ESTA
+   (só os que existirem lá)
+
+   usuarios.json                     usuários e SENHAS, e quem é admin.
+   registro_fichas.json              índice central das fichas (tela Histórico).
+   backup_registros\                 pasta inteira.
+   historico_uso.jsonl               histórico de uso.
+   cadastro_sus.json                 cadastro SUS por paciente.
+   inventario_imobilizadores.json    de qual paciente está cada máscara.
+   notas_posicionamento.json         biblioteca de notas de posicionamento.
+   correcoes_capa.json               correções de cadastro feitas na Capa.
+   config_servico.json               os endereços do serviço, se já existirem.
+   espelho_capa\                     reserva local (pode não existir ainda).
+
+   NÃO copiar: os .lock e qualquer .tmp.
+
+
+4. NÃO PRECISA COPIAR
+
+   As listas de médicos e físicos ficam em %USERPROFILE% e são migradas
+   sozinhas dos nomes antigos (.isocentro_*) na primeira abertura.
+
+   Última pasta aberta e modo claro/escuro continuam no registro do Windows.
+   São preferências de quem senta na máquina, e é onde devem ficar.
+
+
+5. ATALHO: migrar.ps1
+
+       .\migrar.ps1 "C:\caminho\da\instalacao\antiga"
+
+   Copia os itens do item 3, pulando o que já existir aqui (nunca sobrescreve).
+   Rode com o programa fechado.
+
+
+6. VARIÁVEIS DE AMBIENTE
+
+   Se a TI configurou pastas por variável, elas continuam valendo: o programa
+   aceita os TRÊS nomes, ISOCENTRO_* (novo), RADIOTERAFICHA_* e FICHAPY_*
+   (antigos). Não é
+   preciso trocar nada. Variável da estação tem precedência sobre o que estiver
+   em Configurações -> Serviço, e a tela diz qual está valendo.
+
+
+7. SE ALGO NÃO FOR BEM
+
+   Erros tratados vão para %USERPROFILE%\.isocentro.log — é o primeiro
+   lugar para olhar quando um campo sai vazio.

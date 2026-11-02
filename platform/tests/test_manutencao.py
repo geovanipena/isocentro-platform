@@ -410,7 +410,11 @@ class GanchoImportadoNaoEOrfao(unittest.TestCase):
         if not (ganchos / "contexto.py").exists():
             self.skipTest("o `.claude/` é configuração de estação e pode não estar aqui")
         eixo = manutencao.eixo_claude()
-        acusacoes = [a.titulo for a in eixo.achados if "contexto.py" in a.titulo]
+        # Nome EXATO: "contexto.py" como trecho também pegava o
+        # `limite_de_contexto.py`, que é entrada do settings.json e fica órfão de
+        # verdade em máquina sem o settings.json da estação (o CI, por exemplo).
+        acusacoes = [a.titulo for a in eixo.achados
+                     if a.titulo.startswith("`contexto.py`")]
         self.assertEqual(acusacoes, [], f"módulo importado acusado de órfão: {acusacoes}")
 
     def test_o_relatorio_separa_o_que_decidir_do_que_saber(self):
