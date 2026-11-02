@@ -1,0 +1,22 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.905
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-0301-11D3-9CD4-00C04F79EFBC}") = "PrePlan", "PrePlan\PrePlan.csproj", "{141F1BB9-16A2-4E48-82CC-69B598FF5E3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{141F1BB9-16A2-4E48-82CC-69B598FF5E3A}.Debug|x64.ActiveCfg = Debug|x64
+		{141F1BB9-16A2-4E48-82CC-69B598FF5E3A}.Debug|x64.Build.0 = Debug|x64
+		{141F1BB9-16A2-4E48-82CC-69B598FF5E3A}.Release|x64.ActiveCfg = Release|x64
+		{141F1BB9-16A2-4E48-82CC-69B598FF5E3A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

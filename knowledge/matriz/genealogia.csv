@@ -1,0 +1,68 @@
+de;relacao;para;familia;verificacao;nota
+TG-40;substitui;TG-142;CQ de acelerador;citação conferida no texto;TG-142 (2009) substitui a parte de acelerador do TG-40 (1994)
+TECDOC-1151;atualiza;TG-142;CQ de acelerador;pesquisa de vigência;"TECDOC-1151 segue o TG-40; para acelerador vale o TG-142/MPPG-8b"
+TG-142;complementa;TG-198;CQ de acelerador;citação conferida no texto;TG-198 (2021) é o guia de implementação do TG-142
+TG-142;atualiza;MPPG-8b;CQ de acelerador;citação conferida no texto;MPPG 8.b (2023) revisa os testes de desempenho do acelerador
+IPEM-81;atualiza;IPEM-81v2;CQ de acelerador;documento novo fora do acervo;"2ª edição (2018); a 1ª (1999) está no acervo"
+TG-21;substitui;TG-51;Dosimetria de referência;documento novo fora do acervo;TG-51 (1999) substitui o TG-21 (1983)
+TG-51;complementa;TG-51-ADD-2014;Dosimetria de referência;citação conferida no texto;Adendo de fótons (McEwen 2014): kQ novos e câmaras
+TG-51;complementa;WGTG51-374;Dosimetria de referência;documento novo fora do acervo;Orientação prática (2022)
+TG-51;complementa;WGTG51-385;Dosimetria de referência;documento novo fora do acervo;Adendo de elétrons (2024)
+TRS-277;substitui;TRS-398;Dosimetria de referência;documento novo fora do acervo;TRS-398 (2000), dose absorvida na água
+TRS-398;substitui;TRS-398-R1;Dosimetria de referência;citação conferida no texto;"Revisão 1 (2024): kQ recalculados; pylinac ainda usa os de 2000"
+TRS-398-R1;complementa;TRS-483;Dosimetria de referência;relação temática, sem citação direta;TRS-483 (2017) estende o código de prática a campos pequenos
+TRS-483;resume;TRS-483-RESUMO;Dosimetria de referência;citação conferida no texto;Palmans 2018, resumo publicado na Med Phys
+TRS-483;complementa;TG-155;Dosimetria de referência;citação conferida no texto;TG-155 (2021), campos pequenos e sem equilíbrio
+TG-61;equivale;TRS-398-R1;Dosimetria de referência;citação conferida no texto;"O TRS-398 Rev. 1 tem código de prática próprio para raios X de quilovoltagem; o TG-61 (2001) é a alternativa da AAPM"
+TG-43;substitui;TG-43U1;Dosimetria em braquiterapia;citação conferida no texto;Atualização de 2004
+TG-43U1;complementa;TG-43U1S1;Dosimetria em braquiterapia;documento novo fora do acervo;Suplemento 1 (2007)
+TG-43U1;complementa;TG-43U1S2;Dosimetria em braquiterapia;documento novo fora do acervo;Suplemento 2 (2017), recomendações AAPM/GEC-ESTRO
+TG-43U1;complementa;HEBD-2012;Dosimetria em braquiterapia;citação conferida no texto;Consenso de dados para fontes acima de 50 keV (Ir-192)
+TG-43U1;complementa;TG-186;Dosimetria em braquiterapia;citação conferida no texto;Cálculo baseado em modelo, além do formalismo TG-43
+BALLESTER-2001;errata;BALLESTER-2004-ERRATUM;Dosimetria em braquiterapia;citação conferida no texto;Errata de 2004 do artigo das fontes 12i e Plus
+TG-56;atualiza;MPPG-HDR-A;Programa de HDR;citação conferida no texto;MPPG 13.a parte A (2023) atualiza a infraestrutura do programa
+TG-59;atualiza;MPPG-HDR-B;Programa de HDR;citação conferida no texto;MPPG 13.a parte B (2025) atualiza processo e checklists
+PQRT-CALIB-IR192;substitui;PQRT-CALIB-IR192-2005;Calibração de fonte HDR;citação conferida no texto;2ª edição revisada (INCA 2005)
+IAEA-TECDOC-1274;atualiza;GEC-ESTRO-ACROP-CALIB-2022;Calibração de fonte HDR;citação conferida no texto;Rastreabilidade da calibração no hospital (2022)
+MPPG-9a-SRS;substitui;MPPG-9b-SRS;SRS e SBRT;citação conferida no texto;MPPG 9.a marcado INACTIVE pela AAPM
+TG-101;atualiza;MPPG-9b-SRS;SRS e SBRT;citação conferida no texto;Programa de SRS/SBRT
+UK-SABR-2017;substitui;UK-SABR-2022;Constraints de OAR;citação conferida no texto;Consenso UK 2022 (Diez)
+EMAMI-1991;substitui;QUANTEC;Constraints de OAR;citação conferida no texto;QUANTEC (2010) revisa a tabela de Emami
+QUANTEC;complementa;QUANTEC-MARKS-2010;Constraints de OAR;citação conferida no texto;Artigo introdutório sobre modelos NTCP
+QUANTEC;atualiza;HYTEC-2021;Constraints de OAR;citação conferida no texto;HyTEC (2021): hipofracionamento
+QUANTEC;complementa;PENTEC-2023;Constraints de OAR;citação conferida no texto;PENTEC: pediatria
+TG-101;atualiza;HYTEC-2021;Constraints de OAR;citação conferida no texto;Tabela do TG-101 revisada pelo HyTEC
+ASTRO-BONEMETS-2017;substitui;ASTRO-BONEMETS-2024;Paliação;pesquisa de vigência;Diretriz ASTRO 2024 substitui a de 2017
+ICRU-50;complementa;ICRU-62;Prescrição e relato;documento novo fora do acervo;ICRU 62 (1999) é suplemento do 50
+ICRU-62;atualiza;ICRU-83;Prescrição e relato;citação conferida no texto;ICRU 83 (2010) para IMRT
+ICRU-83;complementa;ICRU-91;Prescrição e relato;citação conferida no texto;ICRU 91 (2017) para feixes pequenos e estereotaxia
+TG-263;complementa;COVINGTON-2024-263U1;Prescrição e relato;citação conferida no texto;Pesquisa que embasa a revisão TG-263U1
+TG-53;atualiza;MPPG-5b-TPS;Comissionamento do TPS;citação conferida no texto;MPPG 5.b (2022) para cálculo de dose
+TRS-430;complementa;TECDOC-1540;Comissionamento do TPS;documento novo fora do acervo;Especificação e aceitação do TPS (2007)
+TRS-430;complementa;TECDOC-1583;Comissionamento do TPS;citação conferida no texto;Testes clínicos de comissionamento (2008)
+TG-71;complementa;TG-114;Cálculo independente;citação conferida no texto;"TG-71 dá o formalismo de UM; TG-114 a verificação"
+TG-114;complementa;TG-219;Cálculo independente;citação conferida no texto;TG-219 (2021) estende a IMRT/VMAT
+TG-119;atualiza;TG-218;QA específico do paciente;citação conferida no texto;TG-218 (2018) define tolerância e ação
+TG-120;complementa;TG-218;QA específico do paciente;citação conferida no texto;Ferramentas de dosimetria de IMRT
+TG-58;atualiza;TG-307;QA específico do paciente;citação conferida no texto;EPID para QA de paciente (2023)
+TG-55;substitui;TG-235;QA específico do paciente;citação conferida no texto;Filme radiocrômico (2020)
+TG-104;atualiza;MPPG-IGRT-2021;IGRT;citação conferida no texto;MPPG 2.b consolida o CQ de IGRT por raio X
+TG-179;atualiza;MPPG-IGRT-2021;IGRT;citação conferida no texto;CBCT incorporado ao MPPG
+TG-100;complementa;TG-275;Revisão do plano;citação conferida no texto;TG-275 usa a análise de risco do TG-100
+TG-275;complementa;MPPG-11a;Revisão do plano;citação conferida no texto;Prática mínima de revisão de plano e prontuário
+TG-275;complementa;TG-275S;Revisão do plano;citação conferida no texto;Pesquisa de práticas (2023)
+TG-275;complementa;AAPM-394;Revisão do plano;citação conferida no texto;Treinamento com erros simulados (2024)
+ICRP-86;complementa;ICRP-112;Acidentes e segurança;documento novo fora do acervo;ICRP 112 trata das novas tecnologias
+NN-3.01-2005;substitui;NN-3.01;Radioproteção (CNEN/ANSN);citação conferida no texto;Res. CNEN 344/2025
+NN-3.02-2018;substitui;NN-3.02;Radioproteção (CNEN/ANSN);citação conferida no texto;Res. ANSN 19/2026 muda o campo de aplicação
+NN-7.01-2016;substitui;NN-7.01;Radioproteção (CNEN/ANSN);citação conferida no texto;Res. CNEN 340/2025
+NN-6.10;conflita;RDC-20-2006;Radioproteção (CNEN/ANSN);citação conferida no texto;Prazo de auditoria externa: 2 anos (NN-6.10) contra 4 anos (RDC-20)
+NCRP-49;substitui;NCRP-151;Blindagem;citação conferida no texto;NCRP 151 (2005)
+PQRT-BLINDAGEM;atualiza;NCRP-151;Blindagem;pesquisa de vigência;Base NCRP-49/51 e limites antigos superados
+NCRP-151;complementa;SRS-47;Blindagem;relação temática, sem citação direta;"IAEA Safety Reports 47 (2006), mesmo tema; não cita o NCRP 151 pelo número"
+RDC-185-2001;substitui;RDC-751-2022;Dispositivo médico (ANVISA);citação conferida no texto;RDC 751 revogou a RDC 185
+RDC-546-2021;substitui;RDC-848-2024;Dispositivo médico (ANVISA);documento novo fora do acervo;Requisitos essenciais de segurança e desempenho
+RDC-657;complementa;ANVISA-RDC657-PR;Dispositivo médico (ANVISA);citação conferida no texto;Perguntas e respostas sobre software como dispositivo
+RDC-306-2004;substitui;RDC-222-2018;Resíduos de serviço de saúde;citação conferida no texto;RDC 222/2018
+CFM-1821-2007;complementa;LEI-13787-2018;Prontuário;citação conferida no texto;Lei 13.787 trata da digitalização do prontuário
+FDA-GPSV-2002;atualiza;FDA-CSA-2026;Validação de software;citação conferida no texto;CSA substitui a seção 6 da GPSV

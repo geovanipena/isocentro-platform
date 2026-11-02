@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>ISOCENTRO · Início</title>
+<style>
+/* Mockup 1:1 — Início "Torre de controle" (janela maximizada 1366×768, PyQt5).
+   Governado por: .memlog.md decisões 21–31 (direção A Torre de controle; severidade IEC 60601-1-8;
+   layout 3 zonas; doca sem contagem; paleta variação 1 "Sala de controle · azul-ardósia").
+   EXPERIENCE.md: Perfis, Seletor de clínica (U6 Todas p/ físico responsável), Linha de pendência
+   (aberto → visto), Barra de status com degrau de fonte, Advisory (nenhum botão desabilitado).
+   Tokens: EXATAMENTE os hex de .working/color-themes-1.html, variação 1 (noite padrão; dia via ☾/☀).
+   Autocontido: sem JS, sem rede, fontes do sistema. */
+
+/* Sala de controle · azul-ardósia — modo noite (padrão) */
+:root{--fundo:#0E1621;--sup:#152030;--supel:#1C2A3D;--borda:#2B3B52;--texto:#E4ECF5;--texto2:#9AABC0;
+--acao:#8C9EFF;--sobreacao:#0E1621;--acaofundo:#1E2650;--foco:#C9D2FF;
+--alta:#FF5C61;--altat:#FF8A8D;--altaf:#3B1519;--aten:#FFC93C;--atent:#FFD466;--atenf:#36290A;--info:#2CCFE0;--infot:#5FDDEA;--infof:#0C2E36;
+--ok:#93A3B6;--vivo:#B9C4FF;--espelho:#8292A5;--dose:#3DDC84;}
+/* Sala de controle · azul-ardósia — modo dia (checkbox ☾/☀ marcado) */
+:root:has(#modo:checked){--fundo:#EDF1F6;--sup:#FFFFFF;--supel:#F5F8FB;--borda:#C6D1DE;--texto:#111A25;--texto2:#4B5A6C;
+--acao:#3A47C9;--sobreacao:#FFFFFF;--acaofundo:#E4E7FB;--foco:#1E2A8F;
+--alta:#D7263D;--altat:#B0182C;--altaf:#FBE2E5;--aten:#BB8D00;--atent:#755000;--atenf:#FFF2C7;--info:#0EA3B5;--infot:#00687A;--infof:#DCF4F7;
+--ok:#566577;--vivo:#3A47C9;--espelho:#5E6B7B;--dose:#1E8E4E;}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#05080C;font-family:"Segoe UI",-apple-system,Roboto,Arial,sans-serif;font-size:13px;line-height:1.35;
+  font-variant-numeric:tabular-nums;padding:16px;min-width:1400px}
+.sev{font-variant-emoji:text}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#modo{position:absolute;opacity:0;pointer-events:none}
+
+/* janela */
+.win{width:1366px;height:768px;margin:0 auto;background:var(--fundo);color:var(--texto);display:flex;flex-direction:column;overflow:hidden;
+  border:1px solid var(--borda)}
+.tb{height:30px;flex:none;display:flex;align-items:center;justify-content:space-between;background:var(--sup);color:var(--texto2);
+  font-size:12px;padding-left:12px;border-bottom:1px solid var(--borda)}
+.tb .ctl{display:flex}.tb .ctl span{width:46px;height:30px;display:flex;align-items:center;justify-content:center}
+.tb .ctl svg{width:11px;height:11px;stroke-width:1.2}
+
+/* topo */
+.top{height:48px;flex:none;display:flex;align-items:center;gap:20px;padding:0 16px;border-bottom:1px solid var(--borda);background:var(--sup)}
+.marca{display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:.14em;font-size:14px}
+.marca svg{width:22px;height:22px;color:var(--acao)}
+.seg{display:flex;border:1px solid var(--borda);border-radius:6px;overflow:hidden}
+.seg span{padding:5px 14px;font-weight:600;font-size:12.5px;color:var(--texto2);border-right:1px solid var(--borda);cursor:pointer}
+.seg span:last-child{border-right:0}
+.seg span:hover{background:var(--supel);color:var(--texto)}
+.seg span.on{background:var(--acaofundo);color:var(--acao)}
+.top .dir{margin-left:auto;display:flex;align-items:center;gap:18px;color:var(--texto2)}
+.relogio{font-size:12.5px}
+.modo{display:flex;align-items:center;border:1px solid var(--borda);border-radius:6px;overflow:hidden;cursor:pointer}
+.modo span{display:flex;padding:4px 8px;color:var(--texto2)}
+.modo .lua{background:var(--acaofundo);color:var(--acao)}
+:root:has(#modo:checked) .modo .lua{background:transparent;color:var(--texto2)}
+:root:has(#modo:checked) .modo .sol{background:var(--acaofundo);color:var(--acao)}
+#modo:focus-visible + .win .modo{outline:2px solid var(--foco);outline-offset:2px}
+.usuario{display:flex;align-items:center;gap:6px;color:var(--texto);font-weight:600}
+
+/* conteúdo */
+main{flex:1;display:flex;flex-direction:column;gap:12px;padding:12px 16px;min-height:0}
+.zh{display:flex;align-items:baseline;gap:10px;margin:0 0 6px;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--texto2);font-weight:600}
+.zh .sub{text-transform:none;letter-spacing:0;font-weight:400}
+.zh .n{color:var(--texto);font-weight:700}
+.zh .fonte{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:400}
+.vivo{color:var(--vivo);font-weight:600}
+
+/* Zona 1 */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.col{background:var(--sup);border:1px solid var(--borda);border-radius:8px;padding:8px 8px 6px;display:flex;flex-direction:column}
+.col h3{margin:0 0 4px 4px;font-size:12.5px;letter-spacing:.12em;color:var(--texto2);font-weight:700}
+.maq{display:grid;grid-template-columns:16px 1fr auto;column-gap:6px;align-items:center;padding:5px 6px 5px 5px;border-left:3px solid transparent;
+  border-radius:0 5px 5px 0;cursor:pointer}
+.maq:hover,.fila:hover{background:var(--supel)}
+.maq .s{grid-row:1/3;align-self:start;padding-top:1px;text-align:center}
+.maq b{font-weight:600}
+.maq .ag{color:var(--texto2);font-size:12px;text-align:right}
+.maq .mot{grid-column:2/4;font-size:12px;color:var(--texto2)}
+.quad{display:inline-block;width:7px;height:7px;background:var(--ok);border-radius:1px;margin-top:5px}
+.maq.at{border-left-color:var(--aten);background:var(--atenf)} .maq.at .s,.ic-at{color:var(--aten)} .maq.at .mot{color:var(--atent);font-weight:600}
+.maq.al{border-left-color:var(--alta);background:var(--altaf)} .maq.al .s,.ic-al{color:var(--alta)} .maq.al .mot{color:var(--altat);font-weight:600}
+.maq.at:hover,.maq.al:hover{filter:brightness(1.08)}
+.filas{margin-top:auto;padding-top:6px;border-top:1px solid var(--borda);display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.fila{padding:4px 6px;border-radius:5px;cursor:pointer;display:flex;flex-direction:column}
+.fila span{font-size:11.5px;color:var(--texto2)}
+.fila b{font-size:18px;font-weight:600;line-height:1.2}
+.fila b.zero{color:var(--texto2);font-weight:400}
+.fila .al{color:var(--altat);font-size:12px;font-weight:700;margin-left:4px}
+
+/* Zona 2 */
+.acao{background:var(--sup);border:1px solid var(--borda);border-radius:8px;padding:8px}
+.lin{display:grid;grid-template-columns:104px 232px 1fr 150px 56px 150px;align-items:center;gap:10px;padding:6px 10px 6px 8px;
+  border-left:3px solid;border-radius:0 5px 5px 0;margin-bottom:4px;cursor:pointer}
+.lin:hover{filter:brightness(1.1)}
+.lin.al{border-color:var(--alta);background:var(--altaf)} .lin.at{border-color:var(--aten);background:var(--atenf)} .lin.in{border-color:var(--info);background:var(--infof)}
+.tag{font-weight:700;font-size:11px;letter-spacing:.05em}
+.al .tag{color:var(--altat)} .at .tag{color:var(--atent)} .in .tag{color:var(--infot)}
+.lin .o{font-weight:600}
+.lin .d,.lin .p{color:var(--texto2)}
+.lin .c{font-weight:600;letter-spacing:.06em;font-size:12px}
+.lin .e{font-size:12px;color:var(--texto2);text-align:right}
+/* visto: mantém forma e cor da severidade, perde o preenchimento */
+.lin.visto{background:transparent;border-left-style:dashed}
+.lin.visto .o,.lin.visto .c{color:var(--texto2);font-weight:500}
+.rod{display:flex;align-items:center;gap:12px;margin-top:6px;padding:0 2px}
+.mais{color:var(--acao);font-weight:600;cursor:pointer;text-decoration:none;font-size:12.5px}
+.mais:hover{text-decoration:underline}
+.btn{margin-left:auto;font:inherit;font-weight:600;font-size:13px;background:var(--acao);color:var(--sobreacao);border:0;border-radius:5px;padding:7px 18px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible{outline:2px solid var(--foco);outline-offset:2px}
+
+/* Zona 3 */
+.doca{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}
+.mod{position:relative;background:var(--sup);border:1px solid var(--borda);border-radius:8px;height:92px;padding:10px 6px 6px;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;gap:5px;text-align:center;cursor:pointer;font-size:12px;font-weight:600;line-height:1.15}
+.mod:hover{background:var(--supel);border-color:var(--acao)}
+.mod svg.i{width:22px;height:22px;color:var(--texto2)}
+.mod.cons{color:var(--texto2);font-weight:500}
+.selo{margin-top:auto;font-size:10px;font-weight:500;color:var(--texto2);border:1px solid var(--borda);border-radius:8px;padding:0 5px;line-height:14px}
+
+/* barra de status */
+.status{height:26px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-top:1px solid var(--borda);
+  background:var(--sup);color:var(--texto2);font-size:12px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="i-marca" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></symbol>
+  <symbol id="i-lua" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.8 4-5.5 7.5-5.5s6.3 1.7 7.5 5.5"/></symbol>
+  <symbol id="i-ficha" viewBox="0 0 24 24"><path d="M6 2.8h8.5L19 7.3V21H6z"/><path d="M14.5 2.8v4.5H19M9 11.5h7M9 15h7M9 18.3h4.5"/></symbol>
+  <symbol id="i-plano" viewBox="0 0 24 24"><path d="M12 4.5c4.5 0 7.5 3 7.5 7.2S16.3 19.5 12 19.5 4.5 16.4 4.5 12 7.5 4.5 12 4.5z"/><path d="M12 8.6c2 0 3.4 1.4 3.4 3.4S14 15.4 12 15.4 8.6 14 8.6 12 10 8.6 12 8.6z"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></symbol>
+  <symbol id="i-trat" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M12 4v4.5"/><path d="M3 19h18M7 19v2.5M17 19v2.5"/><path d="M8.5 15.5h7"/></symbol>
+  <symbol id="i-gq" viewBox="0 0 24 24"><path d="M3.5 16.5a8.5 8.5 0 0 1 17 0"/><path d="M12 16.5l4-5.5"/><circle cx="12" cy="16.5" r="1.3"/><path d="M3.5 20.5h17"/></symbol>
+  <symbol id="i-seg" viewBox="0 0 24 24"><path d="M12 2.8l7.5 3v5.7c0 4.7-3.2 8.3-7.5 9.7-4.3-1.4-7.5-5-7.5-9.7V5.8z"/><path d="M12 8.5v6M9 11.5h6"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M8.5 3.5h7v3h-7z"/><path d="M8.5 5H5.5v16h13V5h-3"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4"/></symbol>
+  <symbol id="i-soft" viewBox="0 0 24 24"><rect x="2.8" y="4" width="18.4" height="12.5" rx="1.5"/><path d="M8.5 20.5h7M12 16.5v4"/><path d="M9.5 8.5l-2 1.8 2 1.8M14.5 8.5l2 1.8-2 1.8"/></symbol>
+  <symbol id="i-ind" viewBox="0 0 24 24"><path d="M3.5 3.5v17h17"/><path d="M7.5 16.5v-4M11.5 16.5v-7M15.5 16.5v-5M19.5 16.5V7"/></symbol>
+  <symbol id="i-con" viewBox="0 0 24 24"><path d="M12 6.5c-2-1.7-4.8-2.3-8.5-2v14c3.7-.3 6.5.3 8.5 2 2-1.7 4.8-2.3 8.5-2v-14c-3.7-.3-6.5.3-8.5 2z"/><path d="M12 6.5v14"/></symbol>
+  <symbol id="i-min" viewBox="0 0 12 12"><path d="M1 6h10"/></symbol>
+  <symbol id="i-max" viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9"/></symbol>
+  <symbol id="i-x" viewBox="0 0 12 12"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9"/></symbol>
+ </defs>
+</svg>
+
+<input type="checkbox" id="modo" aria-label="Alternar modo noite/dia">
+<div class="win">
+ <div class="tb"><span>ISOCENTRO</span><span class="ctl"><span><svg class="i"><use href="#i-min"/></svg></span><span><svg class="i"><use href="#i-max"/></svg></span><span><svg class="i"><use href="#i-x"/></svg></span></span></div>
+
+ <header class="top">
+  <div class="marca"><svg class="i"><use href="#i-marca"/></svg>ISOCENTRO</div>
+  <nav class="seg" aria-label="Clínica"><span>CEL</span><span>BET</span><span>DUO</span><span class="on">Todas</span></nav>
+  <div class="dir">
+   <span class="relogio">18/10/2026 · 07:43</span>
+   <label for="modo" class="modo" title="Noite / dia"><span class="lua"><svg class="i"><use href="#i-lua"/></svg></span><span class="sol"><svg class="i"><use href="#i-sol"/></svg></span></label>
+   <span class="usuario"><svg class="i"><use href="#i-user"/></svg>Geova</span>
+  </div>
+ </header>
+
+ <main>
+  <!-- Zona 1 · Situação do serviço -->
+  <section>
+   <h2 class="zh">Situação do serviço <span class="fonte">agenda: variandw <span class="vivo">● ao vivo</span> · 18/10 07:41</span></h2>
+   <div class="cols">
+    <div class="col"><h3>CEL</h3>
+     <div class="maq"><span class="s"><i class="quad"></i></span><b>TrueBeam 4045</b><span class="ag">14 pac. hoje · próx. 08:10</span><span class="mot">normal</span></div>
+     <div class="maq at"><span class="s sev">◆&#xFE0E;</span><b>6EX 1254</b><span class="ag">12 pac. hoje · próx. 08:00</span><span class="mot">CQ mensal vence hoje</span></div>
+     <div class="maq"><span class="s"><i class="quad"></i></span><b>HDR</b><span class="ag">2 pac. hoje · próx. 09:30</span><span class="mot">normal</span></div>
+     <div class="filas">
+      <div class="fila"><span>Duplo Check</span><b>3<em class="al sev" style="font-style:normal">▲&#xFE0E;1</em></b></div>
+      <div class="fila"><span>Aprovação Física</span><b>2</b></div>
+      <div class="fila"><span>Vencimentos 60d</span><b>4</b></div>
+     </div>
+    </div>
+    <div class="col"><h3>BET</h3>
+     <div class="maq"><span class="s"><i class="quad"></i></span><b>600CD 1196</b><span class="ag">11 pac. hoje · próx. 07:50</span><span class="mot">normal</span></div>
+     <div class="filas">
+      <div class="fila"><span>Duplo Check</span><b>1</b></div>
+      <div class="fila"><span>Aprovação Física</span><b class="zero">0</b></div>
+      <div class="fila"><span>Vencimentos 60d</span><b>1</b></div>
+     </div>
+    </div>
+    <div class="col"><h3>DUO</h3>
+     <div class="maq al"><span class="s sev">▲&#xFE0E;</span><b>VitalBeam 4199</b><span class="ag">16 pac. hoje · próx. 08:20</span><span class="mot">CQ diário fora da tolerância</span></div>
+     <div class="filas">
+      <div class="fila"><span>Duplo Check</span><b class="zero">0</b></div>
+      <div class="fila"><span>Aprovação Física</span><b>1</b></div>
+      <div class="fila"><span>Vencimentos 60d</span><b>2</b></div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- Zona 2 · O que precisa de ação -->
+  <section>
+   <h2 class="zh">O que precisa de ação <span class="sub">· seu perfil ·</span> <span class="n">7</span></h2>
+   <div class="acao">
+    <div class="lin al"><span class="tag sev">▲&#xFE0E; ALTA</span><span class="o">Duplo Check</span><span class="d">Paciente Fictício A · SBRT</span><span class="p">antes da 1ª fração</span><span class="c">CEL</span><span class="e">aberto</span></div>
+    <div class="lin al"><span class="tag sev">▲&#xFE0E; ALTA</span><span class="o">CQ diário VitalBeam</span><span class="d">output +3,4% (tol. ±3%)</span><span class="p"></span><span class="c">DUO</span><span class="e">aberto</span></div>
+    <div class="lin at"><span class="tag sev">◆&#xFE0E; ATENÇÃO</span><span class="o">2ª checagem indeterminado</span><span class="d">o cálculo não trata filtro</span><span class="p"></span><span class="c">CEL</span><span class="e">aberto</span></div>
+    <div class="lin at visto"><span class="tag sev">◆&#xFE0E; ATENÇÃO</span><span class="o">Vencimento</span><span class="d">câmara de ionização</span><span class="p">45 dias</span><span class="c">BET</span><span class="e">visto · Bruno · 07:12</span></div>
+    <div class="lin in"><span class="tag sev">○ INFO</span><span class="o">Item sem data de partida</span><span class="d">fonte-teste</span><span class="p"></span><span class="c">CEL</span><span class="e">aberto</span></div>
+    <div class="rod"><a class="mais">ver mais 2</a><button class="btn">Abrir fila</button></div>
+   </div>
+  </section>
+
+  <!-- Zona 3 · Doca de módulos (sem contagem) -->
+  <section>
+   <h2 class="zh">Módulos</h2>
+   <div class="doca">
+    <div class="mod"><svg class="i"><use href="#i-ficha"/></svg>Radioteraficha</div>
+    <div class="mod cons"><svg class="i"><use href="#i-plano"/></svg>Plano<span class="selo">em construção</span></div>
+    <div class="mod cons"><svg class="i"><use href="#i-trat"/></svg>Tratamento<span class="selo">em construção</span></div>
+    <div class="mod"><svg class="i"><use href="#i-gq"/></svg>Garantia da Qualidade</div>
+    <div class="mod cons"><svg class="i"><use href="#i-seg"/></svg>Segurança do paciente<span class="selo">em construção</span></div>
+    <div class="mod cons"><svg class="i"><use href="#i-doc"/></svg>Documentação e conformidade<span class="selo">em construção</span></div>
+    <div class="mod cons"><svg class="i"><use href="#i-soft"/></svg>Software e sistemas<span class="selo">em construção</span></div>
+    <div class="mod"><svg class="i"><use href="#i-ind"/></svg>Indicadores</div>
+    <div class="mod cons"><svg class="i"><use href="#i-con"/></svg>Conhecimento<span class="selo">em construção</span></div>
+   </div>
+  </section>
+ </main>
+
+ <footer class="status"><span>Geova · físico · Todas</span><span>variandw <span class="vivo">● ao vivo</span> · 18/10 07:41</span></footer>
+</div>
+
+<!-- Decisões visuais tomadas neste mockup que NÃO estão no .memlog.md (a confirmar):
+ 1. Moldura Windows: barra de título de 30 px (ISOCENTRO + minimizar/maximizar/fechar) na cor superfície; área útil 1366×738.
+ 2. Alturas: topo 48 px, barra de status 26 px; zonas empilhadas na ordem 1-2-3 com 12 px entre elas; rótulo de zona em caixa-alta 11,5 px, texto-secundário.
+ 3. Seletor de clínica = controle segmentado; opção ativa em acao-fundo/acao (não preenchido), para manter um só botão primário na tela.
+ 4. ☾/☀ = par de ícones SVG (lua/sol) num controle de duas posições; posição ativa em acao-fundo. Noite na 1ª abertura (U5 tratada como noite neste mockup).
+ 5. Máquina sem problema: quadradinho 7 px na cor estado-neutro + "normal" em texto-secundário, sem fundo. Máquina com problema: borda esquerda 3 px + fundo da severidade + forma IEC + motivo em negrito na cor de texto da severidade.
+ 6. Agenda da máquina alinhada à direita na 1ª linha ("14 pac. hoje · próx. 08:10"); motivo/estado na 2ª linha.
+ 7. Filas = três células com rótulo pequeno e número 18 px; zero fica em texto-secundário sem peso; "▲1" em texto de severidade alta ao lado do total.
+ 8. Selo de degrau também no cabeçalho da Zona 1 ("agenda: variandw ● ao vivo · 18/10 07:41"), além da barra de status, porque a agenda vem do variandw.
+ 9. Clicável: hover = superfície-elevada (linhas com severidade clareiam 8–10%); cursor de mão; doca ganha borda acao no hover. Sem seta/chevron.
+ 10. Linha de ação em grade de 6 colunas: severidade por extenso (▲ ALTA / ◆ ATENÇÃO / ○ INFO) · o quê · detalhe · prazo · clínica · estado. "aberto" escrito por extenso.
+ 11. Estado "visto": mantém forma e cor da severidade, perde o fundo, borda esquerda tracejada, texto em texto-secundário.
+ 12. "ver mais 2" como link de texto (cor acao) à esquerda; "Abrir fila" é o único botão primário, à direita.
+ 13. Doca: 9 blocos iguais numa linha (92 px), ícone SVG de traço único 1,6 px em texto-secundário; "em construção" = selo pequeno contornado no pé do bloco, nome em texto-secundário.
+ 14. Módulos SEM selo: Radioteraficha, Indicadores (protótipo Radioteradados) e Garantia da Qualidade (é a origem do alerta de CQ diário e o módulo do mockup torre-modulo.html). Os outros 6 levam "em construção".
+ 15. Relógio no topo como "18/10/2026 · 07:43" (sem dia da semana); usuário com ícone de pessoa, sem menu.
+ 16. Marca ◎ desenhada como alvo de isocentro (dois círculos + quatro marcas de retículo) na cor acao.
+ 17. Números tabulares em toda a janela (font-variant-numeric no corpo). Glifos de severidade forçados a texto (VS15) para não virar emoji.
+-->
+</body>
+</html>

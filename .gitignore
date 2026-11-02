@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.streamlit/secrets.toml
+*.log
+.DS_Store
+Thumbs.db
+
+# Patient data never enters this repository
+*.dcm
+FICHA_*.json
+CORTES_*.png
+DVH_*.png
+registro_fichas.json
+.identidades.json

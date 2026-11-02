@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISOCENTRO para a equipe</title>
+<style>
+/* Paleta: Sala de controle · azul-ardósia — modo noite (color-themes-1.html)
+   fundo #0E1621 | superficie #152030 | superficie-elevada #1C2A3D | borda #2B3B52
+   texto #E4ECF5 | texto-secundario #9AABC0 | acao #8C9EFF | acao-fundo #1E2650 | foco #C9D2FF
+   sev-alta #FF5C61 / #FF8A8D / #3B1519 · sev-atencao #FFC93C / #FFD466 / #36290A · sev-info #2CCFE0 / #5FDDEA / #0C2E36
+   neutro #93A3B6 | ao-vivo #B9C4FF | espelho #8292A5
+   Verde (#3DDC84) é reservado à dose e não aparece neste deck. */
+:root{
+  --fundo:#0E1621;--sup:#152030;--supel:#1C2A3D;--borda:#2B3B52;--texto:#E4ECF5;--texto2:#9AABC0;
+  --acao:#8C9EFF;--acaofundo:#1E2650;--foco:#C9D2FF;
+  --alta:#FF5C61;--altat:#FF8A8D;--altaf:#3B1519;
+  --aten:#FFC93C;--atent:#FFD466;--atenf:#36290A;
+  --info:#2CCFE0;--infot:#5FDDEA;--infof:#0C2E36;
+  --ok:#93A3B6;--vivo:#B9C4FF;--espelho:#8292A5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--fundo);color:var(--texto);overflow:hidden}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.palco{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:center center;background:var(--fundo)}
+.slide{position:absolute;inset:0;padding:40px 64px 78px;display:none;flex-direction:column;gap:14px}
+.slide.ativo{display:flex}
+.kicker{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--acao);font-weight:600}
+h1{font-size:54px;line-height:1.1;font-weight:700;letter-spacing:-.01em}
+h2{font-size:34px;line-height:1.15;font-weight:700;letter-spacing:-.005em}
+p,li{font-size:19px;line-height:1.45}
+.t2{color:var(--texto2)}
+.peq{font-size:15px}
+ul.lista{list-style:none;display:flex;flex-direction:column;gap:8px}
+ul.lista li{padding-left:22px;position:relative}
+ul.lista li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--acao)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cartao{background:var(--sup);border:1px solid var(--borda);border-radius:12px;padding:16px 18px}
+.cartao h3{font-size:20px;margin-bottom:6px}
+.barra-aten{border-left:5px solid var(--aten)}
+.barra-alta{border-left:5px solid var(--alta)}
+.barra-acao{border-left:5px solid var(--acao)}
+.barra-info{border-left:5px solid var(--info)}
+.chip{display:inline-block;padding:4px 11px;border-radius:999px;border:1px solid var(--borda);background:var(--supel);font-size:15px;margin:3px 4px 3px 0;color:var(--texto)}
+.chip.acao{border-color:var(--acao);color:var(--foco);background:var(--acaofundo)}
+.chip.alta{border-color:var(--alta);color:var(--altat);background:var(--altaf)}
+.chip.aten{border-color:var(--aten);color:var(--atent);background:var(--atenf)}
+.chip.info{border-color:var(--info);color:var(--infot);background:var(--infof)}
+.destaque{font-size:26px;line-height:1.3;font-weight:600}
+.nota{position:absolute;left:64px;right:300px;bottom:30px;font-size:12px;color:var(--texto2);opacity:.8;line-height:1.35}
+.mono{font-family:Consolas,"Cascadia Mono",monospace;font-size:.92em}
+svg{display:block}
+svg text{font-family:"Segoe UI",system-ui,Arial,sans-serif}
+svg .tx{fill:var(--texto)} svg .tx2{fill:var(--texto2)} svg .b{font-weight:700}
+svg .cx{fill:var(--sup);stroke:var(--borda);stroke-width:1.5}
+svg .cxe{fill:var(--supel);stroke:var(--borda);stroke-width:1.5}
+svg .ln{stroke:var(--texto2);stroke-width:1.8;fill:none}
+svg .lna{stroke:var(--acao);stroke-width:2;fill:none}
+/* navegação */
+.nav{position:absolute;right:28px;bottom:22px;display:flex;align-items:center;gap:10px;z-index:5}
+.nav button{background:var(--supel);color:var(--texto);border:1px solid var(--borda);border-radius:8px;width:44px;height:36px;font-size:18px;cursor:pointer}
+.nav button:hover{border-color:var(--acao)}
+.nav button:focus-visible{outline:2px solid var(--foco);outline-offset:2px}
+.nav .cont{font-size:14px;color:var(--texto2);min-width:58px;text-align:center;font-variant-numeric:tabular-nums}
+.progresso{position:absolute;left:0;bottom:0;height:4px;background:var(--acao);transition:width .25s}
+.perguntas{counter-reset:q;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 26px}
+.perguntas li{counter-increment:q;position:relative;padding:12px 14px 12px 54px;background:var(--sup);border:1px solid var(--borda);border-radius:10px;font-size:17px;line-height:1.38}
+.perguntas li::before{content:counter(q);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--acaofundo);color:var(--foco);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+.aberto{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.aberto .cartao{padding:11px 13px}
+.aberto .cartao b{font-size:15.5px;display:block;margin-bottom:3px;line-height:1.3}
+.aberto .cartao span{font-size:13.5px;color:var(--texto2);line-height:1.35;display:block}
+.aberto .cartao span.tag{font-family:Consolas,monospace;font-size:12px;color:var(--atent);background:var(--atenf);border-radius:4px;padding:1px 6px;display:inline-block;margin-bottom:5px}
+</style>
+</head>
+<body>
+<div class="palco" id="palco">
+
+<!-- 1 · Capa -->
+<section class="slide" data-titulo="Capa">
+  <div style="display:flex;align-items:center;gap:56px;height:100%">
+    <svg width="240" height="240" viewBox="0 0 240 240" aria-hidden="true">
+      <circle cx="120" cy="120" r="96" fill="none" stroke="var(--borda)" stroke-width="2"/>
+      <circle cx="120" cy="120" r="62" fill="none" stroke="var(--acao)" stroke-width="2.5"/>
+      <circle cx="120" cy="120" r="8" fill="var(--acao)"/>
+      <path d="M120 8 V64 M120 176 V232 M8 120 H64 M176 120 H232" stroke="var(--foco)" stroke-width="2.5"/>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:820px">
+      <div class="kicker">ISOCENTRO · arquitetura explicada à equipe</div>
+      <h1>Como o ISOCENTRO vai ser montado — e o que precisamos decidir juntos</h1>
+      <p class="t2">Para físicos, dosimetristas, técnicos, médicos e SPR/gestão das clínicas CEL, BET e DUO.</p>
+      <p class="peq t2">Rascunho da espinha de arquitetura · 19/10/2026 · navegue com ← → ou com os botões</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · O problema -->
+<section class="slide" data-titulo="O problema">
+  <div class="kicker">O problema</div>
+  <h2>Três perguntas que hoje não têm um lugar para ser respondidas</h2>
+  <div class="cols3">
+    <div class="cartao barra-aten"><h3>O que está vencido?</h3><p class="t2 peq">Prazos de CQ, de revisão, de assinatura.</p></div>
+    <div class="cartao barra-alta"><h3>O que falhou?</h3><p class="t2 peq">Conferência que não bateu, incidente, quase-incidente.</p></div>
+    <div class="cartao barra-acao"><h3>Quem precisa agir?</h3><p class="t2 peq">A pessoa certa, na clínica certa, com o porquê.</p></div>
+  </div>
+  <div class="cols" style="margin-top:6px">
+    <div>
+      <p style="margin-bottom:8px"><b>Hoje a resposta está espalhada</b></p>
+      <div><span class="chip">ppr-streamlit</span><span class="chip">planilhas de QA de paciente</span><span class="chip">scripts ESAPI</span><span class="chip">Epimed</span><span class="chip">memória do físico</span></div>
+      <p class="peq t2" style="margin-top:12px">Duas obrigações legais não têm procedimento escrito: o segundo sistema de cálculo (NN-6.10 art. 15, XI, e) e a segunda assinatura do plano (NN-6.10 art. 17, IV).</p>
+    </div>
+    <div>
+      <p style="margin-bottom:8px"><b>E o programa de hoje tem limites</b></p>
+      <ul class="lista peq">
+        <li class="peq">Fichas e cadastros ficam em arquivos soltos na pasta de rede.</li>
+        <li class="peq">O histórico pode ser editado por qualquer estação e não tem selo.</li>
+        <li class="peq">O perfil só escolhe quais abas aparecem — não é controle de acesso.</li>
+        <li class="peq">A biblioteca das telas (Qt 5.15) está fora do suporte padrão desde 05/2025.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="nota">Fontes: PRD §1 (Visão) e a tabela "Contradições com o código atual" da espinha.</div>
+</section>
+
+<!-- 3 · O desenho -->
+<section class="slide" data-titulo="O desenho em uma figura">
+  <div class="kicker">O desenho em uma figura</div>
+  <h2>Um banco central, três estações, o ARIA só lido</h2>
+  <svg viewBox="0 0 1152 470" width="1152" height="470" role="img" aria-label="Topologia do ISOCENTRO">
+    <defs><marker id="s3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="var(--texto2)"/></marker>
+    <marker id="s3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="var(--acao)"/></marker></defs>
+    <rect x="4" y="4" width="1144" height="462" rx="14" fill="none" stroke="var(--borda)" stroke-width="1.5" stroke-dasharray="7 6"/>
+    <text x="22" y="456" class="tx2" font-size="13">Rede do serviço — o dado do paciente não sai daqui (nem para terceiros, nem para IA)</text>
+    <!-- estações -->
+    <text x="24" y="80" class="tx2 b" font-size="14">Estações</text>
+    <rect x="24" y="90" width="170" height="50" rx="9" class="cxe"/><text x="109" y="121" text-anchor="middle" class="tx b" font-size="16">Estação CEL</text>
+    <rect x="24" y="150" width="170" height="50" rx="9" class="cxe"/><text x="109" y="181" text-anchor="middle" class="tx b" font-size="16">Estação BET</text>
+    <rect x="24" y="210" width="170" height="50" rx="9" class="cxe"/><text x="109" y="241" text-anchor="middle" class="tx b" font-size="16">Estação DUO</text>
+    <text x="109" y="282" text-anchor="middle" class="tx2" font-size="12.5">o mesmo programa</text>
+    <path d="M194 115 L298 150" class="lna" marker-end="url(#s3a)"/>
+    <path d="M194 175 L298 160" class="lna" marker-end="url(#s3a)"/>
+    <path d="M194 235 L298 172" class="lna" marker-end="url(#s3a)"/>
+    <text x="247" y="300" text-anchor="middle" class="tx2" font-size="12">conexão cifrada</text>
+    <text x="247" y="316" text-anchor="middle" class="tx2" font-size="12">+ login da pessoa</text>
+    <!-- servidor -->
+    <rect x="300" y="60" width="440" height="250" rx="12" fill="var(--supel)" stroke="var(--acao)" stroke-width="2"/>
+    <text x="318" y="86" class="tx b" font-size="15">Servidor da clínica · <tspan class="mono" fill="var(--foco)">clinica-python01</tspan></text>
+    <rect x="318" y="100" width="404" height="95" rx="9" class="cx"/>
+    <text x="336" y="128" class="tx b" font-size="16">Banco central (PostgreSQL)</text>
+    <text x="336" y="152" class="tx2" font-size="14">fichas, conferências, registro selado,</text>
+    <text x="336" y="172" class="tx2" font-size="14">assinaturas, CQ, incidentes, espelho do ARIA</text>
+    <rect x="318" y="208" width="404" height="88" rx="9" class="cx"/>
+    <text x="336" y="236" class="tx b" font-size="15">Concentradora (sem tela, tarefa agendada)</text>
+    <text x="336" y="259" class="tx2" font-size="14">roda prazos e conferências com o app fechado;</text>
+    <text x="336" y="279" class="tx2" font-size="14">importa o resultado do script do Eclipse</text>
+    <!-- ARIA -->
+    <rect x="830" y="60" width="290" height="150" rx="12" class="cxe"/>
+    <text x="848" y="88" class="tx b" font-size="16">ARIA (Varian)</text>
+    <rect x="1004" y="70" width="104" height="24" rx="12" fill="var(--infof)" stroke="var(--info)"/>
+    <text x="1056" y="87" text-anchor="middle" font-size="12" font-weight="700" fill="var(--infot)">SÓ LEITURA</text>
+    <text x="848" y="120" class="tx2" font-size="14">banco do ARIA (variandw)</text>
+    <text x="848" y="142" class="tx2" font-size="14">imagens e planos DICOM</text>
+    <text x="848" y="172" class="tx" font-size="14">a trava (Treatment Approved)</text>
+    <text x="848" y="192" class="tx" font-size="14">continua aqui</text>
+    <path d="M830 82 H785 V38 H180 V88" class="ln" marker-end="url(#s3)"/>
+    <text x="480" y="30" text-anchor="middle" class="tx2" font-size="12.5">estações e concentradora leem o ARIA — nunca escrevem nele</text>
+    <path d="M830 150 L744 215" class="ln" marker-end="url(#s3)"/>
+    <!-- ESAPI -->
+    <rect x="830" y="234" width="290" height="76" rx="12" class="cxe"/>
+    <text x="848" y="259" class="tx b" font-size="15">Eclipse: script de conferência</text>
+    <text x="848" y="280" class="tx2" font-size="13.5">só lê o plano; deixa um arquivo</text>
+    <text x="848" y="299" class="tx2" font-size="13.5">com selo numa pasta restrita</text>
+    <path d="M830 272 L744 262" class="ln" marker-end="url(#s3)"/>
+    <!-- base -->
+    <rect x="24" y="345" width="420" height="85" rx="10" class="cx"/>
+    <text x="42" y="371" class="tx b" font-size="15">Pasta de rede (fileserver)</text>
+    <text x="42" y="394" class="tx2" font-size="13.5">pasta do paciente: PDFs e imagens</text>
+    <text x="42" y="414" class="tx2" font-size="13.5">relatórios exportados (CSV) · backup diário cifrado</text>
+    <rect x="470" y="345" width="300" height="85" rx="10" class="cx"/>
+    <text x="488" y="371" class="tx b" font-size="15">Pasta da TI (só acrescentar)</text>
+    <text x="488" y="394" class="tx2" font-size="13.5">testemunha diária do selo,</text>
+    <text x="488" y="414" class="tx2" font-size="13.5">sem dado de paciente</text>
+    <rect x="800" y="345" width="320" height="85" rx="10" class="cx"/>
+    <text x="818" y="371" class="tx b" font-size="15">Mídia separada, fora do servidor</text>
+    <text x="818" y="394" class="tx2" font-size="13.5">cópia mensal cifrada</text>
+    <path d="M40 260 V343" class="ln" marker-end="url(#s3)"/>
+    <text x="48" y="320" class="tx2" font-size="12">PDFs</text>
+    <path d="M400 310 V343" class="ln" marker-end="url(#s3)"/>
+    <text x="408" y="332" class="tx2" font-size="12">cópia diária</text>
+    <path d="M620 296 V343" class="ln" marker-end="url(#s3)"/>
+    <text x="628" y="326" class="tx2" font-size="12">selo do dia</text>
+    <path d="M722 150 H785 V330 H960 V343" class="ln" marker-end="url(#s3)"/>
+    <text x="968" y="338" class="tx2" font-size="12">cópia mensal</text>
+  </svg>
+  <div class="nota">Não há um serviço intermediário: cada estação fala direto com o banco central. A concentradora roda no mesmo servidor do banco. (AD-7, AD-9, AD-10, AD-16, AD-24, AD-32)</div>
+</section>
+
+<!-- 4 · Núcleo + 9 módulos -->
+<section class="slide" data-titulo="Núcleo e nove módulos">
+  <div class="kicker">Núcleo e módulos</div>
+  <h2>Um prédio: uma fundação comum e nove salas</h2>
+  <svg viewBox="0 0 1152 404" width="1152" height="404" role="img" aria-label="Núcleo com nove módulos">
+    <g font-size="14">
+      <rect x="0" y="0" width="372" height="72" rx="10" class="cxe"/><text x="18" y="30" class="tx b" font-size="18">Plano</text><text x="18" y="55" class="tx2">segunda checagem, Aprovação Física, Duplo Check</text>
+      <rect x="390" y="0" width="372" height="72" rx="10" class="cxe"/><text x="408" y="30" class="tx b" font-size="18">Tratamento</text><text x="408" y="55" class="tx2">acompanhamento do tratamento</text>
+      <rect x="780" y="0" width="372" height="72" rx="10" class="cxe"/><text x="798" y="30" class="tx b" font-size="18">Garantia da Qualidade</text><text x="798" y="55" class="tx2">programa de CQ e seus registros</text>
+      <rect x="0" y="84" width="372" height="72" rx="10" class="cxe"/><text x="18" y="114" class="tx b" font-size="18">Segurança do paciente</text><text x="18" y="139" class="tx2">incidentes e quase-incidentes</text>
+      <rect x="390" y="84" width="372" height="72" rx="10" class="cxe"/><text x="408" y="114" class="tx b" font-size="18">Documentação e conformidade</text><text x="408" y="139" class="tx2">documentos e obrigações do serviço</text>
+      <rect x="780" y="84" width="372" height="72" rx="10" class="cxe"/><text x="798" y="114" class="tx b" font-size="18">Software e sistemas</text><text x="798" y="139" class="tx2">programas usados e sua validação</text>
+      <rect x="0" y="168" width="372" height="72" rx="10" class="cxe"/><text x="18" y="198" class="tx b" font-size="18">Indicadores</text><text x="18" y="223" class="tx2">números do serviço</text>
+      <rect x="390" y="168" width="372" height="72" rx="10" class="cxe"/><text x="408" y="198" class="tx b" font-size="18">Conhecimento</text><text x="408" y="223" class="tx2">fichas da base: norma, tolerância, fonte</text>
+      <rect x="780" y="168" width="372" height="72" rx="10" class="cxe"/><text x="798" y="198" class="tx b" font-size="18">Radioteraficha</text><text x="798" y="223" class="tx2">a ficha de hoje, migrando aos poucos</text>
+    </g>
+    <path d="M80 240 V262 M576 240 V262 M1072 240 V262" stroke="var(--acao)" stroke-width="2"/>
+    <rect x="0" y="262" width="1152" height="140" rx="12" fill="var(--acaofundo)" stroke="var(--acao)" stroke-width="2"/>
+    <text x="22" y="294" class="b" font-size="19" fill="var(--foco)">Núcleo — a fundação comum. Não sabe radioterapia.</text>
+    <text x="22" y="320" class="tx2" font-size="14.5">Só garante que tudo seja conferido, anotado, assinado e avisado — do mesmo jeito para todos os módulos.</text>
+    <g font-size="14">
+      <rect x="22" y="336" width="196" height="28" rx="14" class="cxe"/><text x="120" y="355" text-anchor="middle" class="tx">motor de conferência</text>
+      <rect x="228" y="336" width="196" height="28" rx="14" class="cxe"/><text x="326" y="355" text-anchor="middle" class="tx">registro selado (log)</text>
+      <rect x="434" y="336" width="196" height="28" rx="14" class="cxe"/><text x="532" y="355" text-anchor="middle" class="tx">avisos e pendências</text>
+      <rect x="640" y="336" width="150" height="28" rx="14" class="cxe"/><text x="715" y="355" text-anchor="middle" class="tx">assinaturas</text>
+      <rect x="800" y="336" width="330" height="28" rx="14" class="cxe"/><text x="965" y="355" text-anchor="middle" class="tx">quem é quem e o que cada um pode</text>
+      <rect x="22" y="368" width="470" height="28" rx="14" class="cxe"/><text x="257" y="387" text-anchor="middle" class="tx">paciente, curso, plano e máquina pela chave do ARIA (nunca pelo nome)</text>
+      <rect x="502" y="368" width="390" height="28" rx="14" class="cxe"/><text x="697" y="387" text-anchor="middle" class="tx">saída única de exportação, sem identificação</text>
+    </g>
+  </svg>
+  <p class="peq t2">Cada sala é dona dos seus dados. Pode <b class="tx" style="color:var(--texto)">olhar pela janela</b> a sala vizinha (consulta só de leitura), mas não mexe nela; para reagir a algo de outra sala, passa pelo núcleo. Tudo num só programa — nada de peças instaladas à parte.</p>
+  <div class="nota">Um teste automático reprova o código se uma sala mexer na outra ou se a tela falar direto com o banco. (AD-1, AD-2, AD-3, AD-22, AD-26, AD-33)</div>
+</section>
+
+<!-- 4b · Revisão por sala -->
+<section class="slide" data-titulo="Mudou uma sala, revisa uma sala">
+  <div class="kicker">Módulos genéricos e específicos · 22/10/2026</div>
+  <h2>Mudou uma sala, revisa aquela sala — e só soma revisão quando o efeito vai além</h2>
+  <div class="aberto">
+    <div class="cartao"><span class="tag">rt</span><b>Prateleira comum de radioterapia</b><span>Lê e modela RT Plan, dose, estruturas e TC: geometria, cortes, DVH. Não decide nada, não guarda nada, não sabe quem é a equipe. As salas usam; o núcleo não.</span></div>
+    <div class="cartao"><span class="tag">manifesto</span><b>Cada sala tem uma placa na porta</b><span>Nome, classe, o que confere, de quais tabelas é dona. Uma lista única diz quais salas vão no programa; a tela de cada uma é ligada pelo nome.</span></div>
+    <div class="cartao"><span class="tag">raio</span><b>Quanto revisar sai do que mudou</b><span>Dentro de uma sala → aquela sala. Na janela dela (consulta) → ela e quem olha por ali, inclusive pelos gatilhos. Na prateleira, no núcleo, no banco, numa tabela de máquina → tudo.</span></div>
+    <div class="cartao"><span class="tag">papel</span><b>Chegou no papel, compara o PDF</b><span>Mudança que alcança a ficha ou a capa é comparada página a página com os PDFs de referência, e a equipe é avisada.</span></div>
+    <div class="cartao"><span class="tag">classe</span><b>A classe é do físico, não do código</b><span>Vem do documento de classificação; a placa só repete. Sala sem classe, núcleo, prateleira, Plano e Radioteraficha: rigor C até a decisão formal.</span></div>
+    <div class="cartao"><span class="tag">vizinhos</span><b>ESAPI à parte; PPR entra</b><span>Os scripts do Eclipse ficam no repositório próprio e o ISOCENTRO não os executa: lê o resultado e confere a versão contra o inventário validado. O PPR vira parte de Documentação.</span></div>
+  </div>
+  <div class="nota">Um só programa e uma só versão; a nota de cada versão diz quais salas mudaram. (AD-38, AD-39, AD-40, AD-41)</div>
+</section>
+
+<!-- 5 · Avisa, nunca trava -->
+<section class="slide" data-titulo="O sistema avisa, nunca trava">
+  <div class="kicker">Princípio</div>
+  <h2>O sistema avisa, nunca trava — a trava continua no ARIA</h2>
+  <div class="cols" style="grid-template-columns:1.1fr 1fr">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="cartao">
+        <h3>Toda conferência termina num destes cinco resultados</h3>
+        <div><span class="chip">conforme</span><span class="chip">não conforme</span><span class="chip">não se aplica</span><span class="chip">indeterminado *</span><span class="chip">erro *</span></div>
+        <p class="peq t2" style="margin-top:6px">* precisa dizer o motivo. E sempre diz de onde veio o dado.</p>
+      </div>
+      <div class="cartao">
+        <h3>Três níveis de aviso — nenhum bloqueia</h3>
+        <div><span class="chip alta">alta</span><span class="chip aten">atenção</span><span class="chip info">informativo</span></div>
+        <p class="peq t2" style="margin-top:6px">O aviso tem vida própria: aberto → visto → resolvido com justificativa. Cada passo fica registrado.</p>
+      </div>
+      <div class="cartao">
+        <h3>Regra nova começa "em sombra"</h3>
+        <p class="peq t2">Roda e registra, mas não avisa ninguém, até ser promovida. Testes com erro semeado de propósito nunca entram em indicador nem disparam aviso.</p>
+      </div>
+    </div>
+    <div class="cartao barra-acao" style="display:flex;flex-direction:column;justify-content:center;gap:18px;padding:28px">
+      <p class="destaque">Onde a norma exige uma trava, ela fica onde já existe: <span style="color:var(--foco)">no ARIA, só o físico dá o Treatment Approved.</span></p>
+      <p class="t2">O ISOCENTRO lê o ARIA e o DICOM, mas não escreve neles. Ele confere, registra e chama a pessoa certa — a decisão continua sendo da equipe.</p>
+    </div>
+  </div>
+  <div class="nota">(AD-14, AD-16, AD-29; PRD §1)</div>
+</section>
+
+<!-- 6 · Caminho de um registro -->
+<section class="slide" data-titulo="O caminho de um registro">
+  <div class="kicker">O caminho de um registro</div>
+  <h2>Gravou o dado, gravou o registro — na mesma hora, ou nada</h2>
+  <svg viewBox="0 0 1152 330" width="1152" height="330" role="img" aria-label="Fluxo de gravação">
+    <defs><marker id="s6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--acao)"/></marker>
+    <marker id="s6r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--alta)"/></marker></defs>
+    <g font-size="14">
+      <rect x="0" y="10" width="200" height="160" rx="12" class="cxe"/>
+      <circle cx="28" cy="40" r="15" fill="var(--acaofundo)" stroke="var(--acao)"/><text x="28" y="45" text-anchor="middle" class="b" fill="var(--foco)">1</text>
+      <text x="52" y="46" class="tx b" font-size="17">Você registra</text>
+      <text x="16" y="84" class="tx2">na tela do módulo</text><text x="16" y="106" class="tx2">(ex.: registrar um CQ)</text>
+
+      <rect x="238" y="10" width="200" height="160" rx="12" class="cxe"/>
+      <circle cx="266" cy="40" r="15" fill="var(--acaofundo)" stroke="var(--acao)"/><text x="266" y="45" text-anchor="middle" class="b" fill="var(--foco)">2</text>
+      <text x="290" y="46" class="tx b" font-size="17">Confere</text>
+      <text x="254" y="84" class="tx2">quem é você,</text><text x="254" y="106" class="tx2">se você pode fazer isso</text><text x="254" y="128" class="tx2">e de qual clínica é</text>
+
+      <rect x="476" y="10" width="200" height="160" rx="12" class="cxe"/>
+      <circle cx="504" cy="40" r="15" fill="var(--acaofundo)" stroke="var(--acao)"/><text x="504" y="45" text-anchor="middle" class="b" fill="var(--foco)">3</text>
+      <text x="528" y="46" class="tx b" font-size="17">Grava junto</text>
+      <text x="492" y="84" class="tx2">o dado + a linha de</text><text x="492" y="106" class="tx2">registro: quem, quando,</text><text x="492" y="128" class="tx2">o quê, versão da origem</text>
+
+      <rect x="714" y="10" width="200" height="160" rx="12" class="cxe"/>
+      <circle cx="742" cy="40" r="15" fill="var(--acaofundo)" stroke="var(--acao)"/><text x="742" y="45" text-anchor="middle" class="b" fill="var(--foco)">4</text>
+      <text x="766" y="46" class="tx b" font-size="17">O banco sela</text>
+      <text x="730" y="84" class="tx2">cada linha ganha um selo</text><text x="730" y="106" class="tx2">que depende do selo</text><text x="730" y="128" class="tx2">da linha anterior</text>
+
+      <rect x="952" y="10" width="200" height="160" rx="12" fill="var(--acaofundo)" stroke="var(--acao)" stroke-width="2"/>
+      <circle cx="980" cy="40" r="15" fill="var(--fundo)" stroke="var(--acao)"/><text x="980" y="45" text-anchor="middle" class="b" fill="var(--foco)">5</text>
+      <text x="1004" y="46" class="b" font-size="17" fill="var(--foco)">Gravado</text>
+      <text x="968" y="84" class="tx">a tela confirma.</text><text x="968" y="106" class="tx2">Uma só corrente de</text><text x="968" y="128" class="tx2">selos para as 3 clínicas</text>
+    </g>
+    <path d="M202 90 H236" class="lna" marker-end="url(#s6)"/><path d="M440 90 H474" class="lna" marker-end="url(#s6)"/><path d="M678 90 H712" class="lna" marker-end="url(#s6)"/><path d="M916 90 H950" class="lna" marker-end="url(#s6)"/>
+    <g stroke="var(--alta)" stroke-width="1.8" stroke-dasharray="5 4"><path d="M338 170 V222" marker-end="url(#s6r)"/><path d="M576 170 V222" marker-end="url(#s6r)"/><path d="M814 170 V222" marker-end="url(#s6r)"/></g>
+    <rect x="238" y="224" width="676" height="92" rx="12" fill="var(--altaf)" stroke="var(--alta)" stroke-width="1.5"/>
+    <text x="258" y="256" font-size="17" font-weight="700" fill="var(--altat)">Se qualquer passo falhar</text>
+    <text x="258" y="282" class="tx" font-size="15">nem o dado nem a linha de registro ficam gravados — tudo ou nada.</text>
+    <text x="258" y="303" class="tx2" font-size="15">A tela diz que não gravou e por quê.</text>
+  </svg>
+  <p class="peq t2"><b style="color:var(--texto)">Selo</b> = uma impressão digital do registro (hash). Mudar uma vírgula numa linha antiga muda o selo dela e quebra todos os que vêm depois. Nenhum módulo tem histórico próprio: o registro é um só.</p>
+  <div class="nota">(AD-4, AD-6, AD-11, AD-12, AD-25, AD-27)</div>
+</section>
+
+<!-- 7 · Nada se apaga -->
+<section class="slide" data-titulo="Nada se apaga">
+  <div class="kicker">O caminho de um registro (continuação)</div>
+  <h2>Nada se apaga. Correção vira registro novo.</h2>
+  <svg viewBox="0 0 1152 330" width="1152" height="330" role="img" aria-label="Correção e testemunha do selo">
+    <defs><marker id="s7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--texto2)"/></marker>
+    <marker id="s7a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--acao)"/></marker></defs>
+    <text x="0" y="20" class="tx2 b" font-size="14">CORREÇÃO</text>
+    <rect x="0" y="34" width="250" height="110" rx="12" class="cx"/>
+    <text x="18" y="64" class="tx b" font-size="16">Registro 1 — original</text>
+    <text x="18" y="90" class="tx2" font-size="14">continua guardado,</text>
+    <text x="18" y="110" class="tx2" font-size="14">marcado como substituído</text>
+    <rect x="300" y="34" width="250" height="110" rx="12" fill="var(--acaofundo)" stroke="var(--acao)" stroke-width="2"/>
+    <text x="318" y="64" class="b" font-size="16" fill="var(--foco)">Registro 2 — correção</text>
+    <text x="318" y="90" class="tx" font-size="14">aponta para o registro 1</text>
+    <rect x="318" y="104" width="78" height="24" rx="12" fill="var(--fundo)" stroke="var(--acao)"/>
+    <text x="357" y="121" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--foco)">vigente</text>
+    <path d="M298 89 H254" class="lna" marker-end="url(#s7a)"/>
+    <text x="0" y="176" class="tx2" font-size="14">Vigente é o que nenhum outro substitui —</text>
+    <text x="0" y="196" class="tx2" font-size="14">calculado, sem sobrescrever nada.</text>
+
+    <text x="620" y="20" class="tx2 b" font-size="14">TESTEMUNHA DO SELO</text>
+    <g>
+      <rect x="620" y="40" width="96" height="56" rx="8" class="cxe"/><text x="668" y="73" text-anchor="middle" class="tx2" font-size="13">selo 1</text>
+      <rect x="738" y="40" width="96" height="56" rx="8" class="cxe"/><text x="786" y="73" text-anchor="middle" class="tx2" font-size="13">selo 2</text>
+      <rect x="856" y="40" width="96" height="56" rx="8" class="cxe"/><text x="904" y="73" text-anchor="middle" class="tx2" font-size="13">selo 3</text>
+      <rect x="974" y="40" width="160" height="56" rx="8" fill="var(--acaofundo)" stroke="var(--acao)"/><text x="1054" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="var(--foco)">ponta do dia</text>
+      <path d="M716 68 H736" class="ln" marker-end="url(#s7)"/><path d="M834 68 H854" class="ln" marker-end="url(#s7)"/><path d="M952 68 H972" class="ln" marker-end="url(#s7)"/>
+    </g>
+    <path d="M1054 96 V140" class="lna" marker-end="url(#s7a)"/>
+    <text x="1062" y="124" class="tx2" font-size="12">todo dia</text>
+    <rect x="770" y="142" width="364" height="76" rx="12" class="cx"/>
+    <text x="788" y="170" class="tx b" font-size="15">Pasta da TI — só acrescentar</text>
+    <text x="788" y="194" class="tx2" font-size="13.5">nem o dono do banco apaga ou edita;</text>
+    <text x="788" y="210" class="tx2" font-size="13.5">guarda só o selo, sem dado de paciente</text>
+    <path d="M952 218 V250" class="ln" marker-end="url(#s7)"/>
+    <rect x="620" y="252" width="514" height="70" rx="12" fill="var(--atenf)" stroke="var(--aten)" stroke-width="1.5"/>
+    <text x="638" y="280" font-size="15" font-weight="700" fill="var(--atent)">Verificador de integridade</text>
+    <text x="638" y="304" class="tx" font-size="14">compara a corrente com as testemunhas e aponta qual registro mudou e onde</text>
+  </svg>
+  <p class="peq t2">Única exceção declarada: o <b style="color:var(--texto)">espelho do ARIA</b> é uma cópia temporária (até 60 dias); a limpeza é agendada e também fica registrada. O registro só guarda referências — nunca texto livre com dado sensível.</p>
+  <div class="nota">(AD-5, AD-6, AD-17, AD-29, AD-32, AD-33)</div>
+</section>
+
+<!-- 8 · Quem pode o quê -->
+<section class="slide" data-titulo="Quem pode o quê">
+  <div class="kicker">Acesso</div>
+  <h2>Quem pode o quê — conferido na hora, não só escondido</h2>
+  <div class="cols" style="grid-template-columns:1.05fr 1fr">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="cartao">
+        <h3>Perfil = uma lista de capacidades</h3>
+        <div><span class="chip acao">assinar Aprovação Física</span><span class="chip acao">assinar Duplo Check</span><span class="chip acao">cadastrar conferência</span><span class="chip acao">registrar CQ</span><span class="chip acao">registrar incidente</span><span class="chip acao">administrar</span></div>
+        <p class="peq t2" style="margin-top:8px">O núcleo e o banco conferem a capacidade no momento da ação. Esconder um botão na tela é só conforto.</p>
+      </div>
+      <div class="cartao">
+        <h3>Sua senha é conferida dentro do banco</h3>
+        <p class="peq t2">A senha do programa, sozinha, não lê nem grava nada: cada ação precisa da sessão da pessoa. Quem você é no ARIA é ligado por uma tabela cadastrada pelo administrador — nunca por parecença de nome.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <svg viewBox="0 0 540 150" width="540" height="150" role="img" aria-label="Duplo Check por outro físico">
+        <defs><marker id="s8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--acao)"/></marker></defs>
+        <rect x="0" y="10" width="220" height="80" rx="12" class="cxe"/>
+        <text x="18" y="40" class="tx b" font-size="16">Físico A</text>
+        <text x="18" y="66" class="tx2" font-size="14">Aprovação Física</text>
+        <rect x="318" y="10" width="220" height="80" rx="12" fill="var(--acaofundo)" stroke="var(--acao)" stroke-width="2"/>
+        <text x="336" y="40" class="b" font-size="16" fill="var(--foco)">Físico B (outro)</text>
+        <text x="336" y="66" class="tx" font-size="14">Duplo Check</text>
+        <path d="M222 50 H316" class="lna" marker-end="url(#s8)"/>
+        <text x="0" y="122" class="tx2" font-size="14">Se o mesmo físico tentar, o sistema avisa e não registra</text>
+        <text x="0" y="142" class="tx2" font-size="14">a assinatura como Duplo Check.</text>
+      </svg>
+      <div class="cartao">
+        <h3>Cada clínica vê o seu</h3>
+        <div style="display:flex;gap:8px;margin:6px 0 8px"><span class="chip">CEL</span><span class="chip">BET</span><span class="chip">DUO</span></div>
+        <p class="peq t2">O próprio banco filtra cada leitura pelas clínicas da sua sessão. Isso protege contra erro — não contra quem administra o servidor.</p>
+      </div>
+    </div>
+  </div>
+  <div class="nota">Os perfis exatos e a tabela perfil → capacidades ainda estão em aberto (slide 13). (AD-11, AD-12, AD-13, AD-25; PRD UJ-2)</div>
+</section>
+
+<!-- 9 · Assinatura presa à versão -->
+<section class="slide" data-titulo="Assinatura presa à versão do plano">
+  <div class="kicker">Assinatura</div>
+  <h2>A assinatura vale para uma versão do plano</h2>
+  <svg viewBox="0 0 1152 220" width="1152" height="220" role="img" aria-label="Assinatura presa à versão">
+    <defs><marker id="s9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--texto2)"/></marker></defs>
+    <rect x="0" y="20" width="255" height="130" rx="12" class="cxe"/>
+    <text x="20" y="54" class="tx b" font-size="18">Plano · versão 1</text>
+    <text x="20" y="84" class="tx2" font-size="14.5">no ARIA / Eclipse</text>
+    <rect x="299" y="20" width="255" height="130" rx="12" fill="var(--acaofundo)" stroke="var(--acao)" stroke-width="2"/>
+    <path d="M321 52 l9 9 l18 -20" stroke="var(--foco)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="356" y="58" class="b" font-size="18" fill="var(--foco)">Assinado</text>
+    <text x="319" y="88" class="tx" font-size="14.5">a assinatura liga</text>
+    <text x="319" y="110" class="tx" font-size="14.5">pessoa + plano + versão 1</text>
+    <rect x="598" y="20" width="255" height="130" rx="12" class="cxe"/>
+    <text x="618" y="54" class="tx b" font-size="18">Plano alterado</text>
+    <text x="618" y="84" class="tx2" font-size="14.5">vira versão 2</text>
+    <rect x="897" y="20" width="255" height="130" rx="12" fill="var(--atenf)" stroke="var(--aten)" stroke-width="2"/>
+    <text x="917" y="54" font-size="18" font-weight="700" fill="var(--atent)">Volta a pendente</text>
+    <text x="917" y="84" class="tx" font-size="14.5">a assinatura da v1</text>
+    <text x="917" y="106" class="tx" font-size="14.5">não passa para a v2</text>
+    <path d="M257 85 H297" class="ln" marker-end="url(#s9)"/><path d="M556 85 H596" class="ln" marker-end="url(#s9)"/><path d="M855 85 H895" class="ln" marker-end="url(#s9)"/>
+    <text x="0" y="190" class="tx2" font-size="15">"Versão" = identificador do plano no ARIA + identificador DICOM do RT Plan + data do histórico / status de aprovação.</text>
+  </svg>
+  <div class="cols">
+    <div class="cartao barra-info"><h3>Vale também para o script do Eclipse</h3><p class="peq t2">Se o resultado que o script deixou foi de outra versão do plano, a conferência fica <b style="color:var(--texto)">indeterminada</b>. Arquivo com defeito vira <b style="color:var(--texto)">erro</b> com motivo.</p></div>
+    <div class="cartao barra-acao"><h3>Por quê</h3><p class="peq t2">Para que ninguém fique "aprovado" num plano que mudou depois. Plano e Tratamento usam a mesma noção de versão, guardada no núcleo.</p></div>
+  </div>
+  <div class="nota">(AD-15, AD-30)</div>
+</section>
+
+<!-- 10 · De onde vem o dado / banco caiu -->
+<section class="slide" data-titulo="De onde vem o dado e se o banco cair">
+  <div class="kicker">Fontes de dado e falhas</div>
+  <h2>De onde vem o dado — e o que acontece se o banco cair</h2>
+  <div class="cols" style="grid-template-columns:1.05fr 1fr">
+    <div>
+      <svg viewBox="0 0 580 330" width="580" height="330" role="img" aria-label="Três degraus de fonte">
+        <rect x="0" y="10" width="560" height="84" rx="12" fill="var(--sup)" stroke="var(--vivo)" stroke-width="2"/>
+        <text x="20" y="44" font-size="19" font-weight="700" fill="var(--vivo)">1 · Ao vivo</text>
+        <text x="20" y="72" class="tx2" font-size="15">lido agora do banco do ARIA</text>
+        <rect x="40" y="114" width="520" height="84" rx="12" fill="var(--sup)" stroke="var(--espelho)" stroke-width="2"/>
+        <text x="60" y="148" font-size="19" font-weight="700" fill="var(--espelho)">2 · Espelho</text>
+        <text x="60" y="176" class="tx2" font-size="15">cópia no banco central, válida por até 60 dias</text>
+        <rect x="80" y="218" width="480" height="84" rx="12" fill="var(--sup)" stroke="var(--borda)" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="100" y="252" class="tx2" font-size="19" font-weight="700">3 · Relatório exportado</text>
+        <text x="100" y="280" class="tx2" font-size="15">arquivo CSV, como hoje</text>
+        <path d="M20 94 V140 H36 M60 198 V244 H76" stroke="var(--texto2)" stroke-width="1.6" fill="none"/>
+        <text x="0" y="326" class="tx" font-size="15">A tela sempre mostra o degrau e a data do dado.</text>
+      </svg>
+      <p class="peq t2" style="margin-top:6px">Leitura demorada roda em segundo plano, com "carregando" — a tela não congela.</p>
+    </div>
+    <div class="cartao barra-aten" style="display:flex;flex-direction:column;gap:10px;padding:20px 22px">
+      <h3 style="color:var(--atent)">Se o banco central cair</h3>
+      <ul class="lista">
+        <li class="peq">O programa abre <b>só para leitura</b> (ARIA e DICOM), com o aviso <i>"banco central fora — nada será gravado"</i>.</li>
+        <li class="peq">Sem o espelho, os degraus ficam: ao vivo → relatório.</li>
+        <li class="peq">Os registros são feitos <b>em papel</b> e lançados depois.</li>
+        <li class="peq">Não existe fila escondida na estação: assim há um só gravador e a corrente de selos não quebra.</li>
+        <li class="peq">Programa e banco em versões diferentes: também abre só leitura, com o aviso "atualize".</li>
+      </ul>
+    </div>
+  </div>
+  <div class="nota">(AD-16, AD-17, AD-18, AD-19, AD-23)</div>
+</section>
+
+<!-- 11 · Backup -->
+<section class="slide" data-titulo="Backup cifrado e 10 anos">
+  <div class="kicker">Backup e guarda</div>
+  <h2>Cópia cifrada todo dia, guarda por 10 anos</h2>
+  <svg viewBox="0 0 1152 230" width="1152" height="230" role="img" aria-label="Fluxo do backup">
+    <defs><marker id="s11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--acao)"/></marker></defs>
+    <rect x="0" y="60" width="250" height="100" rx="12" class="cxe"/>
+    <text x="20" y="98" class="tx b" font-size="18">Banco central</text>
+    <text x="20" y="126" class="tx2" font-size="14.5">cópia completa todo dia</text>
+    <rect x="320" y="60" width="300" height="100" rx="12" fill="var(--acaofundo)" stroke="var(--acao)" stroke-width="2"/>
+    <rect x="342" y="88" width="26" height="22" rx="3" fill="none" stroke="var(--foco)" stroke-width="2.2"/>
+    <path d="M347 88 v-7 a8 8 0 0 1 16 0 v7" fill="none" stroke="var(--foco)" stroke-width="2.2"/>
+    <text x="380" y="106" class="b" font-size="18" fill="var(--foco)">Cifra AES-256</text>
+    <text x="342" y="138" class="tx" font-size="14.5">antes de sair do servidor</text>
+    <rect x="700" y="0" width="452" height="96" rx="12" class="cx"/>
+    <text x="720" y="34" class="tx b" font-size="17">Diária · pasta restrita no fileserver</text>
+    <text x="720" y="62" class="tx2" font-size="14.5">em outra máquina, guardada por 30 dias</text>
+    <rect x="700" y="124" width="452" height="96" rx="12" class="cx"/>
+    <text x="720" y="158" class="tx b" font-size="17">Mensal · mídia separada</text>
+    <text x="720" y="186" class="tx2" font-size="14.5">fora do servidor, guardada a longo prazo</text>
+    <path d="M252 110 H318" class="lna" marker-end="url(#s11)"/>
+    <path d="M622 100 L698 56" class="lna" marker-end="url(#s11)"/><path d="M622 120 L698 166" class="lna" marker-end="url(#s11)"/>
+  </svg>
+  <div class="cols3">
+    <div class="cartao barra-acao"><h3>Chave em guarda dupla</h3><p class="peq t2">Fica com o dono do banco (Geova), com uma cópia lacrada com SPR/gestão. Sem a chave, a cópia é ilegível.</p></div>
+    <div class="cartao barra-acao"><h3>10 anos após o descarte</h3><p class="peq t2">A retenção conta 10 anos depois que o software deixar de ser usado (RDC 657).</p></div>
+    <div class="cartao barra-acao"><h3>Restauração testada todo mês</h3><p class="peq t2">O teste fica registrado e inclui abrir uma cópia antiga. Um roteiro escrito de manutenção: operação por uma pessoa não pode depender de memória.</p></div>
+  </div>
+  <div class="nota">(AD-21, AD-24)</div>
+</section>
+
+<!-- 12 · Migração -->
+<section class="slide" data-titulo="Migração do Radioteraficha por partes">
+  <div class="kicker">Migração</div>
+  <h2>O Radioteraficha migra por partes — nunca gravando em dois lugares</h2>
+  <div><span class="chip acao">usuários</span> → <span class="chip acao">equipe</span> → <span class="chip acao">checklist</span> → <span class="chip">…</span> <span class="peq t2">&nbsp;uma entidade por vez</span></div>
+  <svg viewBox="0 0 1152 150" width="1152" height="150" role="img" aria-label="Etapas do corte por entidade">
+    <defs><marker id="s12" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--texto2)"/></marker></defs>
+    <rect x="0" y="20" width="250" height="110" rx="12" class="cxe"/><text x="20" y="56" class="tx b" font-size="18">1 · Migra</text><text x="20" y="86" class="tx2" font-size="14.5">os dados saem do arquivo</text><text x="20" y="108" class="tx2" font-size="14.5">e entram no banco</text>
+    <rect x="300" y="20" width="250" height="110" rx="12" class="cxe"/><text x="320" y="56" class="tx b" font-size="18">2 · Confere</text><text x="320" y="86" class="tx2" font-size="14.5">o que entrou bate com</text><text x="320" y="108" class="tx2" font-size="14.5">o que havia</text>
+    <rect x="600" y="20" width="250" height="110" rx="12" fill="var(--acaofundo)" stroke="var(--acao)" stroke-width="2"/><text x="620" y="56" class="b" font-size="18" fill="var(--foco)">3 · Corte</text><text x="620" y="86" class="tx" font-size="14.5">a partir daqui, só o</text><text x="620" y="108" class="tx" font-size="14.5">banco grava essa parte</text>
+    <rect x="900" y="20" width="252" height="110" rx="12" class="cxe"/><text x="920" y="56" class="tx b" font-size="18">4 · Arquivo antigo</text><text x="920" y="86" class="tx2" font-size="14.5">só leitura,</text><text x="920" y="108" class="tx2" font-size="14.5">depois arquivado</text>
+    <path d="M252 75 H298" class="ln" marker-end="url(#s12)"/><path d="M552 75 H598" class="ln" marker-end="url(#s12)"/><path d="M852 75 H898" class="ln" marker-end="url(#s12)"/>
+  </svg>
+  <div class="cols">
+    <ul class="lista">
+      <li class="peq">Tudo que hoje vive em arquivos (usuários, sessões, equipe, checklist, ficha, cadastro SUS, correções, configuração) vai para o banco. PDFs e imagens continuam na pasta do paciente, com selo e caminho anotados no banco.</li>
+      <li class="peq">O código "ANA" passa a ser <b>DUO</b>. SAT fica fora desta etapa.</li>
+    </ul>
+    <ul class="lista">
+      <li class="peq">O paciente passa a ser identificado pela chave do ARIA + clínica; nome e REG viram apelidos.</li>
+      <li class="peq">As telas mudam para a nova base (Qt 6) junto com o visual novo; telas novas já nascem nela.</li>
+      <li class="peq">Preservar o PDF impresso (comparação com PDFs de referência) está entre os pontos em aberto.</li>
+    </ul>
+  </div>
+  <div class="nota">(AD-8, AD-9, AD-26, AD-36, AD-37)</div>
+</section>
+
+<!-- 13 · Em aberto -->
+<section class="slide" data-titulo="O que ainda está em aberto">
+  <div class="kicker">Em aberto · precisa da equipe</div>
+  <h2>O que ainda não está decidido</h2>
+  <div class="aberto">
+    <div class="cartao"><span class="tag">G1</span><b>Classe IEC 62304 / ANVISA por item</b><span>Até lá: núcleo, prateleira <code>rt</code>, Plano e Radioteraficha no rigor da classe C; demais, B (suposição). Antes do 1º épico do Plano.</span></div>
+    <div class="cartao"><span class="tag">P3</span><b>Segunda checagem de IMRT/VMAT</b><span>Como fazer. No detalhe do módulo Plano.</span></div>
+    <div class="cartao"><span class="tag">P6</span><b>Códigos do banco do ARIA</b><span>Quais códigos ler. No detalhe do módulo Plano.</span></div>
+    <div class="cartao"><span class="tag">Q1 · G8</span><b>Perfis e suas capacidades</b><span>Código tem 7 papéis, PRD 5 perfis, UX 7; o escopo está vazio.</span></div>
+    <div class="cartao"><span class="tag">Q8</span><b>Banco central no escopo</b><span>Registrar a nova fronteira de gravação antes do 1º épico que grava.</span></div>
+    <div class="cartao"><span class="tag">prazos</span><b>Relógio de referência</b><span>Hora do banco ou da estação, fuso e o que conta no último dia do prazo.</span></div>
+    <div class="cartao"><span class="tag">papel</span><b>Hora do fato × hora do lançamento</b><span>Para o que foi anotado em papel com o banco fora.</span></div>
+    <div class="cartao"><span class="tag">riscos</span><b>Perigos trazidos pela arquitetura</b><span>Severidade, ocorrência e detecção escritas pelo físico, antes do 1º épico com dado clínico.</span></div>
+    <div class="cartao"><span class="tag">sensível</span><b>Campo sensível por perfil</b><span>E trilha de quem leu dado sensível (RIPD). Épico de Segurança do paciente.</span></div>
+    <div class="cartao"><span class="tag">retenção</span><b>Guarda por tipo de registro</b><span>Ex.: vida útil do equipamento no CQ; relatórios de validação.</span></div>
+    <div class="cartao"><span class="tag">ESAPI</span><b>Como se valida um script que escreve no Eclipse</b><span>O critério está em aberto no escopo; nenhum entra como validado antes.</span></div>
+    <div class="cartao"><span class="tag">desempenho</span><b>30 s por plano, 3 s por painel</b><span>Confirmar no épico do Plano.</span></div>
+    <div class="cartao"><span class="tag">Q5 · G4 · G7</span><b>Vigilância da concentradora; sombra e promoção; ambição regulatória</b><span>Canal de alerta externo fica para depois do MVP.</span></div>
+  </div>
+  <div class="nota">Fonte: seção Deferred da espinha. Os códigos (G, P, Q) são os do PRD e da espinha.</div>
+</section>
+
+<!-- 14 · Perguntas -->
+<section class="slide" data-titulo="Perguntas para discussão">
+  <div class="kicker">Para discutir</div>
+  <h2>Perguntas para a equipe</h2>
+  <ol class="perguntas">
+    <li>Quais perfis existem de fato na sua clínica, e o que cada um precisa poder fazer?</li>
+    <li>Duplo Check sempre por outro físico: como isso fica na rotina de cada clínica?</li>
+    <li>Com o banco fora: o formulário em papel está pronto? Quem lança depois, e qual hora vale — a do fato ou a do lançamento?</li>
+    <li>Plano alterado depois de assinado volta a pendente. Como avisar sem cansar a equipe de alertas?</li>
+    <li>Segunda checagem de IMRT/VMAT (P3): que método a física aceita?</li>
+    <li>Prazos: qual relógio vale e o que conta como vencido no último dia?</li>
+    <li>Classificação IEC 62304 (G1) e riscos: quem assina e quando?</li>
+    <li>Migração: depois de usuários e equipe, por qual parte começar?</li>
+    <li>SSD, dose e DVH: onde termina "modelar" e começa "decidir"?</li>
+  </ol>
+  <div class="nota">Respostas voltam para o PRD e para a espinha de arquitetura.</div>
+</section>
+
+<div class="nav">
+  <button id="ant" aria-label="Slide anterior">◀</button>
+  <span class="cont" id="cont">1 / 15</span>
+  <button id="prox" aria-label="Próximo slide">▶</button>
+</div>
+<div class="progresso" id="prog"></div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var palco=document.getElementById('palco'),cont=document.getElementById('cont'),prog=document.getElementById('prog');
+  var i=0;
+  function ir(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('ativo',k===i);});
+    cont.textContent=(i+1)+' / '+slides.length;
+    prog.style.width=((i+1)/slides.length*100)+'%';
+    try{history.replaceState(null,'','#'+(i+1));}catch(e){}
+  }
+  function escala(){
+    var s=Math.min(window.innerWidth/1280,window.innerHeight/720);
+    palco.style.transform='translate(-50%,-50%) scale('+s+')';
+  }
+  document.getElementById('ant').onclick=function(){ir(i-1);};
+  document.getElementById('prox').onclick=function(){ir(i+1);};
+  document.addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '){e.preventDefault();ir(i+1);}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();ir(i-1);}
+    else if(k==='Home'){ir(0);} else if(k==='End'){ir(slides.length-1);}
+    else if(k==='f'||k==='F'){if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}else{document.exitFullscreen();}}
+  });
+  window.addEventListener('resize',escala);
+  var h=parseInt((location.hash||'').slice(1),10);
+  escala(); ir(isNaN(h)?0:h-1);
+})();
+</script>
+</body>
+</html>

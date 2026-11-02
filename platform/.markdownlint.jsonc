@@ -1,0 +1,36 @@
+// Regras da markdownlint para os .md do projeto (a extensão está no
+// `.vscode/extensions.json`). Fica na RAIZ pelo mesmo motivo do `ruff.toml`:
+// é o caminho que a extensão e um `markdownlint-cli2` na linha de comando
+// enxergam igual.
+//
+// Medido em 22/10/2026 com as regras padrão: ~5 mil avisos. Desligado aqui
+// só o que é ESTILO deliberado da casa, não descuido; o resto (linha em
+// branco em volta de lista e de título, bloco de código sem linguagem) é
+// higiene de verdade e continua acendendo.
+{
+  "default": true,
+
+  // 4.150 dos avisos. As notas são quebradas à mão onde a frase pede, e
+  // tabela e link não quebram. Limite de coluna aqui é ruído puro.
+  "MD013": false,
+
+  // O NOTAS.md repete "Feito"/"Falta"/"Próximo" em cada seção, de propósito:
+  // é o formato fixo do checkpoint. Título repetido só é erro entre irmãos.
+  "MD024": { "siblings_only": true },
+
+  // HTML no meio (<details>, <br>) e URL solta nas referências são usados de
+  // propósito; o `CLAUDE.md` e os LEIA-ME não começam por título de nível 1.
+  "MD033": false,
+  "MD034": false,
+  "MD041": false,
+
+  // **Negrito sozinho na linha** é o rótulo do checkpoint ("**Falta:**"),
+  // não um título disfarçado.
+  "MD036": false,
+
+  // Tabela escrita `|---|---|`, sem espaço junto do pipe, é o estilo de todas
+  // as tabelas da casa. Esta regra só existe na extensão (o CLI 0.18 não a
+  // tem), e cada aviso dela voltava ao contexto do agente depois de CADA
+  // edição de .md — 20 avisos por tabela, pagos em todo turno seguinte.
+  "MD060": false
+}

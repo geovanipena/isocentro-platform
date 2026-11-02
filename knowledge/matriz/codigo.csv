@@ -1,0 +1,62 @@
+repo;implementa;conformidade;atividades_divergentes;nota
+jrkerns/pylinac;TG-142, MPPG-8b, TRS-398, TG-51, Winston-Lutz, CBCT, picket fence;divergente;A03,A13,A15;"kQ de fótons do TRS-398 de 2000 (Rev. 1 mudou +0,24% em 6 MV e +0,48% em 10 MV na TN30013) e sem câmara FC65-G/P | ISOCENTRO 21/10: usar no app (FR-46: picket fence, Winston-Lutz, CBCT, starshot); NÃO usar calibration/trs398.py no FR-45 (kQ de 2000)"
+pymedphys/pymedphys;Índice gama (TG-218), leitura de logs e de DICOM;nao-avaliada;;"Gama genérico; conferir critérios contra o TG-218 antes do uso clínico | ISOCENTRO 21/10: referência: gama, mudensity, leitor _experimental de MapCHECK; API beta, depois do MVP; não tem Clarkson (FR-13)"
+qatrackplus/qatrackplus;Modelo de lista de testes, tolerância e ação (TG-142);referencia;;"Usado como modelo de dados, não como dependência | ISOCENTRO 21/10: referência: modelo de dados; scripts/create_dqa3_testlist.py lista os campos do DailyQA 3 (FR-26); sistema completo fora"
+dicompyler/dicompyler-core;Cálculo de DVH a partir de RT Dose e RT Struct;referencia;;"Oráculo para validar DVH; não roda no caminho clínico | ISOCENTRO 21/10: só teste: oráculo do dicom/dvh.py"
+pydicom/pydicom;DICOM PS3 (leitura e escrita);conforme;;"Base do ISOCENTRO, versão fixada 3.0.2 | ISOCENTRO 21/10: dependência fixada; nada a mudar"
+pydicom/pynetdicom;DICOM PS3.7/3.8 (rede);conforme;;"Base do dicom_rede.py com o DB Daemon do ARIA | ISOCENTRO 21/10: dependência fixada; nada a mudar"
+brjdenis/VarianESAPI-EQD2Converter;EQD2 por modelo LQ;nao-avaliada;;Conferir α/β e tratamento de reparo incompleto | ISOCENTRO 21/10: avaliador ESAPI (15.6, MIT): BED/EQD2 (H03, I03), fora do MVP
+LuisParedesOcampo/SlicerRadReirradiation;Acúmulo de dose em reirradiação;nao-avaliada;;"Comparar com o consenso ReCOG | ISOCENTRO 21/10: descartar: 3D Slicer; reirradiação fora do MVP"
+Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard;Scorecard de qualidade do plano;nao-avaliada;;ISOCENTRO 21/10: avaliador ESAPI (15.6): só consulta até ler o LICENSE
+Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity;Métricas de complexidade de plano;nao-avaliada;;"ISOCENTRO 21/10: só teste: conferir MCS/SAS do qualidade.py (FR-43); ler LICENSE antes"
+sama2689/BED_Calc;BED/EQD2;nao-avaliada;;ISOCENTRO 21/10: descartar: sem licença
+mkleehammer/pyodbc;;;;"ISOCENTRO 21/10: dependência fixada (capa_db, variandw); nada a mudar"
+blairconrad/dicognito;;;;"ISOCENTRO 21/10: usar no app ou em conferência (FR-6 casos semeados, FR-26 exportação com paciente); alternativa ao dicom-teste/pseudonimizar.py"
+pydicom/deid;;;;"ISOCENTRO 21/10: usar no app ou em conferência (FR-6, FR-26); alternativa ao dicognito"
+kildealab/TG263ComplianceTool;;;;"ISOCENTRO 21/10: candidato ao vocabulário TG-263 do núcleo (Python, MIT); tabela vem da TG-263-PLANILHA"
+o3-core/TG263NameChecker;;;;"ISOCENTRO 21/10: candidato ao vocabulário TG-263 do núcleo (Python, Apache); tabela vem da TG-263-PLANILHA"
+glucee/DVH;;;;ISOCENTRO 21/10: só teste: segundo oráculo do dicom/dvh.py (1 arquivo, MIT)
+pydicom/pydicom-data;;;;ISOCENTRO 21/10: só teste: arquivos RT de teste
+DCMTK/dcmtk;;;;"ISOCENTRO 21/10: ferramenta externa de diagnóstico da rede DICOM; não empacotar"
+jodogne/OrthancMirror;;;;"ISOCENTRO 21/10: ferramenta externa: servidor DICOM de testes (GPL, não empacotar); tools/servidor_dicom_local.py já cobre parte"
+LDClark/PlanCheck;;;;"ISOCENTRO 21/10: avaliador ESAPI (AD-15, ESAPI 15.6, MIT): regras para FR-19, FR-21, FR-42; o mais aproveitável do grupo"
+brjdenis/VarianESAPi-Dosimetry;;;;ISOCENTRO 21/10: avaliador ESAPI (15.6, MIT): objetivos de dose
+rexcardan/ESAPIX;;;;ISOCENTRO 21/10: avaliador ESAPI: apoio de infraestrutura (MIT, 15.5/16.1)
+VarianAPIs/Varian-Code-Samples;;;;ISOCENTRO 21/10: avaliador ESAPI: exemplos de apoio (MIT)
+nikolaj-jensen/PlanCheck_article;;;;ISOCENTRO 21/10: avaliador ESAPI: escrito para ESAPI 16.1, exige porte para 15.6
+cutright/IMRT-QA-Data-Miner;;;;ISOCENTRO 21/10: referência: parsers/sncpatient.py lê relatório MapCHECK (FR-26 quando o PSQA entrar)
+cutright/DVH-Analytics;;;;ISOCENTRO 21/10: referência: indicadores, fora do MVP
+tkmd94/EclipseDataMiner;;;;ISOCENTRO 21/10: referência: indicadores, fora do MVP
+tbezo/TPS_QAHelper;;;;ISOCENTRO 21/10: referência: integração com QATrack+, fora do MVP
+LDClark/PDFtoAria;;;;ISOCENTRO 21/10: descartar: escreve no ARIA (viola AD-16)
+LDClark/PDFtoAriaPlugin;;;;ISOCENTRO 21/10: descartar: escreve no ARIA (viola AD-16)
+uhqd/pushAriaDoc;;;;ISOCENTRO 21/10: descartar: escreve no ARIA (viola AD-16)
+vcc-LG/brachy-hdr-tg43-check;;;;"ISOCENTRO 21/10: descartar: sem licença; FR-27 é CQ, não cálculo TG-43"
+jaimeh94/Point-Dose-Calculation_TG-43;;;;ISOCENTRO 21/10: descartar: sem licença
+victorgabr/DVH-Check;;;;ISOCENTRO 21/10: descartar: sem licença
+Kiragroh/Python_DICOM-RT-MetricExtractor;;;;ISOCENTRO 21/10: descartar: sem licença
+UAB-RO/RapidPlanQ;;;;ISOCENTRO 21/10: descartar: sem licença
+UAB-RO/TG263-Toolkit;;;;ISOCENTRO 21/10: descartar: sem licença (C#)
+UAB-RO/Tg263;;;;ISOCENTRO 21/10: descartar: sem licença
+rexcardan/Evil-DICOM;;;;ISOCENTRO 21/10: descartar: sem licença (C#)
+VarianAPIs/DICOM_Communication_101;;;;"ISOCENTRO 21/10: descartar: sem licença; dicom_rede.py já fala com o Daemon"
+rexcardan/VarianDeveloper;;;;ISOCENTRO 21/10: descartar: sem licença, ESAPI 11
+bastula/dicompyler;;;;ISOCENTRO 21/10: descartar: sem licença, arquivado
+Kiragroh/ESAPI_DICOMrt-Mining;;;;"ISOCENTRO 21/10: descartar: sem licença; exportação em lote fora de escopo"
+qurit/rt-utils;;;;ISOCENTRO 21/10: descartar: segmentação/máscara, fora do MVP
+brianmanderson/Dicom_RT_and_Images_to_Mask;;;;ISOCENTRO 21/10: descartar: GPL, fora do MVP
+AustralianCancerDataNetwork/pydicer;;;;ISOCENTRO 21/10: descartar: pipeline de lote, fora do MVP
+pyplati/platipy;;;;ISOCENTRO 21/10: descartar: imagem/contorno, fora do MVP
+SlicerRt/SlicerRT;;;;ISOCENTRO 21/10: descartar: plataforma 3D Slicer, fora do MVP
+LuisParedesOcampo/RadComp;;;;ISOCENTRO 21/10: descartar: reirradiação fora do MVP
+Varian-MedicalAffairsAppliedSolutions/MAAS-UncertaintyClinicalGoals;;;;ISOCENTRO 21/10: descartar: robustez, fora do MVP
+Varian-MedicalAffairsAppliedSolutions/MAAS-BatchExportGUI;;;;ISOCENTRO 21/10: descartar: exportação em lote, fora de escopo
+tkmd94/BatchExport_AURAReport;;;;ISOCENTRO 21/10: descartar: fora de escopo
+pakoliver/winston_lutz_multi;;;;"ISOCENTRO 21/10: descartar: GPL; pylinac já cobre"
+tbezo/pynetdicom_wrapper;;;;ISOCENTRO 21/10: descartar: superado pelo dicom_rede.py
+Varian-MedicalAffairsAppliedSolutions/MAAS-DICOMtools;;;;ISOCENTRO 21/10: descartar: ESAPI 18.1, incompatível
+jsfrench/uhg-plancheck;;;;ISOCENTRO 21/10: descartar: parado desde 2016
+gacou54/tg263;;;;ISOCENTRO 21/10: descartar: parado desde 2019, licença própria
+KitwareMedical/dicom-anonymizer;;;;ISOCENTRO 21/10: referência: perfil PS3.15 para conferir se a pseudonimização cobre todas as tags
+RSNA/anonymizer;;;;"ISOCENTRO 21/10: descartar: aplicação completa (69 MB); dicognito/deid bastam"
+VarianAPIs/PyESAPI;;;;"ISOCENTRO 21/10: descartar: AD-15 define avaliador ESAPI em C# gravando JSON; ESAPI dentro do processo Python não cabe"

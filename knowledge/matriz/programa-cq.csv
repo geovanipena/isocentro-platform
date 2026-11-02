@@ -1,0 +1,104 @@
+chave|tipo|teste|tolerancia|referencia|aplica|atividade
+testes_diarios|Segurança|Intertravamento de porta (interrompe o feixe)|Funcional|NN-6.10 art. 42; TG-142 T.I; MPPG-8b S1|todas|A14
+testes_diarios|Segurança|Sinalização luminosa de feixe ligado/desligado|Funcional|NN-6.10 art. 41|todas|A14
+testes_diarios|Segurança|Monitores de áudio e vídeo|Funcional|NN-6.10 art. 41; MPPG-8b S3|todas|A14
+testes_diarios|Segurança|Interruptores de radiação (porta e painel)|Funcional|TECDOC-1151 T.II|todas|A14
+testes_diarios|Segurança|Programação e interrupção por UM|Funcional|TECDOC-1151 T.II|todas|A14
+testes_diarios|Segurança|Câmaras monitoras|Funcionando e coincidentes|TECDOC-1151 T.II|todas|A14
+testes_diarios|Segurança|Indicador de feixe ligado no console e na sala|Funcional|MPPG-8b S4|todas|A14
+testes_diarios|Segurança|Anticolisão (gantry e braços de imagem, um sistema por dia em rodízio)|Funcional|MPPG-8b S5; TG-142 T.VI|kv,epid|A14
+testes_diarios|Dosimétrico|Output de fótons, todas as energias em uso|3%|NN-6.10 art. 35 II; TG-142 T.I; MPPG-8b D1|todas|A13
+testes_diarios|Dosimétrico|Output de elétrons, energias em uso|3%|TG-142 T.I; MPPG-8b D1|eletrons|A13
+testes_diarios|Dosimétrico|Constância do perfil (dispositivo diário)|2%|MPPG-8b D2|todas|A13
+testes_diarios|Mecânico|Lasers de localização|1,5 mm|TG-142 T.I (coluna IMRT)|todas|A10
+testes_diarios|Mecânico|Telêmetro no isocentro|2 mm|TG-142 T.I; MPPG-8b M2|todas|A10
+testes_diarios|Mecânico|Indicador de tamanho de campo (10×10 cm²)|2 mm|TG-142 T.I; MPPG-8b M3|todas|A07
+testes_diarios|Mecânico|Centro do retículo e do campo luminoso|2 mm|TECDOC-1151 T.II|todas|A10
+testes_diarios|Imagem|Intertravamentos do sistema de imagem|Funcional|TG-142 T.VI; MPPG-IGRT-2021|kv,epid|A08
+testes_diarios|Imagem|Coincidência dos isocentros de imagem e de tratamento (lasers)|2 mm|TG-142 T.VI; MPPG-IGRT-2021|kv,epid|A08
+testes_diarios|Imagem|Posicionamento e reposicionamento com deslocamento de mesa|2 mm (planar); 1 mm (CBCT)|TG-142 T.VI|kv,epid|A08
+testes_semanais|MLC|Picket fence quantitativo, em várias angulações de gantry|0,5 mm|MPPG-8b MLC2; TG-142 T.V|todas|A07
+testes_mensais|Segurança|Travas e códigos de acessórios (aplicadores, filtros, bandejas)|Funcional|TECDOC-1151 T.II|todas|A07
+testes_mensais|Segurança|Pulsadores de corte de energia elétrica|Funcional|TECDOC-1151 T.II|todas|A07
+testes_mensais|Segurança|Topo da mesa|Funcional|TECDOC-1151 T.II|todas|A07
+testes_mensais|Segurança|Posição dos colimadores de fótons para cada cone de elétrons|Coincidente com o fabricante|TECDOC-1151 T.II|eletrons|A07
+testes_mensais|Dosimétrico|Dose de referência de fótons e elétrons (câmara de referência, condições de referência)|2%|NN-6.10 art. 35 IV; TG-142 T.II; MPPG-8b D1|todas|A15
+testes_mensais|Dosimétrico|Câmara monitora secundária|2%|TECDOC-1151 T.II; TG-142 T.II|todas|A07
+testes_mensais|Dosimétrico|Output na taxa de dose de IMRT/VMAT|2%|TG-142 T.II|todas|A07
+testes_mensais|Dosimétrico|Qualidade do feixe de fótons (PDD10 ou TPR20,10), mudança relativa|1%|MPPG-8b D4|todas|A07
+testes_mensais|Dosimétrico|Energia de elétrons (R50)|2 mm|MPPG-8b D3; TG-142 T.II|eletrons|A07
+testes_mensais|Dosimétrico|Perfil de fótons (planura e simetria) em relação à referência|2%|MPPG-8b D2; TECDOC-1151 T.II nota a|todas|A07
+testes_mensais|Dosimétrico|Perfil de elétrons em relação à referência|2%|MPPG-8b D2|eletrons|A07
+testes_mensais|Dosimétrico|Perfil do feixe sem filtro aplanador (FFF) em relação à referência própria|2%|MPPG-8b D2|fff|A07
+testes_mensais|Dosimétrico|Controle da entrega dinâmica (taxa de dose × velocidade do gantry)|2% da dose do campo aberto|MPPG-8b D5|todas|A07
+testes_mensais|Dosimétrico|Filtro dinâmico (EDW): fator de 45° ou 60° no eixo central|2%|TG-142 T.IV; MPPG-8b W1|edw|A07
+testes_mensais|Mecânico|Lasers de localização|1 mm|TG-142 T.II; MPPG-8b M1|todas|A10
+testes_mensais|Mecânico|Telêmetro na faixa clínica|2 mm|MPPG-8b M2|todas|A07
+testes_mensais|Mecânico|Indicadores de posição das mandíbulas na faixa clínica|2 mm (simétricas); 1 mm (assimétricas)|TG-142 T.II; MPPG-8b M3|todas|A07
+testes_mensais|Mecânico|Indicadores angulares de gantry e colimador|0,5°|MPPG-8b M6|todas|A07
+testes_mensais|Mecânico|Centro do retículo com rotação do colimador (walkout)|1 mm|TG-142 T.II; MPPG-8b M8|todas|A10
+testes_mensais|Mecânico|Coincidência dos campos luminoso e de radiação|2 mm ou 1% por lado|TG-142 T.II|todas|A07
+testes_mensais|Mecânico|Posição absoluta da mesa|2 mm / 1°|MPPG-8b M9|todas|A07
+testes_mensais|Mecânico|Movimento relativo da mesa|1 mm em 10 cm; 0,5°|MPPG-8b M10|todas|A07
+testes_mensais|Mecânico|Isocentro mecânico|2 mm de diâmetro|TECDOC-1151 T.II|todas|A07
+testes_mensais|Mecânico|Horizontalidade da mesa e verticalidade do eixo luminoso|2 mm|TECDOC-1151 T.II|todas|A07
+testes_mensais|MLC|Posição das lâminas em um campo de IMRT, 4 ângulos cardinais|1 mm|TG-142 T.V|todas|A07
+testes_mensais|MLC|Velocidade das lâminas|Perda de velocidade ≤ 0,5 cm/s|TG-142 T.V|todas|A07
+testes_mensais|MLC|Teste holístico de sliding window e VMAT (câmara)|2% do TPS|MPPG-8b MLC3|todas|A07
+testes_mensais|Imagem|Coincidência dos isocentros de imagem e de tratamento (MV como referência, 4 ângulos)|2 mm|TG-142 T.VI; MPPG-IGRT-2021|epid|A08
+testes_semestrais|Imagem|Escala e distância da imagem|2 mm|MPPG-IGRT-2021|kv,epid|A08
+testes_anuais|Segurança|Todas as travas e intertravamentos (procedimento do fabricante)|Funcional|TECDOC-1151 T.II; TG-142 T.III|todas|A07
+testes_anuais|Segurança|Segurança no fechamento da porta|Funcional|MPPG-8b S2|todas|A14
+testes_anuais|Segurança|Botões e procedimentos de emergência|Funcional|NN-6.10 art. 42; MPPG-8b S7|todas|A14
+testes_anuais|Dosimétrico|Calibração absoluta em água (TRS-398 Rev. 1)|1%|NN-6.10 art. 24 I b; TG-142 T.III; MPPG-8b D1|todas|A03
+testes_anuais|Dosimétrico|Reprodutibilidade da dose de referência|1%|TECDOC-1151 T.II|todas|A03
+testes_anuais|Dosimétrico|Fatores de campo de fótons (dois ou mais campos)|2% (< 4×4 cm²); 1% (≥ 4×4 cm²)|TG-142 T.III|todas|A07
+testes_anuais|Dosimétrico|Fator de campo pequeno definido por mandíbula|2% do TPS|MPPG-8b D11|todas|A07
+testes_anuais|Dosimétrico|Fatores de aplicador de elétrons (um por energia)|2%|TG-142 T.III|eletrons|A07
+testes_anuais|Dosimétrico|Qualidade do feixe de fótons (PDD10 ou TPR20,10)|1%|TG-142 T.III; MPPG-8b D4|todas|A07
+testes_anuais|Dosimétrico|Qualidade do feixe de elétrons (R50)|1 mm|TG-142 T.III|eletrons|A07
+testes_anuais|Dosimétrico|Planura e simetria em campo grande em relação à referência|1%|TG-142 T.III|todas|A07
+testes_anuais|Dosimétrico|Linearidade das UM|2% (≥ 5 UM); 5% (2–4 UM)|TG-142 T.III; MPPG-8b D6|todas|A07
+testes_anuais|Dosimétrico|Output em função da taxa de dose|2%|TG-142 T.III; MPPG-8b D8|todas|A07
+testes_anuais|Dosimétrico|Output e fatores fora do eixo em função do ângulo de gantry|1%|TG-142 T.III; MPPG-8b D9 e D10|todas|A07
+testes_anuais|Dosimétrico|Modo arco (UM e graus esperados)|2% e 2°|MPPG-8b D12|todas|A07
+testes_anuais|Dosimétrico|Transmissão de acessórios|2%|TECDOC-1151 T.II|todas|A07
+testes_anuais|Dosimétrico|Perfil do filtro dinâmico (EDW) de 60°|2% dos OAFs do TPS|MPPG-8b W3; TG-142 T.IV|edw|A07
+testes_anuais|Mecânico|Isocentros de rotação do colimador, do gantry e da mesa|±1 mm da referência|TG-142 T.III|todas|A07
+testes_anuais|Mecânico|Coincidência dos isocentros mecânico e de radiação|±2 mm|TG-142 T.III|todas|A07
+testes_anuais|Mecânico|Isocentricidade de radiação (Winston-Lutz, mandíbulas e MLC)|2 mm de diâmetro|MPPG-8b M11 e MLC4|todas|A07
+testes_anuais|Mecânico|Coincidência dos campos luminoso e de radiação, todas as energias|2 mm por mandíbula|MPPG-8b M5; TG-142 T.V|todas|A07
+testes_anuais|Mecânico|Flexão do tampo e deslocamento vertical da mesa|2 mm|TG-142 T.III; TECDOC-1151 T.II|todas|A07
+testes_anuais|MLC|Transmissão do MLC (média entre lâmina e entrelâmina), todas as energias|±0,5% da referência|TG-142 T.V|todas|A07
+testes_anuais|MLC|Repetibilidade da posição das lâminas|±1,0 mm|TG-142 T.V|todas|A07
+testes_anuais|MLC|Spoke shot do MLC|≤ 1,0 mm de raio|TG-142 T.V|todas|A07
+testes_anuais|MLC|IMRT sliding window e step and shoot, 4 ângulos (análise de log)|< 0,35 cm de erro RMS máximo; 95% < 0,35 cm|TG-142 T.V|todas|A07
+testes_anuais|MLC|Fator de campo pequeno definido por MLC (≤ 2×2 cm²)|2% do TPS|MPPG-8b MLC1|todas|A07
+testes_anuais|Imagem|Qualidade de imagem 2D e 3D (resolução, contraste, uniformidade, ruído)|Igual ou melhor que a referência|MPPG-IGRT-2021; TG-142 T.VI|kv,epid|A08
+testes_anuais|Imagem|Dose de imagem|MV ±1 cGy; kV estático ±3 mGy; 3D ±1 cGy da referência|MPPG-IGRT-2021|kv,epid|A08
+testes_anuais|Imagem|Curso do EPID (distância fonte-detector)|±5 mm|TG-142 T.VI|epid|A08
+testes_anuais|Imagem|Qualidade do feixe de kV|Referência|TG-142 T.VI|kv|A08
+testes_diarios_orto||Painel de comando, interruptores (porta e painel) e sistemas de visualização|Funcionando|NN-6.10 art. 35 III; TECDOC-1151 T.IV|orto|A20
+testes_diarios_orto||Sistema de filtros e cones intercambiáveis|Funcionando|TECDOC-1151 T.IV|orto|A20
+testes_diarios_orto||Movimentos e freios do suporte e do tubo|Funcionando|TECDOC-1151 T.IV|orto|A20
+testes_mensais_orto||Dose de referência (um cone e uma qualidade por mês)|3%|NN-6.10 art. 35 IV; TECDOC-1151 T.IV|orto|A20
+testes_mensais_orto||Qualidade do feixe (camada semirredutora)|3%|TECDOC-1151 T.IV|orto|A20
+testes_mensais_orto||Planura e simetria|3%|TECDOC-1151 T.IV|orto|A20
+testes_anuais_orto||Radiação de fuga a 5 cm do cabeçote (tubo até 50 kV)|≤ 1 mGy/h|NN-6.10 art. 57 II|orto|A20
+testes_anuais_orto||Circuito protetor de sobrecarga|Funcional|TECDOC-1151 T.IV|orto|A20
+testes_anuais_orto||Dose de referência; fatores de cone; PDD; dose com o movimento do braço|3%|TECDOC-1151 T.IV|orto|A20
+testes_anuais_orto||Qualidade do feixe (CSR); taxa de dose com o mA; estabilidade da dose|2%|TECDOC-1151 T.IV|orto|A20
+testes_anuais_orto||Temporizador: reprodutibilidade e linearidade|1%|TECDOC-1151 T.IV|orto|A20
+testes_anuais_orto||Temporizador: correção do tempo efetivo de irradiação|2% (2 s)|TECDOC-1151 T.IV|orto|A20
+testes_diarios|Estereotaxia|Isocentricidade de radiação (Winston-Lutz com gantry e mesa limitados)|1,0 mm SRS; 1,5 mm SBRT|MPPG-9a T.1|srs|A17
+testes_diarios|Estereotaxia|Posicionamento e reposicionamento por IGRT|1 mm SRS; 2 mm SBRT|MPPG-9a T.1|srs|A17
+testes_diarios|Estereotaxia|Intertravamentos estereotáxicos (mandíbulas de backup)|Funcional|MPPG-9a T.1|srs|A17
+testes_diarios|Estereotaxia|Indicador de tamanho do colimador na abertura clínica|2 mm total|MPPG-9a T.1|srs|A17
+testes_mensais|Estereotaxia|Isocentricidade de radiação em toda a faixa clínica de gantry, mesa e colimador|1,0 mm SRS; 1,5 mm SBRT|MPPG-9a T.1|srs|A17
+testes_mensais|Estereotaxia|Indicadores de posição da mesa (relativo, faixa clínica)|1 mm / 0,5°|MPPG-9a T.1|srs|A17
+testes_mensais|Estereotaxia|Output nas taxas de dose usadas em SRS/SBRT|2%|MPPG-9a T.1|srs|A17
+testes_anuais|Estereotaxia|Modo arco SRS, se usado|1 UM, 1°|MPPG-9a T.1|srs|A17
+testes_anuais|Estereotaxia|Coincidência dos isocentros de radiação e mecânico (deslocamento 3D máximo)|±1,0 mm|MPPG-9a T.1|srs|A17
+testes_anuais|Estereotaxia|Fatores de campo pequeno (MLC)|±2% (> 1,0 cm); ±5% (≤ 1,0 cm)|MPPG-9a T.1|srs|A17
+testes_anuais|Estereotaxia|Fim a fim: localização (hidden target)|1,0 mm|MPPG-9a T.1|srs|A17
+testes_anuais|Estereotaxia|Fim a fim: dosimetria, medido × calculado|±5%|MPPG-9a T.1|srs|A17

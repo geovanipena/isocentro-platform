@@ -1,0 +1,206 @@
+# DICOM — dados de paciente (nunca versionar)
+*.dcm
+ficha teste/
+
+# Casos de teste: DICOM, FOTOS DE PACIENTE identificadas pelo nome, notas de
+# posicionamento e os relatórios exportados (571 pacientes com nome, DDN,
+# convênio, telefone, CID e foto 3x4). O `*.dcm` acima pega só as imagens; a
+# pasta inteira fica de fora.
+TCs_Teste/
+
+# PDFs gerados
+*.pdf
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambiente virtual
+.venv/
+
+# Histórico de equipe (dados locais)
+.isocentro_medicos.json
+.isocentro_fisicos.json
+
+# Registro central de fichas (dados de paciente — gerado na pasta do app)
+registro_fichas.json
+# Temporário da escrita atômica e o lock do índice (comentário em linha própria:
+# .gitignore não aceita comentário à direita — o padrão deixa de casar).
+registro_fichas.json.*
+# Correções de cadastro feitas na Capa (dados de paciente: sexo, convênio,
+# contato). Fica ao lado do índice — na pasta do app, quando roda do fonte.
+correcoes_capa.json
+# Temporário da escrita atômica e o lock (comentário em linha própria).
+correcoes_capa.json.*
+# Configuração do serviço (caminhos de rede escolhidos pelo admin) — gerada
+# ao lado do índice, na instalação.
+config_servico.json
+# Temporário da escrita atômica e o lock (comentário em linha própria).
+config_servico.json.*
+# Espelho local do banco (dados de paciente: nome, convênio, CID, foto 3x4).
+# Reserva de emergência gerada em uso; nunca versionar.
+espelho_capa/
+# Banco LOCAL gravado (banco_local.py): as respostas CRUAS do data warehouse
+# sobre os pacientes das pastas de TC — nome, nascimento, convênio, CID, a foto
+# 3x4 e o tratamento entregue. Nasce dentro de TCs_Teste/, que já está fora, mas
+# o padrão fica aqui também porque a variável ISOCENTRO_BANCO_LOCAL aponta para
+# onde quiserem, e este repositório já esteve público uma vez.
+banco_local.sqlite
+*.sqlite-journal
+# Cadastro SUS por paciente (dados de paciente — gerado na pasta do app)
+cadastro_sus.json
+# Checklist Pré-Tratamento conferido na tela: guarda REGISTRO do paciente, quem
+# conferiu cada item e quando. Fica ao lado do índice — na pasta do app, quando
+# roda do fonte, e é o que o tools\TESTAR_FICHA_VIRTUAL.cmd escreve ao testar
+# com o banco de verdade.
+checklist_pre_tratamento.json
+# Temporário da escrita atômica e o lock (comentário em linha própria).
+checklist_pre_tratamento.json.*
+# Inventário de imobilizadores: guarda de qual PACIENTE está cada máscara.
+inventario_imobilizadores.json
+# Biblioteca de notas de posicionamento — gerada na 1ª execução a partir do
+# acervo .docx do serviço; cada instalação semeia a sua.
+notas_posicionamento.json
+# Registros por paciente e imagens de cortes/DVH (dados de paciente)
+FICHA_*.json
+CORTES_*.png
+DVH_*.png
+
+# PyInstaller / build artifacts
+build/
+dist/
+*.zip
+# O `Isocentro.spec` NÃO entra aqui, e é de propósito. O conselho de
+# ignorar `*.spec` vale para projeto em que o spec é gerado por linha de
+# comando e descartado; neste ele carrega os `hiddenimports` — a lista
+# dos imports tardios sem os quais o app falha CALADO na clínica. Ele
+# esteve fora do git até 09/09/2026, e o resultado foi o arquivo sumir:
+# `tools/gerar_executavel.py` parava no passo 2 e não havia como
+# empacotar.
+
+# Executáveis empacotados — distribuir via GitHub Releases, não versionar
+*.rar
+
+# VSCode: o diretório é ignorado e os arquivos DO PROJETO são liberados um a
+# um — a escolha do unittest (e não pytest, que também está no .venv e
+# coletaria os mesmos arquivos por outro caminho), o ruff ligado sem formatar,
+# o F5 da GUI, as extensões de que o `settings.json` depende e as tarefas do
+# `tools/`. Nenhum deles tem caminho absoluto: só ${workspaceFolder}. O resto
+# do .vscode/ é da estação (cache de sessão, arquivos de extensão) e continua
+# fora.
+#
+# Liberar por arquivo, e não `!.vscode/*.json`, é de propósito: assim um
+# arquivo novo nasce FORA por padrão, e entra quando alguém decide que ele vale
+# para todas as estações.
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Usuários/senhas e backups — dados operacionais, nunca versionar
+usuarios.json
+backup_registros/
+historico_uso.jsonl
+
+# Preferência por usuário do app (Grupo Médico, máquinas da Agenda…) — ao
+# lado do usuarios.json, mesma regra. Faltou aqui desde que o preferencias.py
+# nasceu (23/09/2026); achado ao rodar a suíte e ver o arquivo aparecer na
+# raiz do repositório.
+preferencias.json
+preferencias.json.lock
+
+# Sessões abertas (usuário, máquina, pid e TOKEN da sessão) — mesma regra do
+# usuarios.json. Ficou de fora desde que o sessao.py nasceu; apareceu como
+# arquivo novo no git status de 15/10/2026, a um `git add .` de ir para o
+# repositório, que já foi público.
+sessoes.json
+sessoes.json.lock
+
+# Saída do console da GUI quando ela roda redirecionada (stdout_gui.log,
+# stderr_gui.log): log da estação, não do projeto.
+*_gui.log
+
+# Configuração local do Claude Code (permissões com caminhos absolutos
+# e UUIDs de sessão — é da estação, não do projeto).
+#
+# MENOS os ganchos, os comandos e as skills, versionados desde 29/10/2026:
+# eles rodam sozinhos em toda sessão, e fora do git ficavam sem teste, sem
+# revisão e sem histórico — foi um gancho alterado sem nada disso que virou a
+# cascata de 80 processos de 28–29/10 (ARMADILHAS). O `settings.json` segue
+# fora: tem caminhos absolutos desta máquina.
+.claude/*
+!.claude/hooks/
+!.claude/commands/
+!.claude/skills/
+.claude/hooks/__pycache__/
+
+# Dado de feixe do cálculo paralelo (TMR, Scp, FD, FW).
+#
+# É medida de UM acelerador, e parte do que existe hoje veio de outro serviço.
+# Este repositório é público: dado de comissionamento não entra. O LEIA-ME fica
+# versionado porque é ele que diz como repor a pasta numa estação nova.
+dados_feixe/*
+!dados_feixe/LEIA-ME.md
+
+# Mapa pseudônimo -> paciente real. É o único lugar onde o vínculo existe, e
+# é por isso que ele NÃO entra: versioná-lo desfaria a pseudonimização inteira.
+.identidades.json
+
+# Relatórios do tools/atividades.py. O quadro de Documentações traz NOME e
+# REGISTRO de paciente real (medido em 02/09/2026: 24 linhas, 8 pacientes), e
+# a lista de donos traz o quadro de pessoal inteiro. É dado clínico saindo do
+# banco por uma ferramenta de trabalho — mesma regra do banco local gravado:
+# fica na máquina de quem rodou, não no repositório.
+atividades_achadas*.txt
+dimactivity*.txt
+dimuser*.txt
+pendencias*.txt
+quadro*.txt
+consulta*.txt
+# E o do tools/mapear_gatilho.py: com --paciente ele despeja os cursos
+# de um paciente real, coluna por coluna.
+gatilho_achados*.txt
+# E o do tools/sondar_dicom.py: o C-FIND devolve o PatientID do plano, e o
+# relatorio o imprime. O arquivo que o C-GET traz e o RTPLAN inteiro — ele cai
+# em pasta temporaria do sistema por padrao, mas o --pasta aceita qualquer uma.
+sonda_dicom*.txt
+*.dcm
+# E o do tools/descobrir_dicom.ps1, se alguem trouxer o do servidor para ca:
+# ele lista portas abertas, servicos e caminhos de um servidor clinico. Nao e
+# dado de paciente, e nem por isso e coisa de repositorio publico.
+dicom_servidor_*.txt
+# A pasta onde caem TODOS os relatórios das ferramentas (tools/atividades.py,
+# mapear_gatilho.py, sondar_dicom.py e o -o de quem rodar à mão). Os padrões por
+# nome acima continuam valendo — são o que protege um relatório que alguém
+# arraste para outro lugar —, mas a pasta é ignorada por inteiro porque
+# ferramenta nova escreve nome novo, e o padrão por nome só é acrescentado
+# DEPOIS de o arquivo já ter aparecido no `git status`.
+relatorios_ferramentas/
+
+# Saídas salvas à mão com o -o das sondas (o NOTAS.md cita o cru.txt como
+# prova da instância que volta seis vezes). Trazem REGISTRO e nome de paciente
+# real; ficam na máquina de quem rodou, como os relatórios acima.
+cru.txt
+predecessor.txt
+
+# Cache do render 3D do corpo (corpo3d._com_cache): PNG derivado do RTSTRUCT do
+# paciente — é imagem de paciente, e se refaz sozinho.
+cache_corpo3d/
+
+# BMad (planejamento — docs/planejamento/LEIA-ME.md). O `_bmad/` que o
+# `bmad setup` gera é da estação: scripts copiados e as respostas do instalador.
+# Só os overrides de EQUIPE entram, e os pessoais (`*.user.toml`, onde também
+# mora a iniciativa ativa de cada um) ficam fora. Liberar a pasta custom/ e não
+# arquivo a arquivo é de propósito aqui: override de equipe novo é para valer
+# em todas as estações, ao contrário do .vscode/.
+_bmad/*
+!_bmad/custom/
+_bmad/custom/*.user.toml
+_bmad-output/
+.bmad-help-setup-modules*.toml

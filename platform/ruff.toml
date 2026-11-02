@@ -1,0 +1,54 @@
+# Ruff como LINTER, nunca como formatador.
+#
+# O formatador reescreveria os comentários longos desta base inteira num diff
+# só — e aqui o comentário é o que explica por que o número no papel é aquele.
+# Se um dia for adotado, que seja numa mudança própria, decidida na hora.
+#
+# A seleção abaixo é curta de propósito. Com o conjunto padrão do ruff esta
+# base acende 388 avisos, e lista de 388 ninguém lê: vira ruído e o achado de
+# verdade se perde no meio. O que sobrou são as regras que apontam ERRO, não
+# gosto. Cada exclusão está justificada — se for reativar alguma, leia o porquê
+# antes.
+
+target-version = "py312"
+
+exclude = [
+    ".venv",
+    # Cópias empacotadas do próprio programa: apontar aviso nelas é apontar
+    # duas vezes no mesmo código.
+    "dist",
+    "build",
+    "distribuicao",
+    # Scripts avulsos de pesquisa do planejamento: rodaram uma vez, não são o produto.
+    "docs/planejamento",
+]
+
+[lint]
+select = [
+    "E4",   # imports mal colocados
+    "E7",   # comparações e except suspeitos (E711/E712/E722)
+    "E9",   # erro de sintaxe / de runtime
+    "F",    # pyflakes: nome que não existe, import e variável sem uso
+    "B",    # bugbear: as armadilhas silenciosas do Python
+    "PLE",  # os "error" do pylint
+]
+
+ignore = [
+    # 286 ocorrências, 157 só no gui.py: `a = 1; b = 2` é o estilo estabelecido
+    # aqui, não um deslize. Regra que acusa o padrão da casa só ensina a ignorar
+    # o linter.
+    "E702",  # ponto e vírgula na mesma linha
+    # Nomes de uma letra ambíguos (l, I, O). 36 ocorrências em código que já
+    # funciona; renomear em massa é risco sem retorno.
+    "E741",
+    # zip() sem strict=. 39 ocorrências, todas em pares de tamanho conhecido.
+    "B905",
+]
+
+[lint.per-file-ignores]
+# As 42 acusações de "nome indefinido" aqui são todas falso positivo: ACAO,
+# SOBRE_ACAO e as demais cores não são escritas no arquivo — entram em
+# globals() por _aplicar(), que reescreve as constantes do módulo quando o
+# modo dia↔noite troca. O ruff lê o arquivo estático e não tem como ver isso.
+# O F821 continua valendo em todo o resto do projeto, onde pega typo de verdade.
+"estilo.py" = ["F821"]

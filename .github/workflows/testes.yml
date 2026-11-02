@@ -1,0 +1,145 @@
+# A suíte roda a cada push, sem depender de alguém lembrar.
+#
+# Hoje ela só roda quando eu rodo. Isso funcionou porque a rotina do projeto
+# manda rodar antes de dizer que está pronto — mas rotina depende de memória, e
+# o que este app imprime vai grampeado na ficha do paciente.
+#
+# Duas execuções, de propósito:
+#
+#   * ORDEM NORMAL, alfabética, que é como o discover roda no dia a dia;
+#   * ORDEM ALEATÓRIA, porque a alfabética já escondeu três vezes um teste que
+#     dependia de outro — e uma delas era uma linha que apagava uma função do
+#     módulo para o resto do processo.
+#
+# A suíte roda em Windows, a plataforma das estações. Em Linux ela nunca passou:
+# vários testes conferem regra de caminho do Windows (C:/, caixa, barra
+# invertida), que o os.path do Linux não segue, e o layout mede texto com outra
+# fonte. Até 15/10/2026 foi Linux, e as 12 execuções no main falharam por isso.
+# A interface é PySide6 (PyQt5 até a R-23); o QT_QPA_PLATFORM=offscreen dispensa tela.
+name: Testes
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: platform
+
+jobs:
+  # O ruff já roda a cada edição, mas só pelo gancho do Claude Code
+  # (`.claude/hooks/checar_py.py`), e o `.claude/` é configuração de estação:
+  # arquivo mexido direto no VS Code, ou numa máquina sem o gancho, não passa
+  # por linter nenhum até alguém rodar à mão — e ninguém roda à mão.
+  #
+  # Job próprio, e primeiro: ele leva segundos contra os ~20 minutos da suíte,
+  # e um `F821` de nome que não existe não precisa esperar o Qt subir para ser
+  # dito. As regras são as do `ruff.toml` da raiz, que já explica cada exclusão;
+  # aqui não se escolhe nada, só se roda.
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Versão exata, pelo mesmo motivo do requirements.txt: regra nova que
+      # aparece sozinha numa atualização vira suíte vermelha sem ninguém ter
+      # mexido em nada. É a versão da estação em 08/09/2026.
+      - run: pip install ruff==0.16.4
+      - run: ruff check .
+
+  # Vulnerabilidade conhecida nas dependências fixadas. AVISA e não reprova: a
+  # correção é trocar versão, e versão nova de pillow/pymupdf/reportlab pode
+  # mudar o que sai no papel — isso pede frente própria, com a regressão do
+  # papel, e não um push bloqueado no meio de outra coisa. Na primeira rodada
+  # (22/10/2026) eram 79 avisos em pillow 12.2.0 e pypdf 6.13.1.
+  #
+  # Lê os dois arquivos como estão (--no-deps --disable-pip), sem instalar
+  # nada: o constraints.txt já fixa até a dependência transitiva, então o que
+  # se audita é exatamente o que a estação instala. Por isso roda em Linux.
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pip-audit==2.10.1
+      - name: pip-audit
+        shell: bash
+        run: |
+          set +e
+          pip-audit -r requirements.txt -r constraints.txt --no-deps \
+            --disable-pip --progress-spinner off > auditoria.txt 2>&1
+          codigo=$?
+          { echo '## pip-audit'; echo '```'; cat auditoria.txt; echo '```'; } \
+            >> "$GITHUB_STEP_SUMMARY"
+          if [ $codigo -ne 0 ]; then
+            echo "::warning title=pip-audit::$(grep -m1 '^Found' auditoria.txt || echo 'auditoria falhou; ver o resumo')"
+          fi
+          exit 0
+
+  suite:
+    # Windows, como as estações (ver o cabeçalho). Minuto de Windows conta em
+    # dobro na cota do Actions em repositório privado; a suíte leva poucos minutos.
+    runs-on: windows-latest
+    timeout-minutes: 25
+    # O mesmo que todo .bat de tools/ faz antes de chamar o Python. Sem isso a
+    # saída é cp1252, e as ferramentas que imprimem "≥" ou "→" (mapear_indicadores,
+    # sondar_dicom, robo) quebram. Na estação a suíte completa escondia: o
+    # test_checkup_clinica roda antes e deixa o stdout do processo em UTF-8.
+    env:
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: platform/requirements.txt
+
+      - name: Dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -c constraints.txt
+
+      - name: Suíte (ordem normal)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python -m unittest discover -s tests
+
+      # Roda DEPOIS da normal: se as duas quebrarem, saber que a normal também
+      # quebrou separa "código quebrado" de "teste que depende de outro".
+      - name: Suíte (ordem aleatória)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python tests/ordem_aleatoria.py
+
+  empacotar:
+    # Só confere que o empacotamento ainda funciona; o .exe de distribuição
+    # continua saindo da estação, com o smoke test à mão.
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: platform/requirements.txt
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -c constraints.txt pyinstaller
+      - name: Gerar o executável (com as conferências)
+        # --sem-smoke: o runner não tem tela para a janela subir. O que se
+        # confere aqui é que o empacotamento não quebrou; abrir o programa
+        # continua sendo etapa da estação, onde há tela.
+        run: python tools/gerar_executavel.py --sem-zip --sem-smoke

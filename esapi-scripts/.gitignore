@@ -1,0 +1,13 @@
+## Build output
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+
+## Visual Studio
+.vs/
+
+## DLLs da Varian (licenciadas, copiadas do GAC do servidor) — nunca versionar.
+## XMLs de doc da API idem: a fonte única é vendor/esapi-docs/.
+lib/*.dll
+lib/*.xml

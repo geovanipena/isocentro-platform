@@ -1,0 +1,45 @@
+{
+  // Corretor ortográfico. Fica na RAIZ, e não no .vscode/, pelo mesmo motivo
+  // do ruff.toml: assim toda estação que clonar o repositório corrige com as
+  // mesmas regras e o mesmo dicionário.
+  //
+  // Isto aqui não é firula: quase toda string desta base vira texto IMPRESSO
+  // que alguém confere na sala de tratamento. Um rótulo com erro de digitação
+  // na capa é o tipo de coisa que teste nenhum pega.
+  "version": "0.2",
+
+  // pt_BR junto com en: os comentários e as mensagens de tela são em
+  // português, os nomes de biblioteca e as palavras-chave em inglês.
+  "language": "en,pt,pt_BR",
+
+  "dictionaryDefinitions": [
+    {
+      "name": "isocentro",
+      "path": "./dicionario-projeto.txt",
+      // Deixa o "Add to dictionary" do VSCode escrever no arquivo do projeto,
+      // que vai para o repositório — em vez de num arquivo de usuário, onde a
+      // palavra aceita valeria só nesta máquina.
+      "addWords": true
+    }
+  ],
+  "dictionaries": ["isocentro"],
+
+  "ignorePaths": [
+    ".venv/**",
+    // Cópias empacotadas do próprio programa: acusar aqui é acusar duas vezes.
+    "dist/**",
+    "build/**",
+    "distribuicao/**",
+    "**/__pycache__/**",
+    ".ruff_cache/**",
+    "*.csv",
+    "*.xlsx"
+  ],
+
+  "ignoreRegExpList": [
+    // Cor em hexadecimal (#1e88e5) vira "e" e "d" soltos para o corretor.
+    "/#[0-9a-fA-F]{3,8}\\b/",
+    // Caminho de arquivo e UID de DICOM: sequência sem palavra de língua.
+    "/\\b[0-9]+(\\.[0-9]+){3,}\\b/"
+  ]
+}

@@ -1,0 +1,16 @@
+# Dados de comissionamento da instituição — medidos no acelerador, não são
+# código. Ficam fora do repositório para que um clone público não distribua
+# tabela dosimétrica de ninguém.
+tables/
+config.json
+logo.png
+logo.jpg
+logo.jpeg
+
+# Planos de paciente. Um .dcm de RT Plan carrega nome, ID e data de nascimento.
+*.dcm
+
+__pycache__/
+*.pyc
+.venv/
+venv/

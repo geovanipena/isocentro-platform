@@ -1,0 +1,495 @@
+id;atividade;parametro;valor;periodicidade;nivel;fonte;local;nota
+R-A01-01;A01;Testes pré-operacionais e de comissionamento de fontes e TPS;Conduzidos pelo especialista em física médica;Antes da operação;OBR;NN-6.10;Art. 24 I-a;
+R-A01-02;A01;Testes de aceitação;"Logo após a instalação; relatório com aceite do titular e do RT; inclui intertravamentos, indicadores mecânicos, isocentro e independência de taxa de dose, simetria e planura em relação à angulação";Na instalação;OBR;RDC-20-2006;Anexo I 6.2-6.3;
+R-A01-03;A01;Comissionamento antes do uso clínico;"Perfis, PDP, fator de calibração, fatores de acessórios e de espalhamento do colimador; TPR/TAR verificados por amostragem; meio-campo para colimador assimétrico";Após aceitação, antes do início;OBR;RDC-20-2006;Anexo I 6.4-6.5;
+R-A01-04;A01;Programa de GQ reaplicado após alterações;Imediatamente após alteração de blindagem, partes elétricas ou mecânicas, software de TPS ou de gestão, acessórios ou parâmetros físicos;Por evento;OBR;NN-6.10;Art. 34 III;Gatilho de mudança relevante
+R-A01-05;A01;Fuga do cabeçote do linac (<10 MeV);"≤0,2% da taxa de kerma no ar central no plano de 2 m de raio; ≤0,5% fora dele, a 1 m do feixe de elétrons";Aceitação (periodicidade não definida);OBR;NN-6.10;Art. 59 I;Acima de 10 MeV: kerma de nêutrons <1% do kerma de raios X (Art. 60)
+R-A01-06;A01;Dois sistemas de monitoração de dose independentes;O segundo interrompe a irradiação com incremento <0,4 Gy;Aceitação;OBR;NN-6.10;Art. 59 II;
+R-A01-07;A01;Software de registro e verificação;Obrigatório em linac com MLC;Contínuo;OBR;NN-6.10;Art. 61;
+R-A01-08;A01;Lasers de posicionamento (linac e TC-simulador);"3 lasers; exatidão ≤2 mm; espessura da linha ≤2 mm no isocentro";Contínuo;OBR;RDC-20-2006;Anexo I 5.5.9 a1, f1;
+R-A01-09;A01;Requisitos de máquina para radiocirurgia;"Isocentro do gantry e da mesa com raio ≤1 mm; controle de dose por grau ≤1° e ≤1 UM";Para habilitar a SRS;OBR;RDC-20-2006;Anexo I 5.5.14;
+R-A01-10;A01;Fuga de tubo de raios X ≤50 keV (ortovoltagem superficial);≤1 mGy/h (média em 10 cm², a 5 cm da blindagem);Aceitação;OBR;NN-6.10;Art. 57 II;"Dermopan 50 kV; de 50 a 150 keV: ≤10 mGy/h (Art. 57 III)"
+R-A01-11;A01;Revisão abrangente das configurações da máquina;igual ao comissionamento/esperado;anual e após upgrade;REC;MPPG-8b;Tabela 3 (C1) e §8.1;
+R-A02-01;A02;Analisador de feixes (tanque);"ajuste mecânico 2 mm; exatidão posicional 2 mm; linearidade 0,5%; fuga 0,5%; análise de dados 1%";inicial/a cada uso;REC;TECDOC-1151;Tabela XIII;
+R-A03-01;A03;Calibração de saída (TG-51);±1% absoluto;anual;REC;TG-142;Tabela III;
+R-A03-02;A03;Saída anual;1% da saída nominal TG-51;anual;REC;MPPG-8b;Tabela 4 (D1);
+R-A03-03;A03;Condições de referência fótons alta energia;"água; câmara cilíndrica; zref 10 g/cm²; SSD/SCD 100 cm (SAD se isocêntrico); campo 10×10 cm²";a cada calibração;REC;TRS-398-R1;Tabela 15 (§6.4.1);
+R-A03-04;A03;Índice de qualidade TPR20,10;"SCD 100 cm; profundidades 20 e 10 g/cm²; campo 10×10 cm² no plano do detector";a cada calibração;REC;TRS-398-R1;Tabela 14 (§6.3);
+R-A03-05;A03;Incerteza padrão combinada de Dw,Q (fótons, calibração em 60Co);"1,0% (etapa 1: 0,6%; etapa 2: 0,8%; kQ 0,6%)";referência;REC;TRS-398-R1;Tabela 17 (§6.8);valores típicos
+R-A04-01;A04;Calibração dos 2 sistemas de medição de referência (câmara cilíndrica de 0,6 cm³ + eletrômetro de 4 dígitos);Laboratório acreditado na RBC, na faixa de energia usada;A cada 2 anos e após conserto ou suspeita de defeito;OBR;NN-6.10;Art. 49 e par. único I-II;Elétrons: câmara de placas paralelas calibrada ou intercomparada (Art. 50)
+R-A04-02;A04;Calibração do dosímetro clínico e do monitor de área;Laboratório autorizado pelo LNMRI, por delegação do INMETRO;Regular (sem prazo);OBR;RDC-20-2006;Anexo I 5.3.7 f;Ver conflito sobre o laboratório
+R-A04-03;A04;Laboratório de calibração para dosimetria de feixes;Autorizado pela ANSN e acreditado INMETRO/ILAC;"Em vigor em 07/07/2029 para o Art. 55 §1º; Art. 91 VI sem diferimento";OBR;NN-3.01;"Art. 91 VI; Art. 55 §1º; Art. 151 II";
+R-A04-04;A04;Especificação de câmara de referência;"estabilização <5 min (0,5%); fuga <0,1%; polaridade <0,4% (dep. energética <0,3%); recombinação inicial <0,2% a ~300 V; diferença por polaridade <0,1%; kS>1,05 exige outro método; estabilidade <0,3% em 2 anos";aquisição/calibração;REC;TRS-398-R1;Tabela 3;
+R-A04-05;A04;Calibração do dosímetro de referência em LSCD;certificado de calibração;bienal (ou mais frequente sem programa de verificações redundantes);REC;TECDOC-1151;Tabela XIII;"linearidade 0,5%; fuga 0,1%; polaridade 1%"
+R-A04-06;A04;Dosímetro de campo vs referência;1%;anual;REC;TECDOC-1151;Tabela XIII;
+R-A05-01;A05;Aferição do sistema de referência com fonte-teste própria;Resposta dentro de ±1%;No mínimo trimestral;OBR;NN-6.10;Art. 49 par. único III;Única tolerância numérica obrigatória de CQ do eixo
+R-A05-02;A05;Verificação de constância do sistema de referência (fonte de 90Sr ou intercomparação);2%;a cada uso;REC;TECDOC-1151;Tabela XIII (nota b);NN-6.10 exige no mínimo trimestral (outro pesquisador)
+R-A06-01;A06;Aferição com fonte-teste ligada a transporte;Imediatamente antes e após transporte para fora do serviço;Por evento;OBR;NN-6.10;"Art. 49 par. único IV; Art. 54 par. único IV";
+R-A07-01;A07;Revisão/assinatura do QA diário pelo físico;preferencialmente diário;no mínimo semanal;REC;TG-198;§2.A.1.1;"TG-142 previa mensal; monthly sign-off em até 15 dias"
+R-A07-02;A07;ODI no isocentro;2 mm;diário;REC;TG-142;Tabela I;
+R-A07-03;A07;ODI;"2 mm no isocentro (diário); 2 mm na faixa clínica (mensal)";diário/mensal;REC;MPPG-8b;Tabela 5 (M2);
+R-A07-04;A07;Indicador de tamanho de campo/mandíbulas;"2 mm (não-IMRT/IMRT); 1 mm SRS";diário;REC;TG-142;Tabela I;
+R-A07-05;A07;Indicadores de posição de mandíbula;"2 mm simétrico; 1 mm assimétrico";mensal;REC;TG-142;Tabela II;TG-198 §2.C.2.5: ±2 mm/jaw sim., ±1 mm/jaw assim. em junção
+R-A07-06;A07;Indicadores de mandíbula;2 mm por mandíbula na faixa clínica ou <2% de variação em OF (o menor);mensal;REC;MPPG-8b;Tabela 5 (M3);diário: 2 mm em 1 campo
+R-A07-07;A07;Coincidência luz-radiação;"2 mm ou 1% por lado (simétrico); 1 mm ou 1% (assimétrico)";mensal;REC;TG-142;Tabela II;só se campo luminoso usado clinicamente
+R-A07-08;A07;Coincidência luz-radiação;±2 mm por mandíbula;mensal;REC;TG-198;§2.C.2.1;alinhado ao MPPG 8.a
+R-A07-09;A07;Coincidência luz-radiação;2 mm por mandíbula (jaws e MLC);anual e após serviço óptico;REC;MPPG-8b;Tabela 5 (M5);
+R-A07-10;A07;Indicadores angulares gantry/colimador;1,0°;mensal;REC;TG-142;Tabela II;TG-198 §2.C.2.3 ±1°
+R-A07-11;A07;Indicadores angulares gantry/colimador (incl. encoder de imagem);0,5°;mensal;REC;MPPG-8b;Tabela 5 (M6);
+R-A07-12;A07;Walkout do retículo;1 mm (raio);mensal;REC;TG-142;Tabela II;MPPG-8b M8: walkout 2 mm (centro ≤1 mm do eixo)
+R-A07-13;A07;Indicadores de posição da mesa;"2 mm/1° não-IMRT e IMRT; 1 mm/0,5° SRS";mensal;REC;TG-142;Tabela II;
+R-A07-14;A07;Mesa: posição absoluta / movimento relativo;"abs 2 mm,1°; rel 1 mm em 10 cm, 0,5° em 3°";mensal;REC;MPPG-8b;Tabela 5 (M9, M10);
+R-A07-15;A07;Mesa robótica 6DOF;"1 mm e 0,5°; anual sob carga";"diário (procedimentos de alto risco), ao menos semanal; anual sob carga";REC;MPPG-8b;Tabela 5 (M14) e §8.2.3;
+R-A07-16;A07;Mesa relativa (SRS/SBRT);1 mm/0,5°;mensal;REC;MPPG-9b;Tabela 1;
+R-A07-17;A07;Flexão do tampo (table top sag/couch top flex);2 mm da baseline;anual;REC;TG-142;Tabela III;TG-198 §2.D.2.6 idem
+R-A07-18;A07;Ângulo da mesa / curso máximo;1° / ±2 mm;anual;REC;TG-142;Tabela III;
+R-A07-19;A07;Câmara monitora secundária (backup);2%;mensal;REC;TG-142;Tabela II;TG-198 §2.C.1.2
+R-A07-20;A07;Saída à taxa de dose típica;2% (@ taxa IMRT / estereotáxica);mensal;REC;TG-142;Tabela II;NA não-IMRT
+R-A07-21;A07;Constância de perfil fótons/elétrons;1%;mensal;REC;TG-142;Tabela II;TG-198 §2.C.1.4 ±1% desvio da baseline
+R-A07-22;A07;Constância de perfil;2% da baseline do dispositivo;mensal;REC;MPPG-8b;Tabela 4 (D2);
+R-A07-23;A07;Energia de elétrons;2%/2 mm;mensal;REC;TG-142;Tabela II;TG-198 §2.C.1.5
+R-A07-24;A07;Energia de elétrons (R50);2 mm equivalentes em R50;mensal e anual;REC;MPPG-8b;Tabela 4 (D3);
+R-A07-25;A07;Energia de fótons (PDD/TPR);1% (relativo);mensal e anual;REC;MPPG-8b;Tabela 4 (D4);anual vs TPS no ponto de referência
+R-A07-26;A07;Controle de entrega dinâmica (DDC: taxa de dose × gantry × MLC);2% da dose de campo aberto (3%/fabricante se não substituir D8);mensal;REC;MPPG-8b;Tabela 4 (D5) e §8.2.2;
+R-A07-27;A07;Gating: constância de saída;2%;mensal;REC;TG-142;Tabela II;TG-198 §2.C.4.1
+R-A07-28;A07;Gating: precisão temporal / calibração do substituto;100 ms do esperado;anual;REC;TG-142;Tabela III;
+R-A07-29;A07;Fatores de campo fótons (spot check ≥2 tamanhos);"2% (<4×4 cm²); 1% (≥4×4 cm²)";anual;REC;TG-142;Tabela III;
+R-A07-30;A07;Fator de campo pequeno por mandíbula;2% do TPS;anual;REC;MPPG-8b;Tabela 4 (D11);<3×3 cm usar TRS-483/TG-155
+R-A07-31;A07;Fator de campo pequeno por MLC;"2% do TPS (≤2×2); 5% (≤1×1)";anual;REC;MPPG-8b;Tabela 8 (MLC1);
+R-A07-32;A07;Qualidade do feixe fótons (PDD10 ou TMR20,10);±1% da baseline;anual;REC;TG-142;Tabela III;TG-198 §2.D.1.5
+R-A07-33;A07;Qualidade do feixe elétrons (R50);±1 mm;anual;REC;TG-142;Tabela III;MPPG-8b: 2 mm
+R-A07-34;A07;Planura/simetria fótons e elétrons;1% / ±1% da baseline;anual;REC;TG-142;Tabela III;
+R-A07-35;A07;Perfil anual vs TPS;2% dos OAF do TPS (ou 1% do obtido no comissionamento se o modelo já estava perto de 2%);anual;REC;MPPG-8b;Tabela 4 (D2);
+R-A07-36;A07;Linearidade de UM fótons;"±2% ≥5 UM (não-IMRT); IMRT/SRS ±5% 2–4 UM e ±2% ≥5 UM";anual;REC;TG-142;Tabela III;TG-198: testar estático e segmentado
+R-A07-37;A07;Linearidade de UM fótons/elétrons;2% do nominal;anual;REC;MPPG-8b;Tabela 4 (D6, D7);
+R-A07-38;A07;Saída vs taxa de dose;±2%;anual;REC;TG-142;Tabela III;MPPG-8b D8 2%
+R-A07-39;A07;Saída e OAF vs ângulo de gantry;±1% (do valor em gantry 0°);anual;REC;MPPG-8b;Tabela 4 (D9, D10);"2% aceitável em 180° sem suporte; TG-142 Tabela III ±1%"
+R-A07-40;A07;Modo arco (UM, graus);2% das UM e 2°;anual;REC;MPPG-8b;Tabela 4 (D12);"TG-198: ±1% não-SRS; SRS 1 UM ou 2%, 1°"
+R-A07-41;A07;Transmissão de filtro físico;±2%;anual;REC;TG-142;Tabela III;
+R-A07-42;A07;Filtro dinâmico (EDW): fator no eixo;2% (45° ou 60°);mensal;REC;TG-142;Tabela IV;anual: OCR a 80% da largura a 10 cm ±2%
+R-A07-43;A07;Filtro eletrônico/colimador;"diário funcional; mensal 2% da baseline; anual perfil 60° 2% dos OAF do TPS; dose 2% do TPS";diário/mensal/anual;REC;MPPG-8b;Tabela 7 (W1–W4);
+R-A07-44;A07;MLC picket fence qualitativo;visual (TG-198: ±2 mm), girando ângulo cardinal a cada semana;semanal (IMRT);REC;TG-142;"Tabela V; TG-198 §2.F.1.1";
+R-A07-45;A07;MLC posição (não-IMRT, ajuste vs campo de radiação);2 mm (TG-198: ±1 mm por lâmina, ±2 mm largura);mensal;REC;TG-142;"Tabela V; TG-198 §2.F.2.1";
+R-A07-46;A07;MLC posição (IMRT, 4 ângulos cardinais);1 mm;mensal;REC;TG-142;Tabela V;TG-198 §2.F.2.4 ±1 mm
+R-A07-47;A07;MLC velocidade de lâmina (IMRT);perda de velocidade >0,5 cm/s;mensal;REC;TG-142;Tabela V;TG-198 §2.F.2.3
+R-A07-48;A07;MLC exatidão de posição (quantitativa, vários ângulos ou arco);0,5 mm;semanal;REC;MPPG-8b;Tabela 8 (MLC2) e §8.2.6;"teste visual insuficiente; log não substitui"
+R-A07-49;A07;MLC exatidão de posição (SRS/SBRT);0,5 mm;diário (mínimo semanal);REC;MPPG-9b;Tabela 1;
+R-A07-50;A07;Teste holístico VMAT/sliding window (câmara pequena);2% do TPS;mensal;REC;MPPG-8b;Tabela 8 (MLC3);similar ao teste 7.4 do MPPG 5.b
+R-A07-51;A07;Transmissão MLC (média folha+interfolha);±0,5% da baseline;anual;REC;TG-142;Tabela V;TG-198 §2.F.3.1
+R-A07-52;A07;Repetibilidade de posição de lâmina / spoke shot MLC;±1,0 mm / ≤1,0 mm de raio;anual;REC;TG-142;Tabela V;
+R-A07-53;A07;IMRT segmentado e janela deslizante (4 ângulos);"erro RMS <0,35 cm; 95% das contagens <0,35 cm";anual;REC;TG-142;Tabela V;TG-198 §2.F.3.5
+R-A07-54;A07;Constância do QA VMAT paciente-teste;taxa de aprovação ≥ baseline −2% e critério institucional (TG-218);anual;REC;TG-198;§2.D.5.1;
+R-A07-55;A07;Teste de interrupção VMAT;±1% vs entrega ininterrupta;anual;REC;TG-198;§2.D.5.2 e Tabela IV;
+R-A07-56;A07;Isocentros de rotação colimador/gantry/mesa;±1 mm da baseline;anual;REC;TG-142;Tabela III;
+R-A07-57;A07;Coincidência isocentro de radiação × mecânico;"±2 mm não-IMRT/IMRT; ±1 mm SRS (absolutos)";anual;REC;TG-198;§2.D.2.5;TG-142 Tabela III expressa como vs baseline
+R-A07-58;A07;Modo especial TBI/TSET em distância estendida;"TMR/PDD ±5%; TSET ±3 mm PDD; OAF ±5%; saída ±3%";anual;REC;TG-198;§2.A.1.4;TG-142: 1%/1 mm/2%
+R-A07-59;A07;E2E (técnica complexa, dosímetro pontual);"5% do TPS; investigar ≥3%";anual;REC;MPPG-8b;§8.3;terceiro independente obrigatório no comissionamento
+R-A08-01;A08;"Planar kV/MV: interlocks de colisão; posicionamento/reposicionamento; coincidência (1 ângulo)";"funcional; ≤2 mm não-SRS; ≤1 mm SRS";diário;REC;TG-142;Tabela VI;
+R-A08-02;A08;CBCT: coincidência imagem-tratamento / posicionamento;"≤2 mm/≤1 mm (coincidência); ≤1 mm (reposicionamento) em ambos";diário;REC;TG-142;Tabela VI;TG-198 alterou para ≤2 mm, com ≤1 mm no dia de SRS
+R-A08-03;A08;IGRT kV/CBCT: coincidência e reposicionamento;"≤2 mm (não-SRS e SRS/SBRT); ≤1 mm no dia de SRS";diário;REC;TG-198;§2.G.1.2, 2.G.1.3, 2.G.2.2, 2.G.2.3;alinhado ao TG-179
+R-A08-04;A08;Coincidência imagem-tratamento (lasers como ref.) / posicionamento de mesa;2 mm / 2 mm;"diário (semanal aceitável em fracionamento convencional; diário obrigatório em dia de SRS/SBRT)";REC;MPPG-IGRT-2021;Tabela 1 e §5;
+R-A08-05;A08;Composto coincidência + posicionamento (SRS);1 mm;diário ou dia do procedimento;REC;MPPG-IGRT-2021;Tabela 1;
+R-A08-06;A08;Coincidência imagem-tratamento (MV como referência);2 mm;mensal;REC;MPPG-IGRT-2021;Tabela 1;
+R-A08-07;A08;Escala da imagem;2 mm;semestral;REC;MPPG-IGRT-2021;Tabela 1;TG-142: mensal ≤2 mm (kV SRS ≤1 mm)
+R-A08-08;A08;Dose de imagem;"2D MV ±1 cGy; kV estático ±3 mGy; fluoroscopia ±1 cGy/min; 3D ±1 cGy (vs baseline)";anual e após troca de componente (ex.: tubo);REC;MPPG-IGRT-2021;Tabela 1 e §5;"ao menos 1 técnica por modo; a mais conservadora"
+R-A08-09;A08;Qualidade de imagem 2D e 3D (resolução, contraste, uniformidade);≥ baseline (especificação do fabricante ou comissionamento);anual;REC;MPPG-IGRT-2021;Tabela 1;TG-142: mensal
+R-A08-10;A08;Interlock de gating (imagem);funcional;anual;REC;MPPG-IGRT-2021;Tabela 1;
+R-A08-11;A08;EPID e kV planar: coincidência (4 ângulos cardinais) e escala;"≤2 mm não-SRS; ≤1 mm SRS (escala MV ≤2 mm SRS no TG-142)";mensal;REC;TG-142;Tabela VI;TG-198 §2.G.3–2.G.4: escala ≤1 mm SRS
+R-A08-12;A08;CBCT: distorção geométrica;"≤2 mm não-SRS; ≤1 mm SRS";mensal;REC;TG-142;Tabela VI;TG-198 §2.G.5.1
+R-A08-13;A08;CBCT: constância de HU;±40 HU;mensal;REC;TG-198;§2.G.5.2.2;TG-142: baseline
+R-A08-14;A08;CBCT/planar: resolução espacial, contraste, uniformidade e ruído;≥ baseline de aceitação;mensal;REC;TG-142;Tabela VI;
+R-A08-15;A08;CT-IGRT: alinhamento kV/MV/laser e deslocamentos de mesa;≤1 mm;mensal ou após upgrade;REC;TG-179;Tabela II;testes de imagem semestrais após estabilidade (6–12 meses)
+R-A08-16;A08;CT-IGRT: resolução espacial de alto contraste;2 mm (ou ≥5 pl/cm);mensal (semestral após estabilidade);REC;TG-179;Tabela II;
+R-A08-17;A08;CT-IGRT: exatidão do número CT (se usado para cálculo);baseline;mensal (semestral após estabilidade);REC;TG-179;Tabela II;
+R-A08-18;A08;"CT-IGRT: gerador kV (kVp, mA, ms, linearidade); dose";baseline;anual;REC;TG-179;Tabela II;
+R-A08-19;A08;EPID: curso completo de SDD;±5 mm;anual;REC;TG-142;Tabela VI;TG-198 §2.G.6.1
+R-A08-20;A08;Dose de imagem: MV planar / kV planar / kV-CBCT / MV-CBCT;±5%/UM / ±20% / ±20% / ±5%/UM da baseline;anual;REC;TG-198;§2.G.6.2, 2.G.7.2, 2.G.8.1;TG-142: apenas baseline
+R-A08-21;A08;kV: qualidade do feixe/energia;±5% da baseline;anual;REC;TG-198;§2.G.7.1;
+R-A08-22;A08;IGRT/SGRT: posicionamento (SRS/SBRT);"1 mm SRS; 2 mm SBRT";diário;REC;MPPG-9b;Tabela 1;
+R-A09-01;A09;Revisão de protocolos de TC;todos os protocolos;"no máximo a cada 24 meses; mais usados anualmente";REC;MPPG-CT-2021;§4.b–4.c;"documento de TC diagnóstica, aplicável apenas em parte à TC-sim; não traz tolerâncias de número CT"
+R-A09-02;A09;Simulador convencional (lasers, telêmetro, campo, retículo);2 mm;diário;REC;TECDOC-1151;Tabela III;simulador fluoroscópico, não TC
+R-A10-01;A10;Lasers de localização;"2 mm não-IMRT; 1,5 mm IMRT; 1 mm SRS/SBRT";diário;REC;TG-142;Tabela I;
+R-A10-02;A10;Dispositivo de localização (lasers/IGRT/SGRT);"2 mm diário; 1 mm mensal";diário/mensal;REC;MPPG-8b;Tabela 5 (M1) e §8.2.3;SRS remete ao MPPG 9
+R-A10-03;A10;Lasers de localização;"±2 mm não-IMRT; ±1 mm IMRT; <±1 mm SRS/SBRT";mensal;REC;TG-142;Tabela II;
+R-A10-04;A10;Laser (se usado para alvo em SRS);1 mm;diário;REC;MPPG-9b;Tabela 1;fonte fora do acervo (PMC11969102)
+R-A11-01;A11;Barômetro e termômetro;"Barômetro com resolução ≤0,5 mmHg (aneroide) ou 0,1 hPa (digital); termômetro de 0,25 °C; aferição por laboratório da RBC";A cada 2 anos;OBR;NN-6.10;Art. 52 I-II e par. único;O texto diz 'aferidos'
+R-A11-02;A11;Régua e nível;"Régua com resolução de 0,5 mm; nível de bolha ou digital; aferição por laboratório credenciado na RBC";A cada 5 anos;OBR;NN-6.10;Art. 52 III-IV e par. único;
+R-A11-03;A11;Detectores para técnicas avançadas;"IMRT: câmara <0,1 cm³ e matriz plana com resolução ≥1 cm; SRS: câmara ≤0,03 cm³; VMAT: matriz rotacional ou cilíndrica";Contínuo;OBR;NN-6.10;Art. 51;Também simulador, alinhador laser e verificador de simetria (Art. 53)
+R-A11-04;A11;Termômetro / barômetro / réguas;0,2 °C / 1 mmHg / 1 mm;"termômetro c/u e inicial; barômetro 'trimestral' (OCR, conferir); réguas inicial";REC;TECDOC-1151;Tabela XIII;OCR ambíguo
+R-A12-01;A12;Calibração do monitor de área;"Laboratório da RBC, na faixa de energia usada; armazenamento controlado";A cada 2 anos e após conserto ou suspeita;OBR;NN-6.10;Art. 55;
+R-A12-02;A12;Monitor fixo na sala HDR;"Detector na sala e indicador no comando; funcionamento verificado";Nos dias de tratamento, antes do início;OBR;NN-6.10;Art. 56;
+R-A12-03;A12;Monitor de área do 2º levantamento independente;Câmara de ionização pressurizada, display digital, leitura em Sv/h, calibrada há ≤2 anos;Por licenciamento;OBR;GUIA-CNEN-RT;"6.1.9; 6.2.10; 8.1.7";Preferencialmente por um 2º físico especialista
+R-A12-04;A12;Monitor de área (proteção radiológica);certificado de calibração (20%);anual;REC;TECDOC-1151;Tabela XIII;diverge da periodicidade bienal do catálogo
+R-A13-01;A13;Verificação do fator de calibração dos linacs;Teste executado (sem tolerância definida);Diário;OBR;NN-6.10;Art. 35 II;Tolerância vem de TG-142/TECDOC-1151
+R-A13-02;A13;Constância de saída fótons (todas energias);3%;diário;REC;TG-142;Tabela I;igual para não-IMRT/IMRT/SRS
+R-A13-03;A13;Constância de saída elétrons;3%;semanal (diário se máquina com monitoramento único);REC;TG-142;Tabela I;
+R-A13-04;A13;Constância de saída fótons e elétrons;3% da baseline do dispositivo;diário (energias usadas no dia);REC;MPPG-8b;Tabela 4 (D1);mínimo
+R-A13-05;A13;Baseline do dispositivo diário vs sistema primário;intercomparação;no mínimo anual;REC;TG-198;§2.B.1;
+R-A13-06;A13;Constância de perfil fótons/elétrons;2% da baseline do dispositivo;diário;REC;MPPG-8b;Tabela 4 (D2);
+R-A13-07;A13;Conduta para saída diária fora de tolerância;">3% e ≤5%: tratamento pode seguir com repetição por 2ª pessoa; persistindo, investigação pelo físico";diário;PRA;TG-198;§2.B.1.1.2 e §2.A;
+R-A14-01;A14;Testes de segurança de todas as fontes;Teste executado (sem lista definida na NN);Diário;OBR;NN-6.10;Art. 35 III;Ver Art. 41-42: sinalização, intertravamentos, botões de emergência, visão e áudio
+R-A14-02;A14;Dispositivos de segurança das salas;"Luz vermelha e verde externa; observação e áudio; abertura interna e externa sem energia; iluminação de emergência; botões de emergência no console, na entrada e em ≥1 parede; intertravamento de porta";Contínuo (verificação diária via Art. 35 III);OBR;NN-6.10;Art. 41-42;NR-32 32.4.14.1 reforça intertravamento e sinalização
+R-A14-03;A14;Interlock de porta, monitores AV, indicador de feixe, monitor de área, intertravamentos estereotáxicos;funcional;diário;REC;TG-142;Tabela I;
+R-A14-04;A14;"Interlock de porta; AV; indicadores de feixe; anticolisão (um sistema por dia, em rodízio)";funcional;diário;REC;MPPG-8b;Tabela 6 (S1, S3, S4, S5);anual: fechamento da porta, todos os indicadores e emergência (S2, S4, S7)
+R-A14-05;A14;Segurança do acelerador (luzes, visualização, anticolisão, interruptores);funcionando;diário;REC;TECDOC-1151;Tabela II;
+R-A15-01;A15;Dose absorvida na água em condições de referência (teleterapia);Protocolo nacional ou internacional vigente, conforme o plano de proteção radiológica;Mensal;OBR;NN-6.10;"Art. 35 IV; Art. 24 I-b";
+R-A15-02;A15;Constância de saída fótons/elétrons;2%;mensal;REC;TG-142;Tabela II;TG-198 §2.C.1.1 ±2%
+R-A15-03;A15;Constância de saída;2% da baseline do dispositivo, todas energias;mensal;REC;MPPG-8b;Tabela 4 (D1);
+R-A15-04;A15;Constância da dose de referência;2%;mensal;REC;TECDOC-1151;Tabela II;diário 3%
+R-A16-01;A16;Armazenamento dos sistemas de referência, da câmara-poço e do monitor;Temperatura e umidade controladas, conforme o fabricante;Contínuo;OBR;NN-6.10;"Art. 49 V; Art. 54 V; Art. 55 III";
+R-A17-01;A17;Fatores de campo relativos (cones/MLC pequenos);"±2% do TPS (>1,0 cm); ±5% (≤1,0 cm)";anual;REC;MPPG-9b;Tabela 1;
+R-A17-02;A17;"Isocentricidade de radiação (WL col/gantry/mesa; jaws e MLC)";"WL: ≤1 mm de raio em toda combinação clínica; spoke: círculo <2 mm de diâmetro";anual;REC;MPPG-8b;Tabela 5 (M11), Tabela 8 (MLC4), §8.2.3;SRS: remete ao MPPG 9
+R-A17-03;A17;Isocentricidade de radiação (posições limitadas);"1,0 mm SRS; 1,5 mm SBRT";diário;REC;MPPG-9b;Tabela 1;
+R-A17-04;A17;Isocentricidade de radiação (faixa clínica completa);"1,0 mm SRS; 1,5 mm SBRT (máx 3D)";mensal;REC;MPPG-9b;Tabela 1;
+R-A17-05;A17;Coincidência isocentro radiação-mecânico (SRS);±1,0 mm máx 3D;anual;REC;MPPG-9b;Tabela 1;
+R-A17-06;A17;E2E hidden target / dosimétrico (SRS-SBRT);1,0 mm / ±5% e gama 3%/1 mm >90%;anual;REC;MPPG-9b;Tabela 1;
+R-A17-07;A17;Modo arco SRS (UM, graus);"1 UM; 1°";anual;REC;MPPG-9b;Tabela 1;"TG-142: 1,0 UM ou 2%; 1,0° ou 2%"
+R-A17-08;A17;Transmissão MLC (SRS);5% do TPS;anual;REC;MPPG-9b;Tabela 1;
+R-A19-01;A19;Aceitação/comissionamento IGRT (aceitação pelo fornecedor, integração TPS/OIS, baselines, documentação, interlocks);"funcional/documentado; relatório formal";na aceitação e após mudança;REC;MPPG-IGRT-2021;§4.4.1–4.4.8 e Tabela 1;físico supervisiona diretamente a aceitação
+R-A19-02;A19;Pós-serviço/upgrade IGRT;"testes do fabricante; verificar/restabelecer baselines";após serviço;REC;MPPG-IGRT-2021;Tabela 1;
+R-A20-01;A20;Roentgenterapia: segurança (painel, interruptores, visualização, filtros/cones, freios);funcionando;diário;REC;TECDOC-1151;Tabela IV;
+R-A20-02;A20;Roentgenterapia: constância da dose de referência / qualidade (CSR) / planura e simetria;3% / 3% / 3% (aumento absoluto ≤2% vs referência inicial);mensal (um cone e uma CSR por mês);REC;TECDOC-1151;Tabela IV;
+R-A20-03;A20;Roentgenterapia anual: dose de referência / CSR / dose vs movimento do braço / fatores de cone / PDD / dose vs mA / estabilidade;2% / 3% / 3% / 3% / 3% / 2% / 2% (ordem conforme OCR);anual;REC;TECDOC-1151;Tabela IV;"OCR com ordem ambígua; conferir no PDF"
+R-A20-04;A20;Temporizador: reprodutibilidade / linearidade / tempo efetivo;1% / 1% / 2% (2 s);anual;REC;TECDOC-1151;Tabela IV;
+R-A20-05;A20;"Radiação de fuga (<50 kV a 5 cm; 50–500 kV a 1 m)";"0,30 Gy/h; 0,01 Gy/h";anual;REC;TECDOC-1151;Tabela IV;Dermopan 50 kV no limite entre categorias
+R-B01-01;B01;Dose de referência calculada no TPS;0,5%;comissionamento;REC;MPPG-5b-TPS;Tabela 4 (5.1);spot checks 2% (5.3)
+R-B01-02;B01;Dose absoluta em condição de referência (fótons e elétrons);0,5%;comissionamento;PRA;MPPG-5b-TPS;"Tabela 4 (5.1); Tabela 10 (8.1)";
+R-B02-01;B02;Validação fótons: alta dose / penumbra / cauda;2% / 2 mm DTA / 3% da dose máx (até 5 cm);comissionamento;REC;MPPG-5b-TPS;Tabela 6;
+R-B02-02;B02;VMAT/IMRT: câmara alvo / OAR / arranjo / E2E;2% / 3% / investigar 2%/2 mm local / 5%;comissionamento;REC;MPPG-5b-TPS;Tabela 9;
+R-B02-03;B02;Fótons básicos;"alta dose 2% (1 parâmetro) / 5% (múltiplos); penumbra 2 mm; cauda 3% do máximo até 5 cm";comissionamento;PRA;MPPG-5b-TPS;Tabela 6;dose local
+R-B02-04;B02;Heterogeneidade distal ao pulmão;3%;comissionamento;PRA;MPPG-5b-TPS;Tabela 7 (6.2);pencil beam/correção inaceitáveis
+R-B02-05;B02;IMRT/VMAT no comissionamento;"câmara 2% (baixo gradiente) / 3% (alto gradiente); arranjo investigar falhas 2%/2 mm local; fim-a-fim 5%";comissionamento;PRA;MPPG-5b-TPS;Tabela 9;"TG-119 cabeça e pescoço e forma em C; 2 auditorias externas"
+R-B02-06;B02;Elétrons;"recortes 3%/3 mm; obliquidade 5%; heterogeneidade 7%";comissionamento;PRA;MPPG-5b-TPS;Tabela 10;
+R-B03-01;B03;Revalidação após mudança;Qualquer mudança exige análise de impacto e teste de regressão;Por mudança;REC;FDA-GPSV-2002;Sec. 4.7;Aplica-se também a upgrade de Eclipse/ARIA que afete scripts
+R-B03-02;B03;Revisão de segurança antes de mudança em TPS/OIS;Mudanças no planejamento e entrega devem passar por revisão formal de implicações de segurança por pessoal qualificado, com novo treinamento;Por upgrade;REC;SCOT-GLASGOW-2006;Summary §18;Lição: upgrade Varis 7 + normalização manual de UM
+R-B03-03;B03;QA de rotina do TPS;checksums de integridade + recálculo de planos de referência contra a linha de base;anual e após atualização do TPS;PRA;MPPG-5b-TPS;"§9; §9.1";sem medição
+R-B04-01;B04;Transcrição manual TPS→TMS/TCS;"evitar; cautela quando inevitável";contínuo;REC;TG-275;§7;
+R-B05-01;B05;Registro de incidentes de segurança;Registrar todos os incidentes, inclusive os não comunicados, por ≥5 anos;5 anos;OBR;RES-ANPD-15-2024;Regulamento anexo (artigo não verificado);Fonte secundária
+R-B05-02;B05;Retenção do prontuário;"Mínimo de 20 anos do último registro; digitalização com integridade, autenticidade e confidencialidade (ICP-Brasil ou equivalente legal)";20 anos;OBR;LEI-13787-2018;"Art. 6º; Art. 2º";Não está no acervo
+R-B06-01;B06;Suficiência da evidência de validação;Garantir exatidão, confiabilidade, desempenho consistente e capacidade de discernir registros inválidos ou alterados;Antes do uso e após alteração;OBR;RDC-657;Art. 5º §4º;Implica trilha de auditoria e integridade de dados
+R-B06-02;B06;Teste de sistema (todas as classes);"Testar todos os requisitos; rastreabilidade requisito↔teste; critérios de aprovação; reteste após mudança; resolução de problemas";A cada versão;OBR;IEC-62304;5.7.1–5.7.4 (AMD1);Classes A, B, C
+R-B06-03;B06;Conteúdo do registro de teste;"Procedimento e resultado esperado; resultado e anomalias; versão; configuração de HW/SW; ferramentas; data; responsável";A cada versão;OBR;IEC-62304;5.7.5 (AMD1);"Classes A, B, C; mínimo também para software legado (4.4.3)"
+R-B06-04;B06;Classificação de risco por função;"Alto risco de processo = falha pode comprometer a segurança (p.ex., decide aceitabilidade sem revisão humana); não alto = registrar ou gerenciar dados, automatizar cálculo existente, alertas";Por função;REC;FDA-CSA-2026;Sec. V.A.3;Sem força regulatória no Brasil
+R-B06-05;B06;Registro de garantia;"Uso pretendido; resultado da análise de risco; testes; problemas e resolução; conclusão de aceitabilidade; quem e quando; aprovação";Por versão;REC;FDA-CSA-2026;Sec. V.A.6;Preferir logs e trilhas digitais a prints
+R-B06-06;B06;Tipos de teste;"Não roteirizado (cenário, error guessing, exploratório) para menor risco; roteirizado robusto para maior risco";;REC;FDA-CSA-2026;Sec. V.A.4;
+R-B06-07;B06;Cobertura e independência;"Cobertura proporcional a complexidade e risco; revisão independente; evitar autovalidação";;REC;FDA-GPSV-2002;Secs. 4.8, 4.9;
+R-B06-08;B06;Software validado e travado;"Somente software validado e travado ('verrouillé') para implementar protocolos de tratamento; múltiplos controles dosimétricos";;REC;IRSN-EPINAL;Recomendações gerais;Controle: hash/versão travada dos scripts em produção
+R-B06-09;B06;Validação de entradas;"O TPS aceitou formas ambíguas de entrada sem aviso; exigir verificação manual do cálculo e teste formal de novos procedimentos";;REC;IAEA-PANAMA;Lessons and recommendations;Controle: validar faixas e formato de toda entrada (cf. YOO 2.1.3)
+R-B06-10;B06;QA de software in-house;"Revisão de código; aceitação; comissionamento com limites de entrada, repetição e end-to-end; QA de rotina a cada atualização e a cada mudança de sistema relacionado (antes e depois)";Por versão e por upgrade;PRA;YOO-2025-ISQM;Secs. 2.1.1–2.1.4;
+R-B07-01;B07;Exclusões do escopo SaMD;"Bem-estar; lista de não regulados; administrativo/financeiro exclusivo; dados demográficos/epidemiológicos sem finalidade clínica; software embarcado";Antes do uso;OBR;RDC-657;Art. 1º §2º;"Módulos de gestão/indicadores podem cair aqui; scripts de cálculo ou checagem, não"
+R-B07-02;B07;Regra de classificação;Classificar pelas regras da RDC 185/2001 ou posteriores (hoje RDC 751/2022);Antes do uso;OBR;RDC-657;Art. 4º;Ver Regra 11 da RDC 751
+R-B07-03;B07;Classificação de software (Regra 11);"Informação para decisão terapêutica ou diagnóstica = II; III se puder causar deterioração grave ou cirurgia; IV se puder causar morte ou deterioração irreversível; demais SaMD = I; software que comanda ou influencia um dispositivo herda a classe dele";Antes do uso e por mudança;OBR;RDC-751-2022;"Anexo I Regra 11; Art. 8º §§3–4";"Não está no acervo; lido na versão compilada da Anvisa"
+R-B07-04;B07;Dispensa in-house;SaMD desenvolvido e usado só pelo serviço (matriz/filiais), classes I–II, sem interferir em dispositivo regularizável: não passível de regularização;;OBR;RDC-657;Art. 5º caput;Classes III–IV exigem registro
+R-B07-05;B07;Uso restrito do in-house;"Só em pacientes do próprio serviço; para terceiros, mesmo gratuito, exige regularização prévia; proibido comercializar ou doar";;OBR;ANVISA-RDC657-PR;"Q41, Q43, Q63; RDC 657 Art. 5º §1º";
+R-B07-06;B07;Software configurável;Enquadrado pela configuração de maior risco;;OBR;ANVISA-RDC657-PR;Q64;Interpretação oficial (P&R)
+R-B07-07;B07;Software de cálculo ou bloqueio de dose;"É SaMD; classe conforme uso e risco";;OBR;ANVISA-RDC657-PR;Q66, Q68;Relevante para scripts ESAPI
+R-B07-08;B07;Categoria SaMD (apoio);"Matriz significância × situação: Crítica IV/III/II; Séria III/II/I; Não séria II/I/I";;REC;IMDRF-N12-2014;Sec. 7.2;"Não vinculante; prevalece a RDC 751"
+R-B08-01;B08;Registros de validação do in-house;Registros completos de validação, documentação do desenvolvimento interno e histórico de alterações;A cada versão;OBR;RDC-657;Art. 5º §2º;
+R-B08-02;B08;Retenção dos registros de validação;"No mínimo 10 anos após o descarte do SaMD; sem registros, o software é tratado como irregular";10 anos pós-descarte;OBR;RDC-657;Art. 5º §3º;
+R-B08-03;B08;Prazo de adequação do in-house;2 anos a partir da publicação (vencido em 30/03/2024);;OBR;RDC-657;Art. 5º §5º;Já exigível
+R-B08-04;B08;Normas de referência;"IEC 62304:2006, IEC 62366-1:2015 e ISO 14971:2007, ou versões mais atuais/equivalentes; na falta: justificativa + ciclo de vida + relatório de usabilidade + relatório de risco";;OBR;RDC-657;Art. 13, Art. 15;"Formalmente para registro de classes III/IV, mas é o padrão ANVISA; Art. 15 II exige estudo de usabilidade quando falta a 62366"
+R-B08-05;B08;Rastreabilidade de versão;Identificação de produto e versão em lugar de lote ou série;A cada versão;OBR;RDC-657;Art. 8º §2º;
+R-B08-06;B08;Classe de segurança de software;"A: não contribui para perigo ou risco aceitável; B: risco inaceitável com dano não sério; C: morte ou lesão séria; considerando controles de risco externos; grupo assume a classe mais alta";Na concepção e por mudança;OBR;IEC-62304;4.3 a), f) (AMD1:2015);"Obrigatório só para quem declara conformidade; aqui usado como prática"
+R-B08-07;B08;Liberação;"Verificação completa e avaliada antes da liberação; anomalias residuais documentadas; arquivamento";A cada versão;OBR;IEC-62304;5.8.1, 5.8.2, 5.8.7 (AMD1);Classes A, B, C
+R-B08-08;B08;Rigor adicional B/C;"B, C: unidades, verificação de unidade, integração; C: projeto detalhado e segregação";;OBR;IEC-62304;"5.4.1, 5.5.2, 5.6.2, 5.6.5, 5.8.6 (B, C); 5.3.5, 5.4.2, 5.4.3 (C)";Mapa parcial: texto-base não lido
+R-B08-09;B08;Defeitos comuns de programação;Procedimento para identificar categorias de defeito típicas da tecnologia e evidenciar que não contribuem para perigo;No plano de desenvolvimento;OBR;IEC-62304;5.1.12 (AMD1);"Remete à IEC/TR 80002-1 (paga); substituto: catálogo próprio + FDA-CSA error guessing"
+R-B08-10;B08;Plano de gestão de risco;"Escopo; responsabilidades; revisão; critérios de aceitabilidade (inclusive sem probabilidade); método/critério do residual global; verificação dos controles; pós-produção";Por produto e versão;OBR;ISO-14971;4.4 a–g;
+R-B08-11;B08;Política de aceitabilidade;"A alta direção define política de critérios baseada em regulação, normas e estado da arte; revisa o processo em intervalos planejados";Intervalos planejados;OBR;ISO-14971;4.2;A norma não fixa valores numéricos
+R-B08-12;B08;Prioridade de controle de risco;"1) projeto inerentemente seguro; 2) medidas de proteção; 3) informação e treinamento; verificar implementação e eficácia";;OBR;ISO-14971;7.1, 7.2;
+R-B08-13;B08;Risco residual global e relatório;"Avaliar o residual global; informar riscos residuais significativos; relatório de gestão de risco antes da liberação";A cada liberação;OBR;ISO-14971;8, 9;
+R-B08-14;B08;Pós-produção;"Sistema ativo de coleta e revisão: usuários, cadeia, estado da arte; reavaliar riscos";Contínuo;OBR;ISO-14971;10.1–10.4;Integrar com G15 (incidentes do sistema)
+R-B08-15;B08;Documentação mínima in-house;"Relatório do produto; manual; relatórios de QA; notas de versão; controle de versão (nº, arquivo, justificativa, local, data, desenvolvedor); log";Antes do uso clínico;PRA;YOO-2025-ISQM;Sec. 2.2;
+R-B10-01;B10;Identificação e controle de OTS/SOUP;"Título, fabricante, versão e patch; especificação de HW/SW; verificação de versão no início com estado seguro; lista de bugs conhecidos; riscos no arquivo de risco";Na adoção e a cada atualização;REC;FDA-OTS-2023;Sec. III.A–C;Aplicar a Python, bibliotecas, ESAPI e .NET
+R-C01-01;C01;Planejamento com dupla conferência;"Feito ou supervisionado pelo físico especialista; impresso; segunda assinatura";Cada plano;OBR;NN-6.10;Art. 17 IV;
+R-C01-02;C01;Dados pré-tratamento no prontuário;"Identificação, histórico, exames, histopatologia e estadiamento, conduta, gravidez, tratamento combinado, CRM do solicitante; prescrição na ficha; consentimento";Antes do início;OBR;RDC-20-2006;Anexo I 9.1-9.2;Gestante: NN-3.01 Art. 96 III-IV (sinalização)
+R-C01-03;C01;Segundo sistema de cálculo e TPS regularizado na ANVISA;Obrigatórios;Contínuo;OBR;NN-6.10;Art. 15 XI-d,e;Algoritmo validado e parâmetros comissionados: RDC-20 9.7 a-b
+R-C01-04;C01;Verificação independente do cálculo;Até a 3ª aplicação ou 10% da dose total, o que ocorrer primeiro;Cada plano;OBR;RDC-20-2006;Anexo I 9.7 c;
+R-C02-01;C02;Simulação;"Toda teleterapia simulada; imagem documentada com nome, prontuário e data; imobilização igual à do tratamento";Antes do tratamento;OBR;RDC-20-2006;Anexo I 9.5 a-e;
+R-C03-01;C03;Comprimento do nome de estrutura;≤16 caracteres;cada estrutura;REC;TG-263;§8 regra 1;DICOM admite 64
+R-C03-02;C03;Sintaxe do nome;"sem espaços; underscore separa categorias; lateralidade no fim (_L/_R); plural para compostas; CamelCase limitado";cada estrutura;REC;TG-263;§8 regras 2–7, 14;
+R-C03-03;C03;Sufixos e prefixos especiais;"_PRVxx (mm); ~ parcial; ^ qualificador personalizado; prefixo z (ou _) para não-avaliação";cada estrutura;REC;TG-263;§8 regras 10–12, 15;
+R-C04-01;C04;Diferença do cálculo secundário no checklist inicial;<5%;revisão inicial;REC;MPPG-11a;Tabela 8;critério genérico
+R-C04-02;C04;Momento da revisão inicial;"antes da 1ª fração; QMP ou sob supervisão de QMP";cada plano;REC;MPPG-11a;§3.1.5;mesmo no TG-275 §7
+R-C04-03;C04;Itens recomendados da revisão inicial EBRT;"isocentro × simulação/pele; Rx plano = Rx EMR; grade de dose abrange contornos; nome de campo; override; mesa; DEI; dose prévia; CI em SRS/SBRT; secundário <5%";cada plano;REC;MPPG-11a;Tabela 8;
+R-C04-04;C04;Bloqueio de tratamento até aprovação física;forcing function no OIS;cada plano;REC;TG-275;"§5.A; §7";
+R-C04-05;C04;Eficácia da revisão física;"63% de detecção isolada; 7 checagens combinadas 97%; QA de IMRT 1,4%";referência;PRA;FORD-2012-ILS;"Fig. 2; Tabela 3";QCQ-FORD-2012
+R-C05-01;C05;Nível de ação do cálculo secundário IMRT/VMAT, alta dose/baixo gradiente, homogêneo;"campo único 5%; plano composto 3% (diferença local)";cada plano IMRT/VMAT;REC;TG-219;Tabela 9;aceitabilidade baseada no composto (rec. 7)
+R-C05-02;C05;Nível de ação do cálculo secundário IMRT/VMAT, alta dose/baixo gradiente, heterogêneo;"campo único 7%; composto 5%";cada plano IMRT/VMAT;REC;TG-219;Tabela 9;
+R-C05-03;C05;Nível de ação do cálculo secundário IMRT/VMAT, baixa dose/alto gradiente;"homogêneo: 7% campo / 5% composto; heterogêneo: 10% campo / 7% composto";cada plano IMRT/VMAT;REC;TG-219;Tabela 9 (nota a);"baixa dose <5% Dmax; alto gradiente >5%/mm ou desequilíbrio eletrônico"
+R-C05-04;C05;Cálculo secundário 2D/3D (γ);3%/2 mm, ação ≥90% (composto 88–90%);cada plano;REC;TG-219;"Tabela 9 nota; §6.4.2";segue o TG-218
+R-C05-05;C05;Obrigatoriedade do cálculo secundário;"todo plano IMRT/VMAT; ≥1D, preferencialmente 2D/3D";cada plano;REC;TG-219;§8 rec. 2 e 9;não substitui o QA medido em calibração/MLC/setup (rec. 1)
+R-C05-06;C05;Nível de ação do MUV não-IMRT, homogêneo;"2–5% conforme algoritmo, modelo de paciente e complexidade do campo (ex.: 2% similar/mesma geometria/conformação mínima; 5% diferente/cubo/cunha fora do eixo)";cada plano 3D/elétrons;REC;TG-114;Tabela II;diretriz, não meta
+R-C05-07;C05;Nível de ação do MUV não-IMRT com heterogeneidade;"campo grande 2/3/2,5/3,5%; cunha fora do eixo 2/3/3,5/4,5%; campo pequeno/baixa densidade 3/3,5/4/5%";cada plano;REC;TG-114;Tabela III;verificação também deve corrigir heterogeneidade
+R-C05-08;C05;Critério absoluto para poucas UM;1–3 UM ou 1–3 cGy;cada plano;REC;TG-114;§VI.A;
+R-C05-09;C05;Prazo do MUV;"antes da 1ª fração; se impossível, antes da 3ª fração ou de 10% da dose";cada plano;REC;TG-114;§IV.B;emergência: dose máxima sugerida de 3–4 Gy antes da revisão
+R-C06-01;C06;γ, limite de tolerância universal;≥95% com 3%/2 mm, limiar 10%, global, dose absoluta;cada QA de paciente;REC;TG-218;§8.A;"PFF ou TC; PC não"
+R-C06-02;C06;γ, limite de ação universal;≥90% com 3%/2 mm, limiar 10%;cada QA de paciente;REC;TG-218;§8.A;"abaixo: avaliar a distribuição de falhas; não usar se clinicamente relevante"
+R-C06-03;C06;Normalização γ;"global, ponto ≥90% do máximo em região de baixo gradiente; sem modo relativo";cada QA;REC;TG-218;§8.A;local só em comissionamento ou investigação
+R-C06-04;C06;Câmara de ionização no QA de IMRT;tolerância ≤2%, ação ≤3%;cada QA;REC;TG-218;§8.A;
+R-C06-05;C06;Calibração do detector antes da sessão;medida contra dose padrão;cada sessão;REC;TG-218;§8.A;
+R-C06-06;C06;Análise além da taxa de aprovação;"γmax, %γ>1,5, média/mediana, histograma; rastrear a taxa por sítio";cada QA <100%;REC;TG-218;§8.A;
+R-C06-07;C06;Limites locais por controle estatístico de processo;"ΔA=β√(σ²+(x̄−T)²), β=6,0; gráfico I após ~20 medidas sob controle";periódico;REC;TG-218;§7;
+R-C07-01;C07;Critério γ em SRS/SBRT;"tolerâncias mais apertadas; ex.: 2%/1 mm ou 1%/1 mm";cada QA;REC;TG-218;§8.A;valor não fixado
+R-C07-02;C07;Relato de SRT;"D50% do PTV (e do CTV); PTV ≥2 cm³: D2% e D98%; <2 cm³: D35mm³ e DV−35mm³";cada plano SRT;REC;ICRU-91;Sumário executivo / §7.3.1;índices de conformidade do §7.3.2.4 não lidos
+R-C07-03;C07;Constraints de SRS em protocolo institucional;definir protocolo com limites aceitáveis com base em TG-101/QUANTEC/Timmerman/HyTEC;na implantação e revisão do protocolo;REC;ABFM-SRS;Cap. 5;ABFM não traz tabela própria
+R-C07-04;C07;Tolerâncias de fracionamento estereotáxico por sítio;lista definida de estruturas críticas e tolerâncias por protocolo ou literatura revisada;no SOP;REC;MPPG-9a-SRS;seção de planejamento/SOP;"MPPG 9.a inativo; ver MPPG-9b"
+R-C08-01;C08;Imagem de verificação;"Radioterapia conformada: imagem semanal; megavoltagem com fótons: registro radiográfico da localização dos campos no aparelho";Semanal;OBR;RDC-20-2006;Anexo I 9.8 b-c;O IGRT atual excede isto
+R-C09-01;C09;CIED — categoria de risco por dose;"<2 Gy baixo; 2–5 Gy intermediário; >5 Gy considerar adaptação; fótons >10 MV ou prótons = alto risco";quando o caso indicar;REC;TG-203;Tabela VI e seções de manejo;"dependência de marcapasso classes 1–3; FORA do acervo"
+R-C10-01;C10;Convenção de coordenadas;"cartesiano destro; Z para cima em zero; ordem de rotações conforme Cap. 3; φg horário visto do isocentro; θb horário visto do isocentro";comissionamento de interfaces / cada plano;REC;IEC-61217;§3.2–3.5;Anexo B IEC↔DICOM não lido
+R-D01-01;D01;Presença no 1º dia;Físico especialista e radioterapeuta na sala durante os preparativos e a entrega da dose;1º dia de tratamento;OBR;NN-6.10;"Art. 24 VI; Art. 17 V";"Transição encerrada em 2016 (Art. 74); o 'a-confirmar' do catálogo pode ser resolvido"
+R-D02-01;D02;Revisão médica;"Consulta semanal por radioterapeuta; pode ser feita por médico supervisionado";Semanal;OBR;NN-6.10;Art. 17 VIII;RDC-20 9.3 a-b
+R-D03-01;D03;Registro de intercorrências e revisões;Na ficha de tratamento;Por evento;OBR;RDC-20-2006;Anexo I 8.1 a IX, XII;
+R-D03-02;D03;Revisão semanal;"a cada 5 frações ou antes do próximo bloco; <5 frações: ≥1, de preferência no início";semanal/5 frações;REC;MPPG-11a;"§3.1.6; Tabela 10";QA de IMRT aprovado e qualidade do plano na 1ª semanal
+R-D03-03;D03;Revisão de fim de tratamento;"≤5 dias úteis após a última fração; fração única: mesmo dia ou dia útil seguinte";fim de curso;REC;MPPG-11a;"§3.1.7; Tabela 11";
+R-D04-01;D04;Interrupções;"Registro de intercorrências; taxa de interrupção como indicador";Por evento;OBR;RDC-20-2006;"Anexo I 8.1 a IX; 6.11 d";A compensação não é regulada
+R-D04-02;D04;Categorias de paciente e prolongamento máximo;"Cat. 1 (crescimento rápido, radical): não prolongar >2 dias; Cat. 2: idealmente ≤2 dias, compensar se >5; Cat. 3 paliativo: compensar se >7";quando ocorrer interrupção;REC;RCR-INTERR-2019;Seções 2.3, 3.1–3.3;"meta de ≥95 % das Cat. 1/2 sem prolongamento >2 dias; FORA do acervo"
+R-D05-01;D05;Avaliação de fim de tratamento;"Radioterapeuta verifica a aplicação da dose total; efeitos registrados; finalização documentada";Ao término;OBR;RDC-20-2006;"Anexo I 9.4; 5.3.4 e";Seguimento periódico: 9.9
+R-D06-01;D06;Registro diário;"Tempo ou UM por campo, fração e dose acumulada no PTV registrados logo após a aplicação; tratamento registrado diariamente";Cada fração;OBR;RDC-20-2006;Anexo I 9.8 d-e;
+R-E01-01;E01;Auditoria externa independente dos parâmetros físicos;realizada;≤2 anos;OBR;NN-6.10;Art. 36;
+R-E01-02;E01;Todos os testes da Tabela 4 e comunicação R&V/console;"aprovados; plano alternativo de transferência";comissionamento;REC;MPPG-HDR-A;Sec. 7.1;CQ diário após qualquer reparo
+R-E01-03;E01;Teste de ponta a ponta (dry run) por técnica;funcional, exigido;nova técnica ou mudança de processo;REC;MPPG-HDR-A;Tabela 8 e Sec. 8.3.5;
+R-E01-04;E01;Dados do modelo de fonte no TPS;exatamente iguais ao consenso (Report 229/HEBD);comissionamento e anual;REC;MPPG-HDR-A;Tabela 7 e Sec. 8.2.1;GammaMed Plus tem consenso no HEBD VI.B.1(f)
+R-E01-05;E01;Dose de fonte única no TPS vs tabelas consenso;"±2%; >2% documentar e examinar";comissionamento;REC;HEBD-2012;Sec. VI (implementação clínica);
+R-E01-06;E01;Ponto de dose (fonte única / várias fontes);2% (3%) / 3% (5%);comissionamento e anual (fonte única);REC;MPPG-HDR-A;Tabela 7;referência para tolerância do BraquiQA
+R-E01-07;E01;Aceitação e comissionamento de TPS ou de novo modelo de fonte;"cálculo de fonte única para cada tipo; documentar";antes do uso;REC;TG-43U1;Sec. VI.B;'shall'
+R-E01-08;E01;MBDCA (Acuros) vs TG-43 consenso;"≤2.0%; prescrição continua em TG-43";comissionamento nível 1;REC;TG-186;Sec. V.B.1;
+R-E01-09;E01;Exatidão geométrica de imagem;"TC 1 mm no plano e 2 mm nas demais direções; RM 2 mm; US 2 mm ou 2%";comissionamento;REC;MPPG-HDR-A;Tabela 6 e Sec. 8.1.4;
+R-E01-10;E01;Delineamento de pontos/linhas vs DICOM;1 mm (2 mm);comissionamento;REC;MPPG-HDR-A;Tabela 6 e Sec. 8.1.6;registro rígido TRE 2–3 mm
+R-E01-11;E01;Grade de cálculo de dose;0.1–0.3 cm;comissionamento;REC;MPPG-HDR-A;Sec. 8.2.4;
+R-E01-12;E01;Verificação de dose e tempos em pontos representativos;conforme dados publicados;inicial, anual e nova versão de software ou fonte;REC;TG-56;Tabela VIII;
+R-E02-01;E02;Calibração da câmara-poço HDR e do eletrômetro;"Laboratório credenciado na RBC, na faixa de energia; aferição com fonte ±1% trimestral e antes e depois de transporte";A cada 2 anos e após conserto ou suspeita;OBR;NN-6.10;Art. 54 e par. único;
+R-E02-02;E02;Calibração do sistema de referência (câmara poço + eletrômetro);laboratório da RBC, na faixa de energia;2 anos e após conserto ou suspeita;OBR;NN-6.10;Art. 54, par. I e II;
+R-E02-03;E02;Aferição do sistema de referência com fonte própria;variação ≤1%;"no mínimo trimestral; antes e depois de transporte";OBR;NN-6.10;Art. 54, par. III e IV;
+R-E02-04;E02;Requisitos do sistema de referência;"câmara poço com suporte; eletrômetro de 4 dígitos ou resolução 1%";permanente;OBR;NN-6.10;Art. 54, I–III;
+R-E02-05;E02;Calibração ADCL da câmara poço/eletrômetro;"rastreável; mesmo holder na calibração e na clínica; sweet spot determinado";≤2 anos;REC;MPPG-HDR-A;Sec. 7.2;
+R-E02-06;E02;Estabilidade da câmara poço (fonte longa, ex. Cs-137);resposta ±0.5% em 1 ano;mensal;REC;PQRT-CALIB-IR192;Sec. 3.2, itens 1–3;"recalibração a cada 2 anos; mantido na 2ª ed. 2005, Sec. 5"
+R-E02-07;E02;Teste de redundância (dosimetria da fonte);repetir dosimetria;a cada 30 dias;REC;PQRT-CALIB-IR192;Sec. 3.2, item 5;
+R-E02-08;E02;Alternativa de constância sem fonte longa;câmara a 100 cm, campo 15×15 cm², 1 Gy na superfície;mensal;REC;PQRT-CALIB-IR192;Sec. 3.2, item 6;
+R-E02-09;E02;Constância da câmara poço;"±1% (Cs-137); fonte de checagem ±0.5%";≥4 vezes por ano;REC;IAEA-TECDOC-1274;Sec. 5.5 e 7.1.6;recalibração reduzida de 5 para 2 anos no CQ abreviado com Ir-192
+R-E02-10;E02;Câmara poço: recombinação e leitura de fonte longa padrão;"medir recombinação; reading/SK de referência";a cada calibração primária HDR / a cada uso;REC;TG-56;Tabela IV;precisão e linearidade: inicial e anual
+R-E02-11;E02;Constância da câmara poço;dentro de 2%;a cada uso;REC;TG-43U1;Sec. VI.C;cita recomendação AAPM (TG-56/TG-40)
+R-E03-01;E03;Confirmação por padrão terciário;"concordância ≤5% com calibração primária; eletrômetro e detector diferentes";trimestral ou troca de fonte;REC;TG-56;Tabela VI;
+R-E03-02;E03;Exatidão de posicionamento da fonte;1 mm (rec) / 2 mm (exig);troca de fonte e diário;REC;MPPG-HDR-A;Tabela 4 e Sec. 7.1.1;NRC 1 mm
+R-E03-03;E03;Posição da fonte (CQ diário);dentro de 1 mm;diário (dia de tratamento, antes do 1º paciente);REC;TG-56;Tabela V;texto: ±2 mm razoável em relação ao aplicador
+R-E03-04;E03;"Fonte radioativa vs marcador dummy; autorradiografia multicanal";"0.5 mm; espaçamento, canal e comprimento até posição 1 dentro de 1 mm";trimestral ou troca de fonte;REC;TG-56;Tabela VI;
+R-E03-05;E03;Exatidão do temporizador;1 s ou 1%, o maior;troca de fonte e diário;REC;MPPG-HDR-A;Tabela 4 e Sec. 7.1.2;
+R-E03-06;E03;Linearidade do temporizador;"1% (rec) / 3% (exig); ≥3 tempos";após serviço;REC;MPPG-HDR-A;Tabela 4 e Sec. 7.1.3;
+R-E03-07;E03;Atividade decaída no console vs tabela de decaimento;1%;troca de fonte e diário;REC;MPPG-HDR-A;Tabela 4;base para H02
+R-E04-01;E04;Kit de emergência HDR na sala;"Cofre blindado; pinça de ≥15 cm; cortador de cabo indicado pelo fabricante";Contínuo;OBR;NN-6.10;Art. 63 IV;A RDC-20 5.5.9 b2 exige pinça de ≥20 cm (conflito)
+R-E04-02;E04;Recolhimento da fonte HDR;"Automático ao fim da irradiação, abertura da porta, falta de energia ou botão de emergência; recolhimento manual possível; temporizador eletrônico verificado regularmente";Contínuo;OBR;NN-6.10;Art. 63 I-III;
+R-E04-03;E04;Testes de segurança e indicadores de posição na troca de fonte;Executar;A cada troca de fonte;OBR;NN-6.10;Art. 64;
+R-E04-04;E04;Plano de emergência afixado;Símbolo, informação da fonte, responsáveis e telefones na entrada da sala;Contínuo;OBR;NN-6.10;Art. 43;Simulados do plano de emergência pelo SPR: RDC-20 5.3.5 g (sem periodicidade)
+R-E04-05;E04;Recolhimento automático da fonte;fim da irradiação, porta aberta, falha de energia, botão de emergência;permanente (teste diário de segurança);OBR;NN-6.10;"Art. 63, I; Art. 35, III";
+R-E04-06;E04;Equipamento de emergência na sala;"cofre blindado de emergência; pinça ≥15 cm; cortador de cabo";permanente;OBR;NN-6.10;Art. 63, IV;
+R-E04-07;E04;Botões de emergência e intertravamento de porta;"no painel, na porta e em uma parede; porta interrompe irradiação";permanente;OBR;NN-6.10;Art. 42, I–II;
+R-E04-08;E04;Monitor de área;"funcional antes do 1º tratamento; calibração a cada 2 anos";diário / 2 anos;OBR;NN-6.10;Art. 55–56;
+R-E04-09;E04;Simulado e treinamento de emergência;treinamento de IOE para incidente e acidente;anual;OBR;NN-6.10;Art. 15, VIII, b e e;MPPG Sec. 3.9/6.2: simulado inicial e anual (requisito NRC)
+R-E04-10;E04;Presença do físico;na sala no primeiro dia de tratamento;cada paciente;OBR;NN-6.10;Art. 24, VI;MPPG Sec. 3.9 e TG-59: presente em todos os tratamentos
+R-E04-11;E04;Testes funcionais de segurança;intertravamento de porta, recolhimento de emergência, last-person-out, interrupção, indicadores de fonte, A/V, kit de emergência, monitor de área, medidor calibrado, conexão de cateter: funcionais;troca de fonte e diário;REC;MPPG-HDR-A;Tabela 4;bateria em falha de energia: troca de fonte
+R-E04-12;E04;Intertravamentos;aplicador obstruído ou ausente, porta, perda de energia/ar, bateria: funcionais;trimestral;REC;TG-56;Tabela VI;
+R-E04-13;E04;Presença durante tratamento HDR;físico e pessoa apta a retirar aplicador em emergência;cada tratamento;REC;TG-59;Sec. V (procedimentos de emergência);
+R-E05-01;E05;Atividade mínima da fonte HDR;"Uso vedado <74 GBq (2 Ci); instalação vedada <185 GBq (5 Ci)";Contínuo;OBR;RDC-20-2006;Anexo I 5.5.12-5.5.13;Sustenta a regra de troca de fonte
+R-E05-02;E05;Registro de fontes;"Identificação, localização, finalidade, procedimentos, responsáveis, pessoas autorizadas, inspeções; manutenção e movimentações de fontes";A cada movimentação;OBR;NN-3.02;"6.4; 6.7.5";"NN-6.10 Art. 71 X; troca de fonte HDR por empresa habilitada no CREA (Art. 15 XI-k)"
+R-E05-03;E05;Transporte de fonte;Autorizado pelo SPR, conforme norma específica;Por transporte;OBR;NN-3.02;6.4.4;Remete à NN-5.01 (fora do acervo)
+R-E05-04;E05;Registro de movimentação de fontes e comunicação de retirada/perda;"registros arquivados; comunicação imediata à ANSN";cada movimentação;OBR;NN-6.10;"Art. 71, X; Art. 15, III–IV; Art. 44 par. único";não há inventário específico de ATD na norma
+R-E05-05;E05;Teste de contaminação (wipe) no recebimento;em até 3 h do recebimento (EUA);cada recebimento;REC;MPPG-HDR-A;Sec. 3.5;"regra dos EUA (10 CFR 20.1906); fonte de forma especial pode ser isenta"
+R-E06-01;E06;Taxa de kerma no ar de referência da nova fonte HDR;Medida (sem tolerância na NN);Antes do uso de cada nova fonte;OBR;NN-6.10;Art. 35 V;"Roteiro VISA: medir com câmara-poço; usar só o certificado do fabricante pontua 0"
+R-E06-02;E06;Determinação da taxa de kerma no ar de nova fonte HDR;obrigatória antes do uso clínico;cada nova fonte;OBR;NN-6.10;Art. 35, V (Res. CNEN 277/2021);piso legal BR
+R-E06-03;E06;Sk medida (câmara poço) vs certificado;"≤5% (exigido); típico ~3%; >5%: não tratar até resolver";cada troca de fonte;REC;MPPG-HDR-A;Tabela 4 e Sec. 7.2;"3% recomendado, 5% exigido; valor do fabricante ou institucional, usado de forma consistente"
+R-E06-04;E06;Sk medida vs fabricante;">3% investigar; >5% não resolvido: comunicar ao fabricante";cada fonte;REC;TG-56;Sec. III.A e Tabela I (de TG-40);
+R-E06-05;E06;Sk medida vs RAKR do fabricante;tolerância 3.0%;cada fonte;REC;GEC-ESTRO-ACROP-CALIB-2022;recomendações (newsletter ESTRO jan/2023);documento ausente do acervo
+R-E06-06;E06;Repetibilidade das leituras HDR;"leituras dentro de 0.3% da média; duas inserções dentro de 0.5%; ≥5 leituras por inserção; equilíbrio ≥30 min";cada medida;REC;IAEA-TECDOC-1274;Sec. 7.1.3;
+R-E07-01;E07;Segundo sistema de cálculo de dose;"obrigatório; plano impresso com segunda assinatura";cada plano;OBR;NN-6.10;"Art. 15, XI, e; Art. 17, IV";MPPG-HDR-A considera opcional (Sec. 8.3.4)
+R-E07-02;E07;Cálculo independente de tempo (nomogramas, Manchester/Quimby);prediz tempo total com 5–10% de exatidão;cada plano (opcional);REC;MPPG-HDR-A;Sec. 8.3.4;usar só após verificar geometria e parâmetros
+R-E07-03;E07;Revisão pré-tratamento pelo físico;identidade, aplicadores, posições ativas e espaçamento, otimização, razão RAK/dose esperada, cálculo manual × TPS, adequação clínica, registro de Sk/tempo/TRAK;cada plano;REC;TG-59;Tabela XV;
+R-E07-04;E07;Checagens após programar a máquina;"dose/fração = prescrição; Sk plano = afterloader; tubos; aplicador↔canal; tempos impressos = plano";cada fração;REC;TG-59;Tabela XVI;
+R-E07-05;E07;Verificação de tempo total (implantes volumétricos);"tabela de Manchester modificada com exatidão <8%; cateter único (Kubo, 10 mm) ±2%";cada plano;REC;TG-59;Tabela III e Sec. III.B.4;
+R-E07-06;E07;Parâmetros de relato do CTVHR/CTVIR;D98%, D90%, D50%;cada plano/fração;REC;ICRU-89;Sec. 1.2.7 (detalhe na Sec. 8.3.2, não lida);
+R-E07-07;E07;Parâmetros de relato de OAR;D2cm³ e D0.1cm³ (bexiga, reto, sigmoide, intestino);cada plano/fração;REC;ICRU-89;Sec. 1.2.7 e 8.4;
+R-E07-08;E07;Ponto A (definido pelo aplicador) e TRAK;"relato obrigatório no relatório ICRU; prescrição opcional";cada plano;REC;ICRU-89;Sec. 1.2.9–1.2.10;
+R-E07-09;E07;Pontos de referência;bexiga, reto/retovaginal (ICRU 38), pontos vaginais PIBS e PIBS±2 cm, VRL;cada plano;REC;ICRU-89;Sec. 10 (figura da Sec. 8);
+R-E08-01;E08;Comprimento aplicador + tubo de transferência;1 mm (2 mm);"anual; antes do tratamento; comissionamento";REC;MPPG-HDR-A;Tabela 5 e Sec. 7.3.2;combinação sem uso >1 ano: testar antes do uso
+R-E08-02;E08;Biblioteca de aplicador sólido vs aplicador físico;1 mm (2 mm);comissionamento;REC;MPPG-HDR-A;Tabela 5 e Tabela 8;sobreposição TC × modelo ±1 mm (Sec. 8.3.3)
+R-E08-03;E08;Posição da fonte reconstruída/digitalizada;"2 mm (3 mm); dependente do aplicador e modalidade";comissionamento;REC;MPPG-HDR-A;Tabela 8 e Sec. 8.3.3;
+R-E08-04;E08;"Trajeto da fonte e offsets; autorradiografia";linha de base;"comissionamento; conforme necessário (tandem-anel)";REC;MPPG-HDR-A;Tabela 5 e Sec. 7.3.1/7.3.3;"seguir IFU; média de offsets permitida"
+R-E08-05;E08;Inspeção visual de aplicadores e tubos;passa/falha (AU ou AMP);cada dia de uso;REC;MPPG-HDR-A;Tabela 5;
+R-E08-06;E08;Comprimento dosimétrico de aplicadores e tubos;1 mm;anual;REC;CPQR-AFTERLOADER;Teste A7;documento ausente do acervo
+R-E09-01;E09;Tampa plástica dos aplicadores Leipzig/Valencia;verificar sempre (sem tampa: dose na pele 10 vezes / 2.5 vezes maior);cada fração;REC;ACROP-SKIN-BRACHY;seção de física e planejamento;
+R-E09-02;E09;Imagem para moldes e intersticial de pele;"TC com cortes contíguos ≤2 mm; marcadores de fio";cada plano;REC;ACROP-SKIN-BRACHY;seção de planejamento;"profundidade de prescrição 3–4 mm (cones); CTV ≥5 mm; PTV 1–2 mm"
+R-F01-01;F01;Autorização para Construção;"Por sala; validade de 5 anos, renovável por igual período";Projeto e renovação;OBR;NN-6.10;Art. 6-8;RPAS com o conteúdo mínimo do Art. 10
+R-F01-02;F01;Autorização para Operação;"Inspeção de conformidade; considera o inventário de fontes e as técnicas";Inicial;OBR;NN-6.10;Art. 12-13;
+R-F01-03;F01;Renovação da Autorização para Operação;"Pedido com ≥30 dias de antecedência do vencimento; plano de proteção, certificados de calibração e contrato de dosimetria atualizados; FAV";Validade de 1 a 3 anos (Grupo 2B);OBR;GUIA-CNEN-RT;"Item 9; NN-6.02 Art. 23 e Anexo II";
+R-F01-04;F01;Alvará sanitário condicionado à Autorização para Operação;"Licença da VISA local; projeto aprovado pela CNEN antes da VISA; CNES";Inicial e renovação;OBR;RDC-20-2006;"Art. 2; Anexo I 5.1.1-5.1.4, 5.1.8";Também G09
+R-F01-05;F01;Modificações que alterem blindagem ou classificação de áreas;Aprovação prévia da CNEN/ANSN;Por evento;OBR;NN-6.10;"Art. 33; Art. 15 XIV";Novo plano de proteção antes de mudanças cadastrais, de projeto ou de responsabilidade
+R-F02-01;F02;Revisão do plano de proteção radiológica;Elaborado, aplicado e revisado pelo SPR;Na frequência definida no próprio plano e em mudanças;OBR;NN-6.10;"Art. 20 II; Art. 15 XIV";A NN não fixa número de anos
+R-F02-02;F02;Conteúdo mínimo do plano de proteção;28 itens, incluindo CQ dos conjuntos dosimétricos com tolerâncias, programa de GQ com tolerâncias e periodicidades e análise de risco (14.3);Por submissão;OBR;GUIA-CNEN-RT;Anexo I;NN-3.01 Anexo D Art. 2 lista 18 itens
+R-F02-03;F02;Plano de proteção no local de trabalho;"Vigente; parte do PGR; considerado no PCMSO; apresentado à CIPA";Contínuo;OBR;NR-32;32.4.2-32.4.2.1;
+R-F02-04;F02;Plano de radioproteção ANSN (conteúdo);18 itens, incluindo otimização, estimativa de doses, níveis operacionais, acidentes previsíveis e programa de GQ;Por submissão;OBR;NN-3.01;Anexo D Art. 2;Itens VI, XI, XVI e XVII em vigor em 2029 (Art. 151 I-t)
+R-F03-01;F03;Designação da equipe responsável;RT e substituto, SPR e substituto, especialista em física médica;Antes de assumir;OBR;NN-6.10;"Art. 15 V; Art. 16; Art. 18-19";SPR e RT respondem por um único serviço
+R-F03-02;F03;Certificação do SPR;"Validade de 5 anos; renovação com ≥30 meses de atuação; pedido até 1 ano após o vencimento; vedado atuar vencido";A cada 5 anos;OBR;NN-7.01;Art. 17-19;Res. CNEN 340/25 (fora do acervo)
+R-F03-03;F03;Termos junto à VISA;"Termo de Responsabilidade Técnica (RT e substituto) e Termo de Proteção Radiológica (SPR e substituto); designação formal";Na designação;OBR;RDC-20-2006;Anexo I 5.1.5-5.1.7;
+R-F04-01;F04;Troca de dosímetro individual;"Mensal; alteração só com autorização da ANSN; Hp(10) no tórax";Mensal;OBR;NN-3.01;Anexo E Art. 10, 12;NR-32 32.4.5.2: periodicidade mensal
+R-F04-02;F04;Disponibilização das doses ao IOE;Valores individuais a cada IOE;Mensal;OBR;NN-6.10;Art. 20 V;NR-32 32.4.6 f: por escrito, com recibo, também ao médico do PCMSO
+R-F04-03;F04;Limites anuais de dose;"IOE: efetiva de 20 mSv (média de 5 anos, ≤50 mSv em qualquer ano), cristalino de 20 mSv, pele e extremidades de 500 mSv; público: 1 mSv, cristalino de 15 mSv, pele de 50 mSv";Ano civil;OBR;NN-3.01;Art. 52 (tabela);
+R-F04-04;F04;Nível de registro;"≤0,10 mSv por período <1 ano; 1 mSv/ano; 10% do limite para cristalino, pele e extremidades";Por leitura;OBR;NN-3.01;Anexo E Art. 18;
+R-F04-05;F04;Nível de investigação;"Efetiva: 6 mSv/ano ou 1 mSv/mês; pele e extremidades: 150 mSv/ano ou 20 mSv/mês; cristalino: 6 mSv/ano ou 1 mSv/mês";Por leitura;OBR;NN-3.01;Anexo E Art. 19;Roteiro VISA pontua >6 mSv sem investigação e sem comunicação à VISA
+R-F04-06;F04;Dose elevada;>100 mSv efetiva ou acima do limiar determinístico: avaliação médica e aviso à ANSN;Por evento;OBR;NN-3.01;Anexo E Art. 20;GUIA item 12: notificação de dose elevada via OUT
+R-F04-07;F04;Suspeita de exposição acidental;Dosímetros enviados para leitura em ≤24 h;Por evento;OBR;NR-32;32.4.5.3;
+R-F04-08;F04;Guarda dos registros de dose do IOE;Até os 75 anos de idade do IOE e ≥30 anos após o fim do trabalho;Retenção;OBR;NN-3.01;Art. 72;NR-32 32.4.7: 30 anos
+R-F04-09;F04;Idade mínima do IOE;"≥18 anos; estagiários de 16-17 anos sob supervisão, com limites do público";Admissão;OBR;NN-3.01;Art. 58-59;
+R-F05-01;F05;Treinamento em proteção radiológica dos IOE;"Situações normais e de incidente ou acidente; registro de ementa, carga horária, instrutor e frequência";Anual;OBR;NN-6.10;"Art. 15 VIII-b; Art. 20 VI; Art. 71 III";"NR-32 32.4.6 c-d: inicial e continuada; Roteiro VISA: >1 ano é não conforme"
+R-F05-02;F05;Mudança no programa de treinamento;Comunicada à ANSN com justificativa;Por evento;OBR;NN-3.02;6.6.6;
+R-F06-01;F06;Treinamento em física médica dos IOE;Programa conduzido pelo físico especialista;A cada ≤2 anos;OBR;NN-6.10;Art. 24 I-f;GUIA Anexo I item 24: registrar no plano de proteção
+R-F07-01;F07;Instrumentos de proteção radiológica calibrados;"Laboratório acreditado na RBC; recalibração após defeito ou reparo";Bienal (Art. 55);OBR;NN-6.10;"Art. 20 IX; Art. 21; Art. 55";NN-3.02 6.5.4: entidade autorizada pela ANSN
+R-F08-01;F08;Incidente ou acidente em tratamento;"Investigação imediata; dose e distribuição; ações corretivas; relatório à ANSN; aviso por escrito ao paciente e ao médico solicitante";Relatório em 30 dias da identificação;OBR;NN-6.10;Art. 26 e par. único I-V;NN-3.01 Art. 98 define os gatilhos de exposição médica acidental
+R-F08-02;F08;Evento adverso grave;"Notificar a autoridade sanitária do SNVS; relatório à VISA; informar os atingidos";≤24 h;OBR;RDC-20-2006;Anexo I 7.1-7.3;Notificação via NSP: RDC-36 (outro pesquisador)
+R-F08-03;F08;Procedimento de notificação e análise de causa raiz;Estabelecido por escrito pelo titular;Contínuo;OBR;NN-3.01;Art. 38 VI;
+R-F08-04;F08;Notificação de exposição médica não planejada;"Obrigatória (Art. 26 IV NN 6.10); anexar relatório de investigação, comprovação de informe escrito ao paciente e ao médico, registro no livro de ocorrências e ciência dos IOE; assinaturas do titular, SPR, RT e físico";Por evento;OBR;CNEN-GUIA-EXP-NAO-PLANEJADA-2020;Guia v1.0, set/2020;"O guia não indica prazo; os '30 dias' do catálogo devem ser confirmados na NN 6.10"
+R-F09-01;F09;Gestão de rejeitos;"Mínimo praticável; segregação; inventário de rejeitos gerados, armazenados e transferidos; estratégia de gestão";Contínuo;OBR;NN-3.01;Art. 78;"NN-3.02 6.4.5, 6.7.6; GUIA Anexo I item 21 (Ir-192)"
+R-F09-02;F09;Fonte fora de uso;"Recolhimento imediato; retorno ao fabricante ou a depósito da CNEN";Por evento;OBR;RDC-20-2006;"Anexo I 5.3.1 f; 11.1-11.3";NN-6.10 Art. 15 II
+R-F10-01;F10;Exame clínico periódico (PCMSO);Expostos a riscos do PGR: a cada ano ou menos;Anual;OBR;NR-7;7.5.8 II-a;Aptidão para área controlada ou supervisionada registrada no ASO (Anexo V 5.1)
+R-F10-02;F10;Exposição acidental elevada;"Nova avaliação médica; hemograma imediato e 24 h após";Por evento;OBR;NR-7;Anexo V 5.3;Acima do limite anual: nova avaliação e novo ASO (5.2)
+R-F10-03;F10;Guarda do prontuário médico ocupacional de expostos;Até o empregado completar 75 anos e ≥30 anos após o desligamento;Retenção;OBR;NR-7;Anexo V 5.4;"Regra geral: 20 anos (7.6.1.1); NR-32 32.4.8: 30 anos"
+R-F10-04;F10;Relatório analítico do PCMSO;Elaborado pelo médico responsável;Anual;OBR;NR-7;7.6.2;
+R-F10-05;F10;Gestante;Afastamento das atividades com radiação ionizante;Na confirmação;OBR;NR-32;32.4.4;NN-3.01 Art. 53 (adaptar condições) e Art. 11
+R-F11-01;F11;Comunicação de desligamento à ANSN;RT, SPR e físico especialista, cada um;≤30 dias;OBR;NN-6.10;"Art. 17 VII; Art. 20 XIII; Art. 24 V";NN-3.01 Art. 19 XIII remete à norma específica
+R-F12-01;F12;Comunicação imediata à ANSN;"Retirada de uso de fonte e guarda; emergência; dano, perda ou roubo de fonte (também a outras autoridades)";Imediato;OBR;NN-6.10;Art. 15 III-IV;Fonte selada danificada: segregação e comunicação imediata à CNEN e ao fabricante (Art. 48 VIII)
+R-F12-02;F12;Integridade de fontes seladas LDR e beta;Teste de vazamento;Anual ou sob suspeita;OBR;NN-6.10;Art. 48 VII;Só se houver fontes LDR ou beta
+R-F13-01;F13;Monitoração de área (levantamento radiométrico);"Maior campo com colimador a 45° (barreira primária); objeto simulador (secundária); ângulos de gantry mais usados; registro";"Antes da operação; ≤2 anos; após modificações";OBR;NN-6.10;Art. 28-29;"Catálogo marca PRÁTICA; o levantamento é OBR"
+R-F13-02;F13;Projeto de blindagem (RPAS);Cálculos, W, U, T, plantas 1:50/1:100, HVL/TVL, dutos, ventilação, intertravamentos, referências datadas;No projeto e em modificações;OBR;NN-6.10;"Art. 9-10; Art. 30; Art. 32";GUIA 5.1-5.2: escalas de planta
+R-F13-03;F13;Restrição de dose do público por fonte;0,3 mSv/ano (grupo crítico);Projeto;OBR;NN-3.01;Art. 47 §2º;A PQRT-BLINDAGEM usa 0,02 mSv/semana ≈ 1 mSv/ano (histórico)
+R-F13-04;F13;Classificação de área controlada;"Obrigatória se dose prevista ≥6 mSv/ano; salas de tratamento controladas; comando supervisionado";Projeto e revisão periódica;OBR;NN-3.01;Anexo F Art. 2;NN-6.10 Art. 38-39
+R-F13-05;F13;Limites derivados para cálculo de blindagem;"Trabalhador 1 mSv/semana (50 mSv/ano); público 0,02 mSv/semana";Projeto;PRA;PQRT-BLINDAGEM;Seção de limites de dose;HISTÓRICO: o limite ocupacional de 50 mSv/ano foi superado pela NN-3.01 (20 mSv)
+R-G01-01;G01;Programa de GQ de fontes e TPS;"Estabelecido antes da operação; periodicidade no plano de proteção; testes de normas nacionais e recomendações internacionais";Contínuo;OBR;NN-6.10;"Art. 34-35; Art. 15 XI-g";
+R-G01-02;G01;Metodologia de gestão da qualidade;"Compromisso declarado; insumos; RH com educação continuada; procedimentos escritos; rastreabilidade";Contínuo;OBR;RDC-20-2006;"Anexo I 6.1; 6.6; 6.7";
+R-G01-03;G01;Registros de intervenções e CQ de equipamentos;Instalação, manutenção, troca de componentes, calibrações, CQ e ações corretivas;Guarda por toda a vida útil do equipamento;OBR;RDC-20-2006;Anexo I 8.1 b;NN-6.10 Art. 71: com cópia de segurança independente
+R-G01-04;G01;Rotinas escritas e protocolos;Planejamento, irradiação, prevenção de erros, intercorrências, seguimento;Revisão pelo menos a cada 4 anos;OBR;SAES-1399-2019;Art. 16 e;Aplica-se a serviços habilitados no SUS
+R-G01-05;G01;Sistema de gestão integrando radioproteção e cultura de segurança;"Avaliação regular; responsabilidades; aprendizagem com erros";Contínuo (em vigor para instalações radiativas em 07/07/2029);OBR;NN-3.01;"Art. 23-26; Art. 151 I-d";
+R-G02-01;G02;Auditoria externa e independente dos parâmetros físicos e processos;Fontes e TPS;A cada ≤2 anos;OBR;NN-6.10;"Art. 36; Art. 15 XI-h";
+R-G03-01;G03;Avaliação externa da qualidade;Com indicadores mínimos (6.11);A cada 4 anos;OBR;RDC-20-2006;"Anexo I 6.9; 6.10";Autoavaliação de desempenho a cargo do próprio serviço (6.10)
+R-G04-01;G04;Constituição do NSP;"Direção constitui o NSP e nomeia sua composição com autoridade para executar o PSP; pode usar comissões existentes";Contínuo;OBR;RDC-36-2013;Art. 4º e §1º;Exige um profissional responsável com assento nas instâncias deliberativas (Art. 5º II)
+R-G04-02;G04;Atribuições do NSP;13 competências, incluindo gestão de risco, barreiras, análise e divulgação de incidentes, notificação ao SNVS, guarda das notificações e acompanhamento de alertas;Contínuo;OBR;RDC-36-2013;Art. 7º I–XIII;O inciso III cobre não conformidades no uso de equipamentos
+R-G04-03;G04;Plano de Segurança do Paciente;"Elaborado pelo NSP; 17 eixos, incluindo gestão de risco sistemática e segurança no uso de equipamentos";Manter atualizado;OBR;RDC-36-2013;"Art. 7º IV; Art. 8º I e IX";
+R-G04-04;G04;Revisão de procedimentos e estrutura;"Procedimentos revisados a cada 2 anos ou após mudança significativa; política de qualidade revisada anualmente; quadro de pessoal revisado a cada ≤2 anos";2 anos / anual;REC;SAFER-RT-2008;Rec. 2, 4, 30, 31;
+R-G05-01;G05;Notificação de eventos adversos;Mensal, pelo NSP, até o 15º dia útil do mês seguinte ao mês de vigilância, pelas ferramentas da Anvisa (Notivisa);Mensal;OBR;RDC-36-2013;Art. 10 caput;Confirmado no texto
+R-G05-02;G05;Notificação de óbito por evento adverso;Até 72 h a partir do ocorrido;Por evento;OBR;RDC-36-2013;Art. 10 parágrafo único;Confirmado no texto
+R-G05-03;G05;Investigação de óbito e never event;Concluir as 10 etapas de investigação no Notivisa em 60 dias corridos;Por evento;OBR;NT-GVIMS-09-2025;Nota Técnica GVIMS/GGTES/Anvisa 09/2025;"Lida em cópia não oficial; confirmar no portal da Anvisa"
+R-G06-01;G06;Programa de educação continuada;RH capacitado;Contínuo;OBR;RDC-20-2006;Anexo I 6.7 c;GUIA 6.1.3: certificados de treinamento do fabricante no TPS e no sistema de gestão
+R-G07-01;G07;Ficha de tratamento disponível à VISA;Itens I-XII (identificação, prescrição, plano, campos, simulação, parâmetros, intercorrências, revisões médicas);A qualquer momento;OBR;RDC-20-2006;Anexo I 8.1 a;
+R-G07-02;G07;Guarda do prontuário;"Papel: ≥20 anos após o último registro; digital conforme o NGS2: permanente";Retenção;OBR;CFM-1821-2007;Art. 7-8;"Fora do acervo; Lei 13.787/2018 a confirmar"
+R-G07-03;G07;Número e características das fontes no prontuário (LDR);Registrar;Por implante;OBR;NN-6.10;Art. 44 par. único;Pouco aplicável (HDR)
+R-G08-01;G08;Fotografia do paciente;Em todos os documentos do tratamento e no console durante o tratamento;Contínuo;OBR;NN-6.10;Art. 15 XI-f;Também C01
+R-G08-02;G08;Natureza do dado;Dado de saúde = dado pessoal sensível;;OBR;LGPD;Art. 5º II;
+R-G08-03;G08;Bases legais para dado sensível;"Sem consentimento: obrigação legal/regulatória; estudos por órgão de pesquisa (anonimização quando possível); tutela da saúde por profissionais ou serviços de saúde; entre outras";;OBR;LGPD;Art. 11 II a, c, f;A redação da alínea f é da Lei 13.853/2019
+R-G08-04;G08;Segurança desde a concepção;Medidas técnicas e administrativas contra acesso não autorizado e perda, da concepção à execução;Contínuo;OBR;LGPD;"Art. 46 caput e §2º; Art. 49";
+R-G08-05;G08;Registro das operações de tratamento;Controlador e operador mantêm registro das operações;Contínuo;OBR;LGPD;Art. 37;
+R-G08-06;G08;Conteúdo da comunicação de incidente;"Natureza dos dados; titulares; medidas de proteção; riscos; motivos da demora; medidas de mitigação";Por incidente;OBR;LGPD;Art. 48 §1º I–VI;
+R-G08-07;G08;Prazo de comunicação de incidente;"3 dias úteis do conhecimento à ANPD e ao titular; complementação em 20 dias úteis; prazos em dobro para pequeno porte";Por incidente;OBR;RES-ANPD-15-2024;Regulamento anexo (artigos não verificados);"Fonte secundária; confirmar no texto"
+R-G09-01;G09;Licença sanitária;"Serviço licenciado pela VISA local; renovação condicionada à comprovação";Conforme a validade local;OBR;RDC-20-2006;"Art. 2; Anexo I 5.1.3";
+R-G10-01;G10;Manutenção preventiva;"Programa com procedimentos e periodicidade; executor habilitado no CONFEA/CREA com AO da CNEN; contrato formal se terceirizado";Definida no programa;OBR;NN-6.10;Art. 15 VIII-d, XI-i;"RDC-20 5.5.3-5.5.4.1; feixes não usados bloqueados por escrito (5.5.1.1)"
+R-G11-01;G11;Médicos e físicos;"1 radioterapeuta e 1 físico especialista para cada 600 novos pacientes por ano; ≥1 físico em presença integral";Anual (contagem);OBR;NN-6.10;"Art. 15 VI; Art. 23 par. único";Abaixo de 600/ano, o físico pode acumular a função de SPR (Art. 23)
+R-G11-02;G11;Técnicos;≥2 técnicos de radioterapia por turno e por máquina;Contínuo;OBR;NN-6.10;Art. 15 VII;
+R-G11-03;G11;Equipe mínima por horas;"Radioterapeuta e físico: 3 h por paciente novo por ano cada; técnico: 10 h para cada 50 pacientes tratados ou simulados por dia; 1 SPR";Anual;OBR;RDC-20-2006;Anexo I 5.2.3.1;Radioterapeuta presente em ≥2/3 do horário (5.2.4)
+R-G11-04;G11;Contagem de casos novos;"Cada sítio tratado por tele ou braqui conta como caso novo; tabela por faixas de 600";Anual;OBR;GUIA-CNEN-RT;Anexo I (após item 28);Faixa 1801-2400: o guia lista 4 físicos e 3 radioterapeutas (provável erro de digitação)
+R-G11-05;G11;Produção mínima SUS;600 procedimentos principais por ano por equipamento de megavoltagem;Anual;OBR;SAES-1399-2019;Art. 9 III e §1º;Só para serviços habilitados no SUS
+R-G12-01;G12;Indicadores mínimos da avaliação externa;"Tempo médio de tratamento; taxa de abandono; taxa de simulação; taxa de interrupção; adesão a protocolos; desvio da dose absoluta no ponto de referência";A cada ciclo de 4 anos;OBR;RDC-20-2006;Anexo I 6.11 a-f;Fórmulas não definidas na RDC
+R-G13-01;G13;Protocolos validados;"Obrigatórios no comissionamento e no CQ; calibração dos feixes por protocolo nacional ou, na falta, da AIEA";Na adoção;OBR;RDC-20-2006;"Anexo I 6.8; 5.3.7 d";NN-6.10 Art. 24 I-b
+R-G14-01;G14;Escalas FMEA O/S/D;"1–10 cada; O1=0,01% a O10>5%; D1=0,01% a D10>20% não detectados; S1 sem efeito a S10 catastrófico";Na implantação de técnica e na reanálise;REC;TG-100;Sec. 5.B, Tab. II;Escalas aproximadamente logarítmicas
+R-G14-02;G14;RPN;"RPN = O×S×D, faixa de 1 a 1000; sem limiar fixo (o TG-100 pede um TG futuro)";;REC;TG-100;"Sec. 5.B; Sec. 8 (recomendações)";A FMEA supõe ausência de QA/QC deliberado (Sec. 9.B)
+R-G14-03;G14;Priorização;"Ordenar por RPN e por S; marcar os 20–25% maiores RPN e todo modo com S≥8";;REC;TG-100;Secs. 6.B, 6.C, 9.B.2;
+R-G14-04;G14;Hierarquia de controles;Funções forçantes e automação > padronização e checklists > checagem independente > educação;;REC;TG-100;Sec. 6.F, Tab. III (ISMP);Base para escolher o controle de software
+R-G14-05;G14;Avaliação proativa de risco;"Hazard analysis (FMEA) para cada sistema ou processo novo; Joint Commission exige ≥1 processo de alto risco a cada 18 meses";18 meses (referência JC);REC;SNA-2019;Sec. 4.3.1.2;O prazo é da Joint Commission (EUA), não vincula no Brasil
+R-G14-06;G14;Análise de risco antes de mudança;Avaliação de risco antes de técnica nova ou alterada e verificação adicional na coorte inicial;Por mudança;REC;SAFER-RT-2008;Rec. 26;
+R-G15-01;G15;Definições de incidente e evento adverso;"Incidente = poderia ter resultado ou resultou em dano; evento adverso = incidente com dano";;OBR;RDC-36-2013;Art. 3º IV e VII;Usar como campo 'tipo' compatível com o near miss de Ford
+R-G15-02;G15;Escopo da notificação interna;"Incidentes, near misses e condições inseguras; opção anônima";Contínuo;REC;SNA-2019;Sec. 3.4.13;
+R-G15-03;G15;Tempo de investigação de evento sério;Mecanismo de investigação quase em tempo real (p.ex., <24 h);Por evento;REC;SNA-2019;Sec. 3.4.14;
+R-G15-04;G15;Campos obrigatórios do registro de incidente;"Data; tipo (near miss/real); pessoa afetada; nº de frações erradas; descrição; severidade médica; tipo de avaliação da severidade; causas (todas)";Por evento;REC;FORD-2012-ILS;Apêndice E, elementos 1.1, 1.5–1.8, 2.37, 2.38, 2.44;Ação clínica A–D definida localmente
+R-G15-05;G15;Severidade dosimétrica;"9/10 >100%; 7/8 >25–100%; 5/6 >10–25%; 3/4 >5–10%; 1/2 <5% de desvio absoluto em relação à prescrição total para qualquer estrutura";;REC;FORD-2012-ILS;Apêndice C, Sec. 2;"Separada da escala médica (10 níveis); não misturar"
+R-G15-06;G15;Classes do modelo conceitual;10 classes: tipo, desfechos do paciente, características do paciente, características do incidente, fatores contribuintes, desfechos organizacionais, detecção, mitigadores, ações de melhoria, ações de redução de risco;;REC;WHO-ICPS-2009;Cap. 2;
+R-G15-07;G15;RCA após incidente significativo;"Investigação sistemática de causa raiz após nível 1/2; disseminação local e nacional";Por evento;REC;SAFER-RT-2008;Rec. 35;
+R-G15-08;G15;Classificação de severidade;"5 níveis: 1 reportável; 2 moderado; 3 menor; 4 good catch; 5 outra não conformidade";Por evento;PRA;UK-RT-TAXONOMIA;Tabela 2;Compatível com RTE-50 para benchmark
+R-G15-09;G15;Codificação mínima por evento;"Nível + subcódigo primário + subcódigos adicionais + método de detecção + fatores contribuintes + modalidade; texto com sítio, prescrição, dose pretendida×entregue e erro geográfico";Por evento;PRA;UK-RT-TAXONOMIA;Submission procedure, pp. 13–14;
+R-G16-01;G16;Revisão por pares em física;"≥1 a cada 36 meses; revisor QMP; relatório ≤1 mês; plano de seguimento ≤1 mês";36 meses;REC;MPPG-PEER;"§3.2; §7; §8";avaliar se o QA de planos tem base em análise de risco (§4.2)
+R-G17-01;G17;Itens de prioridade de checagem;itens ++ (RPN 105–261): alvos/OAR, prescrição, isocentro, parâmetros R&V, segundo cálculo, fusão, dose prévia;revisão inicial;REC;TG-275;Tabela S1.A (TP-Q1a…Q10);
+R-G17-02;G17;Projeto de checklist;"sequência do processo; críticos primeiro; tarefas automatizadas diferenciadas com checagem de conclusão; registrar valores; revisão periódica; fonte 12 pt (mín. 10)";criação/revisão;REC;MPPG-CHECKLIST;§4.3.1–4.3.3;
+R-G17-03;G17;Desenho de checklist e time-out;Eficazes se focados na tarefa, com crença do usuário e forçados ('hard stop');;REC;SNA-2019;Sec. 3.4.5;
+R-G17-04;G17;Checagem semanal do prontuário;"Pelo menos a cada 5 frações; diária quando há poucas frações";Semanal;REC;SNA-2019;Tabela de QA process checks (Sec. 4);
+R-G17-05;G17;Exportação do plano TPS→TMS;Verificação pelo físico pelo menos 1 h antes do tratamento;Por plano;REC;SNA-2019;Tabela de QA process checks;
+R-G17-06;G17;Transferência manual de dados;"Eliminar; se impossível, plano de ação e verificação adicional";;REC;SAFER-RT-2008;Rec. 13;"Lição de Glasgow; justifica automação via ESAPI"
+R-G18-01;G18;Pseudonimização;Perda de associação ao titular, exceto por informação adicional mantida separadamente pelo controlador em ambiente controlado e seguro;A cada extração;OBR;LGPD;Art. 13 §4º;"Dado pseudonimizado continua pessoal; anonimizado não (Art. 12)"
+R-G18-02;G18;Uso em pesquisa;"Tratamento dentro do órgão, ambiente seguro, anonimização ou pseudonimização sempre que possível; resultados sem dado pessoal; proibida transferência a terceiro";;OBR;LGPD;Art. 13 caput, §§1º–2º;
+R-H01-01;H01;QA do software de cálculo secundário;"recálculo dos benchmarks; concordância ≤5% com o TPS";comissionamento, anual e após atualização do TPS ou do software;REC;TG-219;"§7; §8 rec. 6";benchmarks da Tab. 8 e TG-119
+R-H01-02;H01;Raio de média do ponto de cálculo;3 mm;cada cálculo;REC;TG-219;§6.4.3;não mover o ponto rotineiramente para passar
+R-H02-01;H02;Decaimento da fonte no TPS;1% (verificação independente);comissionamento e troca de fonte;REC;MPPG-HDR-A;Tabela 7 e Sec. 8.2.2;
+R-H02-02;H02;Data e hora do console;1 h;troca de fonte, diário e mudança de horário de verão;REC;MPPG-HDR-A;Tabela 4;
+R-H02-03;H02;Atualizar Sk no TPS, no console e no inventário;atualizado;trimestral ou troca de fonte;REC;TG-56;Tabela VI;revisão do relatório por segundo físico
+R-H03-01;H03;Uso de EQD2/BED na soma;calcular a dose biologicamente equivalente na soma, especialmente com dose por fração diferente;em cada caso de reirradiação;REC;ESTRO-REIRR-2022;Tabela, afirmação 16;82 %
+R-H03-02;H03;α/β na reirradiação;usar os α/β da irradiação primária;em cada caso de reirradiação;REC;ESTRO-REIRR-2022;"Tabela, afirmação 10; apêndice p. 48";82 %
+R-H03-03;H03;Fórmula EQD2 e dose física disponível;"EQD2 = D(d+α/β)/(2+α/β); exemplo: 27,5 Gy prévios, reparo 50 % → 28,98 Gy físicos disponíveis em 10 fx (limite 50 Gy, α/β 3)";quando necessário;PRA;REIRR-SPC-IMPL;"Métodos; Tabela 1";"α/β padrão de 3 Gy para efeitos tardios; cautela com LQ >≈6 Gy/fx"
+R-H03-04;H03;Parâmetros LQ para EQD2 em braqui de colo;"α/β 10 Gy (tumor), 3 Gy (OAR); T½ de reparo 1.5 h; ajuste ~5 Gy por semana em relação a 7 semanas; OTT ≤50 dias";cada plano;PRA;EMBRACE-II-PROTOCOL;Sec. 2.5 e 3.3.2;
+R-H04-01;H04;Repopulação;"K = 0,9 Gy/dia; Tdelay = 28 d (cabeça e pescoço); perda de 1–1,4 % de controle local por dia";quando houver interrupção relevante;REC;RCR-INTERR-2019;"Seções 2.4, 5.4; Apêndice B";α/β 10 (tumor), 3 (tardio), 2 (medula)
+R-H04-02;H04;Métodos de compensação;"2ª máquina > fim de semana > BID (≥6 h; não se d >2,2 Gy) > esquema BED > frações extras; 6 métodos no Apêndice B";quando houver interrupção relevante;REC;RCR-INTERR-2019;"Seções 4.1, 5.2; Apêndice B";
+R-H05-01;H05;Cobertura potencial do plan check automatizado;"29% (base local) e 64% (SAFRON) dos eventos detectáveis; detecção real 38%";referência;PRA;GOPAN-2016;"Tabela II; Tabela IV";isocentro, DRR e plano × Rx são as mais eficazes
+R-H06-01;H06;α/β da medula;0,87 Gy;quando necessário;REC;QUANTEC;Kirkpatrick 2010;diverge de 2 Gy (RCR) e 3 Gy (Price)
+R-H06-02;H06;α/β do cérebro na conversão SRS/fSRS;2 Gy (SFED);quando necessário;REC;HYTEC-BRAIN;Seção 6, Tabela 2;V20 cm³ (1 fx) ≈ V23 (3 fx) ≈ V29 (5 fx)
+R-I01-01;I01;Tronco — cabeça e pescoço convencional;D0.03cc ≤50 Gy (P), <52 Gy (S);em cada plano;REC;ASTRO-CONSTR-2025;Tabela 6;
+R-I01-02;I01;Medula — cabeça e pescoço convencional;D0.03cc ≤45 Gy* (P), ≤50 Gy (S);em cada plano;REC;ASTRO-CONSTR-2025;Tabela 6;*consenso do painel
+R-I01-03;I01;Cóclea convencional;D0.03cc ≤35 Gy;em cada plano;REC;ASTRO-CONSTR-2025;Tabela 6;"orofaringe; QUANTEC: média ≤45 Gy (<30 % de perda auditiva)"
+R-I01-04;I01;Parótida contralateral (pescoço bilateral);média ≤26 Gy;em cada plano;REC;ASTRO-CONSTR-2025;Tabela 6;QUANTEC: <25 Gy bilateral/<20 Gy unilateral (<20 % de perda de função)
+R-I01-05;I01;Medula convencional;"Dmax 50 Gy → 0,2 %; 60 Gy → 6 %; 69 Gy → 50 % de mielopatia";em cada plano;REC;QUANTEC;Tabela 1 (Marks 2010);seção transversal completa
+R-I01-06;I01;Tronco convencional;"Dmax <54 Gy; D1–10cc ≤59 Gy; ponto <64 Gy (<5 %)";em cada plano;REC;QUANTEC;Tabela 1;neuropatia/necrose permanente
+R-I01-07;I01;Nervo óptico/quiasma convencional;"Dmax <55 Gy (<3 %); 55–60 Gy (3–7 %)";em cada plano;REC;QUANTEC;Tabela 1;neuropatia óptica
+R-I01-08;I01;Pulmões — pulmão convencional;"V20 ≤33 %* (P)/≤37 % (S); média ≤18*/≤22 Gy; V5 ≤60/70 %";em cada plano;REC;ASTRO-CONSTR-2025;Tabela 11;QUANTEC: V20 ≤30 % (<20 % de pneumonite)
+R-I01-09;I01;Coração — pulmão convencional;V45 ≤35 %/≤40 %;em cada plano;REC;ASTRO-CONSTR-2025;Tabela 11;"QUANTEC: V25 <10 % (<1 % de mortalidade); pericárdio média <26 (<15 %)"
+R-I01-10;I01;Esôfago — pulmão convencional;"média ≤30,6*/≤34 Gy; V60 ≤15,3 %*/≤17 %; D0.03cc ≤105 %/≤74 Gy";em cada plano;REC;ASTRO-CONSTR-2025;Tabela 11;QUANTEC: média <34 Gy (5–20 % de G≥3 agudo)
+R-I01-11;I01;Reto — próstata convencional;"V75 ≤10 %/≤15 %; V70 ≤15 %/≤25 %; V40 ≤40 %*/≤65 %";em cada plano;REC;ASTRO-CONSTR-2025;Tabela 19;QUANTEC: V50<50 %, V60<35 %, V65<25 %, V70<20 %, V75<15 %
+R-I01-12;I01;Bexiga — próstata convencional;"V75 ≤25 %; V70 ≤35 %; V50 ≤50 %";em cada plano;REC;ASTRO-CONSTR-2025;Tabela 19;QUANTEC/RTOG 0415: V65≤50, V70≤35, V75≤25, V80≤15 %
+R-I01-13;I01;Fígado convencional;"média (fígado−GTV) <30–32 Gy (<5 % de RILD clássico); CP-A/HCC <28 Gy";em cada plano;REC;QUANTEC;Tabela 1;
+R-I01-14;I01;Rins convencional;"média bilateral <15–18 Gy (<5 %); V12<55 %, V20<32 %, V23<30 %, V28<20 %";em cada plano;REC;QUANTEC;Tabela 1;
+R-I01-15;I01;Intestino delgado convencional;V15 <120 cc (alças) ou V45 <195 cc (cavidade peritoneal);em cada plano;REC;QUANTEC;Tabela 1;<10 % G≥3 agudo
+R-I01-16;I01;Bowel bag — reto convencional;"D0.03cc ≤56*/≤60 Gy; D100cc ≤45*; D180cc ≤35*";em cada plano;REC;ASTRO-CONSTR-2025;Tabela 24;
+R-I01-17;I01;Coração — mama convencional com linfonodos;"esquerda média ≤4/≤5 Gy; direita ≤2*/≤3* Gy";em cada plano;REC;ASTRO-CONSTR-2025;Tabela 1;
+R-I01-18;I01;Constraints convencionais (30 fx) por órgão serial e paralelo;"ex.: medula <5 cc 47,4/máx. 52,8; tronco <5 cc 52/máx. 60; pulmão V20 <37 %";em cada plano;REC;TIMMERMAN-2021;Tabela 11;com instruções de contorno
+R-I01-19;I01;Metas EMBRACE II (EQD2, incluindo EBRT de 45 Gy/25 fr);"HR-CTV D90 >90 e <95 Gy; HR-CTV D98 >75; GTVres D98 >95; IR-CTV D98 >60; ponto A >65; bexiga <80; reto <65; ponto retovaginal <65; sigmoide/intestino <70 Gy";cada plano;PRA;EMBRACE-II-PROTOCOL;Sec. 2.5 e 3.3 (tabela via Chimeno 2021);documento ausente do acervo
+R-I01-20;I01;Limites para dose prescrita EMBRACE II (EQD2);"HR-CTV D90 ≥85; GTVres D98 >90; bexiga <90; reto <75; ponto retovaginal <75; sigmoide/intestino <75 Gy";cada plano;PRA;EMBRACE-II-PROTOCOL;tabela de metas/limites (via Chimeno 2021);conferir na tabela oficial do protocolo
+R-I02-01;I02;Medula/canal — Dmax (ponto) 1 fx;≤12,4 Gy (P), ≤14 Gy (S);em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 12;"D0.035cc; pulmão primário"
+R-I02-02;I02;Medula/canal — Dmax 3 fx;≤20,3 Gy;em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 13;D0.035cc
+R-I02-03;I02;Medula/canal — Dmax 5 fx;≤28 Gy;em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 15;"D0.035cc; pulmão 5 fx"
+R-I02-04;I02;Medula — volume e ponto 1/3/5 fx;"<0,35 cc: 10/18/23 Gy; ponto 14/21,9/30 Gy";em cada plano estereotáxico;REC;TG-101;Tabela III;"mielite grau ≥3; ponto ≤0,035 cc"
+R-I02-05;I02;Medula — volume e ponto 1/3/5 fx;"<0,35 cc: 10/15,9/22 Gy; ponto 14/22,5/28 Gy";em cada plano estereotáxico;REC;TIMMERMAN-2021;Tabelas 2, 4, 6;mielite grau ≥3
+R-I02-06;I02;Tronco cerebral — volume e ponto 1/3/5 fx;"<0,5 cc: 10/18/23 Gy; ponto 15/23,1/31 Gy";em cada plano estereotáxico;REC;TG-101;Tabela III;neuropatia craniana grau ≥3
+R-I02-07;I02;Via óptica — volume e ponto 1/3/5 fx;"<0,2 cc: 8/15,3/23 Gy; ponto 10/17,4/25 Gy";em cada plano estereotáxico;REC;TG-101;Tabela III;neurite grau ≥3
+R-I02-08;I02;Cóclea — ponto 1/3/5 fx;"9/17,1/25 Gy (TG-101); 9/14,4/22 Gy (Timmerman)";em cada plano estereotáxico;REC;TG-101;Tabela III;"perda auditiva; ver conflito com TIMMERMAN-2021 Tab. 4/6"
+R-I02-09;I02;Esôfago 3 fx;"D0.035cc ≤27 Gy; D5cc ≤17,7 Gy";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 13;pulmão 3 fx
+R-I02-10;I02;Esôfago 5 fx;"D0.035cc ≤38 Gy ou ≤105 %; D5cc ≤19,5 Gy";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 15;
+R-I02-11;I02;Coração 3 fx;"D0.035cc ≤30 Gy; D15cc ≤24 Gy";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 13;pericardite (TG-101 Tab. III: mesmos valores)
+R-I02-12;I02;Coração 5 fx;"D0.035cc ≤38 Gy; D15cc ≤32 Gy";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 15;
+R-I02-13;I02;Pulmões SBRT 3 fx;"V20 ≤10 % (P)/≤15 % (S); CV11,6Gy ≥1500 cc; CV12,4Gy ≥1000 cc; média ≤8 Gy";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 13;CV = volume complementar
+R-I02-14;I02;Pulmões SBRT 5 fx;"V20 ≤10 %/≤15 %; CV12,5Gy ≥1500 cc; CV13,5Gy ≥1000 cc; média ≤8 Gy";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 15;
+R-I02-15;I02;Fígado SBRT 5 fx (Child-Pugh A);"CV15Gy ≥700 cc; média ≤13 (P)/≤15 Gy (S)";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 9;"CP-B: CV10Gy ≥500 cc, média ≤8/≤10; não cirrótico: CV21Gy ≥700 cc, média ≤15/≤18"
+R-I02-16;I02;Fígado SBRT 3 fx (não cirrótico);"CV19Gy ≥700 cc; média ≤12/≤15 Gy";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 8;CP-A: média ≤10/≤12
+R-I02-17;I02;Rins SBRT hepática 5 fx;"média ≤10 Gy; se um rim tiver média >10 Gy, o outro/único deve ter V10 <10 %";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 9;
+R-I02-18;I02;Reto — próstata 5 fx;"V36 <1 cc (P)/<3 cc (S); V29 <20 %; V18,1 <50 %";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 23;
+R-I02-19;I02;Bexiga — próstata 5 fx;"V37 <5 cc (P)/<20 cc (S); V18,1 <40 %";em cada plano estereotáxico;REC;ASTRO-CONSTR-2025;Tabela 23;uretra V42 <50 %
+R-I02-20;I02;Reto 1/3/5 fx;"<20 cc: 14,3/24/25 Gy; ponto 18,4/28,2/38 Gy";em cada plano estereotáxico;REC;TG-101;Tabela III;proctite/fístula
+R-I02-21;I02;Cérebro SRS 1 fx;"V12 ≤5–10 cm³; V12 10 cm³ ≈15 % de necrose sintomática (metástase)";em cada plano estereotáxico;REC;HYTEC-BRAIN;Seção 8;V14 de 5/10/20 cm³ → 0,4/0,8/3,4 % de necrose G3
+R-I02-22;I02;Cérebro SRS 1 fx;V12 <5–10 cc (<20 % de necrose sintomática);em cada plano estereotáxico;REC;QUANTEC;Tabela 1 (Marks 2010);aumento rápido acima de 5–10 cc
+R-I02-23;I02;Medula SBRT (HyTEC) 1–5 fx;Dmax 12,4–14 / 17,0 / 20,3 / 23,0 / 25,3 Gy;em cada plano estereotáxico;REC;HYTEC-SPINALCORD;Recomendações (Sahgal 2021);"1–5 % de mielopatia; saco tecal como PRV; FORA do acervo"
+R-I02-24;I02;Via óptica SRS 1/3/5 fx;Dmax <10/<20/<25 Gy;em cada plano estereotáxico;REC;HYTEC-OPTIC;Resumo (Milano 2021);"<1 % de neuropatia; FORA do acervo"
+R-I03-01;I03;Definição de reirradiação tipo 1/2;"tipo 1 = sobreposição de volume irradiado; tipo 2 = sem sobreposição, mas dose cumulativa preocupa";em cada caso de reirradiação;REC;ESTRO-REIRR-2022;Definição e Figura 1;sem intervalo mínimo
+R-I03-02;I03;Soma de dose 3D;obrigatória se a dose prévia estiver disponível eletronicamente;em cada caso de reirradiação;REC;ESTRO-REIRR-2022;Tabela, afirmação 15;88 % de concordância
+R-I03-03;I03;Fatores de recuperação;sem recomendação confiável, exceto SNC e medula;em cada caso de reirradiação;REC;ESTRO-REIRR-2022;Tabela, afirmação 20;82 %
+R-I03-04;I03;Critério de segurança da soma;se os constraints estabelecidos não forem excedidos na soma, a reirradiação pode ser considerada segura;em cada caso de reirradiação;REC;ESTRO-REIRR-2022;Tabela, afirmação 19;88 %
+R-I03-05;I03;Medula — recuperação após curso convencional;tolerância ≥25 % maior 6 meses após o 1º curso;em cada caso de reirradiação;REC;QUANTEC;Kirkpatrick 2010, Recommended dose-volume limits;animais: 76/85/101 % de recuperação em 1/2/3 anos
+R-I03-06;I03;Via óptica — EQD2 cumulativo (reirradiação de glioma);75–80 Gy (α/β 2);em cada caso de reirradiação;REC;RECOG-CONSTR;Tabela 5;"<5 % de toxicidade grave; candidato, não definitivo"
+R-I03-07;I03;Tronco — EQD2 cumulativo (reirradiação de glioma);85–100 Gy (α/β 2);em cada caso de reirradiação;REC;RECOG-CONSTR;Tabela 5;<5 % de toxicidade grave
+R-I03-08;I03;Cérebro — EQD2 cumulativo (reirradiação de glioma);100–110 Gy (α/β 2);em cada caso de reirradiação;REC;RECOG-CONSTR;Tabela 5;"até 10 % de radionecrose; faltam constraints de volume"
+R-I03-09;I03;Medula — reirradiação com SBRT;"cumulativo no saco tecal ≤70 Gy EQD2; SBRT ≤25 Gy EQD2; razão ≤0,5; intervalo ≥5 meses";em cada caso de reirradiação;REC;HYTEC-SPINALCORD;Recomendações (Sahgal 2021);FORA do acervo
+R-I03-10;I03;Fator de reparo por intervalo;"0 % (<6 m); 25 % (6 m–1 a); 50 % (>1 a); teto 50 %";em cada caso de reirradiação;PRA;REIRR-SPC-IMPL;Tabela 2;"institucional (Fox Chase), derivado da medula; não aplicar em bexiga/rim/coração"
+R-I03-11;I03;Medula — BED cumulativo na reirradiação;"<120 Gy2 sem mielopatia (intervalo >6 m e cada curso ≤98 Gy2); 135,5 Gy2 risco pequeno; 130–150 Gy2 só em situação especial";em cada caso de reirradiação;PRA;REIRR-SPC-IMPL;Discussão (cita Nieder 2005/2006);α/β 2 Gy
+R-I03-12;I03;Métrica e fluxo do consult de reirradiação;"quase-máximo D0.1cc/D0.03cc; fluxo em 5 fases; EQD2 por voxel via ESAPI";em cada caso de reirradiação;PRA;REIRR-SPC;"Materials and Methods; Apêndice E2 (não disponível)";Eclipse/ARIA
+R-I04-01;I04;Relato de nível 2 do alvo;D98% (quase-mínimo), D2% (quase-máximo), D50% (mediana);cada plano;REC;ICRU-83;§3.2–3.3;
+R-I04-02;I04;Relato de OAR;Dmean, D2% e um VD clinicamente relevante;cada plano;REC;ICRU-83;§3.4;
+R-I04-03;I04;Índice de homogeneidade;"HI=(D2%−D98%)/D50%; 0 = homogêneo";cada plano;PRA;ICRU-83;§3.7.1 eq. 3.3;relato de nível 3
+R-I05-01;I05;Métricas de PTV por regime (D95/D99/Dmax);"ex.: SBRT pulmão D95 100 % (P), ≥99 % (S); D99 ≥90/≥85 %";em cada plano;REC;ASTRO-CONSTR-2025;Tabelas 12–18;próstata 5 fx D0.03cc ≤107 % (linac)
+R-I06-01;I06;Nomes de alvo e métricas DVH;"alvo: tipo+classificador+_dose em cGy ou High/MidNN/Low; DVH: V20Gy[%], D95%[%], D0.1cc[Gy]";cada plano;REC;TG-263;§8 (alvos) e §9 (DVH);

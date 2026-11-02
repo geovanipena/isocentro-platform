@@ -1,0 +1,651 @@
+[
+ {
+  "codigo": "ANVISA-RDC657-PR",
+  "situacao": "a-confirmar",
+  "descricao": "v1 de 01/09/2022; cita a RDC 185 revogada; não localizei versão posterior",
+  "url": "https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2022/software-como-dispositivo-medico-perguntas-e-respostas",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "AULA-NN-3.01",
+  "situacao": "a-confirmar",
+  "descricao": "Apresentação própria (2022), provavelmente baseada na NN-3.01 de 2005 (superada). Não lida.",
+  "url": "",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "BALLESTER-2001",
+  "situacao": "errata",
+  "descricao": "Med Phys 28:2586–2591 (2001), com erratum em Med Phys 31:2372 (2004). O consenso HEBD (Λ = 1.117) deve prevalecer no TPS.",
+  "url": "https://physics.carleton.ca/clrp/node/162",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "DICOM-RT",
+  "situacao": "atualizado",
+  "descricao": "Edição corrente 2026d; o extrato do acervo é a versão web de abril/2026",
+  "url": "https://dicom.nema.org/medical/dicom/current/output/html/part01.html",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "FDA-GPSV-2002",
+  "situacao": "atualizado",
+  "descricao": "Seção 6 substituída pela CSA; demais seções vigentes",
+  "url": "https://www.fda.gov/media/73141/download",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "GUIA-CNEN-RT",
+  "situacao": "a-confirmar",
+  "descricao": "v1.7 (out/2021) do acervo. O gov.br/cnen ainda publica uma versão de 14/05/2020; não achei versão ANSN. Cita NE 3.02, NN-7.01 (2020) e links antigo.cnen.gov.br (formulários SCRA/FAV podem ter mudado).",
+  "url": "https://appasp2019.cnen.gov.br/seguranca/orientacoes/images/cnen/documentos/drs/orientacoes/Guia-para-Licenciamento-e-Controle-de-Instalacoes-de-Radioterapia-v1_7.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ICRP-86",
+  "situacao": "a-confirmar",
+  "descricao": "Não lido (download falhou); complementado pela ICRP 112 (2009)",
+  "url": "https://www.icrp.org/publication.asp?id=ICRP%20Publication%2086",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "IEC-61217",
+  "situacao": "a-confirmar",
+  "descricao": "Ed. 2.0 2011 listada como corrente por agregador; sem emenda localizada; não verificado na IEC Webstore",
+  "url": "https://standards.globalspec.com/std/1412048/iec-61217",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "IEC-80001-1",
+  "situacao": "atualizado",
+  "descricao": "Ed. 2 2021 em 90.92 (04/02/2026); será substituída pela ISO/CD 81001-4-1",
+  "url": "https://www.iso.org/standard/72026.html",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ISO-TR-24971",
+  "situacao": "atualizado",
+  "descricao": "Ed. 2020 em 90.92 'a ser revisada' (06/07/2026); será substituída pela ISO/AWI TS 24971-1",
+  "url": "https://www.iso.org/standard/74437.html",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "LGPD",
+  "situacao": "atualizado",
+  "descricao": "Compilada com redação da MP 1.317/2025 convertida na Lei 15.352/2026 (ANPD vira Agência Nacional); arts. 11, 13 e 48 sem mudança de mérito no texto lido",
+  "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-9a-SRS",
+  "situacao": "substituido",
+  "descricao": "Marcado como INACTIVE pela AAPM; MPPG 9.b SRS-SBRT publicado em 2025 (JACMP). O MPPG-9b-SRS (2025) entrou no acervo (pasta 04) em 19/10/2026 e o 9a foi movido para _superadas.",
+  "url": "https://www.aapm.org/pubs/MPPG/detail.asp?docid=261",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "NJEH-2012",
+  "situacao": "a-confirmar",
+  "descricao": "Artigo sobre Pinnacle/iPlan; não lido a fundo; baixa pertinência para Eclipse.",
+  "url": "https://drive.google.com/file/d/1mCOeZHxoMlpVILwMUaH69eSYIWtZYSUz/view",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "NN-3.01",
+  "situacao": "atualizado",
+  "descricao": "Res. CNEN 344/25 (DOU 07/07/2025) substituiu a Res. 323/24 e revogou as Posições Regulatórias 3.01/001-012. Vários dispositivos para instalações radiativas entram em vigor em 07/07/2029 (Art. 151). O acervo já tem esta versão.",
+  "url": "https://www.gov.br/ansn/pt-br/regulacao/regulacao/normas-regulatorias/normas-revogadas-2026.pdf/@@display-file/file",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "NN-3.02",
+  "situacao": "atualizado",
+  "descricao": "Res. CNEN 10/88, alterada pela Res. 231/18 e pela Res. ANSN 19/26 (DOU 17/06/2026), que mudou só o campo de aplicação (1.2) e a definição 17. O conteúdo técnico é de 1988. O acervo já tem esta versão.",
+  "url": "https://www.gov.br/ansn/pt-br/regulacao/regulacao/normas-regulatorias/normas-revogadas-2026.pdf/@@display-file/file",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "NN-7.01",
+  "situacao": "vigente",
+  "descricao": "Texto da Res. CNEN 340/25 no acervo desde 19/10/2026 (a Res. 194/16 foi revogada). A NN-6.10 Art. 18 deve ser lida com esta 7.01.",
+  "url": "https://www.gov.br/cnen/pt-br/acesso-rapido/normas/grupo-7",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "NR-7",
+  "situacao": "a-confirmar",
+  "descricao": "Texto do acervo com redação da Portaria SEPRT 6.734/2020, última alteração Portaria MTP 567/2022. Não confirmei alteração posterior no gov.br/trabalho.",
+  "url": "https://www.gov.br/trabalho-e-emprego/pt-br",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "PPR-CLINICA",
+  "situacao": "a-confirmar",
+  "descricao": "Modelo interno do CEL (mar/2024); não lido nesta pesquisa. Revisar contra NN-3.01/2025 Anexo D e GUIA Anexo I.",
+  "url": "",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "PQRT-BLINDAGEM",
+  "situacao": "substituido",
+  "descricao": "INCA/PQRT 2000. Limites de dose (50 mSv/ano) e base NCRP-49/51 superados pela NN-3.01 vigente e pelo NCRP-151 (2005) e SRS-47 (2006). Manter só como histórico ou didático.",
+  "url": "",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "PQRT-CALIB-IR192",
+  "situacao": "substituido",
+  "descricao": "Cópia do Drive é a edição INCA 2000/2001. Existe a 2ª edição revisada (INCA 2005), com os mesmos números de CQ e acréscimo da distância ≥1 m de piso e paredes. A 2ª ed. revisada (PQRT-CALIB-IR192-2005) entrou no acervo (pasta 06) em 19/10/2026 e a edição antiga foi para _superadas.",
+  "url": "https://www.inca.gov.br/sites/ufu.sti.inca.local/files//media/document//pqrt_calib_fnts_ir-192_2erevisada.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ROTEIRO-VISA-HDR",
+  "situacao": "a-confirmar",
+  "descricao": "Roteiro da DIVS/SES-SC, v1.5 (02/09/2017), documento estadual. Cita a Res. CNEN 130/2012 (revogada pela NN-6.10 em 2014), a 'NE 6.10' e a RDC 306/2004. É útil como critério de inspeção, mas é histórico e local.",
+  "url": "",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "SAES-1399-2019",
+  "situacao": "a-confirmar",
+  "descricao": "Portaria SAES/MS 1.399 de 17/12/2019 (habilitação em oncologia). Não verifiquei alterações posteriores (ex.: regulamentação da Lei 14.758/2023).",
+  "url": "https://www.inca.gov.br/sites/ufu.sti.inca.local/files/media/document/portaria_1399_17dez2019.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "SNYDER-2016",
+  "situacao": "a-confirmar",
+  "descricao": "Artigo sobre Agility/Monaco (Elekta); não lido a fundo; baixa pertinência para TrueBeam/Eclipse.",
+  "url": "https://drive.google.com/file/d/1wz2BWud660L12XlL2gWbL6pgyc_AytDR/view",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TECDOC-1151",
+  "situacao": "a-confirmar",
+  "descricao": "IAEA 2000 (versão PQRT em PT); baseada no TG-40; tecnicamente superada pelo TG-142/MPPG-8b para aceleradores, mas ainda é a única tabela de QA de roentgenterapia do acervo. Status no catálogo IAEA não verificado.",
+  "url": "https://drive.google.com/file/d/1YCbZC5VuhcBLvXyqdPcFs4q3AWZ404r9/view",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-36",
+  "situacao": "a-confirmar",
+  "descricao": "AAPM Report 50 (1995). Nenhuma atualização formal da AAPM localizada",
+  "url": "https://www.aapm.org/pubs/reports/rpt_50.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-43U1",
+  "situacao": "atualizado",
+  "descricao": "Vigente, com Suplemento 1 (citado no HEBD) e Suplemento 2 (Rivard 2017, Med Phys 44(9):e297, DOI 10.1002/mp.12430). Para Ir-192 HDR, os dados operativos estão no HEBD (Report 229). Não encontrei TG-43U2; PubMed 39382834 a confirmar.",
+  "url": "https://producciocientifica.uv.es/documentos/5ef0ff11299952068d593023?lang=en",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-51",
+  "situacao": "atualizado",
+  "descricao": "Protocolo de 1999 com adendo de fótons (McEwen 2014), WGTG51 Report 374 (2022, orientação) e Report 385 (2024, adendo de elétrons). O adendo de fótons (TG-51-ADD-2014) está no acervo, pasta 05; o protocolo de 1999 não.",
+  "url": "https://aapm.org/pubs/reports/detail.asp?docid=284",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-56",
+  "situacao": "atualizado",
+  "descricao": "Não revogado formalmente. O MPPG-HDR-A (Sec. 4.2) nota que os benchmarks quantitativos da AAPM datam de 1998; tolerâncias de afterloader e aplicadores atualizadas pelo MPPG 13.a parte A.",
+  "url": "https://doi.org/10.1118/1.597966",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-59",
+  "situacao": "atualizado",
+  "descricao": "Não revogado. Processo clínico e checklists de plano atualizados pelo MPPG 13.a parte B (2025).",
+  "url": "https://doi.org/10.1118/1.598232",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-61",
+  "situacao": "a-confirmar",
+  "descricao": "Report 76 (2001), Med Phys 28:868–893; sem data de revisão e sem atualização encontrada.",
+  "url": "https://aapm.org/pubs/reports/detail.asp?docid=75",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "UK-SABR-2017",
+  "situacao": "substituido",
+  "descricao": "Hanna et al. Clin Oncol 2018;30:5–14, atualizado pelo consenso UK 2022 (Diez). O consenso 2022 (UK-SABR-2022) está no acervo, pasta 04.",
+  "url": "https://pureadmin.qub.ac.uk/ws/files/138021794/Manuscript_SABR_Dose_Constraints_FINAL_for_PURE.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "UK-SABR-CONSORTIUM-GUIDELINES",
+  "situacao": "a-confirmar",
+  "descricao": "HyTEC brain cita a v6.1; versão atual não confirmada em sabr.org.uk",
+  "url": "",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ABFM-SRS",
+  "situacao": "vigente",
+  "descricao": "Documento técnico ABFM 2023; sem tabela própria de constraints",
+  "url": "",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ACROP-SKIN-BRACHY",
+  "situacao": "vigente",
+  "descricao": "GEC-ESTRO ACROP (Radiother Oncol 2018). Para física, deve ser complementado pelo TG-253 (2020).",
+  "url": "https://drive.google.com/file/d/1rgsWvBrEH6lRyFjEo0UCIziE64udQFj6/view",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ASTRO-CONSTR-2025",
+  "situacao": "vigente",
+  "descricao": "Pract Radiat Oncol 2026;16:294–317 (aceito em nov. 2025). Compilação mais recente; exclui reirradiação, SRS cerebral e coluna",
+  "url": "https://doi.org/10.1016/j.prro.2025.11.003",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ESTRO-REIRR-2022",
+  "situacao": "vigente",
+  "descricao": "Lancet Oncol 2022;23:e469–78 (versão corrigida). Complementado pelo consenso ReCOG Lancet Oncol 2026 e ESTRO/EANO GBM 2025",
+  "url": "https://doi.org/10.1016/S1470-2045(22)00447-8",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "FDA-CSA-2026",
+  "situacao": "vigente",
+  "descricao": "Emitida em 03/02/2026; substitui a de 24/09/2025",
+  "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/computer-software-assurance-production-and-quality-system-software",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "FDA-OTS-2023",
+  "situacao": "vigente",
+  "descricao": "Emitida em 11/08/2023, substitui a versão de 2019",
+  "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/shelf-software-use-medical-devices",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "FORD-2012-ILS",
+  "situacao": "vigente",
+  "descricao": "Consenso de 2012 ainda referência (base do RO-ILS)",
+  "url": "https://doi.org/10.1118/1.4764914",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "HEBD-2012",
+  "situacao": "vigente",
+  "descricao": "AAPM Report 229. Recomendado pelo MPPG-HDR-A (2023) como base do TG-43 modificado. Inclui consenso da GammaMed HDR Plus (Sec. VI.B.1(f)).",
+  "url": "https://doi.org/10.1118/1.3703892",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "HYTEC-2021",
+  "situacao": "vigente",
+  "descricao": "Overview IJROBP 2021;110(1):1–10; série de 20 artigos em 110(1):1–256. O acervo só tem o overview e o artigo de cérebro",
+  "url": "https://www.aapm.org/pubs/hytec/HyTEC.html",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "HYTEC-BRAIN",
+  "situacao": "vigente",
+  "descricao": "Milano et al. IJROBP 2021;110:68–86",
+  "url": "https://www.aapm.org/pubs/hytec/detail.asp?docid=20",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ICRU-83",
+  "situacao": "vigente",
+  "descricao": "Sem substituto localizado",
+  "url": "https://doi.org/10.1093/jicru/ndq025",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ICRU-89",
+  "situacao": "vigente",
+  "descricao": "Journal of the ICRU vol. 13 (2013), copyright de 2016 no PDF. Nenhum substituto encontrado.",
+  "url": "https://drive.google.com/file/d/1Hr938B6G9knheHP416T3PdXiWSlC6Pyx/view",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ICRU-91",
+  "situacao": "vigente",
+  "descricao": "Sem substituto localizado",
+  "url": "https://doi.org/10.1093/jicru/ndx006",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "IEC-60976",
+  "situacao": "vigente",
+  "descricao": "Ed. 2.0 de 2007-10-16; stability date 2026 (possível revisão).",
+  "url": "https://webstore.iec.ch/en/publication/4088",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "IEC-62304",
+  "situacao": "vigente",
+  "descricao": "2006+AMD1:2015 vigente; 2ª ed. ('Health software') em CD, previsão IEC 10/2028; acervo tem só a prévia da AMD1",
+  "url": "https://blog.johner-institute.com/iec-62304-medical-software/iec-62304-2nd-edition-all-areas-of-application-and-changes/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "IMDRF-N12-2014",
+  "situacao": "vigente",
+  "descricao": "Não substituída; N81 (2025) a complementa",
+  "url": "https://www.imdrf.org/sites/default/files/docs/imdrf/final/technical/imdrf-tech-140918-samd-framework-risk-categorization-141013.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "IMDRF-N81-2025",
+  "situacao": "vigente",
+  "descricao": "Final de 27/01/2025",
+  "url": "https://www.imdrf.org/sites/default/files/2025-01/IMDRF_SaMD%20WG_Software-Specific%20Risk_N81%20Final_0.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "ISO-14971",
+  "situacao": "vigente",
+  "descricao": "Ed. 3 2019; confirmada na revisão sistemática (90.93, 07/03/2025)",
+  "url": "https://www.iso.org/standard/72704.html",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-11a",
+  "situacao": "vigente",
+  "descricao": "Listado entre os MPPGs ativos (2021); revisão prevista no 5º aniversário (2026), sem versão nova localizada",
+  "url": "https://www.aapm.org/pubs/MPPG/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-5b-TPS",
+  "situacao": "vigente",
+  "descricao": "MPPG 5.b (2022) ativo.",
+  "url": "https://aapm.org/pubs/MPPG/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-8b",
+  "situacao": "vigente",
+  "descricao": "Listado como ativo (2023); substitui o MPPG 8.a; exclui imageamento de bordo.",
+  "url": "https://aapm.org/pubs/MPPG/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-CHECKLIST",
+  "situacao": "vigente",
+  "descricao": "MPPG 4.b 2023 ativo",
+  "url": "https://www.aapm.org/pubs/MPPG/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-CT-2021",
+  "situacao": "vigente",
+  "descricao": "MPPG 1.b (2021) ativo, mas é de gestão de protocolos de TC diagnóstica; não cobre QA de TC-simulador.",
+  "url": "https://aapm.org/pubs/MPPG/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-HDR-A",
+  "situacao": "vigente",
+  "descricao": "JACMP 2023;24:e13829. Complementado pela parte B (JACMP 2025;26(7):e70118), que trata do processo clínico e da verificação de plano.",
+  "url": "https://doi.org/10.1002/acm2.13829",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-HDR-B",
+  "situacao": "vigente",
+  "descricao": "Publicado em 2025 (DOI 10.1002/acm2.70118). texto completo não lido.",
+  "url": "https://aapm.org/pubs/MPPG/detail.asp?docid=304",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-IGRT-2021",
+  "situacao": "vigente",
+  "descricao": "MPPG 2.b (2021) ativo; revisão prevista no 5º aniversário (2026). Monitorar um eventual 2.c.",
+  "url": "https://aapm.org/pubs/MPPG/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "MPPG-PEER",
+  "situacao": "vigente",
+  "descricao": "MPPG 15.a 2023 ativo",
+  "url": "https://www.aapm.org/pubs/MPPG/",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "NN-6.02",
+  "situacao": "vigente",
+  "descricao": "No acervo desde 19/10/2026. Res. CNEN 293/22 (DOU 31/03/2022), consolidando as Res. 112/11, 166/14, 215/17, 251/19 e 261/20. A revisão do licenciamento de instalações radiativas está na Agenda Regulatória ANSN 2026-27.",
+  "url": "https://www.gov.br/cnen/pt-br/acesso-rapido/normas/grupo-6/ansn-6-02-licenciamento-de-instalacoes-radiativas.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "NN-6.10",
+  "situacao": "vigente",
+  "descricao": "Res. CNEN 176/14, alterada pelas Res. 214/17 e 277/21 (DOU 09/08/2021). Listada em gov.br como 'Norma ANSN 6.10' sem mudança de texto; não consta na lista de revogadas de 2026; fora da Agenda Regulatória 2026-27. Referências internas desatualizadas (Res. 112/11, NN-6.02 anexo III, NN-7.01 antiga).",
+  "url": "https://www.gov.br/cnen/pt-br/acesso-rapido/normas/grupo-6",
+  "outras_frentes": [
+   {
+    "s": "atualizado",
+    "d": "A versão vigente é a ANSN/CNEN NN 6.10 aprovada pela Res. CNEN 277/2021 (D.O.U. 09/08/2021). A Res. 130/2012 e a 176/2014 estão superadas. A numeração dos artigos citada aqui é a de 2021."
+   }
+  ]
+ },
+ {
+  "codigo": "NR-32",
+  "situacao": "vigente",
+  "descricao": "Portaria MTb 485/2005; a última modificação indicada pelo MTE é a Portaria MTP 4.219/2022. O arquivo do acervo ('atualizada 2023') coincide. Item 32.4 inalterado desde 2005, salvo a referência ao PGR (Portaria 806/2022).",
+  "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-32-nr-32",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "QUANTEC",
+  "situacao": "vigente",
+  "descricao": "IJROBP 2010;76(3 Suppl), série completa. O arquivo do acervo está incompleto: faltam os artigos de esôfago, fígado, rim, estômago/delgado, reto, bexiga, bulbo peniano e laringe",
+  "url": "https://doi.org/10.1016/j.ijrobp.2009.07.1754",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "RCR-INTERR-2019",
+  "situacao": "vigente",
+  "descricao": "4ª ed. (jan. 2019), substitui a 3ª (2008); atualização anunciada para 2026",
+  "url": "https://www.rcr.ac.uk/publication/timely-delivery-radical-radiotherapy-guidelines-management-unscheduled-treatment",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "RDC-20-2006",
+  "situacao": "vigente",
+  "descricao": "Nenhum ato de revisão ou revogação encontrado (busca negativa, sem confirmação positiva no portal da ANVISA). Art. 6 atualiza automaticamente as referências a atos substituídos (ex.: RDC 306/2004).",
+  "url": "https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2006/rdc0020_02_02_2006.html",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "RDC-36-2013",
+  "situacao": "vigente",
+  "descricao": "Sem alteração localizada; citada como base pelo Comunicado GVIMS 05/2025 e pela NT 09/2025",
+  "url": "https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2013/rdc0036_25_07_2013.html",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "RDC-657",
+  "situacao": "vigente",
+  "descricao": "Vigente desde 01/07/2022; revisão na Agenda Regulatória ANVISA 2026–2027 (Portaria 1.484/2025); referências internas desatualizadas (RDC 185 → 751; RDC 546 → 848)",
+  "url": "https://www.in.gov.br/en/web/dou/-/resolucao-de-diretoria-colegiada-rdc-n-657-de-24-de-marco-de-2022-389603457",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "RDC-751-2022",
+  "situacao": "vigente",
+  "descricao": "Vigente desde 01/03/2023; alterada pelas RDC 777/2023 e 810/2023; revogou RDC 185/2001, 15/2014 e 40/2015",
+  "url": "https://antigo.anvisa.gov.br/documents/10181/5672055/%281%29RDC_751_2022_COMP.pdf/4aef938f-dec2-42b2-8f06-5ec94abfbe31",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "RECOG-CONSTR",
+  "situacao": "vigente",
+  "descricao": "Slevin et al. IJROBP 2026;126(1):64–86. Revisão sistemática de glioma; constraints candidatos",
+  "url": "https://doi.org/10.1016/j.ijrobp.2026.03.004",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "REIRR-SPC",
+  "situacao": "vigente",
+  "descricao": "Adv Radiat Oncol 2019; prática institucional; Apêndice E2 fora do acervo",
+  "url": "https://doi.org/10.1016/j.adro.2019.05.007",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "REIRR-SPC-IMPL",
+  "situacao": "vigente",
+  "descricao": "Adv Radiat Oncol 2021;6:100594; prática institucional",
+  "url": "https://doi.org/10.1016/j.adro.2020.09.027",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "RES-ANPD-15-2024",
+  "situacao": "vigente",
+  "descricao": "Aprovada em 24/04/2024, publicada em 26/04/2024",
+  "url": "https://www.mattosfilho.com.br/?p=104025",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "SAFER-RT-2008",
+  "situacao": "vigente",
+  "descricao": "Taxonomia atualizada pela UK-RT-TAXONOMIA 2024; recomendações seguem como referência",
+  "url": "https://www.rcr.ac.uk/media/i5ocp5fh/bfco0814_safer_radiotherapy.pdf",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "SNA-2019",
+  "situacao": "vigente",
+  "descricao": "Sem edição posterior localizada",
+  "url": "https://www.astro.org/patient-care-and-research/patient-safety/safety-is-no-accident",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-100",
+  "situacao": "vigente",
+  "descricao": "Publicado em 2016; sem substituto localizado",
+  "url": "https://doi.org/10.1118/1.4947547",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-101",
+  "situacao": "vigente",
+  "descricao": "2010. Sem relatório sucessor da AAPM localizado; valores superados em parte por HyTEC 2021 e Timmerman 2021",
+  "url": "https://www.aapm.org/pubs/reports/detail.asp?docid=102",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-114",
+  "situacao": "vigente",
+  "descricao": "Relatório 114, 2011, sem nota de status",
+  "url": "https://aapm.org/pubs/reports/tabular.asp",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-142",
+  "situacao": "vigente",
+  "descricao": "2009; supera a Tabela II do TG-40; sem sucessor publicado até out/2026. Complementado pelo TG-198 (2021) e, como mínimo, pelo MPPG-8b (2023).",
+  "url": "https://www.aapm.org/announcements/TG142.asp",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-179",
+  "situacao": "vigente",
+  "descricao": "Med Phys 2012;39:1946; não encontrei sucessor. O TG-198 alinhou suas tolerâncias de IGRT a ele.",
+  "url": "https://aapm.org/pubs/reports/tabular.asp",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-186",
+  "situacao": "vigente",
+  "descricao": "Prescrição em TG-43; MBDCA em paralelo. Follow-ups (WG-DCAB) não verificados.",
+  "url": "https://doi.org/10.1118/1.4747264",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-198",
+  "situacao": "vigente",
+  "descricao": "Report 198 (2021), guia de implementação do TG-142 com desvios explícitos (§2.A.1).",
+  "url": "https://aapm.org/pubs/reports/tabular.asp",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-218",
+  "situacao": "vigente",
+  "descricao": "Sem errata encontrada; listado sem nota de status",
+  "url": "https://doi.org/10.1002/mp.12810",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-219",
+  "situacao": "vigente",
+  "descricao": "Relatório 219, 2021, sem nota de status",
+  "url": "https://doi.org/10.1002/mp.15069",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-263",
+  "situacao": "vigente",
+  "descricao": "Atualização TG-263U1 em curso (aprovada 2021–2027, presidida por Covington); só o survey de 2024 foi publicado",
+  "url": "https://aapm.org/org/structure/?committee_code=TG263U1",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-263U1-SURVEY",
+  "situacao": "vigente",
+  "descricao": "Covington et al. JACMP 2024, survey de 310 respostas",
+  "url": "https://aapm.onlinelibrary.wiley.com/doi/full/10.1002/acm2.14359",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TG-275",
+  "situacao": "vigente",
+  "descricao": "Complementado por 275.S (2023, survey) e Relatório 394 (2024)",
+  "url": "https://aapm.org/pubs/reports/tabular.asp",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TIMMERMAN-2021",
+  "situacao": "vigente",
+  "descricao": "Tabelas de 08/2021 (1–30 fx). O próprio autor prevê que serão substituídas pelo HyTEC; DOI a confirmar",
+  "url": "",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "TRS-398-R1",
+  "situacao": "vigente",
+  "descricao": "IAEA TRS-398 Rev.1, 2024 (STI/DOC/010/398 Rev.1); substitui a edição original; inclui kV de baixa e média energia.",
+  "url": "https://www.iaea.org/publications/15048/absorbed-dose-determination-in-external-beam-radiotherapy",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "UK-RT-TAXONOMIA",
+  "situacao": "vigente",
+  "descricao": "v1, maio/2024 (UKHSA, GOV-17882)",
+  "url": "https://www.gov.uk/government/publications/national-patient-safety-radiotherapy-event-taxonomy",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "WHO-ICPS-2009",
+  "situacao": "vigente",
+  "descricao": "v1.1; sem revisão localizada",
+  "url": "https://www.who.int/publications/i/item/WHO-IER-PSP-2010.2",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "WHO-RISK",
+  "situacao": "vigente",
+  "descricao": "WHO/IER/PSP/2008.12; dados até 2007",
+  "url": "https://www.who.int/publications/i/item/9789241597289",
+  "outras_frentes": []
+ },
+ {
+  "codigo": "YOO-2025-ISQM",
+  "situacao": "vigente",
+  "descricao": "Artigo de 2025",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12025108/",
+  "outras_frentes": []
+ }
+]

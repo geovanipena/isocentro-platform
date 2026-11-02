@@ -1,0 +1,108 @@
+{
+  "env": {
+    "PYTHONIOENCODING": "utf-8",
+    "ISOCENTRO_ROBO": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Edit",
+      "Write",
+      "Skill",
+      "Bash(python:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git grep:*)",
+      "Bash(git blame:*)",
+      "Bash(git merge-base:*)",
+      "Bash(git config --get:*)",
+      "Bash(git config --get-all:*)",
+      "Bash(git config --show-origin:*)",
+      "Bash(git config --list:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "Bash(sed -n:*)",
+      "Bash(head:*)",
+      "Bash(cat:*)",
+      "Bash(diff:*)",
+      "Bash(mkdir -p:*)",
+      "Bash(QT_QPA_PLATFORM=offscreen python:*)",
+      "PowerShell(python:*)",
+      "PowerShell(git status:*)",
+      "PowerShell(git diff:*)",
+      "PowerShell(git log:*)",
+      "PowerShell(git show:*)",
+      "PowerShell(git add:*)",
+      "PowerShell(git commit:*)",
+      "PowerShell(git ls-files:*)",
+      "PowerShell(git rev-parse:*)",
+      "PowerShell(git grep:*)",
+      "PowerShell(git config --get:*)",
+      "PowerShell(git config --get-all:*)",
+      "PowerShell(git config --show-origin:*)"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "PowerShell(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git reset:*)",
+      "Bash(git worktree:*)",
+      "Bash(git branch -D:*)",
+      "Bash(git commit --amend:*)",
+      "PowerShell(git commit --amend:*)",
+      "Bash(rm -rf:*)",
+      "Bash(gh:*)",
+      "Bash(python tools/gravar_banco.py:*)",
+      "Bash(python tools/atividades.py:*)",
+      "Bash(python tools/sondar_dicom.py:*)",
+      "Bash(python tools/mapear_dw.py:*)",
+      "Bash(python tools/mapear_tratamento.py:*)",
+      "Bash(python tools/mapear_gatilho.py:*)",
+      "Bash(python tools/diagnostico_db.py:*)",
+      "Bash(python tools/testar_reconexao.py:*)",
+      "Bash(python tools/checkup_clinica.py:*)",
+      "Bash(python tools/gerar_executavel.py:*)",
+      "PowerShell(python tools/gravar_banco.py:*)",
+      "PowerShell(python tools/atividades.py:*)",
+      "PowerShell(python tools/sondar_dicom.py:*)",
+      "PowerShell(python tools/mapear_dw.py:*)",
+      "PowerShell(python tools/mapear_tratamento.py:*)",
+      "PowerShell(python tools/mapear_gatilho.py:*)",
+      "PowerShell(python tools/diagnostico_db.py:*)",
+      "PowerShell(python tools/testar_reconexao.py:*)",
+      "PowerShell(python tools/checkup_clinica.py:*)",
+      "PowerShell(python tools/gerar_executavel.py:*)",
+      "Skill(clinica)",
+      "Skill(empacotar)",
+      "WebFetch",
+      "WebSearch",
+      "Agent"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/tools/robo_trava.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

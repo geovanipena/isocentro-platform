@@ -1,0 +1,8 @@
+[theme]
+# App desenhado para tema claro (fundos claros, texto escuro). Fixar o tema
+# evita texto claro sobre fundo claro quando o navegador está em modo escuro.
+base = "light"
+backgroundColor = "#F1F5F9"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1E293B"
+primaryColor = "#22C55E"

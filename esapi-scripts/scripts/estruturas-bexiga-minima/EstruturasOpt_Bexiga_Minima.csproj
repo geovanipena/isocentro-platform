@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Projeto para compilar o script GRAVAVEL como BINARY PLUG-IN (.esapi.dll),
+  necessario na Eclipse 15.6 (single-file gravavel so a partir do v16).
+
+  Pre-requisitos:
+    1. Copie as 2 DLLs da Varian para a pasta .\lib (a partir do GAC do
+       servidor: VMS.TPS.Common.Model.API.dll e VMS.TPS.Common.Model.Types.dll).
+       lib\ e compartilhada com os outros projetos EstruturasOpt_*.csproj desta
+       pasta e nao e versionada (binarios licenciados da Varian).
+    2. Compile com o MSBuild do .NET Framework (existe em qualquer Windows):
+         C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe ^
+             EstruturasOpt_Bexiga_Minima.csproj /p:Configuration=Release
+    3. Saida: .\bin\Release\EstruturasOpt_Bexiga_Minima.esapi.dll
+-->
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>VMS.TPS</RootNamespace>
+    <!-- Nome termina em .esapi para a Eclipse reconhecer o plug-in. -->
+    <AssemblyName>EstruturasOpt_Bexiga_Minima.esapi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- DLLs da Varian (copiadas para .\lib a partir do GAC do servidor) -->
+    <Reference Include="VMS.TPS.Common.Model.API">
+      <HintPath>..\..\lib\VMS.TPS.Common.Model.API.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="VMS.TPS.Common.Model.Types">
+      <HintPath>..\..\lib\VMS.TPS.Common.Model.Types.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Framework -->
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+
+    <!-- WPF: necessario para System.Windows (MessageBox / Window / controles) -->
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="EstruturasOpt_Bexiga_Minima.cs" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

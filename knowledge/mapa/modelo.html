@@ -1,0 +1,731 @@
+<title>Mapa do Conhecimento ISOCENTRO</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: cabeçalho curto → matriz área × acervo (resumo) → diagrama de fios da área escolhida + painel de detalhe da atividade */
+:root{
+  --bg:#f5f7f7; --surface:#ffffff; --ink:#14232b; --muted:#5a6b72; --line:#d6dfe1;
+  --accent:#0f6e74;                 /* teal de isodose */
+  --ref:#0f6e74; --man:#8a5a00; --cod:#5b3f9e; --pop:#a1384a;
+  --obr:#b42318; --rec:#0f6e74; --pra:#6b7a80;
+  --heat0:#eef3f3; --heat1:#0f6e74; --warn:#a85d00; --ok:#2e7d32;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e171b; --surface:#152227; --ink:#e3ecee; --muted:#93a6ac; --line:#2a3b41;
+  --accent:#4fc3c9; --ref:#4fc3c9; --man:#e0a63a; --cod:#a993f0; --pop:#f08497;
+  --obr:#ff8a7a; --rec:#4fc3c9; --pra:#9aabb0; --heat0:#18272c; --heat1:#4fc3c9; --warn:#f0b24a; --ok:#7cc88a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e171b; --surface:#152227; --ink:#e3ecee; --muted:#93a6ac; --line:#2a3b41;
+  --accent:#4fc3c9; --ref:#4fc3c9; --man:#e0a63a; --cod:#a993f0; --pop:#f08497;
+  --obr:#ff8a7a; --rec:#4fc3c9; --pra:#9aabb0; --heat0:#18272c; --heat1:#4fc3c9; --warn:#f0b24a; --ok:#7cc88a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:1280px;margin:0 auto;display:grid;gap:22px}
+h1{font:800 clamp(1.6rem,3.2vw,2.3rem)/1.1 var(--display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font:700 1.05rem/1.2 var(--display);margin:0;letter-spacing:.01em}
+/* cabeçalho: o que é + por onde começar (esquerda) · situação (direita) */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,400px);gap:24px 56px;align-items:start;padding-top:6px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.lede{color:var(--muted);margin:12px 0 0;font-size:1.06rem;line-height:1.6;text-wrap:pretty}
+.passos{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;counter-reset:p}
+.passos li{counter-increment:p;display:grid;grid-template-columns:24px 1fr;gap:12px;font-size:.95rem;line-height:1.45}
+.passos li::before{content:counter(p);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 .75rem var(--mono);color:var(--accent);background:color-mix(in oklab,var(--accent) 14%,var(--surface))}
+.passos a{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+.contexto{display:flex;flex-wrap:wrap;gap:6px 22px;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.contexto b{font:700 1rem var(--display);color:var(--ink);margin-right:5px;font-variant-numeric:tabular-nums}
+.estado{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.estado .rot{font:600 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.estado .big{font:800 2.6rem/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.estado .big small{font:600 1.05rem var(--display);color:var(--muted);margin-left:4px}
+.estado .sub{font-size:.9rem;color:var(--muted);margin:6px 0 12px}
+.estado .barra{height:8px;margin:0}
+.estado .falta{color:var(--warn);margin-top:22px}
+.estado ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.estado li a{display:block;padding:6px 8px;margin:0 -8px;border-radius:6px;color:var(--muted);text-decoration:none;font-size:.84rem;line-height:1.25}
+.estado li a:hover,.estado li a:focus-visible{background:var(--bg)}
+.estado li b{display:block;font:700 1.35rem/1.2 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.panel header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:10px}
+.hint{font-size:.85rem;color:var(--muted)}
+/* matriz */
+.scroll{overflow-x:auto}
+table.heat{border-collapse:separate;border-spacing:3px;font:.78rem var(--mono);font-variant-numeric:tabular-nums}
+.heat th{font:600 .72rem var(--mono);color:var(--muted);text-align:left;white-space:nowrap;padding:2px 6px}
+.heat thead th{writing-mode:vertical-rl;transform:rotate(180deg);height:150px;vertical-align:bottom;text-align:left}
+.heat td{width:40px;height:30px;text-align:center;border-radius:5px;cursor:pointer;border:1px solid transparent}
+.heat td:hover,.heat td:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.heat tr.sel th{color:var(--accent)}
+.heat .rowlab{cursor:pointer}
+/* chips de área */
+.areas{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 .8rem var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font:.8rem var(--body);color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.typefilter{display:flex;gap:10px;flex-wrap:wrap;font-size:.85rem}
+.typefilter label{display:flex;align-items:center;gap:5px;cursor:pointer}
+/* diagrama */
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+@media (max-width:900px){.grid2{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--body);fill:var(--ink)}
+.node{cursor:pointer}
+.node text.id{font:600 11px var(--mono);fill:var(--muted)}
+.node.dim{opacity:.22}
+.wire{fill:none;stroke-width:1.2;opacity:.42}
+.wire.dim{opacity:.05}
+.wire.hot{opacity:.95;stroke-width:2}
+.badge{font:600 .68rem var(--mono);letter-spacing:.04em;padding:2px 7px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
+.b-obr{color:var(--obr)}.b-rec{color:var(--rec)}.b-pra{color:var(--pra)}
+/* detalhe */
+.detail h3{font:700 1.05rem/1.25 var(--display);margin:4px 0 6px;text-wrap:balance}
+.detail dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:.88rem;margin:10px 0}
+.detail dt{color:var(--muted)}
+.detail dd{margin:0;min-width:0}
+.group{margin-top:12px}
+.group h4{font:600 .74rem var(--mono);letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px}
+.group ul{margin:0;padding-left:18px;font-size:.88rem}
+.group li{margin:2px 0;overflow-wrap:anywhere}
+.tag{font:600 .66rem var(--mono);color:var(--accent);margin-left:4px}
+.empty{color:var(--muted);font-size:.9rem}
+.narrow-list{display:none}
+@media (max-width:620px){.wide-svg{display:none}.narrow-list{display:block}}
+.narrow-list button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:8px 2px;color:var(--ink);font:inherit;cursor:pointer}
+@media (prefers-reduced-motion:no-preference){.wire,.node{transition:opacity .18s}}
+footer{color:var(--muted);font-size:.8rem}
+/* matriz etapa × tipo de fonte (20/10/2026) */
+table.etapas{border-collapse:separate;border-spacing:3px;font-variant-numeric:tabular-nums;width:100%;min-width:980px}
+.etapas thead th{font:600 .74rem/1.2 var(--body);color:var(--ink);text-align:center;vertical-align:bottom;padding:4px 2px;width:9%}
+.etapas thead th small{display:block;font:400 .66rem var(--body);color:var(--muted)}
+.etapas thead th:first-child{width:auto}
+.etapas tbody th{font:600 .86rem/1.25 var(--body);text-align:left;padding:4px 10px 4px 0;white-space:nowrap;position:sticky;left:0;z-index:1;background:var(--surface);cursor:pointer}
+.etapas tbody th:hover .nm,.etapas tbody th:focus-visible .nm{color:var(--accent);text-decoration:underline}
+.etapas tr.grp th{cursor:default}
+@media (max-width:620px){.etapas tbody th{white-space:normal;min-width:120px;max-width:150px;font-size:.8rem}}
+.etapas thead th.sep,.etapas td.sep{border-left:3px solid var(--bg)}
+.etapas td.gap{background:color-mix(in oklab,var(--warn) 14%,var(--surface));color:var(--warn);font-weight:700;cursor:pointer}
+.etapas td.ind{background:var(--surface);border:1px solid var(--line);font-weight:600}
+.etapas td.ind.alerta{color:var(--warn);border-color:color-mix(in oklab,var(--warn) 55%,var(--line))}
+.etapas td.ind small{font:400 .66rem var(--body);color:var(--muted);display:block;line-height:1}
+.legend-m{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.8rem;color:var(--muted);margin-top:8px}
+.legend-m b{color:var(--warn)}
+.nl{color:var(--cod);font:600 .66rem var(--mono);margin-left:4px;white-space:nowrap}
+.heat-det h4{font:600 .74rem var(--mono);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 4px;color:var(--warn)}
+.etapas tbody th .n{font:600 .72rem var(--mono);color:var(--muted);margin-left:6px}
+.etapas tr.grp th{font:600 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding:12px 0 2px;border-bottom:1px solid var(--line)}
+.etapas td{height:34px;text-align:center;border-radius:5px;font:600 .82rem var(--mono);cursor:pointer;border:2px solid transparent}
+.etapas td.zero{color:var(--muted);font-weight:400;cursor:default;background:var(--heat0)}
+.etapas td:not(.zero):hover,.etapas td:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.etapas td.sel{border-color:var(--ink)}
+.heat-det{margin-top:12px}
+.heat-det h3{font:700 1rem/1.25 var(--display);margin:0 0 8px}
+.heat-det ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr))}
+.heat-det li{font-size:.86rem;border-left:2px solid var(--line);padding-left:8px;overflow-wrap:anywhere}
+.heat-det li .mono{font:600 .78rem var(--mono)}
+
+/* camada de requisitos (19/10/2026) */
+.secnav{display:flex;flex-wrap:wrap;gap:6px 14px;font:600 .82rem var(--body);position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}
+.secnav a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+.secnav a:hover,.secnav a:focus-visible{border-bottom-color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.85rem;margin-bottom:10px}
+.filters select,.filters input[type=search]{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 8px;min-width:0}
+.filters input[type=search]{width:min(260px,100%)}
+.filters label{display:flex;align-items:center;gap:5px;cursor:pointer}
+.btn{font:600 .8rem var(--body);border:1px solid var(--accent);color:var(--accent);background:var(--surface);border-radius:6px;padding:4px 10px;cursor:pointer}
+.btn:hover,.btn:focus-visible{background:var(--accent);color:var(--surface)}
+.count{font:600 .8rem var(--mono);color:var(--muted)}
+table.req{border-collapse:collapse;width:100%;min-width:900px;font-size:.84rem}
+.req th{font:600 .7rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface)}
+.req td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+.req td.mono{font:.76rem var(--mono);white-space:nowrap}
+.req tr:hover td{background:color-mix(in oklab,var(--accent) 6%,var(--surface))}
+.alink{font:600 .76rem var(--mono);color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline dotted}
+.tall{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.fora{color:var(--warn);font:600 .66rem var(--mono);margin-left:4px;white-space:nowrap}
+.pill{display:inline-block;font:600 .66rem var(--mono);letter-spacing:.04em;padding:1px 7px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.s-vigente{color:var(--ok)}.s-atualizado{color:var(--warn)}.s-errata{color:var(--warn)}.s-substituido{color:var(--obr)}.s-a-confirmar{color:var(--pra)}
+.p-alta{color:var(--obr)}.p-media{color:var(--warn)}.p-baixa{color:var(--pra)}
+.conf{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr))}
+.conf article{border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:6px;padding:10px 12px;font-size:.86rem;display:grid;gap:6px;align-content:start;min-width:0}
+.conf h3{font:700 .95rem/1.25 var(--display);margin:0;text-wrap:balance}
+.conf .src{display:flex;flex-wrap:wrap;gap:4px}
+.conf .src span{font:600 .7rem var(--mono);color:var(--ref);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+.conf .dec{font:600 .72rem var(--mono);color:var(--muted)}
+.conf .dec.feita{color:var(--ok)}
+.conf .prop{border-top:1px dashed var(--line);padding-top:6px}
+.conf .crit{color:var(--accent)}
+.reqlist{list-style:none;padding:0!important;margin:0;display:grid;gap:6px}
+.reqlist li{border-left:2px solid var(--line);padding-left:8px;font-size:.84rem}
+.reqlist .v{font-weight:600}
+.reqlist .meta{display:block;font:.72rem var(--mono);color:var(--muted)}
+.cand td.t{min-width:260px}
+.cand input{width:16px;height:16px;accent-color:var(--accent)}
+.cand tr.done td{opacity:.5}
+.note{font-size:.85rem;color:var(--muted);max-width:80ch;margin:0 0 10px}
+/* visões novas (20/10/2026) */
+.st{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font:700 .8rem var(--mono);cursor:pointer;border:2px solid transparent}
+.st-ok{background:color-mix(in oklab,var(--ok) 22%,var(--surface));color:var(--ok)}
+.st-parcial{background:color-mix(in oklab,var(--ok) 8%,var(--surface));color:var(--ok);border-style:dashed;border-color:color-mix(in oklab,var(--ok) 60%,var(--line))}
+.st-diverge{background:color-mix(in oklab,var(--warn) 22%,var(--surface));color:var(--warn)}
+.st-vazio{background:var(--surface);color:var(--obr);border-color:color-mix(in oklab,var(--obr) 55%,var(--line))}
+.st-na{background:transparent;color:var(--muted);cursor:default}
+table.sust{border-collapse:collapse;width:100%;min-width:760px;font-size:.86rem}
+.sust th{font:600 .7rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;padding:6px 4px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:1}
+.sust th:first-child{text-align:left}
+.sust th small{display:block;font:400 .66rem var(--body);text-transform:none;letter-spacing:0}
+.sust td{padding:4px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
+.sust td.at{text-align:left;min-width:280px}
+.sust tr.eg td{background:var(--bg);text-align:left;font:600 .78rem var(--body);color:var(--accent);padding:8px 6px}
+.sust tr.eg td .hint{font-weight:400}
+.sust td .nm{color:var(--ink)}
+.sust-resumo{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:10px;margin:0 0 12px}
+.sust-resumo div{border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:.8rem}
+.sust-resumo b{display:block;font:700 .9rem var(--display);margin-bottom:6px}
+.barra{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--heat0);margin-bottom:4px}
+.barra i{display:block;height:100%}
+.legend-st{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:.8rem;color:var(--muted)}
+.legend-st .st{width:20px;height:20px;font-size:.7rem;cursor:default}
+.elo-det{margin-top:10px;font-size:.88rem}
+.elo-det b{font-family:var(--display)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{font:600 .8rem var(--body);background:var(--surface);color:var(--ink);border:0;padding:5px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.inc{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(380px,100%),1fr))}
+.inc article{border:1px solid var(--line);border-left:3px solid var(--obr);border-radius:6px;padding:12px;font-size:.86rem;display:grid;gap:6px;align-content:start;min-width:0}
+.inc h3{font:700 1rem/1.25 var(--display);margin:0}
+.inc .meta{font:600 .72rem var(--mono);color:var(--muted)}
+.inc .bar{display:flex;flex-wrap:wrap;gap:6px}
+.inc .bar span{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:999px;padding:1px 8px 1px 2px}
+.inc .bar span.fraca{border-color:color-mix(in oklab,var(--obr) 55%,var(--line))}
+.inc .bar .st{width:18px;height:18px;font-size:.62rem}
+.fam{border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:10px}
+.fam h3{font:700 .95rem var(--display);margin:0 0 6px}
+.gl{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:4px 10px;align-items:center;font-size:.84rem;padding:3px 0;border-top:1px dashed var(--line)}
+.gl:first-of-type{border-top:0}
+.gl .rel{font:600 .7rem var(--mono);color:var(--muted);text-align:center;white-space:nowrap}
+.gl .nota{grid-column:1/-1;color:var(--muted);font-size:.78rem;margin-top:-2px}
+.doc{display:inline-block;font:600 .74rem var(--mono);border:1px solid currentColor;border-radius:4px;padding:1px 6px;overflow-wrap:anywhere}
+.doc.acervo{color:var(--ok)}.doc.nao-lido{color:var(--cod)}.doc.superada{color:var(--muted);text-decoration:line-through}.doc.fora{color:var(--warn);border-style:dashed}
+.rel-conflita{color:var(--obr)!important}
+.vf-ok{color:var(--ok)}.vf-nao{color:var(--warn);font-style:italic}
+.u-livre{color:var(--ok)}.u-copyleft{color:var(--warn)}.u-sem-licenca{color:var(--obr)}.u-a-confirmar{color:var(--pra)}
+.c-conforme{color:var(--ok)}.c-divergente{color:var(--obr)}.c-referencia{color:var(--accent)}.c-nao-avaliada{color:var(--pra)}
+.parado{color:var(--warn);font:600 .66rem var(--mono);margin-left:4px}
+</style>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Mapa do Conhecimento ISOCENTRO</h1>
+      <p class="lede">As 100 atividades do físico médico, ligadas aos documentos do acervo, aos manuais, ao código externo e aos POPs do CLINICA, e aos requisitos que cada documento impõe: valores, tolerâncias, periodicidades e prazos, com o ponto exato da fonte.</p>
+      <ol class="passos">
+        <li><span><a href="#sustentacao">Comece pela cadeia de sustentação</a>: para cada atividade, da obrigação legal ao registro no ISOCENTRO, onde a corrente está inteira e onde quebra.</span></li>
+        <li><span>Clique numa atividade para ver de onde vem cada exigência e quanto ela vale.</span></li>
+      </ol>
+      <p class="contexto" id="kpi-ctx"></p>
+    </div>
+    <aside class="estado" id="kpi-estado" aria-label="Situação"></aside>
+  </div>
+  <nav class="secnav" aria-label="Seções"><a href="#sustentacao">Sustentação</a><a href="#t-matriz">Fontes</a><a href="#t-fios">Ligações</a><a href="#matriz">Requisitos</a><a href="#ritmo">Calendário e técnica</a><a href="#incidentes">Incidentes</a><a href="#genealogia">Genealogia</a><a href="#codigo">Código</a><a href="#conflitos">Conflitos</a><a href="#vigencia">Vigência</a><a href="#fila">Leitura</a><a href="#aquisicao">Aquisição</a></nav>
+
+  <section class="panel" id="sustentacao" aria-labelledby="t-sust">
+    <header><h2 id="t-sust">Cadeia de sustentação</h2><span class="count" id="sust-count"></span></header>
+    <p class="note">Cada atividade se apoia em seis elos: a obrigação legal, o método técnico, o valor exigível, o procedimento do serviço, a ferramenta que mede ou calcula e o registro no ISOCENTRO. Onde um elo falta ou diverge, a corrente quebra e ali está o trabalho.</p>
+    <div class="sust-resumo" id="sust-resumo"></div>
+    <div class="filters">
+      <select id="s-et" aria-label="Etapa"><option value="">Todas as etapas</option></select>
+      <label><input type="checkbox" id="s-que"> só atividades com a corrente quebrada</label>
+      <span class="legend-st"><span class="st st-ok">✓</span>presente <span class="st st-parcial">◐</span>parcial <span class="st st-diverge">!</span>diverge <span class="st st-vazio">✕</span>falta <span class="st st-na">–</span>não se aplica</span>
+    </div>
+    <div class="tall"><table class="sust" id="sust-tab"></table></div>
+    <div class="elo-det" id="sust-det" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-matriz">
+    <header><h2 id="t-matriz">Cadeia da radioterapia × peso da fonte</h2><span class="hint">Documentos distintos que sustentam cada etapa, por tipo de fonte. Clique numa célula para ver quais são; clique no nome da etapa para abrir as ligações.</span></header>
+    <div class="scroll"><table class="etapas" id="heat"></table></div>
+    <div class="legend-m"><span><b>!</b> etapa com atividade obrigatória e sem norma brasileira ligada</span><span><b>Lacunas</b>: atividades sem requisito numérico rastreado, obrigatórias sem norma ou sem documento do acervo</span><span><b>Não lidos</b>: no acervo, ainda sem requisito extraído</span><span><b>A baixar</b>: itens da lista de aquisição</span></div>
+    <div id="heat-det" class="heat-det" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-fios">
+    <header><h2 id="t-fios">Ligações da etapa</h2>
+      <div class="typefilter" id="tipos"></div>
+    </header>
+    <div class="areas" id="areas" role="group" aria-label="Área"></div>
+    <div class="legend" style="margin:10px 0 4px">
+      <span><i style="background:var(--ref)"></i>documento do acervo</span>
+      <span><i style="background:var(--man)"></i>manual</span>
+      <span><i style="background:var(--cod)"></i>código externo</span>
+      <span><i style="background:var(--pop)"></i>POP CLINICA</span>
+      <span><span class="badge b-obr">OBR</span> obrigatório</span>
+      <span><span class="badge b-rec">REC</span> recomendação</span>
+      <span><span class="badge b-pra">PRÁ</span> prática</span>
+    </div>
+    <div class="grid2">
+      <div style="min-width:0">
+        <div class="wide-svg"><svg id="fios" role="img" aria-label="Diagrama de ligações"></svg></div>
+        <div class="narrow-list" id="lista"></div>
+      </div>
+      <aside class="panel detail" id="detalhe" aria-live="polite"></aside>
+    </div>
+  </section>
+  <section class="panel" id="matriz" aria-labelledby="t-req">
+    <header><h2 id="t-req">Matriz requisito → referência</h2><span class="count" id="req-count"></span></header>
+    <p class="note">Cada linha é um valor, limite, tolerância ou periodicidade que o sistema precisa respeitar, com a fonte e o ponto exato do documento. OBR vem de norma brasileira; REC de diretriz; PRÁ de prática publicada. Fontes marcadas "fora do acervo" estão na lista de aquisição.</p>
+    <div class="filters">
+      <select id="f-area" aria-label="Área"><option value="">Todas as etapas</option></select>
+      <select id="f-nivel" aria-label="Nível"><option value="">Todos os níveis</option><option>OBR</option><option>REC</option><option>PRA</option></select>
+      <input type="search" id="f-txt" placeholder="Buscar parâmetro, valor ou fonte" aria-label="Buscar">
+      <label><input type="checkbox" id="f-fora"> só fontes fora do acervo</label>
+      <label><input type="checkbox" id="f-conf"> só atividades com conflito</label>
+      <button class="btn" id="req-copy" type="button">Copiar tabela</button>
+    </div>
+    <div class="tall"><table class="req" id="req-tab"></table></div>
+  </section>
+
+  <section class="panel" id="ritmo" aria-labelledby="t-ritmo">
+    <header><h2 id="t-ritmo">Calendário e técnica</h2><div class="seg" role="group" aria-label="Visão"><button type="button" id="r-cal" aria-pressed="true">Periodicidade</button><button type="button" id="r-tec" aria-pressed="false">Técnica</button></div></header>
+    <p class="note" id="r-nota"></p>
+    <div class="scroll" id="cal-box"><table class="etapas" id="cal-tab"></table></div>
+    <div class="scroll" id="tec-box" hidden><table class="etapas" id="tec-tab"></table></div>
+    <div id="ritmo-det" class="heat-det" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="incidentes" aria-labelledby="t-inc">
+    <header><h2 id="t-inc">Incidentes e barreiras</h2><span class="count" id="inc-count"></span></header>
+    <p class="note">Cada acidente do acervo, a etapa onde a falha nasceu e as atividades que teriam barrado o erro. A cor de cada barreira mostra se a cadeia de sustentação dela está inteira hoje: uma barreira com elo faltando é uma barreira fraca.</p>
+    <div class="inc" id="inc-list"></div>
+    <p class="note" id="inc-sint" style="margin-top:12px"></p>
+  </section>
+
+  <section class="panel" id="genealogia" aria-labelledby="t-gen">
+    <header><h2 id="t-gen">Genealogia dos documentos</h2><span class="count" id="gen-count"></span></header>
+    <p class="note">Quem substitui, atualiza, complementa ou conflita com quem. Responde o que vale hoje: um documento riscado foi superado; tracejado está fora do acervo.</p>
+    <div class="filters"><label><input type="checkbox" id="g-fora"> só famílias com documento fora do acervo ou superado</label>
+      <span class="legend-st"><span class="doc acervo">no acervo</span><span class="doc nao-lido">no acervo, não lido</span><span class="doc superada">superado</span><span class="doc fora">fora do acervo</span></span></div>
+    <div id="gen-list" class="conf"></div>
+  </section>
+
+  <section class="panel" id="codigo" aria-labelledby="t-cod">
+    <header><h2 id="t-cod">Código: camada de implementação</h2><span class="count" id="cod-count"></span></header>
+    <p class="note">Código não é fonte de sustentação: implementa o que as fontes exigem. Aqui, cada repositório do acervo de código com o que implementa, a licença (sem licença não pode ser reaproveitado), se ainda é mantido e se segue a norma vigente.</p>
+    <div class="filters">
+      <label><input type="checkbox" id="c-lig" checked> só os ligados a alguma atividade</label>
+      <select id="c-uso" aria-label="Licença"><option value="">Qualquer licença</option><option value="livre">Livre</option><option value="copyleft">Copyleft</option><option value="a-confirmar">A confirmar</option><option value="sem-licenca">Sem licença</option></select>
+    </div>
+    <div class="tall"><table class="req" id="cod-tab"></table></div>
+  </section>
+
+  <section class="panel" id="conflitos" aria-labelledby="t-conf">
+    <header><h2 id="t-conf">Conflitos entre referências</h2><span class="count" id="conf-count"></span></header>
+    <p class="note">Onde duas fontes dão números diferentes para a mesma coisa. A sugestão dos pesquisadores aparece no texto; a regra que o sistema adota é decisão do físico responsável e fica registrada como pendente até ser tomada.</p>
+    <div class="conf" id="conf-list"></div>
+  </section>
+
+  <section class="panel" id="vigencia" aria-labelledby="t-vig">
+    <header><h2 id="t-vig">Vigência do acervo</h2><span class="count" id="vig-count"></span></header>
+    <div class="filters"><label><input type="checkbox" id="v-all"> mostrar também os vigentes</label></div>
+    <div class="tall"><table class="req" id="vig-tab"></table></div>
+  </section>
+
+  <section class="panel" id="fila" aria-labelledby="t-fila">
+    <header><h2 id="t-fila">Fila de leitura</h2><span class="count" id="fila-count"></span></header>
+    <p class="note">Documentos que já estão no acervo e ainda não tiveram requisitos extraídos nem ficha que os cite. Ler estes é o que faz a matriz de requisitos crescer. As atividades vêm da lista de aquisição de onde cada um saiu.</p>
+    <div class="filters">
+      <select id="fl-et" aria-label="Etapa"><option value="">Todas as etapas</option></select>
+      <label><input type="checkbox" id="fl-lig" checked> só os ligados a alguma atividade</label>
+      <button class="btn" id="fl-copy" type="button">Copiar fila</button>
+    </div>
+    <div class="tall"><table class="req" id="fila-tab"></table></div>
+  </section>
+
+  <section class="panel" id="aquisicao" aria-labelledby="t-aq">
+    <header><h2 id="t-aq">Lacunas: lista de aquisição</h2><span class="count" id="aq-count"></span></header>
+    <p class="note">Documentos que faltam para fechar a matriz. Alta: define valor ou periodicidade usado por uma atividade e hoje não tem fonte no acervo. Média: reforça ou atualiza. Baixa: contexto. Marque o que já baixou; a marcação fica só neste navegador.</p>
+    <div class="filters">
+      <select id="a-et" aria-label="Etapa"><option value="">Todas as etapas</option></select>
+      <select id="a-pr" aria-label="Prioridade"><option value="">Todas as prioridades</option><option value="alta">Alta</option><option value="media">Média</option><option value="baixa">Baixa</option></select>
+      <select id="a-ac" aria-label="Acesso"><option value="">Qualquer acesso</option><option value="aberto">Aberto</option><option value="pago">Pago</option><option value="institucional">Institucional</option></select>
+      <label><input type="checkbox" id="a-hide"> esconder os já baixados</label>
+      <button class="btn" id="aq-copy" type="button">Copiar lista</button>
+    </div>
+    <div class="tall"><table class="req cand" id="aq-tab"></table></div>
+  </section>
+  <footer id="rodape"></footer>
+</div>
+
+<script>
+/*@DADOS@*/
+const TIPOS = {referencia:{nome:"Acervo",cor:"--ref"},manual:{nome:"Manuais",cor:"--man"},codigo:{nome:"Código",cor:"--cod"},pop:{nome:"POPs",cor:"--pop"}};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nivel = n => /OBRIG/.test(n) ? ["obr","OBR"] : /PRÁTICA/.test(n) ? ["pra","PRÁ"] : ["rec","REC"];
+// matriz etapa da cadeia × tipo de fonte (documentos distintos)
+const ETAPAS=[]; { let g=null; for(const e of D4.etapas){ if(e.grupo!==g){ ETAPAS.push([e.grupo]); g=e.grupo; } ETAPAS.push([e.nome,e.atividades]); } }
+const areas = ETAPAS.filter(e=>e[1]).map((e,i)=>["e"+(i+1), e[0]]);
+const etapaDe={}, etKey={}; areas.forEach(([k,n])=>etKey[n]=k); ETAPAS.forEach(e=>(e[1]||[]).forEach(a=>etapaDe[a]=e[0]));
+const grp = a => etKey[etapaDe[a]];
+const byA = Object.fromEntries(D.atividades.map(a => [a.id, a]));
+const ativos = new Set(Object.keys(TIPOS));
+let areaSel = "e1", ativSel = null;
+try { const s = localStorage.getItem("mapa-etapa"); if (s && areas.some(a => a[0] === s)) areaSel = s; } catch (e) {}
+
+document.getElementById("rodape").textContent = `Gerado por scripts/gerar_mapa.py em ${D4.gerado} a partir do repositório isocentro-conhecimento (matriz/ e fichas/).`;
+
+const FONTES=[["norma","Norma brasileira","obrigatória"],["prot","Protocolo técnico","AAPM, IAEA, ICRU, IEC"],["cons","Consenso clínico","constraints, diretrizes"],["lit","Literatura","artigos"],["inc","Incidentes","casos e relatórios"],["man","Manual","fabricante"],["pop","POP","do serviço"]];
+function tipoFonte(t,c){
+  if(t==="manual") return "man"; if(t==="codigo") return "cod"; if(t==="pop") return "pop";
+  if(/^(POP-|LISTA-VERIF|PPR-CLINICA)/.test(c)) return "pop";
+  if(/Release-Note|IFU|Guide/i.test(c)) return "man";
+  if(/^(NN-|RDC-|NR-|LEI-|LGPD|CFM-|SAES-|GUIA-CNEN|ROTEIRO-VISA|RES-ANPD|RES-ANSN|CNEN-|NT-GVIMS|ANVISA-|ANPD-|AGENDA-ANSN)/.test(c)) return "norma";
+  if(/^(IAEA-(BIALYSTOK|COSTA|PANAMA|SRS-17)|IGAS-|IRSN-|SCOT-|UKHSA-)/.test(c)) return "inc";
+  if(/^(QUANTEC|HYTEC|ASTRO-|ESTRO-(REIRR|EANO)|RECOG|REIRR-|UK-SABR|ABS-|GEC-ESTRO|ACROP|EMBRACE|TIMMERMAN|CORSAIR|PENTEC|RCR-|ABFM-|EMAMI|HAIE-MEDER|POTTER|KAMRAVA|GRIMM)/.test(c)) return "cons";
+  if(/^(TG-|MPPG|TRS-|TECDOC|IAEA-|ICRU|IEC-|ISO-|DICOM|NCS-|IPEM|ICRP-|FDA-|IMDRF|WHO-|GSR|SSG-|SRS-47|NCRP|QUATRO|AAPM-|WGTG51|PQRT-|ESTRO-BOOKLET|CPQR|SAFER-RT|SNA-|UK-RT-|HEBD|CLRP|IHE-)/.test(c)) return "prot";
+  return "lit";
+}
+const LIG=new Map();  // "etapa|tipo|doc" -> {doc, fora, acts}
+function liga(a,t,doc,fora,nl){ const e=etapaDe[a]; if(!e||!doc||t==="codigo") return; const k=e+"|"+tipoFonte(t,doc)+"|"+doc;
+  if(!LIG.has(k)) LIG.set(k,{doc,fora:!!fora,nl:!!nl,acts:new Set()}); const o=LIG.get(k); o.acts.add(a); if(!fora) o.fora=false; if(!nl) o.nl=false; }
+D.vinculos.forEach(v=>liga(v.a,v.t,v.alvo,v.g==="(fora do acervo)"));
+D2.requisitos.forEach(r=>liga(r.a,"referencia",r.f,!r.ac));
+D3.fila.forEach(d=>d.as.forEach(a=>liga(a,"referencia",d.c,false,true)));
+let celSel=null, celDocs={};
+const REFT=new Set(["norma","prot","cons","lit","inc"]);
+function indicadores(e){
+  const acts=e[1], tipos={}; acts.forEach(a=>tipos[a]=new Set());
+  for(const [k,o] of LIG){ const p=k.split("|"); if(p[0]!==e[0]||o.fora) continue; o.acts.forEach(a=>tipos[a]&&tipos[a].add(p[1])); }
+  const obr=acts.filter(a=>/OBRIG/.test(byA[a]?.nivel||""));
+  const obrSemNorma=obr.filter(a=>!tipos[a].has("norma"));
+  const semAcervo=acts.filter(a=>![...tipos[a]].some(t=>REFT.has(t)));
+  const semReq=acts.filter(a=>!(reqByA[a]||[]).length);
+  const lac=[...new Set([...obrSemNorma,...semAcervo,...semReq])];
+  const fila=D3.fila.filter(d=>d.as.some(a=>etapaDe[a]===e[0]));
+  const fe=feitos||new Set();
+  const cand=D2.candidatos.filter(c=>!fe.has(c.c)&&c.as.some(a=>etapaDe[a]===e[0]));
+  return {obr,obrSemNorma,semAcervo,semReq,lac,fila,cand,alta:cand.filter(c=>c.pr==="alta")};
+}
+function heat(){
+  const cnt={}; celDocs={}; let max=0;
+  for(const [k,o] of LIG){ const p=k.split("|"), c=p[0]+"|"+p[1]; (celDocs[c]=celDocs[c]||[]).push(o); cnt[c]=(cnt[c]||0)+1; max=Math.max(max,cnt[c]); }
+  const mix=t=>`color-mix(in oklab, var(--heat1) ${Math.round(10+t*90)}%, var(--heat0))`;
+  let h="<thead><tr><th></th>"+FONTES.map(([,n,s])=>`<th scope="col">${n}<small>${s}</small></th>`).join("")+
+    `<th scope="col" class="sep">Lacunas<small>atividades</small></th><th scope="col">Não lidos<small>no acervo</small></th><th scope="col">A baixar<small>aquisição</small></th></tr></thead><tbody>`;
+  for(const e of ETAPAS){
+    if(!e[1]){ h+=`<tr class="grp"><th colspan="${FONTES.length+4}">${esc(e[0])}</th></tr>`; continue; }
+    const k=etKey[e[0]], ind=indicadores(e);
+    const tot=new Set([...LIG].filter(([x])=>x.startsWith(e[0]+"|")).map(([,o])=>o.doc)).size;
+    h+=`<tr><th scope="row" tabindex="0" data-et="${k}" title="Abrir as ligações da etapa · atividades: ${e[1].join(", ")}"><span class="nm">${esc(e[0])}</span><span class="n">${tot}</span></th>`;
+    for(const [t,n] of FONTES){ const c=e[0]+"|"+t, v=cnt[c]||0, x=v/max;
+      if(v) h+=`<td tabindex="0" data-cel="${esc(c)}" class="${celSel===c?"sel":""}" title="${esc(e[0])} × ${n}: ${v} documento(s)" style="background:${mix(x)};color:${x>.45?"var(--surface)":"var(--ink)"}">${v}</td>`;
+      else if(t==="norma"&&ind.obr.length) h+=`<td tabindex="0" data-cel="${esc(e[0]+"|lac")}" class="gap${celSel===e[0]+"|lac"?" sel":""}" title="${ind.obr.length} atividade(s) obrigatória(s) e nenhuma norma brasileira ligada">!</td>`;
+      else h+=`<td class="zero" title="${esc(e[0])} × ${n}: nenhum documento">·</td>`; }
+    const L=ind.lac.length, F=ind.fila.length, A=ind.cand.length;
+    h+=`<td tabindex="0" data-cel="${esc(e[0]+"|lac")}" class="ind sep${L?" alerta":""}${celSel===e[0]+"|lac"?" sel":""}" title="Ver lacunas da etapa">${L||"0"}<small>de ${e[1].length}</small></td>`;
+    h+=F?`<td tabindex="0" data-fila="${k}" class="ind" title="Abrir a fila de leitura desta etapa">${F}</td>`:`<td class="zero">·</td>`;
+    h+=A?`<td tabindex="0" data-aq="${k}" class="ind${ind.alta.length?" alerta":""}" title="Abrir a lista de aquisição desta etapa">${A}${ind.alta.length?`<small>${ind.alta.length} alta</small>`:""}</td>`:`<td class="zero">·</td>`;
+    h+="</tr>";
+  }
+  const el=document.getElementById("heat"); el.innerHTML=h+"</tbody>";
+  const tecla=(n,go)=>{ n.addEventListener("click",go); n.addEventListener("keydown",ev=>{ if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }); };
+  const rolar=id=>document.getElementById(id).scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  el.querySelectorAll("[data-cel]").forEach(td=>tecla(td,()=>{ celSel=td.dataset.cel; heat(); }));
+  el.querySelectorAll("th[data-et]").forEach(th=>tecla(th,()=>{ escolherArea(th.dataset.et); rolar("t-fios"); }));
+  el.querySelectorAll("[data-fila]").forEach(td=>tecla(td,()=>{ document.getElementById("fl-et").value=td.dataset.fila; filaLeitura(); rolar("fila"); }));
+  el.querySelectorAll("[data-aq]").forEach(td=>tecla(td,()=>{ document.getElementById("a-et").value=td.dataset.aq; aquisicao(); rolar("aquisicao"); }));
+  detalheCel();
+}
+const btnA=a=>`<button type="button" class="alink" data-go="${a}" title="${esc(byA[a]?.nome||"")}">${a}</button>`;
+function detalheCel(){
+  const box=document.getElementById("heat-det");
+  if(!celSel){ box.innerHTML=""; return; }
+  const [e,t]=celSel.split("|");
+  if(t==="lac"){ const ind=indicadores(ETAPAS.find(x=>x[0]===e));
+    const grupo=(tit,as,nota)=>as.length?`<h4>${tit} · ${as.length}</h4><ul>${as.map(a=>`<li>${btnA(a)} ${esc(byA[a]?.nome||"")}${nota?`<br><span class="hint">${esc(nota(a))}</span>`:""}</li>`).join("")}</ul>`:"";
+    box.innerHTML=`<h3>${esc(e)} · lacunas</h3>`+
+      (grupo("Obrigatórias sem norma brasileira ligada",ind.obrSemNorma,a=>byA[a].nivel)+
+       grupo("Sem nenhum documento do acervo",ind.semAcervo,null)+
+       grupo("Sem requisito numérico rastreado",ind.semReq,null) || '<p class="empty">Nenhuma lacuna nesta etapa.</p>');
+    return; }
+  const lista=celDocs[celSel]; if(!lista){ box.innerHTML=""; return; }
+  const fn=FONTES.find(x=>x[0]===t)[1];
+  const ord=[...lista].sort((a,b)=>b.acts.size-a.acts.size||a.doc.localeCompare(b.doc,"pt"));
+  box.innerHTML=`<h3>${esc(e)} · ${esc(fn)} · ${ord.length} documento(s)</h3><ul>`+
+    ord.map(o=>`<li><span class="mono">${esc(o.doc)}</span>${o.fora?'<span class="fora">fora do acervo</span>':""}${o.nl?'<span class="nl">não lido</span>':""}<br>${[...o.acts].sort().map(btnA).join(" ")}</li>`).join("")+"</ul>";
+}
+
+function chips(){
+  document.getElementById("areas").innerHTML = areas.map(([k,n]) =>
+    `<button class="chip" aria-pressed="${k===areaSel}" data-k="${k}" title="${esc(n)}">${esc(n)}</button>`).join("");
+  document.querySelectorAll("#areas .chip").forEach(b => b.onclick = () => escolherArea(b.dataset.k));
+  document.getElementById("tipos").innerHTML = Object.entries(TIPOS).map(([k,t]) =>
+    `<label><input type="checkbox" id="tp-${k}" ${ativos.has(k)?"checked":""}> ${t.nome}</label>`).join("");
+  Object.keys(TIPOS).forEach(k => document.getElementById("tp-"+k).onchange = e => { e.target.checked?ativos.add(k):ativos.delete(k); desenhar(); });
+}
+
+function escolherArea(k){ areaSel=k; ativSel=null; try{localStorage.setItem("mapa-etapa",k);}catch(e){}; heat(); chips(); desenhar(); }
+
+function desenhar(){
+  const acts = D.atividades.filter(a=>grp(a.id)===areaSel);
+  const links = D.vinculos.filter(v=>grp(v.a)===areaSel && ativos.has(v.t));
+  const alvos = [...new Map(links.map(l=>[l.t+"|"+l.alvo,l])).values()]
+    .sort((a,b)=> Object.keys(TIPOS).indexOf(a.t)-Object.keys(TIPOS).indexOf(b.t) || a.alvo.localeCompare(b.alvo,"pt"));
+  const W = 980, rowL = 30, rowR = 17, padT = 14;
+  const H = Math.max(acts.length*rowL, alvos.length*rowR) + padT*2;
+  const yL = i => padT + i*rowL + rowL/2, yR = i => padT + i*rowR + rowR/2;
+  const offL = (H - acts.length*rowL)/2 - padT, offR = (H - alvos.length*rowR)/2 - padT;
+  const xL = 360, xR = W - 330;
+  const idxL = Object.fromEntries(acts.map((a,i)=>[a.id,i])), idxR = Object.fromEntries(alvos.map((t,i)=>[t.t+"|"+t.alvo,i]));
+  let s = "";
+  for (const l of links){ const i=idxL[l.a], j=idxR[l.t+"|"+l.alvo]; if(i==null||j==null) continue;
+    const y1=yL(i)+offL, y2=yR(j)+offR, mx=(xL+xR)/2;
+    s += `<path class="wire" data-a="${l.a}" data-t="${esc(l.t+"|"+l.alvo)}" stroke="var(${TIPOS[l.t].cor})" d="M${xL},${y1} C${mx},${y1} ${mx},${y2} ${xR},${y2}"/>`; }
+  acts.forEach((a,i)=>{ const y=yL(i)+offL; const [c,t]=nivel(a.nivel); const nome=a.nome.length>44?a.nome.slice(0,43)+"…":a.nome;
+    s += `<g class="node act" data-a="${a.id}" tabindex="0" role="button" aria-label="${esc(a.id+" "+a.nome)}">
+      <rect x="0" y="${y-rowL/2+2}" width="${xL-6}" height="${rowL-4}" rx="5" fill="var(--surface)" stroke="var(--line)"/>
+      <text class="id" x="8" y="${y+4}">${a.id}</text>
+      <text x="44" y="${y+4}" font-size="12.5">${esc(nome)}</text>
+      <circle cx="${xL-2}" cy="${y}" r="4" style="fill:var(--${c})"/></g>`; });
+  alvos.forEach((t,j)=>{ const y=yR(j)+offR; const nome=t.alvo.length>48?t.alvo.slice(0,47)+"…":t.alvo;
+    s += `<g class="node tgt" data-t="${esc(t.t+"|"+t.alvo)}"><circle cx="${xR+2}" cy="${y}" r="3" style="fill:var(${TIPOS[t.t].cor})"/>
+      <text x="${xR+10}" y="${y+4}" font-size="11.5" ${t.ficha?'font-weight="600"':""}>${esc(nome)}</text><title>${esc(t.alvo)} — ${esc(t.g)}</title></g>`; });
+  const svg = document.getElementById("fios"); svg.setAttribute("viewBox",`0 0 ${W} ${H}`); svg.innerHTML = s;
+  svg.querySelectorAll(".act").forEach(g=>{ const f=()=>selecionar(g.dataset.a); g.onclick=f; g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();f();}};
+    g.onmouseenter=()=>realce(g.dataset.a,null); g.onmouseleave=()=>realce(ativSel,null); });
+  svg.querySelectorAll(".tgt").forEach(g=>{ g.onmouseenter=()=>realce(null,g.dataset.t); g.onmouseleave=()=>realce(ativSel,null); });
+  document.getElementById("lista").innerHTML = acts.map(a=>{const [c,t]=nivel(a.nivel);return `<button data-a="${a.id}"><span class="badge b-${c}">${t}</span> <b>${a.id}</b> ${esc(a.nome)}</button>`;}).join("");
+  document.querySelectorAll("#lista button").forEach(b=>b.onclick=()=>selecionar(b.dataset.a));
+  if(!ativSel) ativSel = acts[0]?.id; selecionar(ativSel);
+}
+
+function realce(a,t){
+  const svg=document.getElementById("fios");
+  const on = a || t;
+  svg.querySelectorAll(".wire").forEach(w=>{ const hit = (a && w.dataset.a===a) || (t && w.dataset.t===t);
+    w.classList.toggle("hot", !!hit); w.classList.toggle("dim", !!on && !hit); });
+  const viz = new Set(); svg.querySelectorAll(".wire.hot").forEach(w=>{viz.add("a:"+w.dataset.a); viz.add("t:"+w.dataset.t);});
+  svg.querySelectorAll(".act").forEach(g=>g.classList.toggle("dim", !!on && !viz.has("a:"+g.dataset.a)));
+  svg.querySelectorAll(".tgt").forEach(g=>g.classList.toggle("dim", !!on && !viz.has("t:"+g.dataset.t)));
+}
+
+function selecionar(id){
+  ativSel=id; realce(id,null); const a=byA[id]; const el=document.getElementById("detalhe");
+  if(!a){ el.innerHTML='<p class="empty">Clique numa atividade para ver as ligações.</p>'; return; }
+  const [c,t]=nivel(a.nivel);
+  const ls = D.vinculos.filter(v=>v.a===id);
+  const grupos = Object.entries(TIPOS).map(([k,tp])=>{ const it=ls.filter(v=>v.t===k); if(!it.length) return "";
+    return `<div class="group"><h4 style="color:var(${tp.cor})">${tp.nome} · ${it.length}</h4><ul>${it.map(v=>`<li>${esc(v.alvo)}${v.ficha?'<span class="tag">ficha</span>':""}${k==="referencia"&&v.g!=="(fora do acervo)"?` <span class="hint">· ${esc(v.g.replace(/^\d+ /,""))}</span>`:k==="referencia"?' <span class="hint">· fora do acervo</span>':""}</li>`).join("")}</ul></div>`; }).join("");
+  el.innerHTML = `<span class="badge b-${c}">${esc(a.nivel)}</span>
+    <h3>${a.id} · ${esc(a.nome)}</h3>
+    <dl><dt>Quando</dt><dd>${esc(a.gatilho||"—")}</dd>
+      <dt>Ficha</dt><dd><code>${esc(a.ficha||"—")}</code></dd>
+      <dt>ISOCENTRO</dt><dd>${esc(a.isocentro||"—")}</dd>${(a.cod_iso||[]).length?`
+      <dt>Código</dt><dd>${a.cod_iso.map(c=>`<code>${esc(c)}</code>`).join(", ")}</dd>`:""}${(a.tes_iso||[]).length?`
+      <dt>Testes</dt><dd>${a.tes_iso.map(c=>`<code>${esc(c)}</code>`).join(", ")}</dd>`:""}
+      <dt>Lacuna no PPR</dt><dd>${esc(a.lacuna||"—")}</dd>
+      <dt>Origem</dt><dd>${esc(a.origem)}</dd></dl>${grupos || '<p class="empty">Sem ligações nos tipos marcados.</p>'}`;
+  document.querySelectorAll("#lista button").forEach(b=>b.style.fontWeight = b.dataset.a===id?"700":"400");
+}
+
+var feitos;
+// ===== camada de requisitos (19/10/2026) =====
+const PRI={alta:"Alta",media:"Média",baixa:"Baixa"};
+const reqByA={}; D2.requisitos.forEach(r=>(reqByA[r.a]=reqByA[r.a]||[]).push(r));
+const confByA={}; D2.conflitos.forEach(c=>c.as.forEach(a=>(confByA[a]=confByA[a]||[]).push(c)));
+const aLink=a=>`<button type="button" class="alink" data-go="${a}" title="${esc(byA[a]?.nome||"")}">${a}</button>`;
+function irPara(a){ if(!byA[a]) return; escolherArea(grp(a)); selecionar(a); document.getElementById("t-fios").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); }
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]"); if(b) irPara(b.dataset.go);});
+async function copiar(txt,btn){ const old=btn.textContent;
+  try{ await navigator.clipboard.writeText(txt); btn.textContent="Copiado"; }
+  catch(e){ const t=document.createElement("textarea"); t.value=txt; document.body.appendChild(t); t.select(); try{document.execCommand("copy"); btn.textContent="Copiado";}catch(_){btn.textContent="Selecione e copie";} t.remove(); }
+  setTimeout(()=>btn.textContent=old,1800); }
+const tsv=rows=>rows.map(r=>r.map(x=>String(x??"").replace(/[\t\n]/g," ")).join("\t")).join("\n");
+
+
+// detalhe da atividade: requisitos + conflitos (envolve o selecionar original)
+const _sel = selecionar;
+selecionar = function(id){ _sel(id); const el=document.getElementById("detalhe"); if(!byA[id]) return;
+  const rs=reqByA[id]||[], cs=confByA[id]||[];
+  let h=`<div class="group"><h4 style="color:var(--accent)">Requisitos · ${rs.length}</h4>`;
+  h += rs.length? `<ul class="reqlist">${rs.map(r=>`<li><span class="badge b-${r.n==="OBR"?"obr":r.n==="PRA"?"pra":"rec"}">${r.n==="PRA"?"PRÁ":r.n}</span> ${esc(r.p)}: <span class="v">${esc(r.v)}</span>${r.q?` · ${esc(r.q)}`:""}<span class="meta">${esc(r.f)} · ${esc(r.l)}${r.ac?"":' <span class="fora">fora do acervo</span>'}</span></li>`).join("")}</ul>`
+    : '<p class="empty">Nenhum requisito numérico extraído ainda. Veja a lista de aquisição.</p>';
+  h += "</div>";
+  if(cs.length) h += `<div class="group"><h4 style="color:var(--warn)">Conflitos · ${cs.length}</h4><ul>${cs.map(c=>`<li><a href="#conflitos" class="alink">${c.id}</a> ${esc(c.tema)}</li>`).join("")}</ul></div>`;
+  const dl=el.querySelector("dl"); dl.insertAdjacentHTML("afterend",h);
+};
+
+// matriz
+{ const sa=document.getElementById("f-area"); const opts=areas.map(([k,n])=>`<option value="${k}">${esc(n)}</option>`).join(""); sa.innerHTML += opts;
+  document.getElementById("a-et").innerHTML += opts; document.getElementById("fl-et").innerHTML += opts;
+  ["f-area","f-nivel","f-txt","f-fora","f-conf"].forEach(i=>document.getElementById(i).addEventListener("input",matriz)); }
+let reqVis=[];
+function matriz(){
+  const ar=document.getElementById("f-area").value, nv=document.getElementById("f-nivel").value, q=document.getElementById("f-txt").value.trim().toLowerCase(),
+        fo=document.getElementById("f-fora").checked, fc=document.getElementById("f-conf").checked;
+  reqVis=D2.requisitos.filter(r=>(!ar||grp(r.a)===ar)&&(!nv||r.n===nv)&&(!fo||!r.ac)&&(!fc||confByA[r.a])&&(!q||[r.p,r.v,r.q,r.f,r.l,r.o,r.a].join(" ").toLowerCase().includes(q)));
+  document.getElementById("req-count").textContent=`${reqVis.length} de ${D2.requisitos.length}`;
+  document.getElementById("req-tab").innerHTML="<thead><tr><th>ID</th><th>Atividade</th><th>Parâmetro</th><th>Valor / tolerância</th><th>Periodicidade</th><th>Nível</th><th>Fonte · local</th><th>Nota</th></tr></thead><tbody>"+
+    reqVis.map(r=>`<tr><td class="mono">${r.id}</td><td>${aLink(r.a)}</td><td>${esc(r.p)}</td><td><b>${esc(r.v)}</b></td><td>${esc(r.q)}</td><td><span class="badge b-${r.n==="OBR"?"obr":r.n==="PRA"?"pra":"rec"}">${r.n==="PRA"?"PRÁ":r.n}</span></td><td><span class="mono">${esc(r.f)}</span>${r.ac?"":'<span class="fora">fora do acervo</span>'}<br><span class="hint">${esc(r.l)}</span></td><td class="hint">${esc(r.o)}</td></tr>`).join("")+"</tbody>";
+}
+document.getElementById("req-copy").onclick=e=>copiar(tsv([["ID","Atividade","Parâmetro","Valor","Periodicidade","Nível","Fonte","Local","No acervo","Nota"],...reqVis.map(r=>[r.id,r.a,r.p,r.v,r.q,r.n,r.f,r.l,r.ac?"sim":"não",r.o])]),e.currentTarget);
+
+// conflitos
+document.getElementById("conf-count").textContent=`${D2.conflitos.length} pontos`;
+const CRIT={"norma-br":"norma brasileira prevalece","mais-restritivo":"mais restritivo","mais-recente":"documento mais recente","cumulativo":"obrigações se somam","escopo":"escopos diferentes","norma-vigente":"norma vigente","decisao-clinica":"decisão clínica","confirmar-fonte":"conferir a fonte"};
+{ const pend=D2.conflitos.filter(c=>c.regra==="pendente"); document.getElementById("conf-count").textContent=`${D2.conflitos.length} pontos · ${pend.length} pendentes (${pend.filter(c=>c.quem==="radioterapeuta").length} clínicos)`; }
+document.getElementById("conf-list").innerHTML=D2.conflitos.map(c=>`<article id="${c.id}"><div class="hint mono">${c.id}</div><h3>${esc(c.tema)}</h3><div class="src">${c.fontes.map(f=>`<span>${esc(f)}</span>`).join("")}</div><div>${esc(c.d)}</div><div>${c.as.map(aLink).join(" ")}</div><div class="prop"><b>Proposta</b> <span class="pill crit">${esc(CRIT[c.crit]||c.crit)}</span> <span class="hint">· decide: ${esc(c.quem)}</span><br>${esc(c.prop)}</div><div class="dec ${c.regra==="pendente"?"pend":"feita"}">Regra adotada: ${c.regra==="pendente"?"pendente de decisão":esc(c.regra)}</div></article>`).join("");
+
+// vigência
+function vigencia(){ const all=document.getElementById("v-all").checked;
+  const vs=D2.vigencia.filter(v=>all||v.s!=="vigente");
+  document.getElementById("vig-count").textContent=`${D2.vigencia.filter(v=>v.s!=="vigente").length} a revisar de ${D2.vigencia.length} verificados`;
+  document.getElementById("vig-tab").innerHTML="<thead><tr><th>Documento</th><th>Situação</th><th>O que mudou</th><th>Fonte</th></tr></thead><tbody>"+
+    vs.map(v=>`<tr><td class="mono">${esc(v.c)}${v.ac?` <span class="hint">· pasta ${v.pasta}</span>`:'<span class="fora">fora do acervo</span>'}</td><td><span class="pill s-${v.s}">${esc(v.s)}</span></td><td>${esc(v.d)}${v.alt.map(a=>`<br><span class="hint">Outra frente: ${esc(a.s)} · ${esc(a.d)}</span>`).join("")}</td><td>${/^https?:/.test(v.u)?`<a href="${esc(v.u)}" target="_blank" rel="noopener">abrir</a>`:"—"}</td></tr>`).join("")+"</tbody>"; }
+document.getElementById("v-all").onchange=vigencia;
+
+// aquisição
+feitos=new Set(); try{ feitos=new Set(JSON.parse(localStorage.getItem("isocentro-baixados")||"[]")); }catch(e){}
+const salvar=()=>{ try{ localStorage.setItem("isocentro-baixados",JSON.stringify([...feitos])); }catch(e){} };
+let aqVis=[];
+function aquisicao(){ const et=document.getElementById("a-et").value, pr=document.getElementById("a-pr").value, ac=document.getElementById("a-ac").value, hd=document.getElementById("a-hide").checked;
+  aqVis=D2.candidatos.filter(c=>(!et||c.as.some(a=>grp(a)===et))&&(!pr||c.pr===pr)&&(!ac||c.ac===ac)&&(!hd||!feitos.has(c.c)));
+  const alta=D2.candidatos.filter(c=>c.pr==="alta"), faltam=alta.filter(c=>!feitos.has(c.c)).length;
+  document.getElementById("aq-count").textContent=`${aqVis.length} listados · ${faltam} de ${alta.length} prioritários ainda por baixar`;
+  document.getElementById("aq-tab").innerHTML="<thead><tr><th>Baixado</th><th>Prioridade</th><th>Documento</th><th>Por que entra</th><th>Atividades</th><th>Acesso</th><th>Fonte</th></tr></thead><tbody>"+
+    aqVis.map((c,i)=>`<tr class="${feitos.has(c.c)?"done":""}"><td><input type="checkbox" id="aq-${i}" data-c="${esc(c.c)}" ${feitos.has(c.c)?"checked":""} aria-label="Baixado: ${esc(c.c)}"></td><td><span class="pill p-${c.pr}">${PRI[c.pr]}</span></td><td class="t"><span class="mono">${esc(c.c)}</span><br>${esc(c.t)}<br><span class="hint">${esc(c.org)} · ${esc(c.ano)} · ${esc(c.tipo)} · pasta ${esc(c.pasta)}${c.sub?` · substitui ${esc(c.sub)}`:""}</span></td><td class="hint">${esc(c.j)}</td><td>${c.as.map(aLink).join(" ")}</td><td>${esc(c.ac)}</td><td>${(c.us||(/^https?:/.test(c.u)?[{r:"abrir",u:c.u}]:[])).map(l=>`<a href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.r)}</a>`).join("<br>")||"—"}</td></tr>`).join("")+"</tbody>";
+  document.querySelectorAll("#aq-tab input[data-c]").forEach(cb=>cb.onchange=()=>{ cb.checked?feitos.add(cb.dataset.c):feitos.delete(cb.dataset.c); salvar(); aquisicao(); heat(); }); }
+["a-et","a-pr","a-ac","a-hide"].forEach(i=>document.getElementById(i).addEventListener("input",aquisicao));
+document.getElementById("aq-copy").onclick=e=>copiar(tsv([["Prioridade","Código","Título","Órgão","Ano","Tipo","Pasta","Acesso","Atividades","Substitui","Link"],...aqVis.map(c=>[PRI[c.pr],c.c,c.t,c.org,c.ano,c.tipo,c.pasta,c.ac,c.as.join(" "),c.sub,(c.us||[{u:c.u}]).map(l=>l.u).join(" ")])]),e.currentTarget);
+
+
+// ===== visões novas (20/10/2026) =====
+const ELOS=[["obr","Obrigação","norma brasileira"],["met","Método","protocolo ou consenso"],["val","Valor","requisito rastreado"],["pop","POP","procedimento local"],["fer","Ferramenta","código que mede ou calcula"],["reg","ISOCENTRO","registro no sistema"]];
+const SIMB={ok:"✓",parcial:"◐",diverge:"!",vazio:"✕",na:"–"};
+const NOME_ST={ok:"presente",parcial:"parcial",diverge:"diverge",vazio:"falta",na:"não se aplica"};
+const quebrada=a=>{ const e=D4.elos[a]; return !!e && ELOS.some(([k])=>e[k].s==="vazio"||e[k].s==="diverge"); };
+const stBtn=(a,k)=>{ const e=D4.elos[a]?.[k]; if(!e) return ""; return `<span class="st st-${e.s}" tabindex="${e.s==="na"?-1:0}" data-elo="${a}|${k}" title="${esc(NOME_ST[e.s]+": "+e.d)}">${SIMB[e.s]}</span>`; };
+function sustentacao(){
+  const et=document.getElementById("s-et").value, so=document.getElementById("s-que").checked;
+  const todas=D.atividades.map(a=>a.id), inteiras=todas.filter(a=>!quebrada(a)).length;
+  document.getElementById("sust-count").textContent=`${inteiras} de ${todas.length} atividades com a corrente inteira`;
+  const cor={ok:"var(--ok)",parcial:"color-mix(in oklab,var(--ok) 45%,var(--heat0))",diverge:"var(--warn)",vazio:"var(--obr)",na:"var(--line)"};
+  document.getElementById("sust-resumo").innerHTML=ELOS.map(([k,n,s])=>{ const c={ok:0,parcial:0,diverge:0,vazio:0,na:0}; todas.forEach(a=>c[D4.elos[a][k].s]++);
+    return `<div><b>${n}</b><span class="barra">${Object.entries(c).filter(([,v])=>v).map(([st,v])=>`<i style="width:${v}%;background:${cor[st]}" title="${NOME_ST[st]}: ${v}"></i>`).join("")}</span>${c.ok} presentes · ${c.parcial} parciais<br><span style="color:var(--obr)">${c.vazio} faltam</span>${c.diverge?` · <span style="color:var(--warn)">${c.diverge} divergem</span>`:""}</div>`; }).join("");
+  let h="<thead><tr><th>Atividade</th>"+ELOS.map(([,n,s])=>`<th scope="col">${n}<small>${s}</small></th>`).join("")+"</tr></thead><tbody>";
+  for(const e of ETAPAS){ if(!e[1]) continue; const k=etKey[e[0]]; if(et&&et!==k) continue;
+    const as=e[1].filter(a=>byA[a]&&(!so||quebrada(a))); if(!as.length) continue;
+    const ok=e[1].filter(a=>!quebrada(a)).length;
+    h+=`<tr class="eg"><td colspan="7">${esc(e[0])} <span class="hint">· ${ok} de ${e[1].length} inteiras</span></td></tr>`;
+    for(const a of as){ const x=byA[a], [c,t]=nivel(x.nivel);
+      h+=`<tr><td class="at"><span class="badge b-${c}">${t}</span> ${btnA(a)} <span class="nm">${esc(x.nome)}</span></td>`+ELOS.map(([kk])=>`<td>${stBtn(a,kk)}</td>`).join("")+"</tr>"; } }
+  const tb=document.getElementById("sust-tab"); tb.innerHTML=h+"</tbody>";
+  tb.querySelectorAll("[data-elo]").forEach(s=>{ const go=()=>{ const [a,k]=s.dataset.elo.split("|"), e=D4.elos[a][k], n=ELOS.find(x=>x[0]===k)[1];
+      document.getElementById("sust-det").innerHTML=`<b>${a} · ${esc(byA[a].nome)} · ${n}</b>: <span class="st st-${e.s}" style="cursor:default">${SIMB[e.s]}</span> ${esc(NOME_ST[e.s])}. ${esc(e.d)}`; };
+    s.addEventListener("click",go); s.addEventListener("keydown",ev=>{ if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }); });
+}
+
+// calendário e técnica
+let ritmoSel=null;
+function tabRitmo(id,cols,campo){
+  const cnt={}, lst={}; let max=0;
+  D2.requisitos.forEach(r=>{ const e=etapaDe[r.a]; if(!e) return; [].concat(r[campo]).forEach(v=>{ const c=e+"|"+v; cnt[c]=(cnt[c]||0)+1; (lst[c]=lst[c]||[]).push(r); max=Math.max(max,cnt[c]); }); });
+  const mix=t=>`color-mix(in oklab, var(--heat1) ${Math.round(10+t*90)}%, var(--heat0))`;
+  let h="<thead><tr><th></th>"+cols.map(c=>`<th scope="col">${esc(c)}</th>`).join("")+"</tr></thead><tbody>";
+  for(const e of ETAPAS){ if(!e[1]){ h+=`<tr class="grp"><th colspan="${cols.length+1}">${esc(e[0])}</th></tr>`; continue; }
+    h+=`<tr><th scope="row" style="cursor:default"><span class="nm">${esc(e[0])}</span></th>`;
+    for(const c of cols){ const k=e[0]+"|"+c, v=cnt[k]||0, x=v/max;
+      h+=v?`<td tabindex="0" data-rt="${esc(id+"|"+k)}" class="${ritmoSel===id+"|"+k?"sel":""}" style="background:${mix(x)};color:${x>.45?"var(--surface)":"var(--ink)"}">${v}</td>`:`<td class="zero">·</td>`; }
+    h+="</tr>"; }
+  const t=document.getElementById(id); t.innerHTML=h+"</tbody>";
+  t.querySelectorAll("[data-rt]").forEach(td=>{ const go=()=>{ ritmoSel=td.dataset.rt; ritmo(); };
+    td.addEventListener("click",go); td.addEventListener("keydown",ev=>{ if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }); });
+  return lst;
+}
+function ritmo(){
+  const cal=document.getElementById("r-cal").getAttribute("aria-pressed")==="true";
+  document.getElementById("cal-box").hidden=!cal; document.getElementById("tec-box").hidden=cal;
+  document.getElementById("r-nota").textContent=cal?"Quantos requisitos rastreados vencem em cada ritmo, por etapa. É a base do módulo de vencimentos: o que se faz todo dia, todo mês, todo ano, e o que depende de um evento.":"Quantos requisitos valem para cada técnica, por etapa. Um requisito pode valer para mais de uma; os que não citam técnica ficam em Geral.";
+  const l1=tabRitmo("cal-tab",D4.periodos,"per"), l2=tabRitmo("tec-tab",D4.tecnicas,"tec");
+  const box=document.getElementById("ritmo-det");
+  if(!ritmoSel){ box.innerHTML=""; return; }
+  const [id,e,c]=ritmoSel.split("|"), rs=(id==="cal-tab"?l1:l2)[e+"|"+c]||[];
+  if((id==="cal-tab")!==cal){ box.innerHTML=""; return; }
+  box.innerHTML=`<h3>${esc(e)} · ${esc(c)} · ${rs.length} requisito(s)</h3><ul>`+rs.map(r=>`<li>${btnA(r.a)} <span class="mono">${esc(r.id)}</span> ${esc(r.p)}: <b>${esc(r.v)}</b><br><span class="hint">${esc(r.q||"sem periodicidade")} · ${esc(r.f)} ${esc(r.l)}</span></li>`).join("")+"</ul>";
+}
+["r-cal","r-tec"].forEach(id=>document.getElementById(id).onclick=()=>{ document.getElementById("r-cal").setAttribute("aria-pressed",id==="r-cal"); document.getElementById("r-tec").setAttribute("aria-pressed",id==="r-tec"); ritmoSel=null; ritmo(); });
+
+// incidentes
+function incidentes(){
+  document.getElementById("inc-count").textContent=`${D4.incidentes.length} acidentes · ${D4.incidentes.reduce((n,i)=>n+i.barreiras.filter(quebrada).length,0)} barreiras fracas`;
+  document.getElementById("inc-list").innerHTML=D4.incidentes.map(i=>`<article><div class="meta">${esc(i.codigo)} · ${esc(i.ano)} · ${esc(i.afetados)}</div><h3>${esc(i.local)}</h3>
+    <div><span class="pill" style="color:var(--accent)">${esc(i.etapa)}</span></div>
+    <div><b>Falha.</b> ${esc(i.falha)}</div><div class="hint"><b>Causa raiz.</b> ${esc(i.causa_raiz)}</div>
+    <div class="bar">${i.barreiras.map(a=>{ const q=quebrada(a); return `<span class="${q?"fraca":""}" title="${esc((byA[a]?.nome||"")+(q?" · cadeia quebrada":" · cadeia inteira"))}"><span class="st st-${q?"vazio":"ok"}">${q?"✕":"✓"}</span>${btnA(a)}</span>`; }).join("")}</div></article>`).join("");
+  document.getElementById("inc-sint").textContent="Sínteses e análises no acervo: "+D4.sinteses.join(", ")+".";
+}
+
+// genealogia
+function genealogia(){
+  const so=document.getElementById("g-fora").checked, fams={};
+  D4.genealogia.forEach(g=>(fams[g.familia]=fams[g.familia]||[]).push(g));
+  const doc=c=>{ const n=D4.nos[c]||{st:"fora"}; return `<span class="doc ${n.st}" title="${esc(c+(n.vig?" · vigência: "+n.vig:"")+(n.pasta?" · "+n.pasta:""))}">${esc(c)}</span>`; };
+  const ent=Object.entries(fams).filter(([,gs])=>!so||gs.some(g=>[g.de,g.para].some(c=>["fora","superada"].includes((D4.nos[c]||{}).st))));
+  document.getElementById("gen-count").textContent=`${ent.length} famílias · ${D4.genealogia.length} relações`;
+  document.getElementById("gen-list").innerHTML=ent.map(([f,gs])=>`<div class="fam"><h3>${esc(f)}</h3>${gs.map(g=>`<div class="gl">${doc(g.de)}<span class="rel ${g.relacao==="conflita"?"rel-conflita":""}">${esc(g.relacao)} →</span>${doc(g.para)}<span class="nota">${esc(g.nota)} <span class="${g.verificacao==="citação conferida no texto"?"vf-ok":"vf-nao"}">· ${esc(g.verificacao||"não verificada")}</span></span></div>`).join("")}</div>`).join("");
+  const vc=D4.genealogia.filter(g=>g.verificacao==="citação conferida no texto").length;
+  document.getElementById("gen-count").textContent+=` · ${vc} conferidas no texto do acervo`;
+}
+document.getElementById("g-fora").onchange=genealogia;
+
+// código
+function codigoExt(){
+  const lig=document.getElementById("c-lig").checked, uso=document.getElementById("c-uso").value, hoje=new Date();
+  const vs=D4.codigo.filter(c=>(!lig||c.as.length)&&(!uso||c.uso===uso));
+  const nl=D4.codigo.filter(c=>c.as.length).length, dv=D4.codigo.filter(c=>c.conf==="divergente").length, sl=D4.codigo.filter(c=>c.uso==="sem-licenca").length;
+  document.getElementById("cod-count").textContent=`${nl} de ${D4.codigo.length} ligados a atividades · ${dv} divergente(s) · ${sl} sem licença`;
+  const USO={livre:"livre","copyleft":"copyleft","a-confirmar":"a confirmar","sem-licenca":"sem licença"}, CONF={conforme:"conforme",divergente:"diverge da norma",referencia:"referência","nao-avaliada":"não avaliada"};
+  document.getElementById("cod-tab").innerHTML="<thead><tr><th>Repositório</th><th>Implementa</th><th>Atividades</th><th>Licença</th><th>Último push</th><th>Conformidade</th></tr></thead><tbody>"+
+    vs.map(c=>{ const p=new Date(c.push), parado=!isNaN(p)&&(hoje-p)/864e5>730;
+      return `<tr><td><a href="${esc(c.url)}" target="_blank" rel="noopener" class="mono">${esc(c.repo)}</a><br><span class="hint">${esc(c.pasta)}</span></td><td>${esc(c.implementa||c.desc)}</td><td>${c.as.map(aLink).join(" ")||"—"}</td><td><span class="pill u-${c.uso}">${esc(USO[c.uso])}</span><br><span class="hint">${esc(c.licenca)}</span></td><td class="mono">${esc(c.push)}${parado?'<span class="parado">parado</span>':""}</td><td><span class="pill c-${c.conf}">${esc(CONF[c.conf]||c.conf)}</span>${c.nota?`<br><span class="hint">${esc(c.nota)}</span>`:""}</td></tr>`; }).join("")+"</tbody>";
+}
+["c-lig","c-uso"].forEach(i=>document.getElementById(i).addEventListener("input",codigoExt));
+
+// detalhe da atividade: os seis elos
+const _sel2=selecionar;
+selecionar=function(id){ _sel2(id); const el=document.getElementById("detalhe"); if(!byA[id]||!D4.elos[id]) return;
+  const dl=el.querySelector("dl"); dl.insertAdjacentHTML("afterend",`<div class="group"><h4 style="color:var(--accent)">Cadeia de sustentação</h4><div style="display:flex;gap:6px;flex-wrap:wrap">${ELOS.map(([k,n])=>`<span title="${esc(n)}" style="display:inline-flex;flex-direction:column;align-items:center;font-size:.66rem;color:var(--muted)">${stBtn(id,k)}${n}</span>`).join("")}</div></div>`); };
+
+{ const s=document.getElementById("s-et"); s.innerHTML+=areas.map(([k,n])=>`<option value="${k}">${esc(n)}</option>`).join("");
+  ["s-et","s-que"].forEach(i=>document.getElementById(i).addEventListener("input",sustentacao)); }
+
+// fila de leitura
+let flVis=[];
+function filaLeitura(){ const et=document.getElementById("fl-et").value, lig=document.getElementById("fl-lig").checked;
+  flVis=D3.fila.filter(d=>(!lig||d.as.length)&&(!et||d.as.some(a=>grp(a)===et)));
+  document.getElementById("fila-count").textContent=`${flVis.length} listados · ${D3.fila.length} de ${D3.acervo} documentos do acervo ainda sem leitura`;
+  document.getElementById("fila-tab").innerHTML="<thead><tr><th>Documento</th><th>Pasta</th><th>Etapas que alimenta</th><th>Atividades</th></tr></thead><tbody>"+
+    flVis.map(d=>`<tr><td><span class="mono">${esc(d.c)}</span><br>${esc(d.t)}</td><td class="hint">${esc(d.pasta)}</td><td>${[...new Set(d.as.map(a=>etapaDe[a]))].map(esc).join("<br>")||"—"}</td><td>${d.as.map(aLink).join(" ")||"—"}</td></tr>`).join("")+"</tbody>"; }
+["fl-et","fl-lig"].forEach(i=>document.getElementById(i).addEventListener("input",filaLeitura));
+document.getElementById("fl-copy").onclick=e=>copiar(tsv([["Código","Título","Pasta","Etapas","Atividades"],...flVis.map(d=>[d.c,d.t,d.pasta,[...new Set(d.as.map(a=>etapaDe[a]))].join("; "),d.as.join(" ")])]),e.currentTarget);
+// cabeçalho: números de contexto (tamanho do mapa) e cartão de situação (cadeias + o que falta)
+{ const fmt=n=>n.toLocaleString("pt-BR");
+  const nfont=new Set(D.vinculos.filter(v=>v.t==="referencia").map(v=>v.alvo)).size;
+  const alta=D2.candidatos.filter(c=>c.pr==="alta").length, rev=D2.vigencia.filter(v=>v.ac&&v.s!=="vigente").length;
+  const tot=D.atividades.length, ok=D.atividades.filter(a=>!quebrada(a.id)).length;
+  document.getElementById("kpi-ctx").innerHTML=[[tot,"atividades"],[areas.length,"etapas"],[D.atividades.filter(a=>/OBRIG/.test(a.nivel)).length,"obrigatórias"],
+    [D.vinculos.length,"ligações"],[nfont,"documentos citados"],[D2.requisitos.length,"requisitos rastreados"]].map(([n,r])=>`<span><b>${fmt(n)}</b>${r}</span>`).join("");
+  const falta=[[D2.conflitos.length,"conflitos entre fontes","#conflitos"],[rev,"documentos a revisar","#vigencia"],[D3.fila.length,"no acervo sem leitura","#fila"],[alta,"aquisições prioritárias","#aquisicao"]];
+  document.getElementById("kpi-estado").innerHTML=
+    `<p class="rot">Cadeias de sustentação</p><div class="big">${ok}<small>de ${tot}</small></div>`+
+    `<p class="sub">atividades com a corrente inteira · ${tot-ok} quebradas</p>`+
+    `<span class="barra" role="img" aria-label="${ok} de ${tot} inteiras"><i style="width:${ok/tot*100}%;background:var(--ok)"></i><i style="width:${(tot-ok)/tot*100}%;background:color-mix(in oklab,var(--obr) 55%,var(--heat0))"></i></span>`+
+    `<p class="rot falta">O que falta</p><ul>${falta.map(([n,r,h])=>`<li><a href="${h}"><b>${fmt(n)}</b>${r}</a></li>`).join("")}</ul>`; }
+
+sustentacao(); heat(); chips(); desenhar(); matriz(); ritmo(); incidentes(); genealogia(); codigoExt(); vigencia(); filaLeitura(); aquisicao(); selecionar(ativSel);
+document.getElementById("rodape").textContent += ` Valores com fonte e ponto do documento, para conferência.`;
+</script>
+

@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar de Ideias — Radioteraficha</title>
+<style>
+:root{
+  --bg:#f2eee4; --panel:#fbf8f1; --strip:#fffdf7; --ink:#18202e; --muted:#586173; --line:#d6ccb8;
+  --cyan:#0b6a88; --cyan-soft:#d7eef5; --amber:#a24d05; --amber-tint:#fdebd2; --amber-line:#d98a2b;
+  --red:#b3261e; --red-tint:#fbe3e0; --stamp:#3340b8; --violet:#6b3fa0; --board:#101722; --board-ink:#ffb547; --board-dim:#7d8aa3;
+  --hatch:rgba(179,38,30,.16); --on-amber:#ffffff; --shadow:0 1px 0 rgba(0,0,0,.04),0 6px 18px rgba(40,30,10,.07);
+  --display:"Bahnschrift","DIN Alternate","Roboto Condensed","Arial Narrow","Segoe UI",sans-serif;
+  --body:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a111d; --panel:#0f192a; --strip:#132036; --ink:#e7edf6; --muted:#9aa7bc; --line:#26354f;
+    --cyan:#62cbe8; --cyan-soft:#12324a; --amber:#f7ae3c; --amber-tint:#33240f; --amber-line:#b5741d;
+    --red:#ff7b6e; --red-tint:#3a1714; --stamp:#9fb0ff; --violet:#c4a2f0; --hatch:rgba(255,123,110,.16); --on-amber:#1a1205;
+    --shadow:0 1px 0 rgba(255,255,255,.03),0 8px 22px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a111d; --panel:#0f192a; --strip:#132036; --ink:#e7edf6; --muted:#9aa7bc; --line:#26354f;
+  --cyan:#62cbe8; --cyan-soft:#12324a; --amber:#f7ae3c; --amber-tint:#33240f; --amber-line:#b5741d;
+  --red:#ff7b6e; --red-tint:#3a1714; --stamp:#9fb0ff; --violet:#c4a2f0; --hatch:rgba(255,123,110,.16); --on-amber:#1a1205;
+  --shadow:0 1px 0 rgba(255,255,255,.03),0 8px 22px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:radial-gradient(circle at 50% 0%,#000 0,transparent 70%);-webkit-mask-image:radial-gradient(circle at 50% 0%,#000 0,transparent 70%);z-index:0}
+main,header,footer,nav{position:relative;z-index:1}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:.01em;margin:0;line-height:1.15}
+p{margin:.4em 0}
+a{color:var(--cyan)}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+
+/* ---------- HERO ---------- */
+.hero{padding:40px 0 24px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+.callsign{font:600 12px/1 var(--mono);letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;display:flex;gap:10px;flex-wrap:wrap}
+.callsign span{border:1px solid var(--cyan);padding:5px 8px;border-radius:3px}
+.hero h1{font-size:clamp(40px,7vw,78px);font-weight:700;margin:18px 0 8px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero .lede{font-size:clamp(17px,2.1vw,20px);max-width:36em}
+.analogy{margin-top:22px;border-left:4px solid var(--amber);padding:10px 14px;background:var(--panel);box-shadow:var(--shadow);border-radius:0 6px 6px 0}
+.analogy b{font-family:var(--display);font-size:20px;display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.stat b{display:block;font:700 30px/1 var(--display)}
+.stat small{font:600 11px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.stat.g b{color:var(--amber)}
+.radar{width:100%;max-width:420px;margin:0 auto;display:block}
+.radar .ring{fill:none;stroke:var(--cyan);stroke-opacity:.35}
+.radar .axis{stroke:var(--cyan);stroke-opacity:.22}
+.radar .bg{fill:var(--panel);stroke:var(--cyan);stroke-opacity:.6;stroke-width:2}
+.radar .sweep{transform-origin:200px 200px;animation:spin 7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.radar .blip circle{fill:var(--amber)}
+.radar .blip .halo{fill:none;stroke:var(--amber);stroke-opacity:.5;animation:ping 3.5s ease-out infinite}
+.radar .blip text{font:700 11px var(--mono);fill:var(--ink)}
+.radar .blip:hover circle,.radar .blip:focus circle{fill:var(--red)}
+.radar .tick{font:10px var(--mono);fill:var(--muted)}
+@keyframes ping{0%{r:6;opacity:1}100%{r:18;opacity:0}}
+@media (prefers-reduced-motion: reduce){.radar .sweep,.radar .blip .halo{animation:none}}
+
+/* ---------- NAV TAPE ---------- */
+.tape{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-block:1px solid var(--line)}
+.tape .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+.tape a{flex:0 0 auto;font:600 12px/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--panel);padding:7px 9px;border-radius:3px}
+.tape a b{color:var(--cyan);margin-right:4px}
+.tape a.clim{border-color:var(--amber-line);color:var(--amber)}
+
+/* ---------- SECTIONS ---------- */
+section{padding:56px 0 8px;scroll-margin-top:52px}
+.sector-head{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:end;margin-bottom:22px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.sector-num{grid-row:span 2;font:700 clamp(46px,8vw,84px)/.85 var(--display);color:var(--cyan);opacity:.9}
+.sector-tag{font:600 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sector-head h2{font-size:clamp(26px,4vw,40px)}
+.sector-head h2 small{font:500 15px var(--body);color:var(--muted);display:block;margin-top:4px;letter-spacing:0}
+.intro{max-width:46em;margin:-6px 0 20px;color:var(--muted)}
+
+/* ---------- FLIGHT STRIPS ---------- */
+.strips{display:grid;gap:8px}
+.strips.two{grid-template-columns:1fr 1fr}
+.strip{display:grid;grid-template-columns:62px 1fr auto;align-items:stretch;background:var(--strip);border:1px solid var(--line);border-left:6px solid var(--cyan);border-radius:3px;box-shadow:var(--shadow);min-width:0}
+.strip .code{font:700 12px/1.2 var(--mono);color:var(--cyan);padding:10px 8px;border-right:1px dashed var(--line);display:flex;align-items:center;justify-content:center;text-align:center}
+.strip .txt{padding:9px 12px;min-width:0;overflow-wrap:anywhere}
+.strip .txt b{font-weight:650}
+.strip .by{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:10px 10px 0 4px;white-space:nowrap}
+.strip.geova{border-left-color:var(--amber);background:var(--amber-tint);border-color:var(--amber-line)}
+.strip.geova .code{color:var(--amber);border-right-color:var(--amber-line)}
+.strip.geova .by{color:var(--amber)}
+.badge-g{display:inline-block;font:800 11px/1 var(--display);letter-spacing:.14em;color:var(--amber);border:2px solid var(--amber);padding:5px 7px 4px;border-radius:3px;transform:rotate(-4deg);margin:8px 10px 0 4px;align-self:start;white-space:nowrap}
+.grp{font:700 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;display:flex;align-items:center;gap:10px}
+.grp::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ---------- STAMPS / LOG ---------- */
+.log{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.entry{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 16px 14px;position:relative;box-shadow:var(--shadow)}
+.entry .when{font:600 11px var(--mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.entry p{margin:.5em 0 0}
+.stamp{display:inline-block;font:800 13px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--stamp);border:3px double var(--stamp);padding:6px 9px 5px;border-radius:4px;transform:rotate(-3deg);opacity:.92}
+.stamp.red{color:var(--red);border-color:var(--red)}
+.stamp.amber{color:var(--amber);border-color:var(--amber)}
+.entry .stamp{position:absolute;top:12px;right:12px}
+
+/* ---------- SEED / FLIGHT PLAN ---------- */
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:var(--shadow)}
+.card h3{font-size:20px;margin-bottom:6px}
+.route{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.route span{font:600 12px var(--mono);border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--strip)}
+.route span.inv{border-color:var(--amber-line);color:var(--amber)}
+
+/* ---------- RADAR SCOPE (Analogical) ---------- */
+.scope-row{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:center;margin-bottom:10px}
+.scope svg{width:100%;max-width:280px;display:block;margin:auto}
+.scope .ring{fill:none;stroke:var(--cyan);stroke-opacity:.35}
+.scope .bg{fill:var(--panel);stroke:var(--cyan);stroke-width:2}
+.scope .ok{fill:var(--cyan)}
+.scope .warn{fill:var(--red)}
+.scope text{font:600 9px var(--mono);fill:var(--muted)}
+.blink{animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+@media (prefers-reduced-motion: reduce){.blink{animation:none}}
+
+/* ---------- DEPARTURE BOARD (Cross-Pollination) ---------- */
+.board{background:var(--board);border-radius:8px;padding:6px 0 10px;box-shadow:0 10px 30px rgba(0,0,0,.25);border:1px solid #233048;color:#e8eef7;overflow:hidden}
+.board-top{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font:700 13px var(--mono);letter-spacing:.2em;color:var(--board-ink);border-bottom:1px solid #233048}
+.board-top span:last-child{color:var(--board-dim);font-weight:500;letter-spacing:.1em}
+.brow{display:grid;grid-template-columns:44px minmax(150px,230px) 1fr;gap:12px;padding:9px 16px;border-bottom:1px solid #1b2639;align-items:baseline}
+.brow:nth-child(even){background:#131c2b}
+.brow .n{font:600 12px var(--mono);color:var(--board-dim)}
+.brow .o{font:700 13px/1.3 var(--mono);color:var(--board-ink);text-transform:uppercase;letter-spacing:.04em}
+.brow .d{font-size:14.5px;color:#e8eef7}
+.board-head{font:600 10px var(--mono);letter-spacing:.16em;color:var(--board-dim);background:transparent!important}
+
+/* ---------- TRAIL (Prancheta) ---------- */
+.trail{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px 64px;padding:8px 0}
+.trail::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:3px dashed var(--amber-line);transform:translateX(-50%)}
+.stop{position:relative;background:var(--strip);border:1px solid var(--line);border-radius:6px;padding:10px 12px 10px 14px;box-shadow:var(--shadow)}
+.stop:nth-child(odd){grid-column:1}
+.stop:nth-child(even){grid-column:2;margin-top:34px}
+.stop::after{content:attr(data-n);position:absolute;top:10px;width:30px;height:30px;border-radius:50%;background:var(--bg);border:2px solid var(--amber);color:var(--amber);font:700 12px/26px var(--mono);text-align:center}
+.stop:nth-child(odd)::after{right:-48px}
+.stop:nth-child(even)::after{left:-48px}
+.stop .pen{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.stop .pen s{color:var(--red)}
+
+/* ---------- JTBD ---------- */
+.jobs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.job{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.job header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--cyan-soft);border-bottom:1px solid var(--line)}
+.job header b{font:700 18px var(--display)}
+.job header span{font:600 10px var(--mono);letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-left:auto}
+.job ul{list-style:none;margin:0;padding:6px 14px 12px}
+.job li{padding:8px 0;border-bottom:1px dashed var(--line)}
+.job li:last-child{border-bottom:0}
+.job li i{font-style:normal;font-family:var(--display);font-weight:700;color:var(--cyan);display:block;font-size:15px}
+.job li small{font:600 10px var(--mono);color:var(--muted);letter-spacing:.08em}
+.job.sell header{background:var(--amber-tint)}
+
+/* ---------- SCAMPER ---------- */
+.scamper{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.sc{background:var(--panel);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;box-shadow:var(--shadow);min-width:0}
+.sc .L{font:800 56px/1 var(--display);color:var(--cyan);padding:12px 12px 0}
+.sc .W{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:2px 12px 8px;border-bottom:1px solid var(--line)}
+.sc p{font-size:14px;padding:8px 12px;margin:0;border-bottom:1px dashed var(--line);overflow-wrap:anywhere}
+.sc p:last-child{border-bottom:0}
+.sc.inv .L{color:var(--amber)}
+
+/* ---------- MATRIX ---------- */
+.mx-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:var(--shadow)}
+table.mx{border-collapse:collapse;min-width:900px;width:100%;font-size:13px}
+.mx th,.mx td{border:1px solid var(--line);padding:8px;vertical-align:top}
+.mx thead th{font:700 11px/1.25 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--strip);text-align:left}
+.mx tbody th{font:700 14px/1.25 var(--display);text-align:left;background:var(--strip);width:170px}
+.mx td:empty{background:repeating-linear-gradient(45deg,transparent 0 6px,color-mix(in srgb,var(--line) 45%,transparent) 6px 7px)}
+.mx td.hit{background:var(--cyan-soft)}
+.mx td.best{background:var(--amber-tint);outline:3px solid var(--amber);outline-offset:-3px}
+.mx td.best::before{content:"MELHOR PAR";display:block;font:800 10px var(--mono);letter-spacing:.14em;color:var(--amber);margin-bottom:3px}
+.mx tr.gap th{color:var(--red)}
+.mx tr.gap td{background:repeating-linear-gradient(-45deg,var(--hatch) 0 10px,transparent 10px 20px);color:var(--ink);font-weight:600}
+.mx tr.gap td::before{content:"LACUNA ";font:800 11px var(--mono);letter-spacing:.14em;color:var(--red)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 2px;font:600 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.legend i{display:inline-block;width:16px;height:12px;vertical-align:-2px;margin-right:6px;border:1px solid var(--line)}
+
+/* ---------- DISNEY ---------- */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.room{border:2px solid var(--line);border-radius:120px 120px 8px 8px;background:var(--panel);padding:26px 16px 14px;box-shadow:var(--shadow);position:relative}
+.room .sign{text-align:center;margin-bottom:12px}
+.room .sign svg{width:46px;height:46px}
+.room h3{text-align:center;font-size:24px}
+.room .role{text-align:center;font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.room ul{margin:0;padding:0;list-style:none}
+.room li{padding:9px 10px;margin-bottom:8px;background:var(--strip);border-radius:6px;border:1px solid var(--line);font-size:14.5px}
+.room.d{border-color:var(--violet)} .room.d h3{color:var(--violet)} .room.d svg{stroke:var(--violet)}
+.room.r{border-color:var(--cyan)} .room.r h3{color:var(--cyan)} .room.r svg{stroke:var(--cyan)}
+.room.c{border-color:var(--red)} .room.c h3{color:var(--red)} .room.c svg{stroke:var(--red)}
+
+/* ---------- STARBURST ---------- */
+.star-wrap{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto auto;gap:14px;align-items:start}
+.star-svg{grid-column:2;grid-row:1 / span 2;align-self:center}
+.star-svg svg{width:100%;max-width:340px;display:block;margin:auto}
+.star-svg .pt{fill:var(--panel);stroke:var(--amber);stroke-width:2}
+.star-svg .core{fill:var(--amber)}
+.star-svg text{font:700 13px var(--display);fill:var(--ink);text-anchor:middle}
+.star-svg .ct{font:700 12px var(--mono);fill:var(--bg)}
+.qbox{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:6px;padding:10px 14px;box-shadow:var(--shadow)}
+.qbox h4{font-size:20px;color:var(--amber);margin-bottom:4px}
+.qbox p{font-size:14.5px;padding:6px 0;margin:0;border-top:1px dashed var(--line)}
+.qbox p::before{content:"? ";font:800 15px var(--display);color:var(--amber)}
+.q1{grid-column:1;grid-row:1}.q2{grid-column:3;grid-row:1}.q3{grid-column:1;grid-row:2}.q4{grid-column:3;grid-row:2}.q5{grid-column:1;grid-row:3}.q6{grid-column:2 / span 2;grid-row:3}
+
+/* ---------- EMPATHY ---------- */
+.emp{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);border-radius:10px;overflow:hidden;position:relative;background:var(--panel)}
+.quad{padding:18px 18px 16px;min-height:200px}
+.quad:nth-child(1){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quad:nth-child(2){border-bottom:1px solid var(--line)}
+.quad:nth-child(3){border-right:1px solid var(--line)}
+.quad h3{font-size:30px;color:var(--cyan);letter-spacing:.06em}
+.quad .say{margin-top:10px;padding:10px 12px;background:var(--strip);border:1px solid var(--line);border-radius:6px}
+.quad .say q{font-style:italic;display:block}
+.quad .say .ans{display:block;margin-top:4px;font-size:14.5px}
+.quad .say .ans::before{content:"→ ";color:var(--amber);font-weight:800}
+.persona{display:inline-block;font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-bottom:4px;color:var(--muted)}
+.emp-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:var(--bg);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font:700 14px/1.2 var(--display);z-index:2}
+.quad:nth-child(1),.quad:nth-child(3){padding-right:84px}
+.quad:nth-child(2),.quad:nth-child(4){padding-left:84px}
+
+/* ---------- BACKCASTING ---------- */
+.back{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding-top:38px}
+.back::before{content:"";position:absolute;left:0;right:0;top:14px;height:3px;background:linear-gradient(90deg,var(--amber),var(--cyan))}
+.back .axis{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.back .axis span:first-child{color:var(--amber)} .back .axis span:last-child{color:var(--cyan)}
+.leg{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px;box-shadow:var(--shadow)}
+.leg::before{content:"";position:absolute;top:-30px;left:14px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan)}
+.leg.goal{border-color:var(--amber-line);background:var(--amber-tint)}
+.leg.goal::before{border-color:var(--amber);background:var(--amber)}
+.leg .t{font:800 12px var(--mono);color:var(--cyan);letter-spacing:.1em}
+.leg.goal .t{color:var(--amber)}
+.leg h4{font-size:16px;margin:4px 0}
+.leg p{font-size:14px;margin:0}
+.back-note{margin-top:10px;font:600 12px var(--mono);color:var(--muted)}
+
+/* ---------- SYNTHESIS (CLIMAX) ---------- */
+.landing{margin-top:40px;padding:56px 0 40px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--cyan) 7%,transparent) 30%,transparent);border-top:2px solid var(--ink)}
+.landing .sector-num{color:var(--amber)}
+.core{border:2px solid var(--amber);border-radius:12px;background:var(--panel);padding:22px;box-shadow:var(--shadow);position:relative}
+.core .kicker{font:700 12px var(--mono);letter-spacing:.16em;color:var(--amber);text-transform:uppercase}
+.eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1.25fr;align-items:center;gap:10px;margin:16px 0 10px}
+.eq .term{background:var(--strip);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center;height:100%;display:flex;flex-direction:column;justify-content:center}
+.eq .term b{font:700 17px/1.2 var(--display);display:block}
+.eq .term small{font:600 10px var(--mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;display:block}
+.eq .op{font:800 30px var(--display);color:var(--muted)}
+.eq .res{background:var(--amber);color:var(--on-amber);border-radius:8px;padding:14px;text-align:center;font:800 clamp(18px,2.3vw,24px)/1.1 var(--display);letter-spacing:.02em}
+:root .eq .res small{display:block;font:600 11px var(--mono);letter-spacing:.06em;margin-top:6px;opacity:.85}
+.syn-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.flow{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:center;margin-top:12px}
+.node{border:2px solid var(--cyan);border-radius:8px;padding:8px 12px;font:700 14px var(--display);text-align:center;background:var(--strip)}
+.node.new{border-style:dashed;border-color:var(--amber);color:var(--amber)}
+.node.src{grid-row:span 2;align-self:stretch;display:flex;align-items:center;justify-content:center;background:var(--cyan-soft)}
+.gate{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
+.gate .bar{display:flex;align-items:center;gap:10px;border:2px solid var(--red);border-radius:8px;padding:10px 12px;font:700 15px var(--display);background:repeating-linear-gradient(-45deg,var(--red-tint) 0 12px,transparent 12px 24px)}
+.gate .bar span{font:800 12px var(--mono);color:var(--red);letter-spacing:.12em}
+.lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.lanes div{border:1px solid var(--line);border-top:4px solid var(--cyan);border-radius:6px;padding:8px;text-align:center;font:700 14px var(--display);background:var(--strip)}
+.gaps .g{border:2px solid var(--red);border-radius:8px;padding:12px;margin-top:10px;background:var(--red-tint)}
+.gaps .g b{font:700 16px var(--display);display:block}
+.tiers{display:grid;gap:8px;margin-top:12px}
+.tier{display:grid;grid-template-columns:110px 1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--strip)}
+.tier span{font:800 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:10px;background:var(--cyan-soft);color:var(--cyan);display:flex;align-items:center}
+.tier p{margin:0;padding:10px 12px;font-size:14.5px}
+.tier.top span{background:var(--amber-tint);color:var(--amber)}
+.open-list{list-style:none;padding:0;margin:12px 0 0}
+.open-list li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line)}
+.open-list li::before{content:"";flex:0 0 18px;height:18px;border:2px solid var(--amber);border-radius:3px;margin-top:2px}
+.oos{margin-top:22px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--panel);border:1px dashed var(--stamp);border-radius:10px;padding:16px}
+.oos .stamp{font-size:16px}
+.oos p{flex:1;min-width:240px;margin:0}
+footer{padding:36px 0 48px;color:var(--muted);font:600 12px var(--mono);letter-spacing:.06em}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .radar{max-width:320px}
+  .scamper{grid-template-columns:repeat(2,1fr)}
+  .scope-row{grid-template-columns:1fr}
+  .eq{grid-template-columns:1fr;text-align:center}
+  .eq .op{line-height:.8}
+  .syn-grid,.plan{grid-template-columns:1fr}
+  .back{grid-template-columns:1fr;padding-top:0;padding-left:34px}
+  .back::before{left:12px;right:auto;top:0;bottom:0;width:3px;height:auto;background:linear-gradient(180deg,var(--amber),var(--cyan))}
+  .back .axis{position:static;flex-direction:column;gap:2px;margin-left:-34px;margin-bottom:6px}
+  .leg::before{top:14px;left:-30px}
+  .star-wrap{grid-template-columns:1fr}
+  .star-svg,.q1,.q2,.q3,.q4,.q5,.q6{grid-column:1;grid-row:auto}
+}
+@media (max-width:680px){
+  .strips.two{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:52px 1fr}
+  .strip .by,.strip .badge-g{grid-column:2;padding:0 12px 9px;margin:0 0 8px 12px;justify-self:start}
+  .strip .by{margin:0}
+  .trail{grid-template-columns:1fr;gap:12px;padding-left:44px}
+  .trail::before{left:16px}
+  .stop:nth-child(odd),.stop:nth-child(even){grid-column:1;margin-top:0}
+  .stop:nth-child(odd)::after,.stop:nth-child(even)::after{left:-45px;right:auto}
+  .brow{grid-template-columns:34px 1fr;gap:4px 10px}
+  .brow .d{grid-column:2}
+  .rooms{grid-template-columns:1fr}
+  .emp{grid-template-columns:1fr}
+  .quad{border-right:0!important;border-bottom:1px solid var(--line);padding:16px!important;min-height:0}
+  .emp-core{position:static;transform:none;width:auto;height:auto;border-radius:0;border:0;border-bottom:2px solid var(--ink);order:-1}
+  .lanes{grid-template-columns:1fr}
+  .tier{grid-template-columns:1fr}
+  .scamper{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="callsign"><span>Sessão de brainstorming</span><span>13 · out · 2026</span><span>Modo autônomo</span></div>
+      <h1>Radar de <em>Ideias</em></h1>
+      <p class="lede">Funcionalidades novas para o <b>Radioteraficha</b> — a ficha técnica montada a partir do DICOM-RT, a revisão semanal da física e o painel BI — pensadas para a rotina real do serviço (físico, dosimetrista, médico) e para o potencial de venda a outros serviços.</p>
+      <div class="analogy">
+        <span class="muted mono" style="font-size:11px;letter-spacing:.14em">ANALOGIA-MESTRA · DIREÇÃO DO GEOVA</span>
+        <b>“O físico é controlador de voo + auditor — as duas coisas ao mesmo tempo.”</b>
+        Cada paciente em tratamento é um voo na tela. O físico só olha o que pisca — e assina o que está limpo.
+      </div>
+      <div class="stats">
+        <div class="stat"><b>173</b><small>ideias</small></div>
+        <div class="stat g"><b>6</b><small>ideias do Geova</small></div>
+        <div class="stat"><b>12</b><small>perguntas</small></div>
+        <div class="stat"><b>10</b><small>técnicas</small></div>
+      </div>
+    </div>
+    <svg class="radar" viewBox="0 0 400 400" role="img" aria-label="Radar com as dez técnicas da sessão como alvos">
+      <defs>
+        <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="currentColor" stop-opacity="0"/>
+          <stop offset="1" stop-color="currentColor" stop-opacity=".45"/>
+        </linearGradient>
+        <clipPath id="clipR"><circle cx="200" cy="200" r="188"/></clipPath>
+      </defs>
+      <circle class="bg" cx="200" cy="200" r="188"/>
+      <circle class="ring" cx="200" cy="200" r="47"/><circle class="ring" cx="200" cy="200" r="94"/><circle class="ring" cx="200" cy="200" r="141"/>
+      <line class="axis" x1="12" y1="200" x2="388" y2="200"/><line class="axis" x1="200" y1="12" x2="200" y2="388"/>
+      <line class="axis" x1="67" y1="67" x2="333" y2="333"/><line class="axis" x1="333" y1="67" x2="67" y2="333"/>
+      <g clip-path="url(#clipR)" style="color:var(--cyan)"><g class="sweep"><path d="M200 200 L388 200 A188 188 0 0 0 333 67 Z" fill="url(#sw)"/><line x1="200" y1="200" x2="388" y2="200" stroke="currentColor" stroke-width="2"/></g></g>
+      <text class="tick" x="204" y="24">000</text><text class="tick" x="364" y="196">090</text><text class="tick" x="204" y="384">180</text><text class="tick" x="16" y="196">270</text>
+      <a class="blip" href="#s01"><circle class="halo" cx="150" cy="110" r="6"/><circle cx="150" cy="110" r="5"/><text x="160" y="106">AN</text></a>
+      <a class="blip" href="#s02"><circle class="halo" cx="270" cy="95" r="6"/><circle cx="270" cy="95" r="5"/><text x="280" y="91">CP</text></a>
+      <a class="blip" href="#s03"><circle class="halo" cx="318" cy="180" r="6"/><circle cx="318" cy="180" r="5"/><text x="328" y="176">TP</text></a>
+      <a class="blip" href="#s04"><circle class="halo" cx="292" cy="285" r="6"/><circle cx="292" cy="285" r="5"/><text x="302" y="281">JT</text></a>
+      <a class="blip" href="#s05"><circle class="halo" cx="205" cy="330" r="6"/><circle cx="205" cy="330" r="5"/><text x="215" y="326">SC</text></a>
+      <a class="blip" href="#s06"><circle class="halo" cx="112" cy="296" r="6"/><circle cx="112" cy="296" r="5"/><text x="122" y="292">SM</text></a>
+      <a class="blip" href="#s07"><circle class="halo" cx="70" cy="205" r="6"/><circle cx="70" cy="205" r="5"/><text x="80" y="201">DS</text></a>
+      <a class="blip" href="#s08"><circle class="halo" cx="128" cy="165" r="6"/><circle cx="128" cy="165" r="5"/><text x="138" y="161">SB</text></a>
+      <a class="blip" href="#s09"><circle class="halo" cx="238" cy="155" r="6"/><circle cx="238" cy="155" r="5"/><text x="248" y="151">EM</text></a>
+      <a class="blip" href="#s10"><circle class="halo" cx="235" cy="240" r="6"/><circle cx="235" cy="240" r="5"/><text x="245" y="236">BC</text></a>
+    </svg>
+  </div>
+</header>
+
+<nav class="tape" aria-label="Setores da sessão">
+  <div class="wrap">
+    <a href="#plano"><b>00</b>Plano de voo</a>
+    <a href="#s01"><b>01</b>Analógico</a>
+    <a href="#s02"><b>02</b>Polinização</a>
+    <a href="#s03"><b>03</b>Prancheta</a>
+    <a href="#s04"><b>04</b>JTBD</a>
+    <a href="#s05"><b>05</b>SCAMPER</a>
+    <a href="#s06"><b>06</b>Matriz</a>
+    <a href="#s07"><b>07</b>Disney</a>
+    <a href="#s08"><b>08</b>Starbursting</a>
+    <a href="#s09"><b>09</b>Empatia</a>
+    <a href="#s10"><b>10</b>Backcasting</a>
+    <a class="clim" href="#pouso"><b style="color:inherit">▼</b>Pouso · Síntese</a>
+  </div>
+</nav>
+
+<main>
+<!-- ================= 00 PLANO DE VOO ================= -->
+<section id="plano">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">00</div><div class="sector-tag">Torre · antes da decolagem</div><h2>Plano de voo e livro de bordo<small>A semente, a rota de técnicas e cada decisão que o Geova carimbou ao longo da sessão.</small></h2></div>
+    <div class="plan">
+      <div class="card">
+        <h3>A semente</h3>
+        <div class="strips" style="margin-top:8px">
+          <div class="strip"><div class="code">SEED</div><div class="txt"><b>Revisão semanal da física</b> (weekly chart check, AAPM TG-275) com dados de tratamento entregue do <span class="mono">tratamento_db</span>.</div><div class="by">coach</div></div>
+        </div>
+        <p class="muted" style="margin-top:12px">Objetivo: a rotina real do serviço (físico, dosimetrista, médico) e o potencial de venda para outros serviços.</p>
+      </div>
+      <div class="card">
+        <h3>A rota</h3>
+        <p class="muted">Dez técnicas, na ordem em que voaram.</p>
+        <div class="route">
+          <span>Analogical Thinking</span><span>Cross-Pollination</span><span class="inv">Trilha da Prancheta ✦ inventada</span><span>Job to Be Done</span><span>SCAMPER</span><span>Solution Matrix</span><span>Disney Method</span><span>Starbursting</span><span>Empathy Map</span><span class="inv">Backcasting ✦ escolhida</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grp">Livro de bordo · decisões e direções do Geova</div>
+    <div class="log">
+      <div class="entry"><span class="stamp">Rota</span><div class="when">Decisão · abertura</div><p>Técnicas iniciais: <b>Analogical Thinking</b>, <b>Cross-Pollination</b>, <b>Job to Be Done</b> (escolhida pela coach) e a <b>Trilha da Prancheta</b> (inventada: seguir cada momento em que alguém escreve, copia ou confere um valor à mão na jornada do paciente).</p></div>
+      <div class="entry"><span class="stamp amber">Geova</span><div class="when">Direção · Analógico</div><p>Analogia escolhida: <b>o físico é controlador de voo + auditor</b>, as duas coisas ao mesmo tempo.</p></div>
+      <div class="entry"><span class="stamp red">Requisito</span><div class="when">Direção · Analógico</div><p>Requisito forte: <b>TODAS as gestões de datas</b>, nada pode passar — zero vencimento perdido.</p></div>
+      <div class="entry"><span class="stamp">Escopo</span><div class="when">Decisão · Analógico</div><p>Auditoria, POPs e gestão de datas/tarefas ficam para <b>outro módulo, em outra sessão</b>. Hoje o foco é o que se liga à <b>estrutura atual</b> do Radioteraficha.</p></div>
+      <div class="entry"><span class="stamp">Modo</span><div class="when">Decisão · Analógico</div><p>Modo trocado para <b>“Ideação por mim”</b>: a coach gera as sugestões sozinha, focadas na estrutura atual (revisão semanal, BI e o que encaixa no app).</p></div>
+      <div class="entry"><span class="stamp">Roteiro</span><div class="when">Decisão · após JTBD</div><p>Novo roteiro colado: Ideação por mim com SCAMPER, Matriz de Soluções, Disney, Starbursting, JTBD, Mapa de Empatia, Analógico, Polinização cruzada + 1 inventada + 1 escolhida. As quatro primeiras já tinham rodado; a escolhida é <b>Backcasting</b>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 01 ANALOGICAL ================= -->
+<section id="s01">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">01</div><div class="sector-tag">Setor 01 · Analogical Thinking</div><h2>A torre de controle<small>Cada paciente vira um voo; cada ideia, uma fita de progresso que passa de setor em setor.</small></h2></div>
+
+    <div class="scope-row">
+      <div class="scope">
+        <svg viewBox="0 0 200 200" role="img" aria-label="Tela de radar: voos estáveis em azul e dois voos piscando em vermelho">
+          <circle class="bg" cx="100" cy="100" r="94"/><circle class="ring" cx="100" cy="100" r="62"/><circle class="ring" cx="100" cy="100" r="31"/>
+          <circle class="ok" cx="70" cy="60" r="4"/><text x="76" y="57">F12/25</text>
+          <circle class="ok" cx="140" cy="80" r="4"/><text x="146" y="77">F3/5</text>
+          <circle class="ok" cx="120" cy="140" r="4"/><text x="126" y="137">F20/28</text>
+          <circle class="ok" cx="60" cy="130" r="4"/><text x="66" y="127">F8/15</text>
+          <g class="blink"><circle class="warn" cx="100" cy="40" r="5"/><text x="107" y="37" style="fill:var(--red)">DOSE ≠</text></g>
+          <g class="blink"><circle class="warn" cx="45" cy="95" r="5"/><text x="18" y="85" style="fill:var(--red)">FALTA</text></g>
+          <circle class="ok" cx="150" cy="120" r="4"/><text x="132" y="112">F1/30</text>
+        </svg>
+      </div>
+      <div class="strips">
+        <div class="strip"><div class="code">AN-01</div><div class="txt"><b>Radar de voos:</b> cada paciente em tratamento é um voo na tela (fração atual/total, próxima sessão, máquina); o físico só olha o que pisca — desvio de dose, sessão perdida, plano trocado.</div><div class="by">coach</div></div>
+        <div class="strip"><div class="code">AN-02</div><div class="txt"><b>Faixa de progresso de voo (flight strip):</b> ficha de papel eletrônica por paciente que o físico “passa” ao próximo setor, com quem entregou e quem recebeu.</div><div class="by">coach</div></div>
+      </div>
+    </div>
+
+    <div class="grp">O auditor fala · dores do Geova</div>
+    <div class="strips two">
+      <div class="strip geova"><div class="code">AN-03</div><div class="txt"><b>Dor de auditoria:</b> levantar protocolos clínicos do serviço.</div><span class="badge-g">GEOVA</span></div>
+      <div class="strip geova"><div class="code">AN-04</div><div class="txt"><b>Dor de auditoria:</b> POPs (procedimento operacional padrão) — achar, versão vigente, quem leu.</div><span class="badge-g">GEOVA</span></div>
+      <div class="strip geova"><div class="code">AN-05</div><div class="txt"><b>Dor de auditoria:</b> documentação regulatória ANSN e ANVISA.</div><span class="badge-g">GEOVA</span></div>
+      <div class="strip geova"><div class="code">AN-06</div><div class="txt"><b>Dor de auditoria:</b> gestão de datas e tarefas (prazos, vencimentos, pendências).</div><span class="badge-g">GEOVA</span></div>
+    </div>
+
+    <div class="grp">Respostas da coach · arquivadas para o módulo futuro</div>
+    <div class="strips two">
+      <div class="strip"><div class="code">AN-07</div><div class="txt"><b>Botão “Dossiê de auditoria”:</b> gera num clique a pasta que o auditor pede (protocolos vigentes, POPs com versão e quem leu, licenças, últimos testes), com índice e data.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-08</div><div class="txt"><b>POP vivo:</b> cada passo do app aponta para o POP que o rege; mudar o POP pede ciência de quem executa aquele passo.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-09</div><div class="txt"><b>Torre de prazos:</b> todo vencimento do serviço num radar único (licenças, calibrações, testes, dosímetros, POPs, treinamentos), cada um com DONO nomeado — prazo sem dono não pode ser cadastrado.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-10</div><div class="txt"><b>Escada de escalonamento:</b> 30 dias avisa o dono, 7 dias avisa o dono e o RT/físico-chefe, vencido vai ao gestor e fica em vermelho na abertura do app de todos.</div><div class="by">coach</div></div>
+    </div>
+
+    <div class="grp">Os candidatos do Geova para hoje</div>
+    <div class="strips two">
+      <div class="strip geova"><div class="code">AN-11</div><div class="txt"><b>Candidato:</b> painel BI do serviço.</div><span class="badge-g">GEOVA</span></div>
+      <div class="strip geova"><div class="code">AN-12</div><div class="txt"><b>Candidato:</b> revisão semanal estruturada (física).</div><span class="badge-g">GEOVA</span></div>
+      <div class="strip"><div class="code">AN-13</div><div class="txt"><b>Revisão semanal como auditor:</b> fila da semana pronta na segunda (quem completou 5 frações desde a última revisão), cada caso com só o que mudou desde a última assinatura; físico assina em lote o que está limpo e abre só o que destoa.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-14</div><div class="txt"><b>BI como radar do controlador:</b> ocupação por máquina, pacientes em tratamento por médico/sítio, tempo da simulação ao 1º dia, interrupções — tudo já está no <span class="mono">tratamento_db</span>/agenda.</div><div class="by">coach</div></div>
+    </div>
+
+    <div class="grp">Ideação por mim · fitas da revisão</div>
+    <div class="strips two">
+      <div class="strip"><div class="code">AN-15</div><div class="txt"><b>Conciliação bancária:</b> dose entregue × planejada × prescrita, sessão a sessão; a linha que não fecha fica em vermelho.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-16</div><div class="txt"><b>Diff semanal estilo git:</b> só o que mudou desde a última assinatura (plano novo, campo acrescentado, UM alterada, isocentro deslocado, troca de máquina).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-17</div><div class="txt"><b>Assinatura em lote</b> dos casos sem divergência (como aprovar mudanças sem conflito); cada assinatura entra no registro versionado.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-18</div><div class="txt"><b>Checklist de cabine TG-275 por técnica</b> (3D, IMRT/VMAT, SBRT, elétrons): os itens que o app confere sozinho já vêm marcados com a evidência ao lado.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-19</div><div class="txt"><b>Caixa-preta do curso:</b> linha do tempo única (simulação, aprovação, 1ª fração, replanos, interrupções, revisões, alta).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-20</div><div class="txt"><b>Laudo de laboratório:</b> valor de referência ao lado de cada número (dose acumulada esperada na fração N).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-21</div><div class="txt"><b>Dupla checagem de farmácia na 1ª fração:</b> lista vinda do plano para a física conferir antes do primeiro tratamento.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-22</div><div class="txt"><b>Interrupções como atrasos de voo:</b> dias parados acumulados no curso, sinal quando passa do limite do serviço (o app só sinaliza; a conduta é clínica).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-23</div><div class="txt"><b>Previsão de chegada (ETA):</b> data de término recalculada com as faltas; alerta quando o fim escorrega mais de X dias.</div><div class="by">coach</div></div>
+    </div>
+
+    <div class="grp">Ideação por mim · fitas do painel</div>
+    <div class="strips two">
+      <div class="strip"><div class="code">AN-24</div><div class="txt"><b>Radar BI:</b> ocupação de cada máquina contra a capacidade de vagas.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-25</div><div class="txt"><b>Painel de pistas:</b> fila do dia por máquina e atraso médio.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-26</div><div class="txt"><b>Tempo de check-in à decolagem:</b> da simulação à 1ª fração, por sítio e por médico.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-27</div><div class="txt"><b>Auditoria por amostragem:</b> sorteio semanal de N fichas já liberadas para reconferência independente.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-28</div><div class="txt"><b>Indicador de retrabalho:</b> fichas com v2/v3 (o registro versionado já guarda), taxa de reedição e motivo.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-29</div><div class="txt"><b>Contas do mês:</b> procedimentos realizados por convênio/SUS a partir do resumo mensal que já existe.</div><div class="by">coach</div></div>
+    </div>
+
+    <div class="grp">Ideação por mim · fitas da sala e da ficha</div>
+    <div class="strips two">
+      <div class="strip"><div class="code">AN-30</div><div class="txt"><b>NOTAM do serviço:</b> avisos operacionais por máquina (parada, troca de protocolo) visíveis na Fichinha e na Agenda.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-31</div><div class="txt"><b>Cabine do técnico:</b> modo tela grande com setup, fotos e alertas do paciente da vez.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-32</div><div class="txt"><b>Deslocamentos de IGRT por sessão</b> com tendência (sistemático × aleatório), se o ARIA expuser o dado.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-33</div><div class="txt"><b>Tendência de deslocamento</b> acima da tolerância vira sinal de revisão de setup (só sinaliza).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-34</div><div class="txt"><b>Ficha da sala desatualizada:</b> plano alterado DEPOIS da ficha impressa gera alerta de reimpressão.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-35</div><div class="txt"><b>Monitor de plano órfão:</b> aprovado no Eclipse sem ficha, ou ficha liberada sem tratamento iniciado.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-36</div><div class="txt"><b>Selo de conferência no PDF:</b> impressão digital do conteúdo + quem + quando + de qual fonte veio.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">AN-37</div><div class="txt"><b>QR code na ficha impressa</b> que abre o registro vivo e diz se aquela folha ainda é a vigente.</div><div class="by">coach</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 CROSS-POLLINATION ================= -->
+<section id="s02">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">02</div><div class="sector-tag">Setor 02 · Cross-Pollination</div><h2>Painel de chegadas<small>Ideias que pousaram vindas de outros aeroportos: pronto-socorro, F1, cassino, cozinha, bolsa…</small></h2></div>
+    <div class="board" role="table" aria-label="Painel de chegadas: domínio de origem e ideia">
+      <div class="board-top"><span>✈ CHEGADAS · POLINIZAÇÃO CRUZADA</span><span>21 VOOS</span></div>
+      <div class="brow board-head" role="row"><span>VOO</span><span>PROCEDÊNCIA</span><span>IDEIA QUE POUSOU</span></div>
+      <div class="brow" role="row"><span class="n">CP01</span><span class="o">Triagem de PS (Manchester)</span><span class="d">Fila da revisão semanal por cor — vermelho divergência, amarelo atenção, “verde” limpo.</span></div>
+      <div class="brow" role="row"><span class="n">CP02</span><span class="o">Muro de box da F1</span><span class="d">Telemetria do curso: dose acumulada real × planejada dia a dia num gráfico.</span></div>
+      <div class="brow" role="row"><span class="n">CP03</span><span class="o">Olho no céu do cassino</span><span class="d">Detector de padrão anômalo (sessão fora da máquina habitual, UM entregue ≠ planejada, horário atípico).</span></div>
+      <div class="brow" role="row"><span class="n">CP04</span><span class="o">Waze</span><span class="d">Previsão de congestionamento da agenda nas próximas semanas, por máquina, contando os pacientes em planejamento.</span></div>
+      <div class="brow" role="row"><span class="n">CP05</span><span class="o">Netflix · continue assistindo</span><span class="d">Ao abrir, cada usuário vê onde parou (ficha em edição, revisão pela metade).</span></div>
+      <div class="brow" role="row"><span class="n">CP06</span><span class="o">Rastreio de pedido</span><span class="d">Status do paciente para médico e recepção (simulado, planejando, física, pronto, tratando, alta).</span></div>
+      <div class="brow" role="row"><span class="n">CP07</span><span class="o">Horas de voo · manutenção aeronáutica</span><span class="d">UM e tempo de feixe acumulados por máquina no BI.</span></div>
+      <div class="brow" role="row"><span class="n">CP08</span><span class="o">Análise esportiva</span><span class="d">Índices da aba Qualidade por sítio ao longo do tempo, como retorno de aprendizagem para o planejamento (sem ranking punitivo).</span></div>
+      <div class="brow" role="row"><span class="n">CP09</span><span class="o">Saúde da colmeia</span><span class="d">Um escore semanal único da saúde do serviço (prazos, interrupções, pendências).</span></div>
+      <div class="brow" role="row"><span class="n">CP10</span><span class="o">Check-out de hotel</span><span class="d">Relatório de alta montado sozinho quando a última fração entra (dose total, datas, interrupções).</span></div>
+      <div class="brow" role="row"><span class="n">CP11</span><span class="o">Antifraude bancário</span><span class="d">Plano modificado depois de aprovado e tratado sem nova revisão física dispara alerta.</span></div>
+      <div class="brow" role="row"><span class="n">CP12</span><span class="o">Giro de estoque</span><span class="d">Máscaras e VacLok do inventário no BI (reaproveitamento, itens parados).</span></div>
+      <div class="brow" role="row"><span class="n">CP13</span><span class="o">Passagem de plantão</span><span class="d">Resumo de ontem para o físico da manhã (1ªs frações, replanos, faltas, altas).</span></div>
+      <div class="brow" role="row"><span class="n">CP14</span><span class="o">Tela da cozinha (KDS)</span><span class="d">Fila da física com os planos chegando do gatilho em tempo real.</span></div>
+      <div class="brow" role="row"><span class="n">CP15</span><span class="o">Escore de alerta precoce</span><span class="d">Risco de abandono pelo padrão de faltas consecutivas.</span></div>
+      <div class="brow" role="row"><span class="n">CP16</span><span class="o">Letreiro da bolsa</span><span class="d">Faixa no topo com os eventos do dia (1ªs frações, altas, replanos).</span></div>
+      <div class="brow" role="row"><span class="n">CP17</span><span class="o">Comprovação para operadora</span><span class="d">Exportação das sessões realizadas por paciente para o convênio.</span></div>
+      <div class="brow" role="row"><span class="n">CP18</span><span class="o">Boletim escolar</span><span class="d">Relatório mensal a cada médico com os pacientes dele, frações, interrupções e altas.</span></div>
+      <div class="brow" role="row"><span class="n">CP19</span><span class="o">Arremetida (go-around)</span><span class="d">Botão de “segurar tratamento” com motivo, visível a todos até alguém liberar.</span></div>
+      <div class="brow" role="row"><span class="n">CP20</span><span class="o">App no bolso</span><span class="d">Ficha Virtual no celular do médico, só leitura e só na rede do serviço.</span></div>
+      <div class="brow" role="row"><span class="n">CP21</span><span class="o">Quadro branco do PS</span><span class="d">TV na sala da física com o radar dos pacientes em tratamento.</span></div>
+    </div>
+    <p class="muted mono" style="font-size:12px;margin-top:8px">Todas as 21 chegadas são ideias da coach.</p>
+  </div>
+</section>
+
+<!-- ================= 03 PRANCHETA ================= -->
+<section id="s03">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">03</div><div class="sector-tag">Setor 03 · Trilha da Prancheta ✦ técnica inventada</div><h2>Seguindo a caneta<small>Cada parada é um momento em que alguém escreve, copia ou confere um valor à mão — e a ideia que apaga a caneta.</small></h2></div>
+    <div class="trail">
+      <div class="stop" data-n="01"><span class="pen"><s>✎ à mão</s> → conferido sozinho</span>Prescrição do ARIA × plano DICOM (dose, frações, dose por fração) conferidos sozinhos, divergência destacada na ficha.</div>
+      <div class="stop" data-n="02"><span class="pen"><s>✎ soma</s> → antes de liberar</span>Etapas do agendamento multiplano somadas contra a prescrição antes de liberar.</div>
+      <div class="stop" data-n="03"><span class="pen"><s>✎ mapa</s> → histórico ARIA</span>Mapa de frações preenchido pelo histórico do ARIA ao fim da semana, e reimpresso com o realizado.</div>
+      <div class="stop" data-n="04"><span class="pen"><s>✎ tabelas</s> → assistente</span>Assistente para importar as tabelas de comissionamento (TMR, Scp) com validação em pontos de referência — destrava o cálculo paralelo (R-09).</div>
+      <div class="stop" data-n="05"><span class="pen"><s>✎ SSD</s> → comparada</span>SSD medida no 1º dia digitada pelo técnico e comparada à planejada.</div>
+      <div class="stop" data-n="06"><span class="pen"><s>✎ rubrica</s> → assinatura</span>Revisão semanal assinada eletronicamente: nome e data no registro e no PDF, no lugar da rubrica na folha.</div>
+      <div class="stop" data-n="07"><span class="pen"><s>✎ caixa</s> → opcional</span>Caixa da enfermagem em versão digital opcional (hoje decidida no papel).</div>
+      <div class="stop" data-n="08"><span class="pen"><s>✎ etiqueta</s> → QR</span>Etiqueta do imobilizador impressa com QR, ligada ao inventário e ao paciente.</div>
+      <div class="stop" data-n="09"><span class="pen"><s>✎ orientação</s> → gerada</span>Folha de orientação ao paciente gerada da nota de posicionamento, em linguagem leiga (preparo de bexiga, jejum).</div>
+      <div class="stop" data-n="10"><span class="pen"><s>✎ calendário</s> → da Agenda</span>Calendário impresso do paciente com as sessões previstas, a partir da Agenda.</div>
+      <div class="stop" data-n="11"><span class="pen"><s>✎ soma de cursos</s> → DVH</span>Retratamento: soma de cursos anteriores na mesma região a partir dos DVH guardados no registro versionado, com alerta.</div>
+      <div class="stop" data-n="12"><span class="pen"><s>✎ in vivo</s> → campo</span>Campo para resultado de dosimetria in vivo comparado ao esperado.</div>
+      <div class="stop" data-n="13"><span class="pen"><s>✎ visto</s> → marcação</span>Técnico marca “setup conferido pelas fotos” na 1ª sessão.</div>
+      <div class="stop" data-n="14"><span class="pen"><s>✎ bilhete</s> → fluxo</span>Pedido de replanejamento como fluxo (motivo, quem pediu, estado), no lugar do bilhete.</div>
+      <div class="stop" data-n="15"><span class="pen"><s>✎ checklist</s> → cronometrado</span>Checklist pré-tratamento com tempo entre itens, mostrando onde o processo emperra.</div>
+      <div class="stop" data-n="16"><span class="pen"><s>✎ resumo</s> → ao paciente</span>Resumo de alta entregue ao paciente para o seguimento.</div>
+      <div class="stop" data-n="17"><span class="pen"><s>✎ planilha</s> → BI</span>BI no lugar da planilha mensal de estatística do serviço (técnica, sítio, convênio).</div>
+      <div class="stop" data-n="18"><span class="pen"><s>✎ relatório</s> → mensal</span>Relatório mensal para o responsável técnico.</div>
+      <div class="stop" data-n="19"><span class="pen"><s>✎ lista</s> → chart rounds</span>Reunião de casos semanal (chart rounds, TG-275): lista dos planos novos da semana com cortes e DVH já prontos (os PNG do registro).</div>
+      <div class="stop" data-n="20"><span class="pen"><s>✎ ata</s> → por paciente</span>Ata da reunião de casos com a decisão por paciente.</div>
+    </div>
+    <p class="muted mono" style="font-size:12px;margin-top:8px">20 paradas · todas ideias da coach.</p>
+  </div>
+</section>
+
+<!-- ================= 04 JTBD ================= -->
+<section id="s04">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">04</div><div class="sector-tag">Setor 04 · Job to Be Done</div><h2>Cartões de embarque<small>Para cada passageiro, o trabalho que ele contrata o app para fazer.</small></h2></div>
+    <div class="jobs">
+      <div class="job"><header><b>Físico</b><span>2 jobs</span></header><ul>
+        <li><i>Dormir tranquilo</i>Painel de exceções em que nada a ver significa tudo conferido. <small>· coach</small></li>
+        <li><i>Provar o que fez</i>Histórico de revisões exportável por paciente e por período. <small>· coach</small></li></ul></div>
+      <div class="job"><header><b>Dosimetrista</b><span>3 jobs</span></header><ul>
+        <li><i>Entregar sem retrabalho</i>Pré-checagem do plano antes de mandar para a física. <small>· coach</small></li>
+        <li><i>Estruturas no padrão</i>Nomes de estruturas conferidos contra o TG-263 no RT Struct. <small>· coach</small></li>
+        <li><i>Aprender com a devolução</i>Devolução da física com motivo categorizado, que vira aprendizado. <small>· coach</small></li></ul></div>
+      <div class="job"><header><b>Médico</b><span>3 jobs</span></header><ul>
+        <li><i>Marcar a consulta de alta</i>Lista “meus pacientes que terminam esta semana”. <small>· coach</small></li>
+        <li><i>Contatar quem falta</i>Pacientes com faltas consecutivas, para contato. <small>· coach</small></li>
+        <li><i>Conferir o protocolo</i>DVH contra as metas do protocolo do próprio serviço, conferido na ficha. <small>· coach</small></li></ul></div>
+      <div class="job"><header><b>Técnico</b><span>2 jobs</span></header><ul>
+        <li><i>Paciente certo do jeito certo</i>Foto 3×4 + setup em tela grande + confirmação de identidade. <small>· coach</small></li>
+        <li><i>Saber o que mudou</i>Aviso de mudança de setup desde a última sessão. <small>· coach</small></li></ul></div>
+      <div class="job"><header><b>Gestor</b><span>3 jobs</span></header><ul>
+        <li><i>Ver ocupação e receita</i>Ocupação e receita no BI (procedimentos por SUS/convênio). <small>· coach</small></li>
+        <li><i>Planejar vagas</i>Previsão de demanda e de vagas. <small>· coach</small></li>
+        <li><i>Passar na acreditação</i>Indicadores tirados do dado (tempo até o início, interrupção, retrabalho). <small>· coach</small></li></ul></div>
+      <div class="job"><header><b>Paciente &amp; Recepção</b><span>2 jobs</span></header><ul>
+        <li><i>Paciente — entender o tratamento</i>Folha com calendário, preparo e contato. <small>· coach</small></li>
+        <li><i>Recepção — remarcar sem estender o curso</i>Aviso quando a remarcação alonga o tratamento. <small>· coach</small></li></ul></div>
+      <div class="job sell" style="grid-column:1/-1"><header><b>Venda · o serviço que compra</b><span>6 jobs</span></header><ul style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 24px">
+        <li><i>Capa configurável</i>Por instituição (logo, campos, modelo). <small>· coach</small></li>
+        <li><i>Conectores</i>ARIA (já), Mosaiq (adaptador), DICOM puro para qualquer TPS. <small>· coach</small></li>
+        <li><i>Licença por módulo</i>Ficha (DICOM), Ficha Virtual (ARIA), Revisão Semanal, BI. <small>· coach</small></li>
+        <li><i>Demonstração</i>O servidor local de demonstração (já existe) como ferramenta de venda fora da rede do cliente. <small>· coach</small></li>
+        <li><i>Relatório de valor</i>Tirado da telemetria limpa (fichas geradas, tempo economizado). <small>· coach</small></li>
+        <li><i>Medidor de tempo</i>Tempo economizado por ficha (montagem automática × manual). <small>· coach</small></li></ul></div>
+    </div>
+
+    <div class="grp">Ainda no setor · jobs da revisão semanal</div>
+    <div class="strips two">
+      <div class="strip"><div class="code">JT-R1</div><div class="txt">Revisão semanal com <b>frequência por técnica</b> (SBRT a cada fração, convencional a cada 5).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R2</div><div class="txt">Revisão <b>disparada por evento</b>: replano, plano alterado, interrupção acima de N dias, troca de máquina.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R3</div><div class="txt">Revisão obrigatória da <b>1ª fração</b> assim que ela entra no histórico.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R4</div><div class="txt"><b>Pendência de revisão na Fichinha</b> (Documentação), com dono.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R5</div><div class="txt">Revisão mostra se as <b>imagens de verificação</b> foram aprovadas.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R6</div><div class="txt">Revisão compara a <b>máquina tratada com a planejada</b> (troca de acelerador).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R7</div><div class="txt">Revisão confere <b>UM entregue por campo</b> contra a planejada.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R8</div><div class="txt">Revisão de <b>fim de curso</b>: tratamento fechou na dose prescrita antes da alta.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-R9</div><div class="txt"><b>PDF da revisão semanal</b> para anexar ao prontuário.</div><div class="by">coach</div></div>
+    </div>
+
+    <div class="grp">Ainda no setor · jobs do BI</div>
+    <div class="strips two">
+      <div class="strip"><div class="code">JT-B1</div><div class="txt"><b>Mapa de calor de ocupação:</b> hora do dia × máquina.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B2</div><div class="txt"><b>Tempo médio de sessão por técnica</b>, pelos horários do histórico.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B3</div><div class="txt"><b>Distribuição de esquemas</b> (hipofracionado × convencional) por sítio ao longo do tempo.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B4</div><div class="txt"><b>Pacientes novos por mês</b> por médico e por convênio.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B5</div><div class="txt"><b>Taxa de faltas</b> por dia da semana.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B6</div><div class="txt"><b>Tempo entre a aprovação do plano e a 1ª fração.</b></div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B7</div><div class="txt"><b>Disponibilidade por máquina</b> (o Índice de Disponibilidade já previsto).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B8</div><div class="txt"><b>BI exportado sozinho todo mês</b> (Excel/PDF) na pasta do serviço.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B9</div><div class="txt">BI com filtro <b>“só os meus”</b> para o médico, como na Agenda.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B10</div><div class="txt"><b>Alerta de capacidade:</b> máquina acima de 90% na projeção das próximas 3 semanas.</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B11</div><div class="txt"><b>Comparativo anônimo entre serviços clientes</b>, só agregado (efeito de rede; exige cuidado com LGPD).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B12</div><div class="txt"><b>Saúde dos dados:</b> quantas capas vieram do banco, do espelho ou do relatório (os três degraus).</div><div class="by">coach</div></div>
+      <div class="strip"><div class="code">JT-B13</div><div class="txt"><b>Inconsistência no ARIA:</b> paciente “em tratamento” sem sessão há X dias (curso não fechado no sistema).</div><div class="by">coach</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 SCAMPER ================= -->
+<section id="s05">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">05</div><div class="sector-tag">Setor 05 · SCAMPER · sobre a revisão semanal estruturada</div><h2>Sete manobras<small>A mesma revisão semanal, girada por sete alavancas.</small></h2></div>
+    <div class="scamper">
+      <div class="sc"><div class="L">S</div><div class="W">Substituir</div>
+        <p>A rubrica na folha pela assinatura eletrônica com evidência anexada (o que foi conferido, contra qual fonte).</p>
+        <p>A revisão por calendário (toda segunda) pela revisão por fração (a cada 5 frações de cada paciente, no dia em que completar).</p></div>
+      <div class="sc"><div class="L">C</div><div class="W">Combinar</div>
+        <p>Revisão semanal + reunião de casos — a mesma fila serve à física e à reunião médica.</p>
+        <p>Revisão semanal + mapa de frações impresso — assinar a revisão reimprime o mapa com o realizado.</p>
+        <p>Revisão + checklist pré-tratamento — a 1ª revisão herda o checklist e fecha o ciclo.</p></div>
+      <div class="sc"><div class="L">A</div><div class="W">Adaptar</div>
+        <p>A lógica do gatilho (que já prepara a Documentação PRONTA) para preparar a revisão PRONTA — o caso chega com tudo calculado.</p></div>
+      <div class="sc"><div class="L">M</div><div class="W">Modificar</div>
+        <p>Ampliar: incluir a imagem de verificação aprovada e a contagem de imagens por sessão.</p>
+        <p>Reduzir: um caso limpo cabe numa linha (nome, fração, dose acumulada, ✓); só o caso sujo abre em tela cheia.</p></div>
+      <div class="sc"><div class="L">P</div><div class="W">Outro uso</div>
+        <p>O histórico das revisões vira prova para acreditação e para a operadora, sem trabalho extra.</p>
+        <p>Os dados da revisão alimentam o BI (taxa de divergência por técnica e por máquina).</p></div>
+      <div class="sc"><div class="L">E</div><div class="W">Eliminar</div>
+        <p>A busca manual do paciente — a fila já sabe quem vence revisão hoje.</p>
+        <p>A reconferência do que não mudou desde a última assinatura.</p></div>
+      <div class="sc inv"><div class="L">R</div><div class="W">Inverter</div>
+        <p>Em vez de o físico procurar problema, o app prova que não há — e mostra ao físico só onde a prova falha.</p>
+        <p>O técnico abre a revisão (marca o que viu na sessão) e o físico fecha.</p></div>
+    </div>
+    <p class="muted mono" style="font-size:12px;margin-top:8px">14 manobras · todas ideias da coach.</p>
+  </div>
+</section>
+
+<!-- ================= 06 MATRIX ================= -->
+<section id="s06">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">06</div><div class="sector-tag">Setor 06 · Solution Matrix · problemas × abordagens</div><h2>A grade de cobertura<small>Onde a grade fica vazia, o radar tem ponto cego. Duas lacunas apareceram.</small></h2></div>
+    <div class="mx-scroll">
+      <table class="mx">
+        <thead><tr><th>Problema ↓ · Abordagem →</th><th>Alerta automático</th><th>Projeção / previsão</th><th>Conciliação</th><th>Diff</th><th>Bloqueio suave</th><th>Comparação / checagem</th><th>BI</th></tr></thead>
+        <tbody>
+          <tr><th>Sessão perdida</th><td class="hit">Sinal na Ficha Virtual e na fila de revisão no dia seguinte.</td><td class="hit">Nova data de término e impacto na Agenda.</td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th>Dose entregue ≠ planejada</th><td></td><td></td><td class="best">Linha vermelha na revisão com o valor de cada lado.</td><td></td><td></td><td></td><td></td></tr>
+          <tr><th>Plano alterado após aprovação</th><td></td><td></td><td></td><td class="best">O que mudou e quem mudou, antes de assinar.</td><td class="hit">A ficha da sala fica marcada como vencida até a reimpressão.</td><td></td><td></td></tr>
+          <tr><th>Troca de máquina</th><td></td><td></td><td></td><td></td><td></td><td class="hit">A máquina tratada é compatível com a planejada (lista de pares do serviço).</td><td></td></tr>
+          <tr><th>Fim de curso</th><td></td><td></td><td></td><td></td><td></td><td class="hit">Checagem de fechamento: dose total, frações, interrupções, antes de liberar a alta.</td><td></td></tr>
+          <tr><th>Gargalo de agenda</th><td></td><td class="hit">Semanas futuras saturadas por máquina.</td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th>Retrabalho de ficha</th><td></td><td></td><td></td><td></td><td></td><td></td><td class="hit">Taxa de v2/v3 por motivo.</td></tr>
+          <tr class="gap"><th>Plano não iniciado</th><td colspan="7">Nada hoje cobre o “plano não iniciado” (aprovado e parado) — candidato a alerta próprio.</td></tr>
+          <tr class="gap"><th>Revisão médica semanal ↔ física</th><td colspan="7">Nada liga a revisão médica semanal (consulta em tratamento) à física — candidato a cartão comum na Ficha Virtual.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i style="background:var(--cyan-soft)"></i>coberto</span><span><i style="background:var(--amber-tint);outline:2px solid var(--amber)"></i>melhor par</span><span><i style="background:repeating-linear-gradient(-45deg,var(--hatch) 0 4px,transparent 4px 8px)"></i>lacuna achada</span></div>
+    <div class="strips" style="margin-top:10px">
+      <div class="strip" style="border-left-color:var(--amber)"><div class="code" style="color:var(--amber)">SM-★</div><div class="txt"><b>Melhor par:</b> conciliação dose entregue × diff do plano, porque usa dados que o app já lê (<span class="mono">tratamento_db</span> + registro versionado).</div><div class="by">coach</div></div>
+    </div>
+    <p class="muted mono" style="font-size:12px;margin-top:8px">12 entradas · todas ideias da coach.</p>
+  </div>
+</section>
+
+<!-- ================= 07 DISNEY ================= -->
+<section id="s07">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">07</div><div class="sector-tag">Setor 07 · Disney Method · sobre o painel BI</div><h2>Três salas, um painel<small>O BI visitado pelo sonhador, pelo realista e pelo crítico — nessa ordem.</small></h2></div>
+    <div class="rooms">
+      <div class="room d"><div class="sign"><svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6l4.5 10 10.5 1-8 7 2.5 10.5L24 29l-9.5 5.5L17 24l-8-7 10.5-1z"/><path d="M8 42h32"/></svg></div>
+        <h3>Sonhador</h3><div class="role">E se não houvesse limites?</div><ul>
+        <li>O BI responde perguntas em português (“quantos SBRT de pulmão fizemos este ano?”).</li>
+        <li>O BI prevê a fila de espera de 3 meses e sugere abrir turno extra numa máquina.</li>
+        <li>Benchmark nacional anônimo — o serviço se compara à mediana dos clientes.</li>
+        <li>TV na recepção com o tempo de espera do dia por máquina.</li></ul></div>
+      <div class="room r"><div class="sign"><svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="16" width="36" height="14" rx="2"/><path d="M12 16v6M18 16v4M24 16v6M30 16v4M36 16v6"/><path d="M10 38h28"/></svg></div>
+        <h3>Realista</h3><div class="role">Como faríamos amanhã?</div><ul>
+        <li>Começar por 5 indicadores que já saem das consultas existentes (ocupação, novos pacientes, tempo até o início, faltas, altas).</li>
+        <li>BI como aba nova que lê o banco local/espelho, sem consulta nova pesada no DW em horário de tratamento.</li>
+        <li>Exportação mensal em PDF na pasta do serviço — vale mais que gráfico interativo para o gestor.</li>
+        <li>Cada número com a data do dado e a fonte, como a capa já faz com os três degraus.</li></ul></div>
+      <div class="room c"><div class="sign"><svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="21" cy="21" r="12"/><path d="M30 30l11 11"/><path d="M21 15v7M21 26v1"/></svg></div>
+        <h3>Crítico</h3><div class="role">O que pode dar errado?</div><ul>
+        <li>Número de BI errado vira decisão errada — portão igual ao <span class="mono">LISTA_VERIFICADA_EM</span> antes de mostrar sem faixa EXPERIMENTAL.</li>
+        <li>Consulta pesada no DW pode atrasar o ARIA — medir tempo e rodar fora do horário (cache noturno).</li>
+        <li>Ranking de médico ou planejador cria atrito — mostrar o serviço, e o “só os meus” para cada um.</li>
+        <li>BI sem uso vira enfeite — medir na telemetria limpa quem abre a aba.</li></ul></div>
+    </div>
+    <p class="muted mono" style="font-size:12px;margin-top:10px">12 ideias · todas da coach.</p>
+  </div>
+</section>
+
+<!-- ================= 08 STARBURSTING ================= -->
+<section id="s08">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">08</div><div class="sector-tag">Setor 08 · Starbursting · só perguntas, sobre a revisão semanal</div><h2>A estrela de perguntas<small>Nenhuma resposta aqui — só as doze perguntas que precisam ser respondidas antes de especificar.</small></h2></div>
+    <div class="star-wrap">
+      <div class="star-svg">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Estrela de seis pontas: Quem, O quê, Onde, Quando, Por quê, Como">
+          <polygon class="pt" points="150,18 178,102 264,84 206,150 264,216 178,198 150,282 122,198 36,216 94,150 36,84 122,102"/>
+          <circle class="core" cx="150" cy="150" r="46"/>
+          <text class="ct" x="150" y="146">REVISÃO</text><text class="ct" x="150" y="162">SEMANAL</text>
+          <text x="150" y="58">Quem?</text>
+          <text x="232" y="100">O quê?</text>
+          <text x="232" y="208">Onde?</text>
+          <text x="150" y="252">Quando?</text>
+          <text x="68" y="208">Por quê?</text>
+          <text x="68" y="100">Como?</text>
+        </svg>
+      </div>
+      <div class="qbox q1"><h4>Quem?</h4><p>Quem assina a revisão: só físico, ou físico + dosimetrista? E quem pode delegar?</p><p>Quem precisa ver a revisão assinada: médico, técnico, auditor?</p></div>
+      <div class="qbox q2"><h4>O quê?</h4><p>O que exatamente o TG-275 pede na revisão semanal que o app consegue conferir sozinho?</p><p>O que é divergência: qual tolerância de dose entregue × planejada o serviço adota?</p></div>
+      <div class="qbox q3"><h4>Por quê?</h4><p>Por que revisar o que não mudou? Existe base para assinar em lote o caso limpo?</p><p>Por que o médico não veria a mesma tela?</p></div>
+      <div class="qbox q4"><h4>Onde?</h4><p>Onde a revisão acontece: estação da física, tablet na sala, celular?</p></div>
+      <div class="qbox q5"><h4>Quando?</h4><p>Quando ela vence: a cada 5 frações, a cada semana de calendário, ou o que vier primeiro?</p><p>Quando a revisão atrasa, o que acontece com o tratamento do dia seguinte?</p></div>
+      <div class="qbox q6"><h4>Como?</h4><p>Como provar a revisão para a ANSN/ANVISA: PDF, registro versionado, ou os dois?</p><p>Como tratar SBRT e radiocirurgia (poucas frações) — revisão por fração?</p><p>Como a revisão conversa com o ARIA sem escrever nele (o banco é só leitura)?</p></div>
+    </div>
+    <p class="muted mono" style="font-size:12px;margin-top:10px">12 perguntas · todas da coach.</p>
+  </div>
+</section>
+
+<!-- ================= 09 EMPATHY ================= -->
+<section id="s09">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">09</div><div class="sector-tag">Setor 09 · Empathy Map</div><h2>Segunda-feira de revisão<small>O físico no centro; ao redor, o que ele diz, pensa, faz e sente — e a resposta do app a cada um.</small></h2></div>
+    <div class="emp">
+      <div class="quad"><h3>DIZ</h3>
+        <div class="say"><span class="persona">Físico</span><q>“Tenho 40 pacientes para revisar hoje.”</q><span class="ans">Fila com contagem e estimativa de tempo.</span></div>
+        <div class="say"><span class="persona">Médico</span><q>“Só quero saber se está tudo certo.”</q><span class="ans">Selo “verde” da física na Ficha Virtual.</span></div></div>
+      <div class="quad"><h3>PENSA</h3>
+        <div class="say"><span class="persona">Físico</span><q>“E se eu deixei passar algo na semana passada?”</q><span class="ans">Mostrar o que ficou pendente da última revisão.</span></div>
+        <div class="say"><span class="persona">Técnico</span><q>“Mudou alguma coisa desde ontem?”</q><span class="ans">Aviso de mudança no início da sessão.</span></div></div>
+      <div class="quad"><h3>FAZ</h3>
+        <div class="say"><span class="persona">Físico</span><q>Abre ARIA, Eclipse, planilha e ficha em quatro janelas.</q><span class="ans">Uma tela só com o que importa de cada fonte.</span></div></div>
+      <div class="quad"><h3>SENTE</h3>
+        <div class="say"><span class="persona">Físico</span><q>Ansiedade com plano trocado no meio do curso.</q><span class="ans">Alerta destacado e diff legível.</span></div>
+        <div class="say"><span class="persona">Dosimetrista</span><q>Frustração com devolução sem motivo.</q><span class="ans">Motivo categorizado e visível.</span></div>
+        <div class="say"><span class="persona">Gestor</span><q>Pressão por fila de espera.</q><span class="ans">Previsão de vagas no BI.</span></div></div>
+      <div class="emp-core">Físico na segunda-feira de revisão</div>
+    </div>
+    <p class="muted mono" style="font-size:12px;margin-top:10px">8 ideias · todas da coach.</p>
+  </div>
+</section>
+
+<!-- ================= 10 BACKCASTING ================= -->
+<section id="s10">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">10</div><div class="sector-tag">Setor 10 · Backcasting ✦ técnica escolhida</div><h2>Voo de volta<small>Começa no destino — o Radioteraficha vendido a outros serviços — e recua passo a passo até o primeiro gesto de hoje.</small></h2></div>
+    <div class="back">
+      <div class="axis"><span>◂ Destino · futuro</span><span>Hoje · decolagem ▸</span></div>
+      <div class="leg goal"><div class="t">DESTINO</div><h4>10 serviços usam</h4><p>O que eles compram é Ficha + Revisão Semanal, e o BI é o argumento para o gestor assinar.</p></div>
+      <div class="leg"><div class="t">T − 1</div><h4>Piloto externo</h4><p>Piloto em 1 serviço externo com Varian, com telemetria limpa medindo uso e tempo economizado.</p></div>
+      <div class="leg"><div class="t">T − 2</div><h4>Sem “Clinica” no código</h4><p>Capa e nomes institucionais virando configuração.</p></div>
+      <div class="leg"><div class="t">T − 3</div><h4>Revisão em casa</h4><p>Revisão semanal funcionando no próprio serviço, com o portão conferido contra o ARIA (R-07).</p></div>
+      <div class="leg"><div class="t">T − 4 · PRIMEIRO PASSO</div><h4>Módulo sem dependência nova</h4><p>Escrever a revisão semanal como módulo que lê só o que o app já lê (<span class="mono">tratamento_db</span> + registro).</p></div>
+    </div>
+    <p class="back-note">Leia da esquerda para a direita para recuar no tempo · 5 ideias · todas da coach.</p>
+  </div>
+</section>
+
+<!-- ================= POUSO / SÍNTESE ================= -->
+<section id="pouso" class="landing">
+  <div class="wrap">
+    <div class="sector-head"><div class="sector-num">▼</div><div class="sector-tag">Aproximação final · síntese</div><h2>Pouso<small>173 ideias, 10 técnicas. Na aproximação final, elas convergem para uma pista só.</small></h2></div>
+
+    <div class="core">
+      <div class="kicker">Insight 1 · o núcleo do módulo</div>
+      <h3 style="font-size:clamp(22px,3vw,30px);margin-top:6px">Três ideias de técnicas diferentes são uma só.</h3>
+      <div class="eq">
+        <div class="term"><b>Conciliação</b>dose entregue × planejada<small>Analógico · AN-15</small></div>
+        <div class="op">+</div>
+        <div class="term"><b>Diff</b>desde a última assinatura<small>Analógico · SCAMPER</small></div>
+        <div class="op">+</div>
+        <div class="term"><b>Assinatura em lote</b>do caso limpo<small>Analógico · AN-17</small></div>
+        <div class="op">=</div>
+        <div class="res">REVISÃO SEMANAL POR EXCEÇÃO<small>usa só o que o app já lê: tratamento_db + registro versionado</small></div>
+      </div>
+    </div>
+
+    <div class="syn-grid">
+      <div class="card">
+        <div class="kicker mono" style="font-size:12px;letter-spacing:.14em;color:var(--cyan)">INSIGHT 2 · REAPROVEITAMENTO</div>
+        <h3>O gatilho já existe</h3>
+        <p>O gatilho que já deixa a Documentação PRONTA pode deixar a Revisão PRONTA — o caso chega à fila com tudo calculado.</p>
+        <div class="flow">
+          <div class="node src">Gatilho</div>
+          <div class="node">→ Documentação PRONTA <span class="muted mono" style="font-size:11px">· já existe</span></div>
+          <div class="node new">→ Revisão PRONTA <span class="mono" style="font-size:11px">· nova</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kicker mono" style="font-size:12px;letter-spacing:.14em;color:var(--cyan)">INSIGHT 3 · PORTÃO COMUM</div>
+        <h3>Uma barreira, três pistas</h3>
+        <p>Revisão semanal e BI dependem do MESMO portão: a conferência dos cursos contra o ARIA (R-07). Destravar a R-07 libera painel, revisão e BI de uma vez.</p>
+        <div class="gate">
+          <div class="bar"><span>R-07</span>Cursos conferidos contra o ARIA</div>
+          <div class="lanes"><div>Painel</div><div>Revisão</div><div>BI</div></div>
+        </div>
+      </div>
+      <div class="card gaps">
+        <div class="kicker mono" style="font-size:12px;letter-spacing:.14em;color:var(--red)">INSIGHT 4 · LACUNAS DE SEGURANÇA</div>
+        <h3>Alto valor, custo baixo</h3>
+        <p>As lacunas da matriz que mais protegem o paciente e menos custam:</p>
+        <div class="g"><b>Plano aprovado e não iniciado</b>Aprovado e parado — hoje ninguém vê.</div>
+        <div class="g"><b>Ficha da sala vencida</b>Quando o plano muda depois da impressão.</div>
+      </div>
+      <div class="card">
+        <div class="kicker mono" style="font-size:12px;letter-spacing:.14em;color:var(--amber)">INSIGHT 5 · LEITURA COMERCIAL</div>
+        <h3>O que se vende, e por quê</h3>
+        <div class="tiers">
+          <div class="tier top"><span>Produto</span><p>A <b>Revisão Semanal</b> — dor universal, TG-275.</p></div>
+          <div class="tier"><span>Argumento</span><p>O <b>BI</b> é o argumento para o gestor assinar.</p></div>
+          <div class="tier"><span>Pré-requisito</span><p><b>Capa e nomes configuráveis</b> antes de qualquer venda.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="kicker mono" style="font-size:12px;letter-spacing:.14em;color:var(--amber)">INSIGHT 6 · DECISÕES ABERTAS · vindas do Starbursting</div>
+      <h3>Antes de especificar a revisão, decidir:</h3>
+      <ul class="open-list">
+        <li><span><b>Tolerância de divergência</b> — dose entregue × planejada.</span></li>
+        <li><span><b>Quem assina e quem delega.</b></span></li>
+        <li><span><b>Frequência por técnica</b> — SBRT × convencional.</span></li>
+        <li><span><b>O que acontece quando a revisão atrasa.</b></span></li>
+      </ul>
+    </div>
+
+    <div class="oos">
+      <span class="stamp">Fora do escopo · decisão do Geova</span>
+      <p><b>Insight 7.</b> Auditoria, POPs e gestão de datas/tarefas (zero vencimento perdido) não entram aqui: ganham <b>módulo próprio, em sessão futura</b>. As dores que o Geova levantou (AN-03 a AN-06) e as respostas da coach (AN-07 a AN-10) ficam arquivadas para lá.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>RADIOTERAFICHA · RADAR DE IDEIAS · 13/10/2026</span><span>Fonte: .memlog.md da sessão · status: completa</span></div>
+</footer>
+</body>
+</html>

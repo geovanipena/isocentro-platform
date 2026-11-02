@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>ISOCENTRO · Garantia da Qualidade</title>
+<style>
+/* Mockup 1:1 — Módulo aberto em tela cheia: Garantia da Qualidade · DUO, aberto pelo alerta do VitalBeam 4199.
+   Governado por: .memlog.md decisões 12 (módulo em tela cheia com faixa de telas e botão Início), 26–31
+   (nova identidade, Torre de controle, severidade IEC 60601-1-8, paleta variação 1 azul-ardósia).
+   EXPERIENCE.md: troca de clínica só no Início (no módulo a clínica aparece no contexto e na barra de status),
+   Advisory (avisa e registra, nunca bloqueia), Barra de status com degrau de fonte.
+   Tokens: EXATAMENTE os hex de .working/color-themes-1.html, variação 1 (noite padrão; dia via ☾/☀).
+   Autocontido: sem JS, sem rede, fontes do sistema. */
+
+/* Sala de controle · azul-ardósia — modo noite (padrão) */
+:root{--fundo:#0E1621;--sup:#152030;--supel:#1C2A3D;--borda:#2B3B52;--texto:#E4ECF5;--texto2:#9AABC0;
+--acao:#8C9EFF;--sobreacao:#0E1621;--acaofundo:#1E2650;--foco:#C9D2FF;
+--alta:#FF5C61;--altat:#FF8A8D;--altaf:#3B1519;--aten:#FFC93C;--atent:#FFD466;--atenf:#36290A;--info:#2CCFE0;--infot:#5FDDEA;--infof:#0C2E36;
+--ok:#93A3B6;--vivo:#B9C4FF;--espelho:#8292A5;--dose:#3DDC84;}
+/* Sala de controle · azul-ardósia — modo dia (checkbox ☾/☀ marcado) */
+:root:has(#modo:checked){--fundo:#EDF1F6;--sup:#FFFFFF;--supel:#F5F8FB;--borda:#C6D1DE;--texto:#111A25;--texto2:#4B5A6C;
+--acao:#3A47C9;--sobreacao:#FFFFFF;--acaofundo:#E4E7FB;--foco:#1E2A8F;
+--alta:#D7263D;--altat:#B0182C;--altaf:#FBE2E5;--aten:#BB8D00;--atent:#755000;--atenf:#FFF2C7;--info:#0EA3B5;--infot:#00687A;--infof:#DCF4F7;
+--ok:#566577;--vivo:#3A47C9;--espelho:#5E6B7B;--dose:#1E8E4E;}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#05080C;font-family:"Segoe UI",-apple-system,Roboto,Arial,sans-serif;font-size:13px;line-height:1.35;
+  font-variant-numeric:tabular-nums;padding:16px;min-width:1400px}
+.sev{font-variant-emoji:text}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#modo{position:absolute;opacity:0;pointer-events:none}
+
+.win{width:1366px;height:768px;margin:0 auto;background:var(--fundo);color:var(--texto);display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--borda)}
+.tb{height:30px;flex:none;display:flex;align-items:center;justify-content:space-between;background:var(--sup);color:var(--texto2);font-size:12px;padding-left:12px;border-bottom:1px solid var(--borda)}
+.tb .ctl{display:flex}.tb .ctl span{width:46px;height:30px;display:flex;align-items:center;justify-content:center}
+.tb .ctl svg{width:11px;height:11px;stroke-width:1.2}
+
+/* topo do módulo */
+.top{height:48px;flex:none;display:flex;align-items:stretch;gap:18px;padding:0 16px;border-bottom:1px solid var(--borda);background:var(--sup)}
+.top>*{display:flex;align-items:center}
+.inicio{gap:4px;color:var(--acao);font-weight:600;cursor:pointer;padding:0 6px;margin-left:-6px}
+.inicio:hover{background:var(--supel)}
+.nome{gap:8px;font-weight:700;font-size:15px;padding-right:18px;border-right:1px solid var(--borda)}
+.nome svg.i{color:var(--texto2);width:20px;height:20px}
+.faixa{gap:2px}
+.faixa span{height:100%;display:flex;align-items:center;padding:0 12px;color:var(--texto2);font-weight:600;border-bottom:2px solid transparent;cursor:pointer}
+.faixa span:hover{color:var(--texto);background:var(--supel)}
+.faixa span.on{color:var(--texto);border-bottom-color:var(--acao)}
+.ctx{margin-left:auto;gap:8px;color:var(--texto2)}
+.ctx b{color:var(--texto);font-weight:700;letter-spacing:.06em}
+.dir{gap:16px;color:var(--texto2)}
+.modo{display:flex;align-items:center;border:1px solid var(--borda);border-radius:6px;overflow:hidden;cursor:pointer;height:28px}
+.modo span{display:flex;padding:4px 8px;color:var(--texto2)}
+.modo .lua{background:var(--acaofundo);color:var(--acao)}
+:root:has(#modo:checked) .modo .lua{background:transparent;color:var(--texto2)}
+:root:has(#modo:checked) .modo .sol{background:var(--acaofundo);color:var(--acao)}
+#modo:focus-visible + .win .modo{outline:2px solid var(--foco);outline-offset:2px}
+.usuario{gap:6px;color:var(--texto);font-weight:600}
+
+main{flex:1;display:grid;grid-template-columns:1fr 430px;gap:12px;padding:12px 16px;min-height:0}
+.zh{display:flex;align-items:baseline;gap:10px;margin:0 0 6px;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--texto2);font-weight:600}
+.zh .sub{text-transform:none;letter-spacing:0;font-weight:400}
+.zh .n{color:var(--texto);font-weight:700}
+.painel{background:var(--sup);border:1px solid var(--borda);border-radius:8px;padding:8px 10px}
+
+/* lista do dia */
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{font-size:11px;font-weight:600;color:var(--texto2);text-align:left;padding:3px 8px;border-bottom:1px solid var(--borda)}
+td{padding:0 8px;height:23px;border-bottom:1px solid var(--borda);white-space:nowrap}
+tbody tr{cursor:pointer} tbody tr:hover td{background:var(--supel)}
+td.num,th.num{text-align:right}
+.t2{color:var(--texto2)}
+.pend td{color:var(--texto2)}
+.pend .est{font-style:italic}
+tr.fora td{background:var(--altaf)} tr.fora td:first-child{box-shadow:inset 3px 0 0 var(--alta)}
+tr.fora:hover td{background:var(--altaf);filter:brightness(1.08)}
+tr.fora .v,tr.fora .tag{color:var(--altat);font-weight:700}
+.tag{font-size:11px;letter-spacing:.05em}
+
+/* coluna direita */
+.direita{display:flex;flex-direction:column;gap:12px;min-height:0}
+.alerta{background:var(--altaf);border:1px solid var(--borda);border-left:3px solid var(--alta);border-radius:0 8px 8px 0;padding:10px 12px}
+.alerta .tit{display:flex;gap:8px;align-items:baseline;font-weight:700;font-size:14px}
+.alerta .tit .tag{color:var(--altat);font-size:11.5px}
+dl{display:grid;grid-template-columns:120px 1fr;gap:3px 10px;margin:8px 0 0;font-size:12.5px}
+dt{color:var(--texto2)} dd{margin:0}
+dd.v{color:var(--altat);font-weight:700;font-size:15px}
+.prev{margin-top:8px;padding-top:8px;border-top:1px solid var(--borda);font-size:12.5px}
+.prev b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--texto2);margin-bottom:2px}
+.btnrow{display:flex;justify-content:flex-end;margin-top:10px}
+.btn{font:inherit;font-weight:600;font-size:13px;background:var(--acao);color:var(--sobreacao);border:0;border-radius:5px;padding:7px 18px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)} .btn:focus-visible{outline:2px solid var(--foco);outline-offset:2px}
+.carta svg{display:block;width:100%;height:auto}
+.carta .leg{font-size:11.5px;color:var(--texto2);margin-top:4px}
+
+.status{height:26px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-top:1px solid var(--borda);background:var(--sup);color:var(--texto2);font-size:12px}
+.vivo{color:var(--vivo);font-weight:600}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="i-voltar" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
+  <symbol id="i-gq" viewBox="0 0 24 24"><path d="M3.5 16.5a8.5 8.5 0 0 1 17 0"/><path d="M12 16.5l4-5.5"/><circle cx="12" cy="16.5" r="1.3"/><path d="M3.5 20.5h17"/></symbol>
+  <symbol id="i-lua" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.8 4-5.5 7.5-5.5s6.3 1.7 7.5 5.5"/></symbol>
+  <symbol id="i-maq" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M12 4v4.5"/><path d="M3 19h18M7 19v2.5M17 19v2.5"/><path d="M8.5 15.5h7"/></symbol>
+  <symbol id="i-min" viewBox="0 0 12 12"><path d="M1 6h10"/></symbol>
+  <symbol id="i-max" viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9"/></symbol>
+  <symbol id="i-x" viewBox="0 0 12 12"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9"/></symbol>
+ </defs>
+</svg>
+
+<input type="checkbox" id="modo" aria-label="Alternar modo noite/dia">
+<div class="win">
+ <div class="tb"><span>ISOCENTRO · Garantia da Qualidade</span><span class="ctl"><span><svg class="i"><use href="#i-min"/></svg></span><span><svg class="i"><use href="#i-max"/></svg></span><span><svg class="i"><use href="#i-x"/></svg></span></span></div>
+
+ <header class="top">
+  <div class="inicio"><svg class="i"><use href="#i-voltar"/></svg>Início</div>
+  <div class="nome"><svg class="i"><use href="#i-gq"/></svg>Garantia da Qualidade</div>
+  <nav class="faixa" aria-label="Telas do módulo"><span class="on">Lista do dia</span><span>Programa</span><span>Carta de controle</span><span>Importar</span></nav>
+  <div class="ctx"><svg class="i"><use href="#i-maq"/></svg><b>DUO</b>· VitalBeam 4199</div>
+  <div class="dir">
+   <label for="modo" class="modo" title="Noite / dia"><span class="lua"><svg class="i"><use href="#i-lua"/></svg></span><span class="sol"><svg class="i"><use href="#i-sol"/></svg></span></label>
+   <span class="usuario"><svg class="i"><use href="#i-user"/></svg>Geova</span>
+  </div>
+ </header>
+
+ <!-- ilustrativo, detalhe do módulo em aberto -->
+ <main>
+  <section>
+   <h2 class="zh">Lista do dia <span class="sub">· CQ diário · 18/10 ·</span> <span class="n">22</span> <span class="sub">testes ·</span> <span class="n">18</span> <span class="sub">lançados</span></h2>
+   <div class="painel">
+    <table>
+     <thead><tr><th>Teste</th><th class="num">Medido</th><th class="num">Tolerância</th><th>Origem da tolerância</th><th>Estado</th><th>Lançado</th></tr></thead>
+     <tbody>
+      <tr class="fora"><td>Output 6 MV</td><td class="num v">+3,4%</td><td class="num">±3%</td><td>literatura</td><td class="tag sev">▲&#xFE0E; ALTA · fora</td><td>Carla · 07:31</td></tr>
+      <tr><td>Output 10 MV</td><td class="num">+1,1%</td><td class="num">±3%</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:32</td></tr>
+      <tr><td>Output 6 MV FFF</td><td class="num">+0,8%</td><td class="num">±3%</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:33</td></tr>
+      <tr><td>Output 10 MV FFF</td><td class="num">+0,6%</td><td class="num">±3%</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:34</td></tr>
+      <tr><td>Output elétrons 6 MeV</td><td class="num">−0,9%</td><td class="num">±3%</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:36</td></tr>
+      <tr><td>Output elétrons 9 MeV</td><td class="num">−0,4%</td><td class="num">±3%</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:37</td></tr>
+      <tr><td>Output elétrons 12 MeV</td><td class="num">+0,3%</td><td class="num">±3%</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:38</td></tr>
+      <tr class="pend"><td>Output elétrons 16 MeV</td><td class="num">—</td><td class="num">±3%</td><td>literatura</td><td class="est">a lançar</td><td></td></tr>
+      <tr><td>Lasers</td><td class="num">1 mm</td><td class="num">±2 mm</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:20</td></tr>
+      <tr><td>Telêmetro (ODI)</td><td class="num">1 mm</td><td class="num">±2 mm</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:21</td></tr>
+      <tr><td>Indicador de campo luminoso</td><td class="num">1 mm</td><td class="num">±2 mm</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:22</td></tr>
+      <tr><td>Intertravamento de porta</td><td class="num">funcional</td><td class="num">funcional</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:15</td></tr>
+      <tr><td>Monitor de áudio e vídeo</td><td class="num">funcional</td><td class="num">funcional</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:15</td></tr>
+      <tr><td>Indicador de feixe ligado</td><td class="num">funcional</td><td class="num">funcional</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:16</td></tr>
+      <tr><td>Monitor de radiação da sala</td><td class="num">funcional</td><td class="num">funcional</td><td class="t2">literatura</td><td class="t2">dentro</td><td class="t2">Carla · 07:16</td></tr>
+      <tr><td>Imagem kV · coincidência com isocentro</td><td class="num">0,6 mm</td><td class="num">±2 mm</td><td class="t2">comissionamento</td><td class="t2">dentro</td><td class="t2">Carla · 07:25</td></tr>
+      <tr><td>Imagem MV · coincidência com isocentro</td><td class="num">0,8 mm</td><td class="num">±2 mm</td><td class="t2">comissionamento</td><td class="t2">dentro</td><td class="t2">Carla · 07:26</td></tr>
+      <tr><td>Mesa · deslocamento de correção</td><td class="num">0,5 mm</td><td class="num">±1 mm</td><td class="t2">fabricante</td><td class="t2">dentro</td><td class="t2">Carla · 07:27</td></tr>
+      <tr><td>Fixação do acessório SBRT</td><td class="num">funcional</td><td class="num">funcional</td><td class="t2">fabricante</td><td class="t2">dentro</td><td class="t2">Carla · 07:28</td></tr>
+      <tr class="pend"><td>Simetria 6 MV</td><td class="num">—</td><td class="num">±2%</td><td>literatura</td><td class="est">a lançar</td><td></td></tr>
+      <tr class="pend"><td>Planura 6 MV</td><td class="num">—</td><td class="num">±2%</td><td>literatura</td><td class="est">a lançar</td><td></td></tr>
+      <tr class="pend"><td>Energia 6 MV (razão de dose)</td><td class="num">—</td><td class="num">±2%</td><td>literatura</td><td class="est">a lançar</td><td></td></tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <div class="direita">
+   <section>
+    <h2 class="zh">Teste fora da tolerância</h2>
+    <div class="alerta">
+     <div class="tit"><span class="tag sev">▲&#xFE0E; ALTA</span>Output 6 MV · VitalBeam 4199</div>
+     <dl>
+      <dt>Medido</dt><dd class="v">+3,4%</dd>
+      <dt>Tolerância</dt><dd>±3% <span class="t2">· origem: literatura</span></dd>
+      <dt>Lançado</dt><dd>Carla · 18/10 07:31</dd>
+      <dt>1º paciente</dt><dd>08:20 <span class="t2">· variandw ● ao vivo · 18/10 07:41</span></dd>
+     </dl>
+     <div class="prev"><b>Ação prevista</b>Repetir a medida com a câmara de referência; se confirmar, comunicar o físico responsável antes do 1º paciente.</div>
+     <div class="btnrow"><button class="btn">Registrar repetição</button></div>
+    </div>
+   </section>
+
+   <section class="carta">
+    <h2 class="zh">Carta de controle <span class="sub">· Output 6 MV · últimos 20 dias</span></h2>
+    <div class="painel">
+     <svg viewBox="0 0 400 180" role="img" aria-label="Carta de controle do output 6 MV com o novo ponto acima da tolerância">
+      <!-- eixos e faixas (neutros) -->
+      <g font-size="10" fill="var(--texto2)" font-family="Segoe UI, Arial, sans-serif" style="font-variant-numeric:tabular-nums">
+       <text x="30" y="27" text-anchor="end">+3%</text>
+       <text x="30" y="88" text-anchor="end">0</text>
+       <text x="30" y="149" text-anchor="end">−3%</text>
+       <text x="40" y="174">19/09</text>
+       <text x="372" y="174" text-anchor="end">18/10</text>
+      </g>
+      <line x1="36" y1="24" x2="388" y2="24" stroke="var(--texto2)" stroke-dasharray="4 3"/>
+      <line x1="36" y1="146" x2="388" y2="146" stroke="var(--texto2)" stroke-dasharray="4 3"/>
+      <line x1="36" y1="85" x2="388" y2="85" stroke="var(--borda)"/>
+      <line x1="36" y1="8" x2="36" y2="160" stroke="var(--borda)"/>
+      <!-- 19 pontos anteriores (neutros) — x a cada 17,5 px; y = 85 − desvio×20,3 -->
+      <polyline fill="none" stroke="var(--ok)" stroke-width="1.4"
+       points="44,93 61,81 79,87 96,77 114,89 131,83 149,73 166,79 184,91 201,85 219,75 236,81 254,69 271,77 289,65 306,71 324,61 341,67 359,57"/>
+      <g fill="var(--ok)">
+       <circle cx="44" cy="93" r="2.4"/><circle cx="61" cy="81" r="2.4"/><circle cx="79" cy="87" r="2.4"/><circle cx="96" cy="77" r="2.4"/><circle cx="114" cy="89" r="2.4"/>
+       <circle cx="131" cy="83" r="2.4"/><circle cx="149" cy="73" r="2.4"/><circle cx="166" cy="79" r="2.4"/><circle cx="184" cy="91" r="2.4"/><circle cx="201" cy="85" r="2.4"/>
+       <circle cx="219" cy="75" r="2.4"/><circle cx="236" cy="81" r="2.4"/><circle cx="254" cy="69" r="2.4"/><circle cx="271" cy="77" r="2.4"/><circle cx="289" cy="65" r="2.4"/>
+       <circle cx="306" cy="71" r="2.4"/><circle cx="324" cy="61" r="2.4"/><circle cx="341" cy="67" r="2.4"/><circle cx="359" cy="57" r="2.4"/>
+      </g>
+      <!-- novo ponto: +3,4% -->
+      <line x1="359" y1="57" x2="376" y2="16" stroke="var(--alta)" stroke-width="1.4"/>
+      <path d="M376 9 L382.5 20 L369.5 20 Z" fill="var(--alta)"/>
+      <text x="368" y="14" text-anchor="end" font-size="11" font-weight="700" fill="var(--altat)" font-family="Segoe UI, Arial, sans-serif">+3,4%</text>
+     </svg>
+     <div class="leg">tracejado: tolerância ±3% (literatura) · ▲ ponto de hoje</div>
+    </div>
+   </section>
+  </div>
+ </main>
+
+ <footer class="status"><span>Geova · físico · DUO</span><span>variandw <span class="vivo">● ao vivo</span> · 18/10 07:41</span></footer>
+</div>
+
+<!-- Decisões visuais tomadas neste mockup que NÃO estão no .memlog.md (a confirmar):
+ 1. Topo do módulo numa linha só (48 px): "◂ Início" (link na cor acao, chevron SVG) · ícone + nome do módulo · faixa de telas como abas com sublinhado acao na ativa · contexto "DUO · VitalBeam 4199" à direita · ☾/☀ · usuário. Sem seletor de clínica no módulo.
+ 2. Barra de status mantém a mesma estrutura do Início, mas a clínica passa a ser a do contexto ("Geova · físico · DUO"), conforme EXPERIENCE (no módulo a clínica vai para a barra de status).
+ 3. Conteúdo em duas colunas: lista do dia (larga) à esquerda; à direita, cartão do teste fora + miniatura da carta de controle (430 px).
+ 4. Tabela da lista do dia com linhas de 23 px; testes dentro da tolerância ficam neutros (texto-secundário, "dentro"), sem cor; testes não lançados em itálico "a lançar", sem cor; só o teste fora leva fundo/borda/forma de severidade alta.
+ 5. Coluna "Origem da tolerância" visível na lista (literatura / comissionamento / fabricante).
+ 6. Cartão do teste fora: borda esquerda alta + fundo alta; valor medido 15 px em negrito na cor de texto alta; "Ação prevista" como bloco de texto; 1º paciente da máquina com degrau e data do variandw.
+ 7. Botão primário único "Registrar repetição" no cartão do teste fora; nada bloqueado (advisory).
+ 8. Carta de controle: série e pontos em estado-neutro, tolerância ±3% tracejada em texto-secundário, linha zero na cor de borda; ponto novo como triângulo ▲ na cor de sinal alta com o valor rotulado.
+ 9. Nomes de testes, horários e "Carla" (técnica) são fictícios e ilustrativos.
+ 10. Barra de título Windows e alturas (30/48/26 px), tipografia e hover iguais ao torre-inicio.html.
+-->
+</body>
+</html>

@@ -1,0 +1,1694 @@
+[
+ {
+  "codigo": "QUANTEC-ORGAOS",
+  "titulo": "Artigos de órgão do QUANTEC ausentes (esôfago, laringe/faringe, fígado, rim, estômago/delgado, reto, bexiga, bulbo peniano)",
+  "orgao": "IJROBP",
+  "ano": 2010,
+  "tipo": "artigo",
+  "pasta": "04",
+  "atividades": [
+   "I01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "alta",
+  "substitui": "",
+  "justificativa": "Hoje só a Tab. 1 resumo sustenta esses órgãos",
+  "links": [
+   {
+    "rotulo": "esôfago",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3587781/"
+   },
+   {
+    "rotulo": "laringe/faringe",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2833104/"
+   },
+   {
+    "rotulo": "fígado",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4388033/"
+   },
+   {
+    "rotulo": "rim",
+    "url": "https://doi.org/10.1016/j.ijrobp.2009.02.089"
+   },
+   {
+    "rotulo": "estômago/delgado",
+    "url": "https://doi.org/10.1016/j.ijrobp.2009.05.071"
+   },
+   {
+    "rotulo": "reto",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3319467/"
+   },
+   {
+    "rotulo": "bexiga",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3587780/"
+   },
+   {
+    "rotulo": "bulbo peniano",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4786051/"
+   }
+  ]
+ },
+ {
+  "codigo": "RECOG-DOSE-2026",
+  "titulo": "ReCOG consensus on standards for dose evaluation and reporting in patients with multiple courses of radiation therapy",
+  "orgao": "AAPM/ASTRO/ESTRO et al.",
+  "ano": 2026,
+  "tipo": "diretriz",
+  "pasta": "04",
+  "atividades": [
+   "H03",
+   "I03"
+  ],
+  "acesso": "pago",
+  "prioridade": "alta",
+  "substitui": "",
+  "justificativa": "Lancet Oncol 2026;27(2):e101–e110; padrões de acumulação de dose e relato; complementa ESTRO-REIRR-2022",
+  "links": [
+   {
+    "rotulo": "Lancet Oncol",
+    "url": "https://doi.org/10.1016/S1470-2045(25)00562-5"
+   },
+   {
+    "rotulo": "guia de casos PRO",
+    "url": "https://doi.org/10.1016/j.prro.2026.03.010"
+   }
+  ]
+ },
+ {
+  "codigo": "TRS-483",
+  "titulo": "Dosimetry of small static fields used in external beam radiotherapy (IAEA-AAPM CoP)",
+  "orgao": "IAEA",
+  "ano": 2017,
+  "tipo": "normativo",
+  "pasta": "05",
+  "atividades": [
+   "A02",
+   "A17",
+   "B02"
+  ],
+  "acesso": "aberto",
+  "prioridade": "alta",
+  "substitui": "",
+  "justificativa": "MPPG-8b (D11/MLC1) e MPPG-9b exigem os métodos do TRS-483 para OF <3×3 cm; ausente no acervo. Resumo em Med Phys 2018, doi 10.1002/mp.13208. O resumo de Palmans 2018 (TRS-483-RESUMO, pasta 05) já está no acervo; falta o código de prática completo.",
+  "links": [
+   {
+    "rotulo": "PDF IAEA",
+    "url": "https://www-pub.iaea.org/MTCD/Publications/PDF/D483_web.pdf"
+   },
+   {
+    "rotulo": "página",
+    "url": "https://www.iaea.org/node/41990"
+   }
+  ]
+ },
+ {
+  "codigo": "BALLESTER-2001",
+  "titulo": "Technical note: Monte-Carlo dosimetry of the HDR 12i and Plus 192Ir sources (+ erratum 2004)",
+  "orgao": "Med Phys",
+  "ano": 2001,
+  "tipo": "artigo",
+  "pasta": "06",
+  "atividades": [
+   "E01",
+   "E07"
+  ],
+  "acesso": "pago",
+  "prioridade": "alta",
+  "substitui": "",
+  "justificativa": "Dados TG-43 da fonte no TPS e no BraquiQA. Med Phys 28:2586; erratum Med Phys 31:2372. Só a errata (2004) chegou: BALLESTER-2004-ERRATUM, pasta 06; falta o artigo de 2001.",
+  "links": [
+   {
+    "rotulo": "Med Phys",
+    "url": "https://doi.org/10.1118/1.1420398"
+   }
+  ]
+ },
+ {
+  "codigo": "ASTRO-BONEMETS-2024",
+  "titulo": "ASTRO guideline on palliative radiation therapy for bone metastases",
+  "orgao": "ASTRO",
+  "ano": 2024,
+  "tipo": "diretriz",
+  "pasta": "04",
+  "atividades": [
+   "I02",
+   "I03"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Paliação e reirradiação óssea/coluna, que a ASTRO 2025 exclui A atualização anterior (Lutz 2017) está no acervo como ASTRO-BONEMETS-2017, pasta 04; falta a de 2024.",
+  "links": [
+   {
+    "rotulo": "PRO 2024",
+    "url": "https://doi.org/10.1016/j.prro.2024.04.018"
+   }
+  ]
+ },
+ {
+  "codigo": "IPEM-81v2",
+  "titulo": "Physics aspects of quality control in radiotherapy (IPEM Report 81, 2nd ed.)",
+  "orgao": "IPEM",
+  "ano": 2018,
+  "tipo": "diretriz",
+  "pasta": "05",
+  "atividades": [
+   "A07",
+   "A08",
+   "A20"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Referência europeia de níveis de ação de QC (inclui kV e imagem); triangula conflitos AAPM. A 1ª edição (1999) está no acervo como IPEM-81, pasta 05; falta a 2ª.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://ipem.ac.uk/resources/books/report-81-2nd-edition-physics-aspects-of-quality-control-in-radiotherapy"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-51",
+  "titulo": "AAPM's TG-51 protocol for clinical reference dosimetry of high-energy photon and electron beams",
+  "orgao": "AAPM",
+  "ano": 1999,
+  "tipo": "normativo",
+  "pasta": "05",
+  "atividades": [
+   "A03",
+   "A15"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Protocolo-base dos adendos; necessário para a rastreabilidade se o serviço não adotar exclusivamente o TRS-398-R1.",
+  "links": [
+   {
+    "rotulo": "Med Phys 1999",
+    "url": "https://doi.org/10.1118/1.598691"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-62",
+  "titulo": "Diode in vivo dosimetry for patients receiving external beam radiation therapy (AAPM Report 87)",
+  "orgao": "AAPM",
+  "ano": 2005,
+  "tipo": "diretriz",
+  "pasta": "05",
+  "atividades": [
+   "A18"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Tolerâncias e calibração de diodos in vivo; ausente no acervo.",
+  "links": [
+   {
+    "rotulo": "AAPM Report 87",
+    "url": "https://www.aapm.org/pubs/reports/detail.asp?docid=88"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-75",
+  "titulo": "The management of imaging dose during image-guided radiotherapy",
+  "orgao": "AAPM",
+  "ano": 2007,
+  "tipo": "diretriz",
+  "pasta": "05",
+  "atividades": [
+   "A08"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Base de dose de imagem referenciada pelo TG-142 (nota e) e pelo MPPG 2.b; Med Phys 2007;34:4041.",
+  "links": [
+   {
+    "rotulo": "Med Phys",
+    "url": "https://doi.org/10.1118/1.2775667"
+   }
+  ]
+ },
+ {
+  "codigo": "WGTG51-374",
+  "titulo": "Guidance for TG-51 reference dosimetry (AAPM WGTG51 Report 374)",
+  "orgao": "AAPM",
+  "ano": 2022,
+  "tipo": "diretriz",
+  "pasta": "05",
+  "atividades": [
+   "A03",
+   "A04"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Orientação prática de equipamentos, câmaras e correções para TG-51.",
+  "links": [
+   {
+    "rotulo": "Med Phys",
+    "url": "https://doi.org/10.1002/mp.15949"
+   }
+  ]
+ },
+ {
+  "codigo": "WGTG51-385",
+  "titulo": "Addendum to the AAPM's TG-51 protocol for clinical reference dosimetry of high-energy electron beams",
+  "orgao": "AAPM",
+  "ano": 2024,
+  "tipo": "normativo",
+  "pasta": "05",
+  "atividades": [
+   "A03",
+   "A15"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Altera a calibração de elétrons (cilíndrica em todas as energias; até ~2% por UM).",
+  "links": [
+   {
+    "rotulo": "Med Phys",
+    "url": "https://doi.org/10.1002/mp.17277"
+   }
+  ]
+ },
+ {
+  "codigo": "ABS-CERVIX-HDR-2012",
+  "titulo": "ABS consensus guidelines for locally advanced carcinoma of the cervix. Part II: HDR brachytherapy",
+  "orgao": "ABS",
+  "ano": 2012,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E07",
+   "I01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Fracionamentos HDR de colo e relato. Complementa EMBRACE e ICRU-89.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3489267"
+   }
+  ]
+ },
+ {
+  "codigo": "CLRP-TG43-DB",
+  "titulo": "Carleton CLRP TG-43 parameter database – Varian GammaMed Plus HDR",
+  "orgao": "Carleton University",
+  "ano": 2023,
+  "tipo": "artigo",
+  "pasta": "06",
+  "atividades": [
+   "E01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Tabelas Λ, g(r), F(r,θ) e comparação com o consenso HEBD. Benchmark independente para o BraquiQA. Os dados CLRP do GammaMed 12i já estão na pasta 06 (CLRP-GM12i); falta o da fonte Plus.",
+  "links": [
+   {
+    "rotulo": "GammaMed Plus",
+    "url": "https://physics.carleton.ca/clrp/node/162"
+   },
+   {
+    "rotulo": "base CLRP",
+    "url": "https://physics.carleton.ca/clrp/node/48"
+   }
+  ]
+ },
+ {
+  "codigo": "COHEN-2000",
+  "titulo": "An independent dose-to-point calculation program for the verification of HDR brachytherapy treatment planning",
+  "orgao": "IJROBP",
+  "ano": 2000,
+  "tipo": "artigo",
+  "pasta": "06",
+  "atividades": [
+   "E07",
+   "H01"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Cálculo independente baseado em reconstrução própria (IJROBP 48:1251; MPPG ref. 56).",
+  "links": [
+   {
+    "rotulo": "IJROBP",
+    "url": "https://doi.org/10.1016/s0360-3016(00)00725-2"
+   }
+  ]
+ },
+ {
+  "codigo": "CPQR-AFTERLOADER",
+  "titulo": "COMP/CPQR technical quality control guidelines for brachytherapy remote afterloaders",
+  "orgao": "COMP/CPQR",
+  "ano": 2015,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E03",
+   "E04",
+   "E08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Tabela completa de testes por treatment/dia/trimestre/ano com níveis de ação. Publicação JACMP 2018;19:39 (Freniere).",
+  "links": [
+   {
+    "rotulo": "PDF CPQR",
+    "url": "https://ws2021.comp-ocpm.ca/_uploads/63b4772d98d1f.pdf"
+   },
+   {
+    "rotulo": "JACMP",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5859323/"
+   }
+  ]
+ },
+ {
+  "codigo": "ESTRO-BOOKLET-8",
+  "titulo": "A practical guide to quality control of brachytherapy equipment (ESTRO Booklet 8)",
+  "orgao": "ESTRO",
+  "ano": 2004,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E02",
+   "E03",
+   "E08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Tolerâncias e níveis de ação europeus para HDR (Sec. 5.2.3) e câmara poço (Sec. 3.4).",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://uio.no/studier/emner/matnat/fys/FYS4730/v10/undervisningsmateriale/Estro_booklet8.pdf"
+   }
+  ]
+ },
+ {
+  "codigo": "HAIE-MEDER-2005",
+  "titulo": "GEC-ESTRO recommendations (I): concepts and terms in 3D image-based 3D treatment planning in cervix cancer brachytherapy with emphasis on MRI assessment of GTV and CTV",
+  "orgao": "GEC-ESTRO",
+  "ano": 2005,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E07"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Origem dos conceitos de HR-CTV e IR-CTV; incorporado no ICRU-89.",
+  "links": [
+   {
+    "rotulo": "Radiother Oncol",
+    "url": "https://doi.org/10.1016/j.radonc.2004.12.015"
+   }
+  ]
+ },
+ {
+  "codigo": "ICRP-97",
+  "titulo": "Prevention of high-dose-rate brachytherapy accidents",
+  "orgao": "ICRP",
+  "ano": 2005,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E04"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Emergências e prevenção de acidentes em HDR. Citado no MPPG Tab. 1/2.",
+  "links": [
+   {
+    "rotulo": "Ann ICRP 35(2)",
+    "url": "https://journals.sagepub.com/toc/anib/35/2"
+   }
+  ]
+ },
+ {
+  "codigo": "NCS-30",
+  "titulo": "NCS Report 30: Code of practice for quality assurance of brachytherapy with Ir-192 afterloaders",
+  "orgao": "NCS",
+  "ano": 2018,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E01",
+   "E03",
+   "E08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Código de prática específico de Ir-192, mais recente que TG-56/59. Existência confirmada apenas via MPPG-HDR-A ref. 22. Baixar em radiationdosimetry.org (NCS); o link é o registro da IAEA.",
+  "links": [
+   {
+    "rotulo": "registro IAEA",
+    "url": "https://www.iaea.org/node/50490"
+   }
+  ]
+ },
+ {
+  "codigo": "NESVACIL-2013",
+  "titulo": "A multicentre comparison of the dosimetric impact of inter- and intra-fractional anatomical variations in fractionated cervix cancer brachytherapy",
+  "orgao": "GEC-ESTRO",
+  "ano": 2013,
+  "tipo": "artigo",
+  "pasta": "06",
+  "atividades": [
+   "E07",
+   "I01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Incerteza interfração (D2cm³ ~20–27%, D90 13%). Útil para margem de segurança dos constraints no BraquiQA.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3675683"
+   }
+  ]
+ },
+ {
+  "codigo": "POTTER-2006",
+  "titulo": "GEC-ESTRO recommendations (II): concepts and terms in 3D image-based treatment planning in cervix cancer brachytherapy – 3D dose volume parameters and aspects of 3D image-based anatomy, radiation physics, radiobiology",
+  "orgao": "GEC-ESTRO",
+  "ano": 2006,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E07",
+   "H03"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Origem de D90, D100, D2cm³ e EQD2 em braquiterapia (Radiother Oncol 78:67); incorporado no ICRU-89.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://doi.org/10.1016/j.radonc.2005.11.014"
+   }
+  ]
+ },
+ {
+  "codigo": "POTTER-2018-EMBRACE-II",
+  "titulo": "The EMBRACE II study: the outcome and prospect of two decades of evolution within the GEC-ESTRO GYN working group and the EMBRACE studies",
+  "orgao": "GEC-ESTRO",
+  "ano": 2018,
+  "tipo": "artigo",
+  "pasta": "06",
+  "atividades": [
+   "E07",
+   "I01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Publicação revisada por pares do protocolo (Clin Transl Radiat Oncol 9:48–60).",
+  "links": [
+   {
+    "rotulo": "CTRO",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5862686/"
+   }
+  ]
+ },
+ {
+  "codigo": "SIMIELE-2020",
+  "titulo": "Development and comprehensive commissioning of an automated brachytherapy plan checker",
+  "orgao": "Brachytherapy",
+  "ano": 2020,
+  "tipo": "artigo",
+  "pasta": "06",
+  "atividades": [
+   "E07",
+   "H01"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Referência direta para comissionar o BraquiQA (MPPG ref. 57). DOI não verificado diretamente.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://doi.org/10.1016/j.brachy.2020.02.005"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-138",
+  "titulo": "A dosimetric uncertainty analysis for photon-emitting brachytherapy sources (AAPM TG-138 and GEC-ESTRO)",
+  "orgao": "AAPM/GEC-ESTRO",
+  "ano": 2011,
+  "tipo": "normativo",
+  "pasta": "06",
+  "atividades": [
+   "E01",
+   "E02",
+   "E06"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Orçamento de incertezas de Sk e dose. Med Phys 38(2):782–801 (MPPG ref. 26).",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://doi.org/10.1118/1.3533720"
+   }
+  ]
+ },
+ {
+  "codigo": "FORD-EVANS-2018",
+  "titulo": "Incident learning in radiation oncology: A review",
+  "orgao": "Med Phys",
+  "ano": 2018,
+  "tipo": "artigo",
+  "pasta": "07",
+  "atividades": [
+   "G15"
+  ],
+  "acesso": "institucional",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Snowballing da SNA (ref. 42); atualiza o FORD-2012",
+  "links": [
+   {
+    "rotulo": "Med Phys",
+    "url": "https://doi.org/10.1002/mp.12800"
+   }
+  ]
+ },
+ {
+  "codigo": "IAEA-SAFRON",
+  "titulo": "SAFRON - Safety in Radiation Oncology reporting and learning system",
+  "orgao": "IAEA",
+  "ano": 2012,
+  "tipo": "diretriz",
+  "pasta": "07",
+  "atividades": [
+   "F08",
+   "G15"
+  ],
+  "acesso": "institucional",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Sistema internacional aberto ao Brasil (registro NUCLEUS); alternativa ao RO-ILS",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.iaea.org/node/36631"
+   }
+  ]
+ },
+ {
+  "codigo": "ICRP-112",
+  "titulo": "ICRP Publication 112 - Preventing Accidental Exposures from New External Beam Radiation Therapy Technologies",
+  "orgao": "ICRP",
+  "ano": 2009,
+  "tipo": "diretriz",
+  "pasta": "07",
+  "atividades": [
+   "B03",
+   "G14",
+   "G15"
+  ],
+  "acesso": "institucional",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Avaliação prospectiva de risco e recomissionamento após upgrade de software; atualiza a ICRP 86",
+  "links": [
+   {
+    "rotulo": "Ann ICRP 39(4)",
+    "url": "https://journals.sagepub.com/toc/anib/39/4"
+   }
+  ]
+ },
+ {
+  "codigo": "KORNEK-2024-PFMEA",
+  "titulo": "Process FMEA for external beam radiotherapy: literature-based template and novel action priority",
+  "orgao": "Z Med Phys",
+  "ano": 2024,
+  "tipo": "artigo",
+  "pasta": "07",
+  "atividades": [
+   "G14"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Template de 75 modos de falha e action priority como alternativa ao RPN (lacuna de limiar do TG-100)",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://doaj.org/article/aa873d7095814827934480bb3ca35550"
+   }
+  ]
+ },
+ {
+  "codigo": "ANPD-ESTUDO-ANONIMIZACAO-2023",
+  "titulo": "Estudo Técnico sobre a Anonimização de Dados na LGPD: Análise Jurídica v1.0",
+  "orgao": "ANPD",
+  "ano": 2023,
+  "tipo": "diretriz",
+  "pasta": "08",
+  "atividades": [
+   "G18",
+   "G19"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Critério de quando o dado deixa de ser pessoal; o guia final de anonimização/pseudonimização não foi localizado",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.gov.br/anpd/pt-br/centrais-de-conteudo/documentos-tecnicos-orientativos/estudo_tecnico_sobre_anonimizacao_de_dados_na_lgpd___analise_juridica.pdf/@@display-file/file"
+   }
+  ]
+ },
+ {
+  "codigo": "ANVISA-MANUAL-GQUIP-2025",
+  "titulo": "Manual para Regularização de Equipamento Médico e Software como Dispositivo Médico v1.3",
+  "orgao": "ANVISA",
+  "ano": 2026,
+  "tipo": "diretriz",
+  "pasta": "08",
+  "atividades": [
+   "B07"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Guia atual da GQUIP; pode trazer enquadramento atualizado à RDC 751",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.gov.br/anvisa/pt-br/centraisdeconteudo/publicacoes/produtos-para-a-saude/manuais/manual-regularizacao-gquip"
+   }
+  ]
+ },
+ {
+  "codigo": "ESTRO-AAPM-AI-2024",
+  "titulo": "A joint ESTRO and AAPM guideline for development, clinical validation and reporting of AI models in radiation therapy",
+  "orgao": "ESTRO/AAPM",
+  "ano": 2024,
+  "tipo": "diretriz",
+  "pasta": "08",
+  "atividades": [
+   "B06",
+   "B08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Necessário se o sistema incorporar IA/ML; PubMed 38838989, DOI conferido em 20/10/2026",
+  "links": [
+   {
+    "rotulo": "Radiother Oncol",
+    "url": "https://doi.org/10.1016/j.radonc.2024.110345"
+   }
+  ]
+ },
+ {
+  "codigo": "IEC-80001-1-2021",
+  "titulo": "IEC 80001-1:2021 - Risk management for IT-networks incorporating medical devices",
+  "orgao": "IEC/ISO TC215",
+  "ano": 2021,
+  "tipo": "normativo",
+  "pasta": "08",
+  "atividades": [
+   "B05",
+   "B10",
+   "G08"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Rede ARIA/Eclipse + app; paga e em revisão; usar só o escopo ou um substituto aberto (FDA cybersecurity)",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.iso.org/standard/72026.html"
+   }
+  ]
+ },
+ {
+  "codigo": "RDC-848-2024",
+  "titulo": "RDC 848/2024 - Requisitos essenciais de segurança e desempenho de dispositivos médicos",
+  "orgao": "ANVISA",
+  "ano": 2024,
+  "tipo": "normativo",
+  "pasta": "08",
+  "atividades": [
+   "B08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "RDC 546/2021 (citada na RDC 657 Art. 17)",
+  "justificativa": "Atualiza a referência de requisitos essenciais; obter o texto no DOU",
+  "links": [
+   {
+    "rotulo": "texto integral, cópia SESA-ES",
+    "url": "https://saude.es.gov.br/Media/sesa/Legisla%C3%A7%C3%A3o/Outros/Resolu%C3%A7%C3%A3o%20da%20Diretoria%20Colegiada%20-%20RDC%20n%C2%BA%20848,%20de%2006_03_2024.pdf"
+   }
+  ]
+ },
+ {
+  "codigo": "RES-ANPD-18-2024",
+  "titulo": "Resolução CD/ANPD nº 18/2024 - Atuação do encarregado",
+  "orgao": "ANPD",
+  "ano": 2024,
+  "tipo": "normativo",
+  "pasta": "08",
+  "atividades": [
+   "G08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Papel do encarregado no fluxo de incidente; obter o texto primário",
+  "links": [
+   {
+    "rotulo": "texto integral, cópia TJBA",
+    "url": "https://www.tjba.jus.br/extrajudicial/wp-content/uploads/2024/08/RESOLUCAO-ANPD-No-18-Encarregado-de-Dados.pdf"
+   }
+  ]
+ },
+ {
+  "codigo": "AGENDA-ANSN-2026",
+  "titulo": "Agenda Regulatória ANSN 2026-2027",
+  "orgao": "ANSN",
+  "ano": 2026,
+  "tipo": "normativo",
+  "pasta": "01",
+  "atividades": [
+   "E05",
+   "F01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Sinaliza a revisão próxima da NN-6.02 e da NN-5.01; monitorar. Fonte secundária; obter o documento primário em gov.br/ansn.",
+  "links": [
+   {
+    "rotulo": "proposta jun/2026, ANSN",
+    "url": "https://www.gov.br/ansn/pt-br/regulacao/regulacao/agenda-regulatoria/agenda-regulatoria-2026-2027/proposta_agenda_regulatoria_versao_junho_de_2026.pdf/@@display-file/file"
+   }
+  ]
+ },
+ {
+  "codigo": "IAEA-HHR-10",
+  "titulo": "Radiotherapy Facilities: Master Planning and Concept Design Considerations (Human Health Reports No. 10)",
+  "orgao": "IAEA",
+  "ano": 2014,
+  "tipo": "diretriz",
+  "pasta": "01",
+  "atividades": [
+   "F13",
+   "G11"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto de planejamento de instalações e equipe; espelho ANL (não iaea.org); ano a confirmar.",
+  "links": [
+   {
+    "rotulo": "IAEA",
+    "url": "https://www.iaea.org/node/39955"
+   }
+  ]
+ },
+ {
+  "codigo": "RES-ANSN-15-2026",
+  "titulo": "Resolução ANSN nº 15/2026 – Licenciamento de depósitos de rejeitos de baixo e médio níveis",
+  "orgao": "ANSN",
+  "ano": 2026,
+  "tipo": "normativo",
+  "pasta": "01",
+  "atividades": [
+   "F09"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "Res. CNEN 168/14",
+  "justificativa": "Contexto: mostra que a ANSN já emite resoluções próprias em 2026; pouco aplicável a serviço de radioterapia.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.gov.br/cnen/pt-br/acesso-rapido/normas/grupo-8/ResoluoANSN15.pdf"
+   }
+  ]
+ },
+ {
+  "codigo": "APC-SIXSIGMA-2019",
+  "titulo": "Optimizing efficiency and safety in external beam radiotherapy using automated plan check (APC) tool and six sigma methodology",
+  "orgao": "JACMP",
+  "ano": 2019,
+  "tipo": "artigo",
+  "pasta": "02",
+  "atividades": [
+   "C04",
+   "H05"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Automação de plan check com métricas de processo (não lido)",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6698761/"
+   }
+  ]
+ },
+ {
+  "codigo": "ESTRO-BOOKLET-10",
+  "titulo": "Independent dose calculations: concepts and models",
+  "orgao": "ESTRO",
+  "ano": 2010,
+  "tipo": "diretriz",
+  "pasta": "02",
+  "atividades": [
+   "C05",
+   "H01"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "A confirmar: não verificado em fonte primária nesta pesquisa Link específico não localizado em 20/10/2026; procurar na biblioteca da ESTRO.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.estro.org"
+   }
+  ]
+ },
+ {
+  "codigo": "TECDOC-1540",
+  "titulo": "Specification and Acceptance Testing of Radiotherapy Treatment Planning Systems",
+  "orgao": "IAEA",
+  "ano": 2007,
+  "tipo": "normativo",
+  "pasta": "02",
+  "atividades": [
+   "B01",
+   "B03"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Aceitação de TPS, relevante para troca de versão",
+  "links": [
+   {
+    "rotulo": "IAEA",
+    "url": "https://www.iaea.org/node/61337"
+   }
+  ]
+ },
+ {
+  "codigo": "ICRU-50/62",
+  "titulo": "Prescribing, Recording and Reporting Photon Beam Therapy (50) e Supplement (62)",
+  "orgao": "ICRU",
+  "ano": 1999,
+  "tipo": "normativo",
+  "pasta": "03",
+  "atividades": [
+   "I04"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto 3D-CRT; citados no ICRU-91 §1.2 (1993/1999); conceitos de PTV/PRV",
+  "links": [
+   {
+    "rotulo": "ICRU 62",
+    "url": "https://www.icru.org/report/prescribing-recording-and-reporting-photon-beam-therapy-report-62/"
+   }
+  ]
+ },
+ {
+  "codigo": "EMAMI-1991",
+  "titulo": "Tolerance of normal tissue to therapeutic irradiation",
+  "orgao": "IJROBP",
+  "ano": 1991,
+  "tipo": "artigo",
+  "pasta": "04",
+  "atividades": [
+   "I01"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto histórico (TD5/5); superado por QUANTEC",
+  "links": [
+   {
+    "rotulo": "IJROBP",
+    "url": "https://doi.org/10.1016/0360-3016(91)90171-y"
+   }
+  ]
+ },
+ {
+  "codigo": "HYTEC-PRIMER",
+  "titulo": "A Primer on Dose-Response Data Modeling in Radiation Therapy",
+  "orgao": "AAPM/IJROBP",
+  "ano": 2021,
+  "tipo": "artigo",
+  "pasta": "04",
+  "atividades": [
+   "H03",
+   "H06"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Base de modelagem LQ/NTCP",
+  "links": [
+   {
+    "rotulo": "IJROBP",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9339232/"
+   }
+  ]
+ },
+ {
+  "codigo": "HYTEC-TCP-SERIES",
+  "titulo": "Artigos TCP do HyTEC (Redmond, Soltys ×2, Vargo, Lee, Ohri, Stumpf, Royce)",
+  "orgao": "AAPM/IJROBP",
+  "ano": 2021,
+  "tipo": "artigo",
+  "pasta": "04",
+  "atividades": [
+   "I05"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto de TCP; não fornece constraint de OAR",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.aapm.org/pubs/hytec/HyTEC.html"
+   }
+  ]
+ },
+ {
+  "codigo": "PENTEC",
+  "titulo": "Série PENTEC (efeitos em tecidos normais pediátricos), IJROBP",
+  "orgao": "IJROBP",
+  "ano": 2024,
+  "tipo": "artigo",
+  "pasta": "04",
+  "atividades": [
+   "I01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Só se houver pediatria; lista de artigos por órgão a confirmar O guia introdutório (PENTEC-2023) já está no acervo, pasta 04; faltam os artigos de órgão.",
+  "links": [
+   {
+    "rotulo": "artigos PENTEC 2024 no PubMed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/?term=PENTEC%5Bti%5D+AND+2024%5Bdp%5D"
+   }
+  ]
+ },
+ {
+  "codigo": "IEC-60976",
+  "titulo": "Medical electrical equipment – Medical electron accelerators – Functional performance characteristics",
+  "orgao": "IEC",
+  "ano": 2007,
+  "tipo": "normativo",
+  "pasta": "05",
+  "atividades": [
+   "A01"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Define a forma de especificar o desempenho na aceitação; complementado pelo IEC TR 60977 (não verificado).",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://webstore.iec.ch/en/publication/4088"
+   }
+  ]
+ },
+ {
+  "codigo": "OLACIREGUI-2020",
+  "titulo": "In vivo dosimetry in external beam photon radiotherapy: requirements and future directions",
+  "orgao": "phiRO (ESTRO)",
+  "ano": 2020,
+  "tipo": "artigo",
+  "pasta": "05",
+  "atividades": [
+   "A18"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Requisitos de sistemas de in vivo por EPID; contexto.",
+  "links": [
+   {
+    "rotulo": "phiRO",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7807612/"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-104",
+  "titulo": "The role of in-room kV X-ray imaging for patient setup and target localization",
+  "orgao": "AAPM",
+  "ano": 2009,
+  "tipo": "diretriz",
+  "pasta": "05",
+  "atividades": [
+   "A08",
+   "A19"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto de imagem kV (ref. 2 do MPPG 2.b).",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.aapm.org/pubs/reports/detail.asp?docid=104"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-191",
+  "titulo": "AAPM recommendations on the clinical use of luminescent dosimeters",
+  "orgao": "AAPM",
+  "ano": 2019,
+  "tipo": "diretriz",
+  "pasta": "05",
+  "atividades": [
+   "A18"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Dosímetros TLD/OSL in vivo, caso sejam usados.",
+  "links": [
+   {
+    "rotulo": "Med Phys",
+    "url": "https://doi.org/10.1002/mp.13839"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-45",
+  "titulo": "AAPM code of practice for radiotherapy accelerators (Report 47)",
+  "orgao": "AAPM",
+  "ano": 1994,
+  "tipo": "diretriz",
+  "pasta": "05",
+  "atividades": [
+   "A01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Testes de aceitação de acelerador; contexto histórico para A01.",
+  "links": [
+   {
+    "rotulo": "Med Phys 1994",
+    "url": "https://doi.org/10.1118/1.597398"
+   }
+  ]
+ },
+ {
+  "codigo": "ACR-AAPM-TS-HDR",
+  "titulo": "ACR–AAPM technical standard for the performance of high-dose-rate brachytherapy physics",
+  "orgao": "ACR/AAPM",
+  "ano": 2020,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E01",
+   "E07"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Padrão técnico de física HDR. Revisão posterior a 2020 não verificada.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.acr.org/-/media/ACR/Files/Practice-Parameters/hdr-brachyts.pdf"
+   }
+  ]
+ },
+ {
+  "codigo": "IAEA-HDR-LIMITED-2015",
+  "titulo": "Implementation of high dose rate brachytherapy in limited resource settings",
+  "orgao": "IAEA",
+  "ano": 2015,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E01"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto (MPPG ref. 36).",
+  "links": [
+   {
+    "rotulo": "IAEA HHS 30",
+    "url": "https://www.iaea.org/node/40175"
+   }
+  ]
+ },
+ {
+  "codigo": "IAEA-TECDOC-1257",
+  "titulo": "Implementation of microsource high dose rate (mHDR) brachytherapy in developing countries",
+  "orgao": "IAEA",
+  "ano": 2001,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E01",
+   "E03"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto de implantação e CQ; superado em grande parte pelo MPPG 13.a e pelo IAEA 2015.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://iaea.org/node/60542"
+   }
+  ]
+ },
+ {
+  "codigo": "KAMRAVA-2023-VAG-RECUR",
+  "titulo": "GEC-ESTRO (ACROP)–ABS–CBG consensus brachytherapy target definition guidelines for recurrent endometrial and cervical tumors in the vagina",
+  "orgao": "GEC-ESTRO/ABS/CBG",
+  "ano": 2023,
+  "tipo": "diretriz",
+  "pasta": "06",
+  "atividades": [
+   "E07"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Alvos em recidiva vaginal (CTV-TIR = CTV-THR + 5 mm). IJROBP 115:654.",
+  "links": [
+   {
+    "rotulo": "PDF ABS",
+    "url": "https://americanbrachytherapy.org/ABS/assets/File/public/consensus-statements/GEC-ESTRO%20(ACROP)%E2%88%92ABS%E2%88%92CBG%20Consensus.pdf"
+   },
+   {
+    "rotulo": "IJROBP",
+    "url": "https://doi.org/10.1016/j.ijrobp.2022.09.072"
+   }
+  ]
+ },
+ {
+  "codigo": "TG-43U1S2",
+  "titulo": "Supplement 2 for the 2004 update of the AAPM TG-43 report: joint recommendations by the AAPM and GEC-ESTRO",
+  "orgao": "AAPM/GEC-ESTRO",
+  "ano": 2017,
+  "tipo": "normativo",
+  "pasta": "06",
+  "atividades": [
+   "E01",
+   "E07"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Atualização do formalismo, com foco em fontes de baixa energia. Completa a série TG-43.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://doi.org/10.1002/mp.12430"
+   }
+  ]
+ },
+ {
+  "codigo": "VIJANDE-2021",
+  "titulo": "Source strength determination in Ir-192 and Co-60 brachytherapy: a European survey on agreement between clinical measurements and manufacturer certificates",
+  "orgao": "GEC-ESTRO BRAPHYQS",
+  "ano": 2021,
+  "tipo": "artigo",
+  "pasta": "06",
+  "atividades": [
+   "E06"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Base empírica da tolerância de 3% (Phys Imaging Radiat Oncol 19:108). DOI não verificado diretamente.",
+  "links": [
+   {
+    "rotulo": "phiRO",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8348214/"
+   }
+  ]
+ },
+ {
+  "codigo": "WHO-GPSAP-2021",
+  "titulo": "Global Patient Safety Action Plan 2021–2030",
+  "orgao": "OMS",
+  "ano": 2021,
+  "tipo": "diretriz",
+  "pasta": "07",
+  "atividades": [
+   "G04",
+   "G15"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto estratégico; URL é apresentação secundária; localizar o PDF primário no who.int",
+  "links": [
+   {
+    "rotulo": "WHO",
+    "url": "https://www.who.int/publications/i/item/9789240032705"
+   }
+  ]
+ },
+ {
+  "codigo": "IEC-81001-5-1",
+  "titulo": "IEC 81001-5-1:2021 Health software security - activities in the product life cycle",
+  "orgao": "IEC",
+  "ano": 2021,
+  "tipo": "normativo",
+  "pasta": "08",
+  "atividades": [
+   "B08",
+   "G08"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Paga; registrar só como referência de escopo (política SUBST-PAGAS)",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://webstore.iec.ch/en/publication/63293"
+   }
+  ]
+ },
+ {
+  "codigo": "COURT-2026-HAZARD",
+  "titulo": "Can physics review catch prescription and PTV margin errors in fully automated plans",
+  "orgao": "JACMP",
+  "ano": 2026,
+  "tipo": "artigo",
+  "pasta": "02",
+  "atividades": [
+   "C04"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Verificação automática de margem CTV-PTV independente da revisão humana (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1002/acm2.70759"
+   }
+  ]
+ },
+ {
+  "codigo": "NEALON-2022-CHECKLIST",
+  "titulo": "Checklist for use with automatically generated radiotherapy plans",
+  "orgao": "JACMP",
+  "ano": 2022,
+  "tipo": "artigo",
+  "pasta": "02",
+  "atividades": [
+   "C04"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Checklist própria para planos gerados por automação ou IA (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1002/acm2.13694"
+   }
+  ]
+ },
+ {
+  "codigo": "STUHR-2022",
+  "titulo": "Automated plan checking software: 3-year longitudinal analysis",
+  "orgao": "Pract Radiat Oncol",
+  "ano": 2022,
+  "tipo": "artigo",
+  "pasta": "02",
+  "atividades": [
+   "C04"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Efetividade do plan check automatizado ao longo do tempo; via referência (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1016/j.prro.2021.09.014"
+   }
+  ]
+ },
+ {
+  "codigo": "BERRY-2020",
+  "titulo": "Efficiency and safety increases after a multi-institutional automated plan check tool",
+  "orgao": "JACMP",
+  "ano": 2020,
+  "tipo": "artigo",
+  "pasta": "02",
+  "atividades": [
+   "C04"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Efetividade do plan check automatizado; via referência (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1002/acm2.12845"
+   }
+  ]
+ },
+ {
+  "codigo": "FAN-2026-AE",
+  "titulo": "Interpretable deep-learning model for automated plan review of IMRT",
+  "orgao": "Front Oncol",
+  "ano": 2026,
+  "tipo": "artigo",
+  "pasta": "02",
+  "atividades": [
+   "C04",
+   "I05"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Detecção de plano anômalo complementar às regras, sempre com explicação (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.3389/fonc.2026.1823869"
+   }
+  ]
+ },
+ {
+  "codigo": "HUANG-2023-AE",
+  "titulo": "Anomaly detection in radiotherapy plans using deep autoencoder networks",
+  "orgao": "Front Oncol",
+  "ano": 2023,
+  "tipo": "artigo",
+  "pasta": "02",
+  "atividades": [
+   "C04",
+   "I05"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Base do FAN-2026-AE (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.3389/fonc.2023.1142947"
+   }
+  ]
+ },
+ {
+  "codigo": "HOLMES-2024-TG263-LLM",
+  "titulo": "Benchmarking a foundation LLM to relabel structure names per TG-263",
+  "orgao": "Pract Radiat Oncol",
+  "ano": 2024,
+  "tipo": "artigo",
+  "pasta": "03",
+  "atividades": [
+   "C03",
+   "I06"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "LLM só sugere nome TG-263; aceite por validação determinística e alvo confirmado por humano (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://arxiv.org/abs/2310.03874"
+   }
+  ]
+ },
+ {
+  "codigo": "WANG-2026-RCA-LLM",
+  "titulo": "LLM-based root cause analysis of radiation oncology incidents",
+  "orgao": "PLOS Digit Health",
+  "ano": 2026,
+  "tipo": "artigo",
+  "pasta": "07",
+  "atividades": [
+   "G15",
+   "F08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "LLM em análise de incidente só como rascunho validado por humano (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1371/journal.pdig.0001740"
+   }
+  ]
+ },
+ {
+  "codigo": "NEALON-2022-FMEA",
+  "titulo": "FMEA of clinical adoption of automated contouring and planning tools",
+  "orgao": "Pract Radiat Oncol",
+  "ano": 2022,
+  "tipo": "artigo",
+  "pasta": "07",
+  "atividades": [
+   "G14"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "FMEA (TG-100) de módulos automatizados ou com IA; via referência (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1016/j.prro.2022.01.003"
+   }
+  ]
+ },
+ {
+  "codigo": "DEKERF-2025",
+  "titulo": "Multicentre prospective risk analysis of a fully automated radiotherapy workflow",
+  "orgao": "Phys Imaging Radiat Oncol",
+  "ano": 2025,
+  "tipo": "artigo",
+  "pasta": "07",
+  "atividades": [
+   "G14"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Viés de automação como risco explícito; via referência (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1016/j.phro.2025.100765"
+   }
+  ]
+ },
+ {
+  "codigo": "HOLMES-2023-LLM-PHYSICS",
+  "titulo": "Evaluating large language models on a highly-specialized topic, radiation oncology physics",
+  "orgao": "Front Oncol",
+  "ano": 2023,
+  "tipo": "artigo",
+  "pasta": "08",
+  "atividades": [
+   "B08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Redundância de verificação vem de fonte independente, nunca de repetir o mesmo LLM (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.3389/fonc.2023.1219326"
+   }
+  ]
+ },
+ {
+  "codigo": "RTPHY-CHATBOT-2025",
+  "titulo": "RAG-based assistant for radiotherapy physics using LLaMA3 and AAPM reports",
+  "orgao": "JACMP",
+  "ano": 2025,
+  "tipo": "artigo",
+  "pasta": "08",
+  "atividades": [
+   "B08",
+   "B10"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Consulta local com resposta sempre citando documento e trecho (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1002/acm2.70263"
+   }
+  ]
+ },
+ {
+  "codigo": "WANG-2025-GPTPLAN",
+  "titulo": "Feasibility of automating radiotherapy planning with LLM agents",
+  "orgao": "Phys Med Biol",
+  "ano": 2025,
+  "tipo": "artigo",
+  "pasta": "08",
+  "atividades": [
+   "B06"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Agente que usa a ESAPI recebe dados numéricos, não imagens de dose (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1088/1361-6560/adbff1"
+   }
+  ]
+ },
+ {
+  "codigo": "OH-2024-LLMSEG",
+  "titulo": "LLM-driven multimodal target volume contouring",
+  "orgao": "Nat Commun",
+  "ano": 2024,
+  "tipo": "artigo",
+  "pasta": "08",
+  "atividades": [
+   "C03"
+  ],
+  "acesso": "aberto",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Contexto; sem requisito direto no escopo atual (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1038/s41467-024-53387-y"
+   }
+  ]
+ },
+ {
+  "codigo": "PUTZ",
+  "titulo": "Capabilities and limitations of LLMs for radiation oncology decision support",
+  "orgao": "IJROBP",
+  "ano": null,
+  "tipo": "artigo",
+  "pasta": "08",
+  "atividades": [
+   "B07",
+   "B08"
+  ],
+  "acesso": "pago",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Nada de LLM em braquiterapia ou dosimetria sem verificação independente; ano, volume e DOI a confirmar (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://arxiv.org/abs/2501.02346"
+   }
+  ]
+ },
+ {
+  "codigo": "NORRIS-2025",
+  "titulo": "Australasian survey on ChatGPT and LLMs in medical physics",
+  "orgao": "Phys Eng Sci Med",
+  "ano": 2025,
+  "tipo": "artigo",
+  "pasta": "08",
+  "atividades": [
+   "B08"
+  ],
+  "acesso": "pago",
+  "prioridade": "baixa",
+  "substitui": "",
+  "justificativa": "Política institucional de uso de LLM (dados de paciente, revisão humana, treinamento) (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "DOI",
+    "url": "https://doi.org/10.1007/s13246-025-01571-9"
+   }
+  ]
+ },
+ {
+  "codigo": "IMDRF-N88-2025",
+  "titulo": "Good machine learning practice for medical device development: guiding principles",
+  "orgao": "IMDRF",
+  "ano": 2025,
+  "tipo": "diretriz",
+  "pasta": "08",
+  "atividades": [
+   "B07",
+   "B08"
+  ],
+  "acesso": "aberto",
+  "prioridade": "media",
+  "substitui": "",
+  "justificativa": "Princípios de ciclo de vida para componente de ML/LLM; complementa o N81-2025 (levantamento LLM-RT-2026 (21/10/2026))",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://www.imdrf.org/documents"
+   }
+  ]
+ },
+ {
+  "codigo": "IEC-62304-TEXTO",
+  "titulo": "IEC 62304:2006+A1:2015 Medical device software — Software life cycle processes (texto integral)",
+  "orgao": "IEC",
+  "ano": 2015,
+  "tipo": "normativo",
+  "pasta": "08",
+  "atividades": [],
+  "acesso": "pago",
+  "prioridade": "alta",
+  "substitui": "",
+  "justificativa": "Texto da norma para conferir 4.3 e 5.3.5 (segregação entre itens de classes diferentes no mesmo processo); a decisão da segregação do TRS-398 (C) com o núcleo (A) espera este texto (26/10/2026). A linha IEC-62304 da fontes.csv só tem link de blog.",
+  "links": [
+   {
+    "rotulo": "abrir",
+    "url": "https://webstore.iec.ch"
+   }
+  ]
+ }
+]

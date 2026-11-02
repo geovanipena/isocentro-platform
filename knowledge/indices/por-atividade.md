@@ -1,0 +1,343 @@
+# Índice por atividade
+
+Gerado por `scripts/gerar_matriz.py` a partir das fichas. Não editar à mão.
+
+## A. Equipamentos e dosimetria
+
+- **[A01](../fichas/atividades/A01.md)**: Testes pré-operacionais do acelerador — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-8b, NN-6.10, RDC-20-2006, TG-142
+  - Código: —; manuais: 1; ISOCENTRO: nao-se-aplica; lacuna no PPR: false
+- **[A02](../fichas/atividades/A02.md)**: Comissionamento dos feixes e coleta dos dados dosimétricos — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-5b-TPS, MPPG-8b, NCRP-151, NN-6.02, NN-6.10, RDC-20-2006, TG-106, TG-142, TG-155, TG-71, TRS-398-R1, TRS-483-RESUMO
+  - Código: jrkerns/pylinac, pymedphys/pymedphys; manuais: 3; ISOCENTRO: nao-se-aplica; lacuna no PPR: false
+- **[A03](../fichas/atividades/A03.md)**: Calibração absoluta de referência — *OBRIGATÓRIO-BR*
+  - Fontes: GSR-PART3, MPPG-8b, NN-6.10, QUATRO, SSG-46, TECDOC-1151, TG-142, TG-51-ADD-2014, TG-61, TRS-398-R1, TRS-483-RESUMO
+  - Código: jrkerns/pylinac, pymedphys/pymedphys; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[A04](../fichas/atividades/A04.md)**: Calibração do sistema de medição de referência — *OBRIGATÓRIO-BR*
+  - Fontes: GSR-PART3, IPEM-81, MPPG-8b, NN-6.10, SSG-46, TECDOC-1151, TG-106, TG-120, TG-235, TG-51-ADD-2014, TG-61, TRS-398-R1
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: false
+- **[A05](../fichas/atividades/A05.md)**: Aferição do sistema de referência com fonte-teste — *OBRIGATÓRIO-BR*
+  - Fontes: NN-6.10, SSG-46, TECDOC-1151, TG-51-ADD-2014, TG-61
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[A06](../fichas/atividades/A06.md)**: Aferição do sistema de referência após transporte externo — *OBRIGATÓRIO-BR*
+  - Fontes: NN-6.10, TECDOC-1151
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[A07](../fichas/atividades/A07.md)**: Controle de qualidade do acelerador, MLC e mesa — *OBRIGATÓRIO-BR + RECOMENDAÇÃO*
+  - Fontes: GSR-PART3, IPEM-81, MPPG-8b, MPPG-9a-SRS, NCS-VMAT-2016, NN-6.10, RDC-20-2006, SSG-46, TECDOC-1151, TG-142, TG-198, TG-332
+  - Código: jrkerns/pylinac, pakoliver/winston_lutz_multi, qatrackplus/qatrackplus; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: true
+- **[A08](../fichas/atividades/A08.md)**: CQ de imagem, CBCT e IGRT — *OBRIGATÓRIO-BR + RECOMENDAÇÃO*
+  - Fontes: IPEM-81, MPPG-8b, MPPG-9a-SRS, MPPG-IGRT-2021, NN-6.10, TG-142, TG-179, TG-302, TG-307, TG-332, TG-58
+  - Código: jrkerns/pylinac; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: true
+- **[A09](../fichas/atividades/A09.md)**: CQ da TC de simulação — *OBRIGATÓRIO-BR + RECOMENDAÇÃO*
+  - Fontes: IPEM-81, MPPG-5b-TPS, MPPG-CT-2021, NN-6.10, RDC-20-2006, TECDOC-1151, TECDOC-1583, TG-201, TG-66
+  - Código: jrkerns/pylinac; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: a-confirmar
+- **[A10](../fichas/atividades/A10.md)**: Verificação dos lasers e do alinhamento geométrico — *RECOMENDAÇÃO*
+  - Fontes: MPPG-8b, MPPG-9a-SRS, NN-6.10, TECDOC-1151, TG-142, TG-302, TG-66
+  - Código: jrkerns/pylinac; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[A11](../fichas/atividades/A11.md)**: Calibração de instrumentos de grandezas de influência — *OBRIGATÓRIO-BR*
+  - Fontes: NN-6.10, TECDOC-1151
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: false
+- **[A12](../fichas/atividades/A12.md)**: CQ dos instrumentos de monitoração de área — *OBRIGATÓRIO-BR*
+  - Fontes: NCRP-151, NN-3.01, NN-6.10, ROTEIRO-VISA-HDR, SRS-47, TECDOC-1151
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[A13](../fichas/atividades/A13.md)**: Teste diário do fator de calibração dos aceleradores lineares — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-8b, MPPG-9a-SRS, NN-6.10, TECDOC-1151, TG-142, TG-332, TRS-398-R1
+  - Código: jrkerns/pylinac; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: false
+- **[A14](../fichas/atividades/A14.md)**: Testes diários de segurança de todas as fontes de radiação — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-8b, MPPG-9a-SRS, NN-6.10, ROTEIRO-VISA-HDR, TECDOC-1151, TG-142
+  - Código: —; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[A15](../fichas/atividades/A15.md)**: Determinação da dose absorvida na água em condições de referência (fontes de teleterapia) — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-8b, NN-6.10, TECDOC-1151, TG-142, TG-51-ADD-2014, TRS-398-R1
+  - Código: jrkerns/pylinac; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[A16](../fichas/atividades/A16.md)**: Armazenar o sistema de medição de referência com temperatura e umidade controladas — *OBRIGATÓRIO-BR*
+  - Fontes: NN-6.10, TG-51-ADD-2014
+  - Código: —; manuais: 0; ISOCENTRO: nao-se-aplica; lacuna no PPR: parcial
+- **[A17](../fichas/atividades/A17.md)**: CQ de técnicas estereotáxicas: Winston-Lutz, coincidência de isocentros, campos pequenos — *PRÁTICA*
+  - Fontes: ICRU-91, MPPG-8b, MPPG-9a-SRS, NN-6.10, TG-101, TG-106, TG-120, TG-142, TG-155, TG-235, TG-302, TRS-483-RESUMO
+  - Código: jrkerns/pylinac, pakoliver/winston_lutz_multi; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: true
+- **[A18](../fichas/atividades/A18.md)**: Dosimetria portal e verificação in vivo — *PRÁTICA*
+  - Fontes: FAGERSTROM-2024, IAEA-HHR-8, IPEM-81, MPPG-8b, NN-6.10, QCQ-FORD-2012, TG-120, TG-158, TG-218, TG-307, TG-332, TG-36, TG-58, TG-63
+  - Código: jrkerns/pylinac, pymedphys/pymedphys; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: true
+- **[A19](../fichas/atividades/A19.md)**: Aceitação e comissionamento do sistema de imagem e do movimento de mesa (IGRT) — *PRÁTICA*
+  - Fontes: MPPG-IGRT-2021, NJEH-2012, NN-6.02, NN-6.10, TG-142, TG-179, TG-201, TG-302, TG-58
+  - Código: jrkerns/pylinac; manuais: 3; ISOCENTRO: nao-se-aplica; lacuna no PPR: true
+- **[A20](../fichas/atividades/A20.md)**: CQ e dosimetria de ortovoltagem (raios X de baixa energia, Dermopan 50 kV na CEL) — *PRÁTICA*
+  - Fontes: IPEM-81, NN-6.10, TECDOC-1151, TG-235, TG-61, TRS-398-R1
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: true
+## B. TPS, sistemas e software
+
+- **[B01](../fichas/atividades/B01.md)**: Comissionamento do TPS — *OBRIGATÓRIO-BR*
+  - Fontes: GSR-PART3, ICRU-91, IPEM-81, MPPG-5b-TPS, NJEH-2012, NN-6.10, RDC-20-2006, ROTEIRO-VISA-HDR, SNYDER-2016, SSG-46, TECDOC-1151, TECDOC-1583, TG-106, TG-119, TG-155, TG-218, TG-332, TG-53, TG-71, TRS-430, TRS-483-RESUMO
+  - Código: jrkerns/pylinac, pymedphys/pymedphys; manuais: 4; ISOCENTRO: candidato; lacuna no PPR: false
+- **[B02](../fichas/atividades/B02.md)**: Validação das distribuições de dose calculadas — *OBRIGATÓRIO-BR + RECOMENDAÇÃO*
+  - Fontes: ICRU-91, MPPG-5b-TPS, MPPG-8b, NCS-VMAT-2016, NJEH-2012, QUATRO, RDC-20-2006, SNYDER-2016, TECDOC-1583, TG-114, TG-119, TG-120, TG-155, TG-158, TG-218, TG-219, TG-235, TG-53, TG-63, TG-71, TRS-430
+  - Código: cutright/IMRT-QA-Data-Miner, jrkerns/pylinac, pymedphys/pymedphys; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: false
+- **[B03](../fichas/atividades/B03.md)**: Atualização de versão do Eclipse ou ARIA — *BOA PRÁTICA*
+  - Fontes: AURA-IFU-15.1, GSR-PART3, MPPG-11a, MPPG-5b-TPS, NN-6.10, SSG-46, TECDOC-1583, TG-201, TG-332, TG-53, TRS-430, YOO-2025-ISQM
+  - Código: —; manuais: 5; ISOCENTRO: candidato; lacuna no PPR: true
+- **[B04](../fichas/atividades/B04.md)**: Integridade da transferência entre TPS, R&V e acelerador — *RECOMENDAÇÃO*
+  - Fontes: DICOM-RT, DLT-GUIA, FURHANG-2009, IEC-61217, IHE-RO-TF, MPPG-11a, NCS-VMAT-2016, NN-6.10, TECDOC-1583, TG-201, TG-263, TG-275, TG-66, YANG-2012-ECHART, YANG-MOORE-2012
+  - Código: dicompyler/dicompyler-core, pydicom/pydicom, pydicom/pynetdicom; manuais: 5; ISOCENTRO: sim; lacuna no PPR: true
+  - No ISOCENTRO: `isocentro/dicom/dicom_rt.py`, `isocentro/banco/tratamento_db.py`; testes: `tests/test_tratamento.py`, `tests/test_mapear_tratamento.py`, `tests/test_elekta_monaco.py`
+- **[B05](../fichas/atividades/B05.md)**: Backup e recuperação de dados clínicos — *OBRIGATÓRIO-BR quanto à proteção de dados; periodicidade técnica não especificada*
+  - Fontes: LGPD, NN-6.10, RDC-20-2006, RDC-63-2011, RDC-657, TECDOC-1583, TG-201, TG-53, TRS-430
+  - Código: —; manuais: 2; ISOCENTRO: sim; lacuna no PPR: parcial
+  - No ISOCENTRO: `isocentro/dados/backup.py`, `isocentro/dados/registro_json.py`, `isocentro/dados/empacotar.py`; testes: `tests/test_registro_zip.py`, `tests/test_backup.py`
+- **[B06](../fichas/atividades/B06.md)**: Validação de scripts próprios, inclusive ESAPI — *BOA PRÁTICA*
+  - Fontes: DEWHURST-2015, FDA-CSA-2026, FDA-GPSV-2002, IEC-62304, IEC-82304-1-PREVIEW, IHE-RO-TF, IMDRF-N12-2014, IMDRF-N41-2017, IPEM-81, ISO-14971, RDC-657, TG-263-TEMPLATES, YOO-2025-ISQM
+  - Código: LDClark/PlanCheck, VarianAPIs/Varian-Code-Samples, rexcardan/ESAPIX; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: nao-se-aplica
+- **[B07](../fichas/atividades/B07.md)**: Avaliação regulatória de software como dispositivo médico — *OBRIGATÓRIO-BR, quando aplicável*
+  - Fontes: IEC-62304, IEC-82304-1-PREVIEW, IMDRF-N12-2014, IMDRF-N41-2017, IMDRF-N81-2025, RDC-657
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: nao-se-aplica
+- **[B08](../fichas/atividades/B08.md)**: Ciclo de vida de software próprio: requisitos, risco, verificação, liberação e manutenção — *PRÁTICA*
+  - Fontes: FDA-GPSV-2002, FDA-SW-PREMARKET-2023, IEC-62304, IEC-82304-1-PREVIEW, IMDRF-N12-2014, IMDRF-N41-2017, IMDRF-N81-2025, ISO-14971, RDC-657, SUBST-PAGAS, TG-100, YOO-2025-ISQM
+  - Código: —; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: nao-se-aplica
+- **[B09](../fichas/atividades/B09.md)**: Usabilidade e fatores humanos de software clínico — *PRÁTICA*
+  - Fontes: FDA-HF-2016, FDA-HF-CONTENT-2026, FDA-HF-CONTENT-2026-FR, ISO-14971, MPPG-CHECKLIST, SUBST-PAGAS, TG-275, YOO-2025-ISQM
+  - Código: —; manuais: 0; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/interface/estilo.py`, `isocentro/interface/ui.py`; testes: `tests/test_padrao_ui.py`, `tests/test_padrao_visual.py`, `tests/test_modo_cor.py`
+- **[B10](../fichas/atividades/B10.md)**: Validação de software de terceiros e de código aberto (OTS/SOUP) — *PRÁTICA*
+  - Fontes: FDA-CSA-2026, FDA-OTS-2023, FONTENOT-2014, IEC-62304, IHE-RO-TF, RDC-657, SUBST-PAGAS, TG-219, TG-307, TG-332, YOO-2025-ISQM
+  - Código: jrkerns/pylinac, pydicom/pydicom, pydicom/pynetdicom, pymedphys/pymedphys, qatrackplus/qatrackplus; manuais: 1; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `requirements.txt`, `constraints.txt`, `tools/gerar_constraints.py`; testes: `tests/test_gerar_constraints.py`
+## C. Paciente: simulação, planejamento e QA
+
+- **[C01](../fichas/atividades/C01.md)**: Conferência da identificação, prescrição e dados de planejamento — *OBRIGATÓRIO-BR*
+  - Fontes: FAGERSTROM-2024, ICRU-83, ICRU-91, MPPG-11a, NN-6.10, RDC-20-2006, TG-275
+  - Código: —; manuais: 0; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/interface/checklist.py`, `isocentro/papel/capa_pdf.py`, `isocentro/papel/ficha_pdf.py`; testes: `tests/test_checklist.py`, `tests/test_capa.py`, `tests/test_ficha_estruturas.py`
+- **[C02](../fichas/atividades/C02.md)**: Simulação e documentação das imagens — *OBRIGATÓRIO-BR*
+  - Fontes: FAGERSTROM-2024, MPPG-11a, MPPG-CT-2021, RDC-20-2006, TG-263, TG-275, TG-66
+  - Código: —; manuais: 1; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/interface/simulacao.py`, `isocentro/dados/inventario.py`, `isocentro/dados/notas_setup.py`; testes: `tests/test_simulacao.py`
+- **[C03](../fichas/atividades/C03.md)**: Nomenclatura e integridade de estruturas — *RECOMENDAÇÃO*
+  - Fontes: COVINGTON-2024-263U1, ICRU-83, MPPG-11a, TG-263, TG-263-PLANILHA, TG-263-TEMPLATES, TG-275
+  - Código: UAB-RO/TG263-Toolkit, gacou54/tg263, kildealab/TG263ComplianceTool, o3-core/TG263NameChecker; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: nao-se-aplica
+- **[C04](../fichas/atividades/C04.md)**: Verificação do plano e do prontuário — *OBRIGATÓRIO-BR + RECOMENDAÇÃO*
+  - Fontes: AAPM-394, AURA-IFU-15.1, DEWHURST-2015, DLT-GUIA, FURHANG-2009, GOPAN-2016, GSR-PART3, LISTA-VERIF-CAREPATH, MPPG-11a, MPPG-CHECKLIST, MPPG-HDR-B, MPPG-PEER, NJEH-2012, NN-6.10, QCQ-FORD-2012, RADFORMATION-TG275, RDC-20-2006, RIEGEL-2022, SSG-46, TG-100, TG-201, TG-275, TG-275S, TG-53, TG-63, WAHLSTEDT-2021, YANG-2012-ECHART, YANG-MOORE-2012
+  - Código: LDClark/PlanCheck, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard, jsfrench/uhg-plancheck, nikolaj-jensen/PlanCheck_article; manuais: 2; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/interface/checklist.py`, `isocentro/dominio/qualidade.py`, `isocentro/dominio/paralelo.py`, `isocentro/interface/tratamento.py`; testes: `tests/test_checklist.py`, `tests/test_qualidade.py`, `tests/test_paralelo.py`, `tests/test_tratamento.py`
+- **[C05](../fichas/atividades/C05.md)**: Cálculo independente de dose ou unidades monitoras — *OBRIGATÓRIO-BR + RECOMENDAÇÃO*
+  - Fontes: FONTENOT-2014, MPPG-11a, MPPG-5b-TPS, QUATRO, RDC-20-2006, SSG-46, TG-114, TG-219, TG-275, TG-53, TG-71, TRS-430
+  - Código: pymedphys/pymedphys; manuais: 0; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/dominio/paralelo.py`, `dados_feixe`; testes: `tests/test_paralelo.py`
+- **[C06](../fichas/atividades/C06.md)**: QA específico do paciente para IMRT e VMAT — *RECOMENDAÇÃO*
+  - Fontes: FONTENOT-2014, MPPG-5b-TPS, MPPG-9a-SRS, NCS-VMAT-2016, NN-6.10, QCQ-FORD-2012, SNYDER-2016, TG-120, TG-218, TG-219, TG-235, TG-307
+  - Código: Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity, cutright/IMRT-QA-Data-Miner, pymedphys/pymedphys; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: true
+- **[C07](../fichas/atividades/C07.md)**: Verificação de técnicas estereotáxicas — *RECOMENDAÇÃO*
+  - Fontes: ESTRO-EANO-GBM-2025, GRIMM-2011, HYTEC-LUNG, ICRU-91, MPPG-9a-SRS, NN-6.10, TG-101, TG-155, TG-218, TG-275, TG-302, TRS-483-RESUMO, UK-SABR-2022
+  - Código: jrkerns/pylinac; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: true
+- **[C08](../fichas/atividades/C08.md)**: Registro e revisão de imagens de posicionamento — *OBRIGATÓRIO-BR quanto à documentação pertinente; detalhes dependem do protocolo*
+  - Fontes: MPPG-11a, MPPG-IGRT-2021, RDC-20-2006, TG-142, TG-275, TG-58
+  - Código: —; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: nao-se-aplica
+- **[C09](../fichas/atividades/C09.md)**: Avaliação de gestação, marca-passo/CDI, próteses e reirradiação — *RECOMENDAÇÃO*
+  - Fontes: CORSAIR-2022, ESTRO-REIRR-2022, Eclipse-15.6MR5-Release-Note, FAGERSTROM-2024, GSR-PART3, IAEA-HHR-8, PENTEC-2023, QUANTEC-MARKS-2010, RDC-20-2006, REIRR-SPC, REIRR-SPC-IMPL, REIRR-SPC-SUPL-B, RIEGEL-2022, SSG-46, TG-158, TG-275, TG-36, TG-63
+  - Código: LuisParedesOcampo/SlicerRadReirradiation, brjdenis/VarianESAPI-EQD2Converter; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: nao-se-aplica
+- **[C10](../fichas/atividades/C10.md)**: Coordenadas, orientação e escalas do equipamento (IEC 61217) na transferência do plano — *PRÁTICA*
+  - Fontes: DICOM-RT, IEC-61217, IHE-RO-TF, TG-201, TG-275
+  - Código: pydicom/pydicom; manuais: 3; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/dicom/dicom_rt.py`, `isocentro/papel/drr.py`, `tools/gerar_diagramas_mesa.py`; testes: `tests/test_drr_portal.py`, `tests/test_gantry_arco.py`, `tests/test_ordem_gantry.py`, `tests/test_ssd_geometria.py`, `tests/test_elekta_monaco.py`
+- **[C11](../fichas/atividades/C11.md)**: Integridade dos objetos DICOM-RT exportados e importados — *PRÁTICA*
+  - Fontes: DICOM-RT, IHE-RO-TF, LGPD, NCS-VMAT-2016, TG-201, TG-263, TG-275, YANG-2012-ECHART, YANG-MOORE-2012
+  - Código: dicompyler/dicompyler-core, pydicom/pydicom, pydicom/pynetdicom, qurit/rt-utils; manuais: 5; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/dicom/dicom_rt.py`, `isocentro/dicom/ct_series.py`, `isocentro/dicom/dicom_rede.py`, `isocentro/dominio/paralelo.py`; testes: `tests/test_dicom_rede.py`, `tests/test_receptor_dicom.py`, `tests/test_frame_uid.py`, `tests/test_elekta_monaco.py`, `tests/test_paralelo.py`
+## D. Paciente: tratamento e acompanhamento
+
+- **[D01](../fichas/atividades/D01.md)**: Presença do físico nos preparativos e entrega da dose inicial — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-11a, NN-6.10, TG-275
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: a-confirmar
+- **[D02](../fichas/atividades/D02.md)**: Revisão médica durante o tratamento — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-11a, NN-6.10, RDC-20-2006, TG-275
+  - Código: —; manuais: 0; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/interface/tratamento.py`, `isocentro/banco/tratamento_db.py`, `isocentro/interface/radioteradados_tela.py`, `isocentro/interface/controle_radioteradados.py`; testes: `tests/test_tratamento.py`, `tests/test_radioteradados_tela.py`
+- **[D03](../fichas/atividades/D03.md)**: Revisão do plano e da ficha de tratamento após mudança — *OBRIGATÓRIO-BR quanto à documentação pertinente; fluxo específico precisa ser definido*
+  - Fontes: MPPG-11a, POP-036, QCQ-FORD-2012, RADFORMATION-TG275, RDC-20-2006, TG-275, TG-275S, YANG-2012-ECHART
+  - Código: —; manuais: 1; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/dados/registro_json.py`, `isocentro/dados/diff_versoes.py`, `isocentro/dominio/agendamento.py`, `isocentro/dicom/dose3d.py`; testes: `tests/test_diff_versoes.py`, `tests/test_agendamento.py`, `tests/test_registro_zip.py`
+- **[D04](../fichas/atividades/D04.md)**: Gestão de interrupções e compensação — *BOA PRÁTICA, com decisão clínica individual*
+  - Fontes: ASTRO-BONEMETS-2017, HYTEC-2021, MPPG-11a, QUANTEC, RDC-20-2006
+  - Código: brjdenis/VarianESAPI-EQD2Converter, sama2689/BED_Calc; manuais: 0; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/interface/radioteradados_tela.py`, `isocentro/interface/controle_radioteradados.py`, `isocentro/banco/tratamento_db.py`, `isocentro/dominio/agendamento.py`; testes: `tests/test_radioteradados_tela.py`, `tests/test_agendamento.py`, `tests/test_tratamento.py`
+- **[D05](../fichas/atividades/D05.md)**: Revisão de fim de tratamento — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-11a, RADFORMATION-TG275, RDC-20-2006, TG-275, TG-275S, YANG-2012-ECHART
+  - Código: —; manuais: 0; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/interface/controle_ficha.py`, `isocentro/banco/tratamento_db.py`, `isocentro/interface/radioteradados_tela.py`; testes: `tests/test_alta_arquivada.py`, `tests/test_tratamento.py`, `tests/test_radioteradados_tela.py`
+- **[D06](../fichas/atividades/D06.md)**: Reconciliação da dose entregue com a prescrição — *OBRIGATÓRIO-BR quanto ao registro da ficha; método definido pelo serviço*
+  - Fontes: GSR-PART3, MPPG-11a, NN-6.10, RDC-20-2006, TG-275
+  - Código: jrkerns/pylinac; manuais: 0; ISOCENTRO: sim; lacuna no PPR: nao-se-aplica
+  - No ISOCENTRO: `isocentro/banco/tratamento_db.py`, `isocentro/interface/tratamento.py`; testes: `tests/test_tratamento.py`
+## E. Braquiterapia HDR
+
+- **[E01](../fichas/atividades/E01.md)**: Comissionamento do equipamento e sistema de planejamento HDR — *OBRIGATÓRIO-BR*
+  - Fontes: BALLESTER-2004-ERRATUM, HELLEBUST-2010, IPEM-81, MPPG-HDR-A, NN-6.10, RDC-20-2006, ROTEIRO-VISA-HDR, TECDOC-1151, TG-186, TG-43U1, TG-56, TRS-430
+  - Código: jaimeh94/Point-Dose-Calculation_TG-43, vcc-LG/brachy-hdr-tg43-check; manuais: 4; ISOCENTRO: nao-se-aplica; lacuna no PPR: a-confirmar
+- **[E02](../fichas/atividades/E02.md)**: Calibração do sistema de referência para HDR — *OBRIGATÓRIO-BR*
+  - Fontes: KIRISITS-2014, MPPG-HDR-A, NN-6.10, PQRT-CALIB-IR192, QUATRO, ROTEIRO-VISA-HDR, SSG-46, TECDOC-1151, TG-56, TRS-398-R1
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[E03](../fichas/atividades/E03.md)**: Verificação da fonte e do cálculo de dose — *OBRIGATÓRIO-BR + RECOMENDAÇÃO*
+  - Fontes: ABS-VAGCUFF-2012, BALLESTER-2004-ERRATUM, KIRISITS-2014, MPPG-HDR-A, MPPG-HDR-B, NN-6.10, PQRT-CALIB-IR192, TECDOC-1151, TG-56, TG-59, TRS-430
+  - Código: vcc-LG/brachy-hdr-tg43-check; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[E04](../fichas/atividades/E04.md)**: Testes de segurança e procedimentos de emergência — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-HDR-A, MPPG-HDR-B, NN-3.01, NN-6.10, ROTEIRO-VISA-HDR, SRS-47, TECDOC-1151, TG-253, TG-56
+  - Código: —; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[E05](../fichas/atividades/E05.md)**: Inventário e rastreabilidade da fonte — *OBRIGATÓRIO-BR*
+  - Fontes: NN-2.06, NN-3.01, NN-5.01, NN-6.02, NN-6.10, NN-8.01, TECDOC-1151
+  - Código: —; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[E06](../fichas/atividades/E06.md)**: Determinar a taxa de kerma no ar antes do uso de nova fonte HDR — *OBRIGATÓRIO-BR*
+  - Fontes: KIRISITS-2014, MPPG-HDR-A, NN-5.01, NN-6.10, PQRT-CALIB-IR192, ROTEIRO-VISA-HDR, SSG-46, TECDOC-1151, TG-43U1, TG-56
+  - Código: —; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: parcial
+- **[E07](../fichas/atividades/E07.md)**: Planejamento e verificação do plano HDR do paciente (TG-43, pontos, DVH, tempos) — *PRÁTICA*
+  - Fontes: ABS-VAGCUFF-2012, BALLESTER-2004-ERRATUM, HEBD-2012, HELLEBUST-2010, ICRU-89, KIRISITS-2014, MPPG-11a, MPPG-HDR-A, MPPG-HDR-B, RDC-20-2006, TG-186, TG-253, TG-275, TG-43U1, TG-59
+  - Código: jaimeh94/Point-Dose-Calculation_TG-43, vcc-LG/brachy-hdr-tg43-check; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: nao-se-aplica
+- **[E08](../fichas/atividades/E08.md)**: Comissionamento de aplicadores HDR (anel e tandem, offsets, reconstrução) — *PRÁTICA*
+  - Fontes: ABS-VAGCUFF-2012, HELLEBUST-2010, KIRISITS-2014, MPPG-HDR-A, MPPG-HDR-B, TECDOC-1151, TG-253, TG-56
+  - Código: —; manuais: 2; ISOCENTRO: nao-se-aplica; lacuna no PPR: parcial
+- **[E09](../fichas/atividades/E09.md)**: Dosimetria de pele e de órgãos em braquiterapia — *PRÁTICA*
+  - Fontes: ACROP-SKIN-BRACHY, IAEA-HHR-8, ICRU-89, TG-186, TG-235, TG-253, TG-43U1
+  - Código: —; manuais: 0; ISOCENTRO: nao-se-aplica; lacuna no PPR: nao-se-aplica
+## F. Proteção radiológica e licenciamento
+
+- **[F01](../fichas/atividades/F01-F07.md)**: Manter licenciamento da instalação — *OBRIGATÓRIO-BR*
+  - Fontes: GUIA-CNEN-RT, NCRP-151, NN-3.01, NN-3.02, NN-6.02, NN-6.10, NR-32, NR-7, PPR-CLINICA, RDC-50-2002, ROTEIRO-VISA-HDR, SRS-47
+  - Código: geovanipena/ppr-streamlit; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F02](../fichas/atividades/F01-F07.md)**: Elaborar e revisar o plano de proteção radiológica — *OBRIGATÓRIO-BR*
+  - Fontes: AULA-NN-3.01, GSR-PART3, GUIA-CNEN-RT, NCRP-151, NN-2.06, NN-3.01, NN-3.02, NN-6.02, NN-6.10, NN-8.01, NR-32, NR-7, PPR-CLINICA, ROTEIRO-VISA-HDR, SRS-47, SSG-46
+  - Código: geovanipena/ppr-streamlit; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F03](../fichas/atividades/F01-F07.md)**: Designar SPR e substituto certificados — *OBRIGATÓRIO-BR*
+  - Fontes: GUIA-CNEN-RT, NN-2.06, NN-3.01, NN-3.02, NN-6.01, NN-6.02, NN-6.10, NR-32, NR-7, PPR-CLINICA, ROTEIRO-VISA-HDR
+  - Código: geovanipena/ppr-streamlit; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F04](../fichas/atividades/F01-F07.md)**: Monitorar exposição ocupacional e disponibilizar resultados — *OBRIGATÓRIO-BR*
+  - Fontes: GSR-PART3, GUIA-CNEN-RT, NN-3.01, NN-3.02, NN-6.10, NR-32, NR-7, PPR-CLINICA, ROTEIRO-VISA-HDR, SSG-46
+  - Código: geovanipena/ppr-streamlit; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F05](../fichas/atividades/F01-F07.md)**: Treinar trabalhadores em proteção radiológica — *OBRIGATÓRIO-BR*
+  - Fontes: AULA-NN-3.01, GUIA-CNEN-RT, NN-2.06, NN-3.01, NN-3.02, NN-5.01, NN-6.10, NR-32, NR-7, PPR-CLINICA, RDC-222-2018, RDC-63-2011, ROTEIRO-VISA-HDR
+  - Código: geovanipena/ppr-streamlit; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F06](../fichas/atividades/F01-F07.md)**: Treinar em física médica — *OBRIGATÓRIO-BR*
+  - Fontes: AAPM-394, GUIA-CNEN-RT, NN-3.01, NN-3.02, NN-6.10, NR-32, NR-7, PPR-CLINICA
+  - Código: geovanipena/ppr-streamlit; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F07](../fichas/atividades/F01-F07.md)**: Manter instrumentos de proteção radiológica calibrados — *OBRIGATÓRIO-BR*
+  - Fontes: GUIA-CNEN-RT, NN-3.01, NN-3.02, NN-6.10, NR-32, NR-7, PPR-CLINICA
+  - Código: geovanipena/ppr-streamlit; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F08](../fichas/atividades/F08.md)**: Investigar e comunicar incidentes ou acidentes radiológicos — *OBRIGATÓRIO-BR*
+  - Fontes: FAGERSTROM-2024, FORD-2012-ILS, GSR-PART3, IAEA-BIALYSTOK, IAEA-COSTA-RICA, IAEA-PANAMA, IAEA-SRS-17, IGAS-TOULOUSE, IRSN-EPINAL, NN-6.10, RDC-20-2006, RDC-36-2013, SAFER-RT-2008, SCOT-EDIMBURGO-2015, SCOT-GLASGOW-2006, SNA-2019, SSG-46, TG-100, TG-36, UK-RT-TAXONOMIA, UKHSA-RTE-50, UKHSA-RTE-BIENAL-8, WHO-ICPS-2009
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: a-confirmar
+- **[F09](../fichas/atividades/F09-F13.md)**: Gerenciar rejeitos radioativos, quando existentes — *OBRIGATÓRIO-BR, quando aplicável*
+  - Fontes: GUIA-CNEN-RT, NN-3.01, NN-5.01, NN-6.02, NN-6.10, NN-8.01, NR-32, NR-7, PQRT-BLINDAGEM, RDC-222-2018, RDC-63-2011, ROTEIRO-VISA-HDR
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F10](../fichas/atividades/F09-F13.md)**: Cumprir requisitos de saúde ocupacional — *OBRIGATÓRIO-BR*
+  - Fontes: GUIA-CNEN-RT, NN-3.01, NN-6.10, NR-32, NR-7, PQRT-BLINDAGEM, RDC-63-2011
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F11](../fichas/atividades/F09-F13.md)**: Comunicar à ANSN o desligamento do RT, do SPR ou do físico médico — *OBRIGATÓRIO-BR*
+  - Fontes: GUIA-CNEN-RT, NN-2.06, NN-3.01, NN-6.01, NN-6.02, NN-6.10, NR-32, NR-7, PQRT-BLINDAGEM
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F12](../fichas/atividades/F09-F13.md)**: Comunicar imediatamente à ANSN retirada de fonte, emergência, dano, perda ou roubo de fonte — *OBRIGATÓRIO-BR*
+  - Fontes: GUIA-CNEN-RT, NN-2.06, NN-3.01, NN-5.01, NN-6.02, NN-6.10, NR-32, NR-7, PQRT-BLINDAGEM
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[F13](../fichas/atividades/F09-F13.md)**: Cálculo de blindagem e levantamento radiométrico das salas — *PRÁTICA*
+  - Fontes: GUIA-CNEN-RT, NCRP-151, NN-3.01, NN-6.02, NN-6.10, NR-32, NR-7, PQRT-BLINDAGEM, RDC-50-2002, ROTEIRO-VISA-HDR, SRS-47, SSG-46, TG-66
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+## G. Gestão da qualidade, segurança do paciente e documentação
+
+- **[G01](../fichas/atividades/G01-G03-G13.md)**: Manter programa de garantia da qualidade e procedimentos escritos — *OBRIGATÓRIO-BR*
+  - Fontes: GSR-PART3, MPPG-5b-TPS, NN-6.10, QUATRO, RDC-20-2006, RDC-63-2011, ROTEIRO-VISA-HDR, SSG-46, TG-100, YOO-2025-ISQM
+  - Código: qatrackplus/qatrackplus; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G02](../fichas/atividades/G01-G03-G13.md)**: Realizar auditoria externa e independente — *OBRIGATÓRIO-BR*
+  - Fontes: GSR-PART3, MPPG-5b-TPS, NN-6.10, QUATRO, RDC-20-2006, SSG-46, TG-100, YOO-2025-ISQM
+  - Código: qatrackplus/qatrackplus; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G03](../fichas/atividades/G01-G03-G13.md)**: Participar de avaliação externa da qualidade — *OBRIGATÓRIO-BR, sujeito à análise do conflito com NN 6.10*
+  - Fontes: GSR-PART3, MPPG-5b-TPS, NN-6.10, QUATRO, RDC-20-2006, SSG-46, TG-100, YOO-2025-ISQM
+  - Código: qatrackplus/qatrackplus; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G04](../fichas/atividades/G04-G05-G14-G15-G17.md)**: Manter Núcleo de Segurança do Paciente, quando aplicável — *OBRIGATÓRIO-BR*
+  - Fontes: FORD-2012-ILS, ICRP-86, MPPG-CHECKLIST, NN-6.10, RDC-36-2013, RDC-63-2011, SAFER-RT-2008, SNA-2019, TG-100, TG-275, UK-RT-TAXONOMIA, WHO-ICPS-2009, WHO-RISK
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G05](../fichas/atividades/G04-G05-G14-G15-G17.md)**: Notificar eventos adversos assistenciais — *OBRIGATÓRIO-BR*
+  - Fontes: FAGERSTROM-2024, FORD-2012-ILS, ICRP-86, MPPG-CHECKLIST, NN-6.10, RDC-36-2013, RDC-63-2011, SAFER-RT-2008, SNA-2019, TG-100, TG-275, UK-RT-TAXONOMIA, WHO-ICPS-2009, WHO-RISK
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G06](../fichas/atividades/G06-G11-G16.md)**: Controlar competência e educação continuada — *OBRIGATÓRIO-BR + BOA PRÁTICA*
+  - Fontes: AAPM-394, MPPG-5b-TPS, MPPG-PEER, NN-6.01, NN-6.10, QUATRO, RDC-20-2006, RDC-63-2011, ROTEIRO-VISA-HDR, TG-53
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G07](../fichas/atividades/G07-G10-G12-G18-G19.md)**: Guardar prontuário do paciente — *OBRIGATÓRIO-BR*
+  - Fontes: GSR-PART3, LGPD, NN-6.10, RDC-20-2006, RDC-63-2011, RDC-657, YOO-2025-ISQM
+  - Código: KitwareMedical/dicom-anonymizer, RSNA/anonymizer, blairconrad/dicognito, cutright/DVH-Analytics, pydicom/deid; manuais: 3; ISOCENTRO: sim; lacuna no PPR: —
+  - No ISOCENTRO: `isocentro/dados/registro_json.py`, `isocentro/dados/backup.py`; testes: `tests/test_registro_zip.py`, `tests/test_backup.py`
+- **[G08](../fichas/atividades/G07-G10-G12-G18-G19.md)**: Proteger dados pessoais e clínicos — *OBRIGATÓRIO-BR*
+  - Fontes: LGPD, NN-6.10, RDC-20-2006, RDC-63-2011, RDC-657, TG-53, YOO-2025-ISQM
+  - Código: KitwareMedical/dicom-anonymizer, RSNA/anonymizer, blairconrad/dicognito, cutright/DVH-Analytics, pydicom/deid; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G09](../fichas/atividades/G07-G10-G12-G18-G19.md)**: Controlar alvará sanitário e licenças locais — *OBRIGATÓRIO-BR*
+  - Fontes: LGPD, NN-6.10, RDC-20-2006, RDC-222-2018, RDC-50-2002, RDC-63-2011, RDC-657, ROTEIRO-VISA-HDR, YOO-2025-ISQM
+  - Código: KitwareMedical/dicom-anonymizer, RSNA/anonymizer, blairconrad/dicognito, cutright/DVH-Analytics, pydicom/deid; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G10](../fichas/atividades/G07-G10-G12-G18-G19.md)**: Controlar contratos e manutenção preventiva — *OBRIGATÓRIO-BR*
+  - Fontes: LGPD, NN-6.02, NN-6.10, RDC-20-2006, RDC-63-2011, RDC-657, ROTEIRO-VISA-HDR, YOO-2025-ISQM
+  - Código: KitwareMedical/dicom-anonymizer, RSNA/anonymizer, blairconrad/dicognito, cutright/DVH-Analytics, pydicom/deid; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G11](../fichas/atividades/G06-G11-G16.md)**: Manter um radioterapeuta e um físico médico para cada 600 novos pacientes por ano — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-5b-TPS, MPPG-PEER, NN-6.01, NN-6.10, QUATRO, RDC-20-2006
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G12](../fichas/atividades/G07-G10-G12-G18-G19.md)**: Apurar os indicadores mínimos para a avaliação externa (tempo médio, abandono, simulação, interrupção, adesão a protocolos, desvio de dose) — *OBRIGATÓRIO-BR*
+  - Fontes: LGPD, NN-6.10, QUATRO, RDC-20-2006, RDC-63-2011, RDC-657, YOO-2025-ISQM
+  - Código: KitwareMedical/dicom-anonymizer, RSNA/anonymizer, blairconrad/dicognito, cutright/DVH-Analytics, pydicom/deid; manuais: 3; ISOCENTRO: sim; lacuna no PPR: —
+  - No ISOCENTRO: `isocentro/interface/radioteradados_tela.py`, `isocentro/interface/controle_radioteradados.py`; testes: `tests/test_radioteradados_tela.py`
+- **[G13](../fichas/atividades/G01-G03-G13.md)**: Usar protocolos validados nos testes de comissionamento e de CQ (política de adoção) — *OBRIGATÓRIO-BR*
+  - Fontes: MPPG-5b-TPS, NN-6.10, RDC-20-2006, TG-100, YOO-2025-ISQM
+  - Código: qatrackplus/qatrackplus; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G14](../fichas/atividades/G04-G05-G14-G15-G17.md)**: Análise prospectiva de risco do processo (FMEA, árvore de falhas) — *PRÁTICA*
+  - Fontes: FORD-2012-ILS, ICRP-86, MPPG-CHECKLIST, NN-6.10, QCQ-FORD-2012, RDC-36-2013, RIEGEL-2022, SAFER-RT-2008, SNA-2019, SSG-46, TG-100, TG-275, TG-302, TG-307, UK-RT-TAXONOMIA, WHO-ICPS-2009, WHO-RISK
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G15](../fichas/atividades/G04-G05-G14-G15-G17.md)**: Sistema de aprendizado com incidentes: notificação, taxonomia, análise e retorno — *PRÁTICA*
+  - Fontes: FORD-2012-ILS, GSR-PART3, ICRP-86, MPPG-CHECKLIST, MPPG-HDR-B, NN-6.10, QCQ-FORD-2012, RDC-36-2013, RIEGEL-2022, SAFER-RT-2008, SNA-2019, SSG-46, TG-100, TG-275, UK-RT-TAXONOMIA, WHO-ICPS-2009, WHO-RISK
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G16](../fichas/atividades/G06-G11-G16.md)**: Revisão por pares em física médica — *PRÁTICA*
+  - Fontes: AAPM-394, MPPG-5b-TPS, MPPG-PEER, NN-6.10, QUATRO, RDC-20-2006, RIEGEL-2022
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G17](../fichas/atividades/G04-G05-G14-G15-G17.md)**: Checklists de segurança nas etapas críticas — *PRÁTICA*
+  - Fontes: AAPM-394, DEWHURST-2015, FORD-2012-ILS, IAEA-HHR-8, ICRP-86, MPPG-CHECKLIST, MPPG-HDR-B, NN-6.10, QCQ-FORD-2012, QUATRO, RDC-36-2013, RIEGEL-2022, SAFER-RT-2008, SNA-2019, SSG-46, TG-100, TG-275, TG-275S, UK-RT-TAXONOMIA, WHO-ICPS-2009, WHO-RISK
+  - Código: —; manuais: 0; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G18](../fichas/atividades/G07-G10-G12-G18-G19.md)**: Pseudonimização e uso secundário de dados clínicos (pesquisa, teste, validação) — *PRÁTICA*
+  - Fontes: AURA-IFU-15.1, DLT-GUIA, LGPD, NN-6.10, RDC-20-2006, RDC-657, YOO-2025-ISQM
+  - Código: KitwareMedical/dicom-anonymizer, RSNA/anonymizer, blairconrad/dicognito, cutright/DVH-Analytics, pydicom/deid; manuais: 3; ISOCENTRO: candidato; lacuna no PPR: —
+- **[G19](../fichas/atividades/G07-G10-G12-G18-G19.md)**: Indicadores de qualidade e mineração de dados do serviço — *PRÁTICA*
+  - Fontes: COVINGTON-2024-263U1, FURHANG-2009, LGPD, NN-6.10, QCQ-FORD-2012, RDC-20-2006, RDC-657, TG-218, TG-275S, YOO-2025-ISQM
+  - Código: KitwareMedical/dicom-anonymizer, RSNA/anonymizer, blairconrad/dicognito, cutright/DVH-Analytics, pydicom/deid; manuais: 3; ISOCENTRO: sim; lacuna no PPR: —
+  - No ISOCENTRO: `isocentro/interface/radioteradados_tela.py`, `tools/mapear_indicadores.py`; testes: `tests/test_radioteradados_tela.py`, `tests/test_mapear_indicadores.py`
+## H. Ferramentas de rotina
+
+- **[H01](../fichas/atividades/H01-H06.md)**: Cálculo independente de UM — *RECOMENDAÇÃO*
+  - Fontes: ESTRO-REIRR-2022, FONTENOT-2014, HYTEC-2021, MPPG-8b, MPPG-HDR-A, NCS-VMAT-2016, QUANTEC, TG-114, TG-142, TG-219, TG-71, YOO-2025-ISQM
+  - Código: LuisParedesOcampo/RadComp, LuisParedesOcampo/SlicerRadReirradiation, brjdenis/VarianESAPI-EQD2Converter, jrkerns/pylinac, pymedphys/pymedphys, qatrackplus/qatrackplus, sama2689/BED_Calc; manuais: 1; ISOCENTRO: sim; lacuna no PPR: —
+  - No ISOCENTRO: `isocentro/dominio/paralelo.py`; testes: `tests/test_paralelo.py`
+- **[H02](../fichas/atividades/H01-H06.md)**: Cálculo de decaimento de fonte HDR — *BOA PRÁTICA + requisitos de controle de fonte*
+  - Fontes: BALLESTER-2004-ERRATUM, ESTRO-REIRR-2022, HYTEC-2021, MPPG-8b, MPPG-HDR-A, QUANTEC, TG-114, TG-142, TG-219, YOO-2025-ISQM
+  - Código: LuisParedesOcampo/RadComp, LuisParedesOcampo/SlicerRadReirradiation, brjdenis/VarianESAPI-EQD2Converter, jrkerns/pylinac, pymedphys/pymedphys, qatrackplus/qatrackplus, sama2689/BED_Calc; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: —
+- **[H03](../fichas/atividades/H01-H06.md)**: Cálculo de BED/EQD2 — *BOA PRÁTICA*
+  - Fontes: ESTRO-EANO-GBM-2025, ESTRO-REIRR-2022, HARDCASTLE-2024, HYTEC-2021, HYTEC-PANCREAS, MPPG-8b, MPPG-HDR-A, QUANTEC, QUANTEC-MARKS-2010, REIRR-SPC-SUPL-B, TG-114, TG-142, TG-219, YOO-2025-ISQM
+  - Código: LuisParedesOcampo/RadComp, LuisParedesOcampo/SlicerRadReirradiation, brjdenis/VarianESAPI-EQD2Converter, jrkerns/pylinac, pymedphys/pymedphys, qatrackplus/qatrackplus, sama2689/BED_Calc; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: —
+- **[H04](../fichas/atividades/H01-H06.md)**: Cálculo de compensação de interrupção — *BOA PRÁTICA*
+  - Fontes: ESTRO-REIRR-2022, HYTEC-2021, MPPG-8b, MPPG-HDR-A, QUANTEC, TG-114, TG-142, TG-219, YOO-2025-ISQM
+  - Código: LuisParedesOcampo/RadComp, LuisParedesOcampo/SlicerRadReirradiation, brjdenis/VarianESAPI-EQD2Converter, jrkerns/pylinac, pymedphys/pymedphys, qatrackplus/qatrackplus, sama2689/BED_Calc; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: —
+- **[H05](../fichas/atividades/H01-H06.md)**: CQ automatizado por software aberto — *BOA PRÁTICA*
+  - Fontes: DEWHURST-2015, ESTRO-REIRR-2022, FURHANG-2009, HYTEC-2021, MPPG-8b, MPPG-HDR-A, QUANTEC, RADFORMATION-TG275, RIEGEL-2022, TG-114, TG-142, TG-219, TG-263-PLANILHA, TG-332, YANG-2012-ECHART, YOO-2025-ISQM
+  - Código: LuisParedesOcampo/RadComp, LuisParedesOcampo/SlicerRadReirradiation, brjdenis/VarianESAPI-EQD2Converter, jrkerns/pylinac, pymedphys/pymedphys, qatrackplus/qatrackplus, sama2689/BED_Calc; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: —
+- **[H06](../fichas/atividades/H01-H06.md)**: Conversão de dose entre fracionamentos para decisão rápida (EQD2/BED por OAR) — *PRÁTICA*
+  - Fontes: ESTRO-EANO-GBM-2025, ESTRO-REIRR-2022, HARDCASTLE-2024, HYTEC-2021, MPPG-8b, MPPG-HDR-A, QUANTEC, QUANTEC-MARKS-2010, REIRR-SPC-SUPL-B, TG-114, TG-142, TG-219, YOO-2025-ISQM
+  - Código: LuisParedesOcampo/RadComp, LuisParedesOcampo/SlicerRadReirradiation, brjdenis/VarianESAPI-EQD2Converter, jrkerns/pylinac, pymedphys/pymedphys, qatrackplus/qatrackplus, sama2689/BED_Calc; manuais: 1; ISOCENTRO: candidato; lacuna no PPR: —
+## I. Avaliação clínica do plano
+
+- **[I01](../fichas/atividades/I01-I06.md)**: Avaliação de constraints de OAR em fracionamento convencional — *PRÁTICA*
+  - Fontes: ABFM-SRS, ASTRO-CONSTR-2025, CORSAIR-2022, COVINGTON-2016, ESTRO-REIRR-2022, FONTENOT-2014, HYTEC-2021, HYTEC-BRAIN, HYTEC-PROSTATE-TOX, ICRU-83, ICRU-89, ICRU-91, PENTEC-2023, QUANTEC, QUANTEC-MARKS-2010, RECOG-CONSTR, REIRR-SPC, REIRR-SPC-IMPL, TG-101, TG-158, TG-263, TG-263-PLANILHA, TG-275, TIMMERMAN-2021, UK-SABR-2022, WAHLSTEDT-2021
+  - Código: LuisParedesOcampo/SlicerRadReirradiation, UAB-RO/RapidPlanQ, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard, Varian-MedicalAffairsAppliedSolutions/MAAS-UncertaintyClinicalGoals, brjdenis/VarianESAPI-EQD2Converter, victorgabr/DVH-Check; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: —
+- **[I02](../fichas/atividades/I01-I06.md)**: Avaliação de constraints em SBRT/SRS e hipofracionamento — *PRÁTICA*
+  - Fontes: ABFM-SRS, ASTRO-BONEMETS-2017, ASTRO-CONSTR-2025, CORSAIR-2022, COVINGTON-2016, ESTRO-REIRR-2022, GRIMM-2011, HYTEC-2021, HYTEC-BRAIN, HYTEC-HN-CAROTID, HYTEC-LIVER, HYTEC-LUNG, HYTEC-PANCREAS, HYTEC-PROSTATE-TOX, ICRU-83, ICRU-89, ICRU-91, QUANTEC, QUANTEC-MARKS-2010, RECOG-CONSTR, REIRR-SPC, REIRR-SPC-IMPL, TG-101, TG-263, TG-275, TIMMERMAN-2021, UK-SABR-2022, WAHLSTEDT-2021
+  - Código: LuisParedesOcampo/SlicerRadReirradiation, UAB-RO/RapidPlanQ, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard, Varian-MedicalAffairsAppliedSolutions/MAAS-UncertaintyClinicalGoals, brjdenis/VarianESAPI-EQD2Converter, victorgabr/DVH-Check; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: —
+- **[I03](../fichas/atividades/I01-I06.md)**: Reirradiação: dose acumulada, recuperação de tecido e limites — *PRÁTICA*
+  - Fontes: ABFM-SRS, ASTRO-BONEMETS-2017, ASTRO-CONSTR-2025, COVINGTON-2016, ESTRO-EANO-GBM-2025, ESTRO-REIRR-2022, HARDCASTLE-2024, HYTEC-2021, HYTEC-BRAIN, HYTEC-HN-CAROTID, HYTEC-LIVER, HYTEC-LUNG, ICRU-83, ICRU-89, ICRU-91, PENTEC-2023, QUANTEC, RECOG-CONSTR, REIRR-SPC, REIRR-SPC-IMPL, REIRR-SPC-SUPL-B, TG-101, TG-263, TG-275, TIMMERMAN-2021, WAHLSTEDT-2021
+  - Código: LuisParedesOcampo/SlicerRadReirradiation, UAB-RO/RapidPlanQ, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard, Varian-MedicalAffairsAppliedSolutions/MAAS-UncertaintyClinicalGoals, brjdenis/VarianESAPI-EQD2Converter, victorgabr/DVH-Check; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: —
+- **[I04](../fichas/atividades/I01-I06.md)**: Prescrição, registro e relato conforme ICRU (D98, D2, D50, índices de conformidade) — *PRÁTICA*
+  - Fontes: ABFM-SRS, ASTRO-CONSTR-2025, COVINGTON-2016, ESTRO-REIRR-2022, HYTEC-2021, HYTEC-BRAIN, ICRU-83, ICRU-89, ICRU-91, QUANTEC, RECOG-CONSTR, REIRR-SPC, REIRR-SPC-IMPL, TG-101, TG-263, TG-275, TIMMERMAN-2021, WAHLSTEDT-2021
+  - Código: LuisParedesOcampo/SlicerRadReirradiation, UAB-RO/RapidPlanQ, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard, Varian-MedicalAffairsAppliedSolutions/MAAS-UncertaintyClinicalGoals, brjdenis/VarianESAPI-EQD2Converter, victorgabr/DVH-Check; manuais: 2; ISOCENTRO: sim; lacuna no PPR: —
+  - No ISOCENTRO: `isocentro/dominio/qualidade.py`, `isocentro/dicom/dvh.py`, `isocentro/dicom/dose3d.py`; testes: `tests/test_qualidade.py`, `tests/test_dvh_plot.py`
+- **[I05](../fichas/atividades/I01-I06.md)**: Qualidade e complexidade do plano (scorecard, modulação, robustez) — *PRÁTICA*
+  - Fontes: ABFM-SRS, ASTRO-CONSTR-2025, COVINGTON-2016, ESTRO-REIRR-2022, HYTEC-2021, HYTEC-BRAIN, ICRU-83, ICRU-89, ICRU-91, QUANTEC, RECOG-CONSTR, REIRR-SPC, REIRR-SPC-IMPL, TG-101, TG-218, TG-263, TG-275, TIMMERMAN-2021, WAHLSTEDT-2021
+  - Código: LuisParedesOcampo/SlicerRadReirradiation, UAB-RO/RapidPlanQ, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard, Varian-MedicalAffairsAppliedSolutions/MAAS-UncertaintyClinicalGoals, brjdenis/VarianESAPI-EQD2Converter, victorgabr/DVH-Check; manuais: 2; ISOCENTRO: sim; lacuna no PPR: —
+  - No ISOCENTRO: `isocentro/dominio/qualidade.py`, `isocentro/dominio/qualidade_metodo.py`; testes: `tests/test_qualidade_metodo.py`, `tests/test_qualidade_tela.py`
+- **[I06](../fichas/atividades/I01-I06.md)**: Nomenclatura TG-263 aplicada à avaliação automatizada de objetivos clínicos — *PRÁTICA*
+  - Fontes: ABFM-SRS, ASTRO-CONSTR-2025, CORSAIR-2022, COVINGTON-2016, COVINGTON-2024-263U1, DEWHURST-2015, ESTRO-REIRR-2022, HYTEC-2021, HYTEC-BRAIN, ICRU-83, ICRU-89, ICRU-91, QUANTEC, RADFORMATION-TG275, RECOG-CONSTR, REIRR-SPC, REIRR-SPC-IMPL, TG-101, TG-263, TG-263-PLANILHA, TG-263-TEMPLATES, TG-275, TIMMERMAN-2021, UK-SABR-2022, WAHLSTEDT-2021
+  - Código: LuisParedesOcampo/SlicerRadReirradiation, UAB-RO/RapidPlanQ, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanComplexity, Varian-MedicalAffairsAppliedSolutions/MAAS-PlanScoreCard, Varian-MedicalAffairsAppliedSolutions/MAAS-UncertaintyClinicalGoals, brjdenis/VarianESAPI-EQD2Converter, victorgabr/DVH-Check; manuais: 2; ISOCENTRO: candidato; lacuna no PPR: —

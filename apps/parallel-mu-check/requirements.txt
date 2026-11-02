@@ -1,0 +1,9 @@
+Flask
+pydicom
+reportlab
+openpyxl
+Pillow
+
+# Opcional: só para ler tabela em .xls (formato binário legado). Sem ele o
+# sistema avisa na tela e pede .xlsx ou .csv, em vez de quebrar.
+# xlrd

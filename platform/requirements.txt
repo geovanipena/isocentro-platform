@@ -1,0 +1,54 @@
+# ISOCENTRO — dependências fixadas.
+#
+# As versões são exatas de propósito: este app produz um documento clínico, e
+# uma atualização silenciosa de dependência (pydicom lendo um header de outro
+# jeito, matplotlib mudando um render) não pode entrar sem alguém decidir e
+# reconferir. Para atualizar: suba a versão aqui, instale, rode
+# tools/gerar_constraints.py e commite este arquivo junto com o constraints.txt
+# (que fixa as dependências das dependências); depois revalide a ficha contra
+# o TPS. Instalar sempre com: pip install -r requirements.txt -c constraints.txt
+#
+# Validado com Python 3.12 no Windows 11.
+
+# Interface desktop (gui.py). PySide6 desde a R-23 (28/10/2026; antes PyQt5
+# 5.15.11): 6.11.3 é o último patch da linha 6.11 — a 6.12.0 era .0, e a
+# regra de decisão manda a opção conservadora (AR-30). Só o Essentials: o
+# metapacote PySide6 puxa o Addons (WebEngine, 3D, Charts...), que o app não
+# usa e que seria SOUP a mais no inventário (R-83). Importa-se igual, PySide6.*.
+PySide6_Essentials==6.11.3
+
+# DICOM / numérico
+pydicom==3.0.2
+numpy==2.4.6
+
+# Render de imagens e gráficos (cortes, corpo 3D, DVH)
+matplotlib==3.10.9
+pillow==13.0.0
+
+# PDF (ficha, mapa de frações, alta)
+reportlab==4.5.1
+pypdf==6.21.2
+
+# Pacotes .rar de TC (exige unrar/7z instalado no sistema)
+rarfile==4.2
+# Rede DICOM: falar com o DB Daemon do ARIA para trazer imagem e plano
+# (dicom_rede.py). OPCIONAL, como o pyodbc: sem ele o app funciona inteiro e
+# só a exportação automática fica indisponível, dizendo por quê. Anda com o
+# pydicom, que já está fixado acima.
+pynetdicom==3.0.4
+
+# Leitura do data warehouse da Varian (capa_db). OPCIONAL: sem ele, e sem
+# servidor configurado, a capa sai dos relatorios exportados como antes.
+# Depende de um driver ODBC de SQL Server instalado na estacao.
+pyodbc==5.3.0
+
+# Banco central do ISOCENTRO (PostgreSQL 18; AD-10 da espinha): o núcleo
+# grava por ele (adaptadores/postgres). O [binary] traz a libpq junto, e a
+# estação não precisa de PostgreSQL instalado. SOUP: entra no inventário do
+# módulo Software (R-83).
+psycopg[binary]==3.3.6
+
+# Leitura de PDF nos testes (test_pag2_dividida, test_ficha_estruturas,
+# test_cortes_personalizado) e no tools/comparar_pdf.py. O app não importa:
+# fica fora do executável.
+PyMuPDF==1.28.2

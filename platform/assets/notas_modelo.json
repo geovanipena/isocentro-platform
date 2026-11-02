@@ -1,0 +1,432 @@
+{
+  "versao": 1,
+  "notas": [
+    {
+      "nome": "ABD TOTAL E PELVE",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PES",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ambos elevados"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "ABDÔMEN",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHOS\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ambos elevados"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "ANTE BRACO VAC LOCK",
+      "acessorios": "VAC LOCK\nTRAVESSEIRO ABAIXO DOS JOELHOS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Ventral"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "BEXIGA",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PES",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Vazia"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "BEXIGA (DUO)",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Vazia"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "CABEÇA E PESCOÇO",
+      "acessorios": "MÁSCARA LONGA\nBASE C COM EXTENSOR\nAPOIO DE JOELHOS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ao lado corpo"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "COL. LOMBAR & PELVE",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ambos elevados"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "COL. LOMBAR & SACRO",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ambos elevados"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "COL. TORÁCICA , LOMBAR & PELVE",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ambos elevados"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "COLO DE UTERO",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia",
+        "RETO": "Vazio"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "COLUNA LOMBAR",
+      "acessorios": "TRAVESSEIRO\nMAOS ACIMA DA CABECA\nAPOIO DE JOELHO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "COLUNA SACRAL",
+      "acessorios": "TRAVESSEIRO\nBEXIGA DO JEITO QUE ESTIVER\nAPOIO DE JOELHO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "CP",
+      "acessorios": "MASCARA DE IMRT LONGA\nBASE C COM EXTENSOR",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "CRANIO 3D",
+      "acessorios": "MASCARA CURTA DE 3D\nBASE B COM EXTENSOR",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "CRÂNIO",
+      "acessorios": "MÁSCARA CURTA\nBASE B COM EXTENSOR\nAPOIO DE JOELHOS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ao lado corpo"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "MAMA",
+      "acessorios": "RAMPA\nINCLINACAO   8\nÂNGULO DO BRACO -20\nALTURA DO BRACO 4",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "MAMA - RAMPA",
+      "acessorios": "RAMPA DE MAMA\nINCLINAÇÃO 6\nROTAÇÃO -20\nHASTE 4\nAPOIO 2",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Direito elevado"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "MAMA - VAC LOCK (DUO)",
+      "acessorios": "BRAÇO XXX ELEVADO\nVAC LOCK",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "MAMA BILATERAL",
+      "acessorios": "VACK LOCK\nMÃOS ACIMA DA CABEÇA",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "MAMA TRUEBEAM",
+      "acessorios": "RAMPA DE MAMA TB",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "MAMA VAC LOCK",
+      "acessorios": "VAC LOCK",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "META",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "OMBRO E TORAX MASCARA LONGA",
+      "acessorios": "MÁSCARA LONGA\nBASE A SEM EXTENSOR\nAPOIO DE JOELHOS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ao lado corpo"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PELVE",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia",
+        "RETO": "Vazio"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PELVE (DUO)",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PELVE ,PENIS",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia",
+        "RETO": "Vazio"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PELVE - ProStep",
+      "acessorios": "ProStep\nTRAVESSEIRO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia",
+        "RETO": "Vazio"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PELVE - VAC LOCK",
+      "acessorios": "TRAVESSEIRO\nVACK LOCK",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PELVE VACK LOCK",
+      "acessorios": "TRAVESSEIRO\nVACK LOCK",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PERNA",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE PE",
+      "preparo": {
+        "PARA O GANTRY": "Pé",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "PRÓSTATA",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PÉS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia",
+        "RETO": "Vazio"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "RETO",
+      "acessorios": "TRAVESSEIRO\nAPOIO DE JOELHO\nAPOIO DE PES",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax",
+        "BEXIGA": "Cheia"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "RTEF",
+      "acessorios": "MASCARA DE FRACIONADA",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "SNC",
+      "acessorios": "MASCARA DE IMRT CURTA\nBASE B COM EXTENSOR",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "SNC RADIOCIRURGIA",
+      "acessorios": "MASCARA DE RADIOCIRURGIA",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "TORAX",
+      "acessorios": "RAMPA DE TORAX\nBASE B\nD = 4\nAPOIO DE JOELHO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "TÓRAX (DUO)",
+      "acessorios": "BRAÇOS ELEVADOS\nRAMPA DE TÓRAX (POSIÇÃO – B / ALTURA – 3)\nBASE B\nAPOIO DE JOELHOS",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "TÓRAX, ABDOMEN",
+      "acessorios": "BRAÇOS ELEVADOS\nESTOMAGO VAZIO\nRAMPA DE TÓRAX (POSIÇÃO – B / ALTURA – 3)\nBASE B\nAPOIO DE JOELHO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "TÓRAX, PELVE",
+      "acessorios": "BRAÇOS ELEVADOS\nRAMPA DE TÓRAX (POSIÇÃO – B / ALTURA – 3)\nBASE B\nAPOIO DE JOELHO\nAPOIO DE PES",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "UMERO",
+      "acessorios": "VACK LOCK\nAPOIO DE JOELHO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "VAC LOCK BRACO DIR",
+      "acessorios": "VAC LOCK",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Ao lado corpo"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "VAC LOCK LONGO",
+      "acessorios": "VAC LOCK LONGO",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal"
+      },
+      "modelo": true
+    },
+    {
+      "nome": "VULVA PELVE VACK LOCK",
+      "acessorios": "TRAVESSEIRO\nVACK LOCK",
+      "preparo": {
+        "PARA O GANTRY": "Cabeça",
+        "DECÚBITO": "Dorsal",
+        "BRAÇOS": "Sobre Tórax"
+      },
+      "modelo": true
+    }
+  ]
+}

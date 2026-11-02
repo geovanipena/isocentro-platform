@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{141F1BB9-16A2-4E48-82CC-69B598FF5E3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PrePlan</RootNamespace>
+
+    <!-- O Eclipse só reconhece como plug-in o assembly cujo nome termina em
+         ".esapi". Sem o sufixo o arquivo compila e o Eclipse simplesmente
+         não o oferece na lista de scripts, sem dizer por quê. -->
+    <AssemblyName>PrePlan.esapi</AssemblyName>
+
+    <!-- v4.5 porque é o TargetFramework das PRÓPRIAS DLLs da ESAPI 15.6.
+         Mirar mais alto que o host é o erro que não aparece na compilação:
+         o Eclipse simplesmente não carrega o plug-in, sem dizer por quê. -->
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+
+    <!-- Os fontes são UTF-8 SEM BOM e têm acento em texto de tela. Sem esta
+         linha o csc lê pela codepage ANSI da estação e o acento chega
+         torto na MessageBox — compila limpo e só aparece na frente do
+         usuário. -->
+    <CodePage>65001</CodePage>
+
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- DLLs licenciadas da Varian: ESAPI 15.6 (AssemblyVersion 1.0.300.11).
+       Ficam em lib\, que o .gitignore barra — elas NÃO são versionadas.
+       Ver o README para de onde copiar.
+       Para compilar contra outra instalação:
+         msbuild /p:EsapiDir="C:\Program Files\Varian\RTM\17.0\esapi\API" -->
+  <PropertyGroup>
+    <EsapiDir Condition=" '$(EsapiDir)' == '' ">$(MSBuildProjectDirectory)\..\..\..\lib</EsapiDir>
+  </PropertyGroup>
+
+  <!-- x64 explícito nas duas configurações. O padrão do Visual Studio é
+       AnyCPU, e um plug-in AnyCPU não carrega no Eclipse. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="VMS.TPS.Common.Model.API">
+      <HintPath>$(EsapiDir)\VMS.TPS.Common.Model.API.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VMS.TPS.Common.Model.Types">
+      <HintPath>$(EsapiDir)\VMS.TPS.Common.Model.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+
+    <!-- A janela é WPF montada em código, sem XAML: evita todo o aparato de
+         <Page>/App.xaml num projeto de uma tela só. -->
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Script.cs" />
+    <Compile Include="Programa.cs" />
+    <Compile Include="Fluxo.cs" />
+    <Compile Include="Bancada.cs" />
+    <Compile Include="Pedido.cs" />
+    <Compile Include="Montagem.cs" />
+    <Compile Include="Maquinas.cs" />
+    <Compile Include="Sonda.cs" />
+    <Compile Include="JanelaPrePlan.cs" />
+    <Compile Include="JanelaAbrir.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <!-- Falha cedo e com o motivo escrito. Sem isto, a ausência das DLLs vira
+       uma cascata de "tipo não encontrado" que não diz o que está faltando. -->
+  <Target Name="ConferirEsapi" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(EsapiDir)\VMS.TPS.Common.Model.API.dll')"
+           Text="ESAPI não encontrado em '$(EsapiDir)'. Ajustar EsapiDir no .csproj para a versão do Eclipse desta estação, ou passar /p:EsapiDir=... Ver o README." />
+  </Target>
+</Project>

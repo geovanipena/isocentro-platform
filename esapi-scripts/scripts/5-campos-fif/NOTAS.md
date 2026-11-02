@@ -1,0 +1,22 @@
+# 5 Campos FiF (hotspot)
+
+> Notas das rodadas com o usuário. Vieram da memória do Claude em 22/10/2026, sem resumo;
+> os caminhos e ramos citados antes dessa data são os da época (o script agora mora nesta pasta, no `main`).
+
+Projeto ESAPI 15.6 (Eclipse, write-enabled) para reduzir hotspot ≥107% mantendo D95=100% do Rx, em plano de 5 campos (era "Cervix", renomeado para "5 Campos" em 2026-09-22). Máquinas suportadas: 600CD, 6EX, TrueBeamSN1001. Plano de teste CD_cPELVE / CD_cPELVE_scr na 600CD 6X (Millennium 120), PTV_High, Rx 4600 cGy, campos 1_G181, 2_G270, 3_G315, 4_G45, 5_G90 + PORTAL_0/PORTAL_90 (setup, ignorados). Usuário é físico(a), testa no Eclipse e manda prints.
+
+- **Local oficial (desde 2026-09-22):** repo `C:\Users\geova\Documents\isocentro\programa\scriptsvarian`, branch **`5-campos`** (git não aceita espaço no nome; o usuário pediu "5 Campos"), arquivos `scripts/5Campos_Hotspot_FiF.cs` + `.csproj`, entrada no CLAUDE.md. Commit a0a679c, não publicado (sem push). Compilar com `dotnet msbuild` — o MSBuild do .NET Framework não aceita as funções locais (C# 7) do script; csproj tem LangVersion 7.3 e AssemblyName `5Campos_Hotspot_FiF.esapi`.
+- Cópia de trabalho antiga: `C:\Users\geova\Downloads\CervixHotspotMlcV23_FIF_ESAPI15.6\` (pasta ainda com nome Cervix), com backups Script.V23_3..V23_6.cs.bak, Script.V24_3.cs.bak, Script.V25_4.cs.bak.
+- V22.1 (`...V22_1_ESAPI15.6_MLCDEM_DIAGNOSTIC_UI_FIX\`): criar feixe via API falha com "Several MLCs found for technique 'STATIC', energy mode '6X'" — por isso os subcampos são cópias manuais no Eclipse.
+- **Código atual = V24.4** (aguardando teste): subcampos `<campo>.0/.1/.2` (máx 5, sem lacunas), campo sem cópias mantém peso e entra no modelo; todos bloqueados a partir da mesma dose inicial, `.i` bloqueia ≥ 107% + (Dmax−107%)·i/n (estruturas zFIF_HOT107 e zFIF_L<n>_<i>); 3 cálculos (aberto, todos bloqueados, final). Inclui as correções de unidade da linha V25: ToAbsolute %↔cGy, TargetD95 com fallback para presentation Relative, LevelFor para ConvertDoseLevelToStructure e GetVolumeAtDose.
+- Pesos: modelo linear por Beam.Dose do cálculo 2 (calibra soma das doses de feixe vs dose do plano, RMS<1%; se falhar, cálculos cumulativos extras e split comum). Busca: início grosso comum (5%) + refinamento coordenado e transferências entre subcampos do mesmo campo (passo 2,5%; cada sub 2,5–30%; soma ≤50%; peso total por campo fixo). Prioridade: déficit de UM > Dmax renormalizado > V107 > peso de subcampos. No fim: renormaliza D95=100%, MU CHECK (mín 5 UM/feixe, sobe peso e recalcula até 2x) e CLEANUP (remove zFIF_*).
+- Linha V25 (sequencial 270.0→90.0→270.1→90.1→270.2→90.2→181.0→181.1, 1 cálculo por subcampo, pesos no fim) foi REPROVADA em 2026-09-22: Dmax não baixou o suficiente e D95/V95 pioraram. Arquivada em Script.V25_4.cs.bak.
+- Ideias pendentes se a V24.4 repetir o padrão (Dmax alto + cobertura pior, igual à V23.1): (1) subtrair da região bloqueada uma margem interna do PTV, para as lâminas fecharem só no miolo quente; (2) descartar na busca combinações que derrubem o D95 bruto além de um limite.
+- Arranjo de campos do usuário: 1_G181 (.0,.1), 2_G270 (.0,.1,.2), 3_G315 e 4_G45 sem subcampos, 5_G90 (.0,.1,.2); subcampos entram com peso 0.
+- Histórico de bugs: V24.0 NullReference em BuildStructureMask — editar feixes invalida plan.Dose (regra: nunca ler plan.Dose depois de editar feixe sem recalcular). V25.1 "Dose grid unit (%) differs from prescription unit (cGy)" no plano CD_cPELVE_scr. V23.4 gerou subcampos com 1 UM → usuário exige mínimo 5 UM (linearidade de UM).
+- Deploy: usuário copia a DLL manualmente p/ `\\Client\G$\4 - FÍSICA\22. Scripts Clinica Oncoc...` (G: não montado nesta máquina). Trocar o AssemblyName a cada versão nova, senão o Eclipse roda a DLL antiga (aconteceu com a V23.2).
+- Eclipse mostra a janela de avisos a cada cálculo (HU 7544 fora da curva Electron_Density + 600CD sem reaprovação do beam data); incomoda o usuário e só some resolvendo no Eclipse. Auto-fechar a janela foi bloqueado por permissão — não tentar de novo.
+- Pendente: relatório do script ainda em inglês; o CLAUDE.md do repo exige pt-BR.
+
+**Why:** usuário quer dar /clear e continuar depois sem perder contexto.
+**How to apply:** ao retomar, trabalhar no repo scriptsvarian (branch 5-campos) e pedir o relatório da V24.4 (HOTSPOT LEVELS, DOSE MODEL com erro RMS, WEIGHT SEARCH, CHOSEN WEIGHTS, MU CHECK, CLEANUP). Responder em pt-BR (a regra de responder em pt-BR).

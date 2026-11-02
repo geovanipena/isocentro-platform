@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nove Campos, Um Isocentro</title>
+<meta name="description" content="Lembrança da sessão de brainstorming de 21/10/2026 sobre a organização do acervo, do código e da estrutura do ISOCENTRO: 9 técnicas, 116 ideias e a síntese final.">
+<style>
+:root{
+  --bg:#f4f1ea; --bg2:#ebe6db; --panel:#fffdf8; --ink:#1d2328; --ink2:#4a535b; --ink3:#7a838b;
+  --line:#d6cfc0; --grid:rgba(29,35,40,.06);
+  --iso:#c2410c; --iso-soft:rgba(194,65,12,.12);
+  --ok:#2f7d4f; --bad:#b42318; --warn:#b7791f;
+  --c1:#2f7d4f; --c2:#2563a8; --c3:#7c3aed; --c4:#b42318; --c5:#0f766e;
+  --c6:#a16207; --c7:#be185d; --c8:#475569; --c9:#0369a1;
+  --hat-branco:#e9e7e1; --hat-vermelho:#c53030; --hat-preto:#1f2328; --hat-amarelo:#e2b007; --hat-verde:#2f8f4e; --hat-azul:#2b6cb0;
+  --mono:ui-monospace,"Cascadia Code","Consolas","SFMono-Regular",Menlo,monospace;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:Georgia,"Cambria","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1216; --bg2:#121a20; --panel:#151e25; --ink:#e7ecef; --ink2:#aab5bd; --ink3:#77838c;
+    --line:#26333c; --grid:rgba(160,220,255,.05);
+    --iso:#fb923c; --iso-soft:rgba(251,146,60,.14);
+    --ok:#4ade80; --bad:#f87171; --warn:#fbbf24;
+    --c1:#4ade80; --c2:#60a5fa; --c3:#a78bfa; --c4:#f87171; --c5:#2dd4bf;
+    --c6:#facc15; --c7:#f472b6; --c8:#94a3b8; --c9:#38bdf8;
+    --hat-branco:#e9e7e1; --hat-preto:#05080a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1216; --bg2:#121a20; --panel:#151e25; --ink:#e7ecef; --ink2:#aab5bd; --ink3:#77838c;
+  --line:#26333c; --grid:rgba(160,220,255,.05);
+  --iso:#fb923c; --iso-soft:rgba(251,146,60,.14);
+  --ok:#4ade80; --bad:#f87171; --warn:#fbbf24;
+  --c1:#4ade80; --c2:#60a5fa; --c3:#a78bfa; --c4:#f87171; --c5:#2dd4bf;
+  --c6:#facc15; --c7:#f472b6; --c8:#94a3b8; --c9:#38bdf8;
+  --hat-branco:#e9e7e1; --hat-preto:#05080a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;-webkit-text-size-adjust:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+a{color:inherit}
+code,.mono{font-family:var(--mono);font-size:.88em}
+.n{font-family:var(--mono);font-size:.72rem;color:var(--ink3);letter-spacing:.04em}
+
+/* ---------- capa ---------- */
+header.hero{padding:40px 0 24px;text-align:center}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--iso)}
+h1{font-family:var(--serif);font-weight:normal;font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin:.3em 0 .2em}
+.sub{color:var(--ink2);max-width:640px;margin:0 auto}
+.gantry{width:100%;max-width:680px;margin:18px auto 0;display:block}
+.gantry .beam{cursor:pointer;transition:opacity .25s}
+.gantry .beam path{opacity:.22;transition:opacity .25s}
+.gantry .beam:hover path,.gantry .beam.on path{opacity:.62}
+.gantry .beam text{font-family:var(--mono);font-size:11px;fill:var(--ink2)}
+.gantry .beam.on text{fill:var(--ink);font-weight:bold}
+.rx{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin:16px 0 0;font-family:var(--mono);font-size:.8rem;color:var(--ink2)}
+.rx b{color:var(--ink);font-size:1.05rem}
+
+/* ---------- navegação de campos ---------- */
+nav.campos{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.campos .wrap{display:flex;gap:6px;overflow-x:auto;padding:8px 16px;scrollbar-width:thin}
+nav.campos a{flex:0 0 auto;text-decoration:none;font-family:var(--mono);font-size:.74rem;padding:4px 9px;border:1px solid var(--line);border-radius:99px;color:var(--ink2);white-space:nowrap}
+nav.campos a.on{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+nav.campos a i{font-style:normal;display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:0}
+
+/* ---------- seção (campo) ---------- */
+section.campo{padding:44px 0 12px;scroll-margin-top:52px}
+.bev{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:end;border-bottom:2px solid var(--cc);padding-bottom:12px;margin-bottom:18px}
+.bev .ang{grid-row:span 2;font-family:var(--mono);font-size:clamp(2rem,7vw,3.2rem);line-height:1;color:var(--cc)}
+.bev .lab{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.bev h2{margin:0;font-family:var(--serif);font-weight:normal;font-size:clamp(1.4rem,4vw,2rem);line-height:1.15}
+.lead{color:var(--ink2);margin:0 0 18px;max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+
+/* 1. Build on What Works: carimbo "conferido" */
+.ok-card{position:relative;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--c1);border-radius:6px;padding:14px 14px 12px}
+.ok-card .stamp{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--c1);border:1.5px solid var(--c1);border-radius:3px;padding:1px 5px;transform:rotate(-6deg);opacity:.8}
+.ok-card h3{margin:2px 70px 6px 0;font-size:.98rem}
+.ok-card p{margin:0;color:var(--ink2);font-size:.92rem}
+
+/* 2. Trait Transfer: transplante padrão → ISOCENTRO */
+.tt{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr);background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tt .src{background:color-mix(in srgb,var(--c2) 12%,var(--panel));color:var(--c2);font-family:var(--mono);font-size:.78rem;padding:12px 10px;display:flex;flex-direction:column;justify-content:center;gap:4px;border-right:1px dashed var(--c2);position:relative}
+.tt .src:after{content:"";position:absolute;right:-7px;top:50%;margin-top:-6px;border:6px solid transparent;border-left-color:var(--c2);border-right:0}
+.tt .src b{font-size:.88rem;color:var(--ink)}
+.tt p{margin:0;padding:12px 14px;font-size:.92rem;color:var(--ink2)}
+@media (max-width:480px){.tt{grid-template-columns:1fr}.tt .src{border-right:0;border-bottom:1px dashed var(--c2)}.tt .src:after{display:none}}
+
+/* 3. Assumption Reversal: cartão invertido */
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.rev .sup{padding:10px 14px;font-size:.88rem;color:var(--ink3);background:var(--bg2)}
+.rev .sup s{text-decoration-color:var(--c3);text-decoration-thickness:2px}
+.rev .flip{display:flex;align-items:center;gap:8px;padding:0 14px;height:0;position:relative}
+.rev .flip span{position:relative;top:0;background:var(--c3);color:#fff;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;padding:2px 7px;border-radius:99px;transform:translateY(-50%)}
+.rev .inv{padding:14px 14px 12px;font-size:.93rem;border-top:2px solid var(--c3)}
+.rev.der .sup{display:none}
+.rev.der .inv{border-top:0;border-left:4px solid var(--c3)}
+.rev .tag3{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c3);display:block;margin-bottom:4px}
+
+/* 4. Worst Possible Idea: faixa de perigo */
+.worst{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.worst .pior{padding:12px 14px;background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--c4) 14%,var(--panel)) 0 10px,var(--panel) 10px 20px);font-size:.9rem}
+.worst .pior b{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--c4);display:block}
+.worst .ens{padding:12px 14px;font-size:.92rem;color:var(--ink2);border-top:1px solid var(--line)}
+.worst .ens b{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--ok);display:block}
+
+/* 5. Ecosystem */
+.eco-svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-bottom:16px}
+.eco-svg text{font-family:var(--sans);fill:var(--ink)}
+.eco-svg .sm{font-family:var(--mono);font-size:10px;fill:var(--ink3)}
+.eco{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:.92rem}
+.eco .role{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:99px;margin-bottom:6px;border:1px solid currentColor}
+.r-mapa{color:var(--c5)} .r-decai{color:var(--warn)} .r-pred{color:var(--bad)} .r-simb{color:var(--ok)} .r-nicho{color:var(--c3)} .r-inv{color:var(--c7)} .r-fluxo{color:var(--c9)} .r-teia{color:var(--c8)}
+.eco p{margin:0;color:var(--ink2)}
+
+/* 6. Backcasting: linha do tempo */
+.bc{list-style:none;margin:0;padding:0;position:relative}
+.bc li{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:0 10px;align-items:stretch;margin-bottom:10px}
+.bc .hoje,.bc .fut{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:.9rem}
+.bc .hoje{border-left:4px solid var(--c6)}
+.bc .fut{border-right:4px solid var(--c6);color:var(--ink2)}
+.bc .hoje b,.bc .fut b{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c6)}
+.bc .arr{display:flex;align-items:center;justify-content:center;color:var(--c6);font-size:1.2rem}
+.bc-head{display:grid;grid-template-columns:1fr 28px 1fr;gap:10px;font-family:var(--mono);font-size:.72rem;color:var(--ink3);margin-bottom:8px}
+@media (max-width:620px){.bc li{grid-template-columns:1fr}.bc .arr{transform:rotate(90deg);height:22px}.bc-head{display:none}}
+
+/* 7. Provocation */
+.prov{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 14px 12px;position:relative}
+.prov q{display:block;font-family:var(--serif);font-size:1.18rem;line-height:1.3;color:var(--c7);quotes:"\201C" "\201D"}
+.prov p{margin:10px 0 0;font-size:.9rem;color:var(--ink2);border-top:1px dotted var(--line);padding-top:8px}
+.prov p b{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+
+/* 8. Six Hats */
+.hats{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:12px}
+.hat{display:grid;grid-template-columns:48px 1fr;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px}
+.hat svg{width:48px;height:40px}
+.hat h3{margin:0 0 4px;font-size:.82rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.hat p{margin:0;font-size:.92rem;color:var(--ink2)}
+
+/* 9. SCAMPER */
+.scamper{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.sc{display:grid;grid-template-columns:52px 1fr;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.sc .L{background:var(--c9);color:var(--bg);font-family:var(--serif);font-size:2rem;display:flex;align-items:center;justify-content:center}
+.sc div.t{padding:10px 12px;font-size:.92rem;color:var(--ink2)}
+.sc div.t b{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c9)}
+
+/* ---------- síntese ---------- */
+section.sintese{margin-top:56px;padding:48px 0 40px;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+section.sintese:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0,var(--iso-soft),transparent 60%);pointer-events:none}
+.sintese .wrap{position:relative}
+.sintese h2.big{font-family:var(--serif);font-weight:normal;font-size:clamp(1.8rem,5vw,2.8rem);margin:.2em 0 .3em;text-align:center}
+.sintese .kicker{text-align:center}
+.block{margin:40px 0 0}
+.block h3{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--iso);margin:0 0 6px}
+.block h4{font-family:var(--serif);font-weight:normal;font-size:1.4rem;margin:0 0 12px}
+.block p.txt{color:var(--ink2);max-width:780px;margin:0 0 14px}
+
+.scale{position:relative;margin:30px 0 10px;padding:0 4px}
+.scale .bar{height:12px;border-radius:99px;background:linear-gradient(90deg,var(--bad),var(--line) 50%,var(--ok))}
+.scale .ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.7rem;color:var(--ink3);margin-top:6px}
+.mk{position:absolute;top:-6px;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;border:3px solid var(--panel);box-shadow:0 0 0 2px currentColor;background:currentColor}
+.verd{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin-top:22px}
+.verd div{border:1px solid var(--line);border-radius:6px;padding:14px;background:var(--bg)}
+.verd b{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.verd .up b{color:var(--ok)} .verd .mid b{color:var(--ink3)} .verd .down b{color:var(--bad)}
+.verd p{margin:6px 0 0;font-size:.92rem;color:var(--ink2)}
+
+.risks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px}
+.risk{position:relative;border-radius:8px;padding:16px 14px 14px;background:radial-gradient(circle at 20% 15%,color-mix(in srgb,var(--bad) 22%,transparent),transparent 70%),var(--bg);border:1px solid color-mix(in srgb,var(--bad) 40%,var(--line))}
+.risk .k{font-family:var(--mono);font-size:1.6rem;color:var(--bad);line-height:1}
+.risk p{margin:8px 0 0;font-size:.95rem}
+.notax{margin-top:12px;font-family:var(--mono);font-size:.8rem;color:var(--ink2);text-align:center;border:1px dashed var(--line);padding:8px;border-radius:6px}
+.notax s{color:var(--ink3)}
+
+.hub{width:100%;max-width:620px;display:block;margin:0 auto}
+.hub text{font-family:var(--sans);fill:var(--ink)}
+.hub .m{font-family:var(--mono)}
+
+.chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:8px 0 18px}
+.chain .st{flex:1 1 120px;min-width:0;text-align:center;padding:14px 8px;border:1px solid var(--line);background:var(--bg);font-weight:600;position:relative}
+.chain .st small{display:block;font-weight:normal;font-family:var(--mono);font-size:.68rem;color:var(--ink3);margin-top:4px}
+.chain .st+.st{border-left:0}
+.chain .st:first-child{border-radius:6px 0 0 6px}.chain .st:last-child{border-radius:0 6px 6px 0}
+.chain .st.hot{background:var(--iso-soft);border-color:var(--iso);color:var(--iso)}
+.mech{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.mech div{border-left:3px solid var(--iso);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:.92rem;color:var(--ink2)}
+.mech code{color:var(--ink)}
+
+.tax{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.tax div{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:.92rem;color:var(--ink2)}
+.tax b{display:block;color:var(--ink);margin-bottom:4px}
+
+.frac{list-style:none;padding:0;margin:0;counter-reset:f}
+.frac li{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.frac li:last-child{border-bottom:0}
+.frac .fx{position:relative;width:56px;height:56px}
+.frac .fx svg{width:56px;height:56px;transform:rotate(-90deg)}
+.frac .fx span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:bold}
+.frac li b{display:block;font-size:1.02rem}
+.frac li small{color:var(--ink3);font-family:var(--mono);font-size:.72rem}
+.aceite{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:.82rem;color:var(--ink2)}
+.aceite .pill{background:var(--ok);color:var(--bg);padding:3px 10px;border-radius:99px;font-weight:bold}
+
+footer{padding:28px 0 48px;text-align:center;font-family:var(--mono);font-size:.74rem;color:var(--ink3)}
+footer .theme{margin-top:10px}
+footer button{font:inherit;background:transparent;color:var(--ink2);border:1px solid var(--line);border-radius:99px;padding:4px 12px;cursor:pointer}
+.direction{max-width:760px;margin:22px auto 0;font-size:.88rem;color:var(--ink2);border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:10px 14px;text-align:left}
+.direction b{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--iso)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Sessão de brainstorming · 21/10/2026 · modo autônomo</div>
+    <h1>Nove campos,<br>um isocentro</h1>
+    <p class="sub">Organização da base bibliográfica, do código e da estrutura do ISOCENTRO. Pergunta: a organização segue o usual e é o jeito mais adequado de trabalhar? Nove técnicas atiraram de ângulos diferentes sobre o mesmo alvo.</p>
+
+    <svg class="gantry" id="gantry" viewBox="-370 -272 740 544" role="img" aria-label="Nove feixes, um por técnica, convergindo no isocentro">
+      <circle r="232" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <circle r="200" fill="none" stroke="var(--line)" stroke-dasharray="2 6"/>
+      <g id="beams"></g>
+      <circle r="22" fill="var(--iso-soft)"/>
+      <circle r="10" fill="none" stroke="var(--iso)" stroke-width="2"/>
+      <line x1="-20" y1="0" x2="20" y2="0" stroke="var(--iso)" stroke-width="1.5"/>
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="var(--iso)" stroke-width="1.5"/>
+      <text y="44" text-anchor="middle" style="font-family:var(--mono);font-size:11px;fill:var(--iso);letter-spacing:.1em">SÍNTESE</text>
+    </svg>
+
+    <div class="rx">
+      <span><b>9</b> campos (técnicas)</span>
+      <span><b>116</b> ideias</span>
+      <span><b>6</b> conclusões</span>
+      <span>aceite: <b>2317</b> testes</span>
+    </div>
+
+    <p class="direction"><b>Direção</b><br>O usuário escolheu “Ideate for me”. Base factual: README da pasta central, conhecimento/README, raiz do repositório e tamanhos dos módulos (inventário de 21/10).</p>
+  </div>
+</header>
+
+<nav class="campos" aria-label="Campos">
+  <div class="wrap" id="navc">
+    <a href="#c1"><i style="background:var(--c1)"></i>0° O que funciona</a>
+    <a href="#c2"><i style="background:var(--c2)"></i>40° Transplante</a>
+    <a href="#c3"><i style="background:var(--c3)"></i>80° Inversão</a>
+    <a href="#c4"><i style="background:var(--c4)"></i>120° Pior ideia</a>
+    <a href="#c5"><i style="background:var(--c5)"></i>160° Ecossistema</a>
+    <a href="#c6"><i style="background:var(--c6)"></i>200° Backcasting</a>
+    <a href="#c7"><i style="background:var(--c7)"></i>240° Provocação</a>
+    <a href="#c8"><i style="background:var(--c8)"></i>280° Seis chapéus</a>
+    <a href="#c9"><i style="background:var(--c9)"></i>320° SCAMPER</a>
+    <a href="#sintese"><i style="background:var(--iso)"></i>Isocentro</a>
+  </div>
+</nav>
+
+<main>
+<!-- ===================== CAMPO 1 ===================== -->
+<section class="campo" id="c1" style="--cc:var(--c1)">
+<div class="wrap">
+  <div class="bev"><div class="ang">0°</div><div class="lab">Campo 1 · 12 ideias</div><h2>Build on What Works: o que já funciona e por quê</h2></div>
+  <p class="lead">Antes de mudar, conferir o que já está bom. Cada cartão leva o carimbo de “conferido”, como uma citação checada na imagem da página.</p>
+  <div class="grid">
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#001</span><h3>O CÓDIGO já é citekey</h3><p>O CÓDIGO estável de cada fonte (<code>TG-218</code>, <code>NN-6.10</code>, <code>QUANTEC-PULMAO</code>) já é uma citekey de fato: oficializar como identificador único em todo lugar (arquivo, ficha, matriz, código, commit).</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#002</span><h3>Padrão de nome validado por script</h3><p>“CÓDIGO - Emissor Título (ano)” é melhor que a pasta usual de PDFs; manter e validar por script (nome fora do padrão = falha do catalogar).</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#003</span><h3>raw / interim / processed</h3><p>A pipeline referencias → texto → fichas → matriz → índices/mapa é exatamente o layout da ciência de dados; nomear assim no README para quem chega entender em 1 minuto.</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#004</span><h3>A ficha é a fonte de verdade</h3><p>“Fonte de verdade é o cabeçalho da ficha; matriz é gerada” é o melhor princípio do acervo; estender a tudo que ainda é editado à mão (o CATALOGO.md do codigo-externo é “editado à mão”).</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#005</span><h3>Mapa gerado, catálogos também</h3><p>O mapa passou a ser GERADO (<code>modelo.html</code> + <code>gerar_mapa.py</code>): repetir o padrão para os CATALOGO.md, hoje parte gerados e parte manuais.</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#006</span><h3>_restrito/ com teste automático</h3><p>_restrito/ isolado por LGPD é prática acima da média; reforçar com teste que falha se qualquer caminho de _restrito aparecer fora dele (grep de CPF/nome em <code>git ls-files</code>).</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#007</span><h3>[CÓDIGO p. N] auditável</h3><p>Citação com página conferida na imagem é padrão de revisão sistemática; já existe <code>conferida:</code>; acrescentar <code>conferida_por:</code> para auditoria 62304.</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#008</span><h3>Memória de engenharia</h3><p>CLAUDE.md + ARMADILHAS.md + NOTAS.md + notas/AAAA-MM.md é um sistema raro e eficaz; manter, mas tratar como documentação de processo do SGQ (ligar em docs/qms).</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#009</span><h3>BMad planeja, DESTINO.md executa</h3><p>A decisão evita dois processos concorrentes; escrever como ADR formal (AD-xx) para não ser reaberta.</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#010</span><h3>dicom-teste reprodutível</h3><p>pseudonimizar/conferir/catalogar é um gerador de dados de teste; versionar a CHAVE separada e registrar o hash dos casos para provar que os testes rodam no mesmo dado.</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#011</span><h3>2317 testes = rede de segurança</h3><p>A suíte rodando depois da reorganização de pastas permite reorganizar sem medo: usar como critério de aceite de toda sugestão estrutural.</p></div>
+    <div class="ok-card"><span class="stamp">CONFERIDO</span><span class="n">#012</span><h3>conflitos.json = ADR bibliográfico</h3><p>Com regra_proposta/criterio/decide, é um registro de decisões de domínio; equivalente bibliográfico dos ADRs, deve ser citado pelas specs.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== CAMPO 2 ===================== -->
+<section class="campo" id="c2" style="--cc:var(--c2)">
+<div class="wrap">
+  <div class="bev"><div class="ang">40°</div><div class="lab">Campo 2 · 21 ideias</div><h2>Trait Transfer: o que os padrões consagrados fazem e o que transplantar</h2></div>
+  <p class="lead">Cada cartão é um enxerto: à esquerda o doador (um padrão conhecido), à direita o que ele traria para o ISOCENTRO.</p>
+  <div class="grid">
+    <div class="tt"><div class="src"><span class="n">#013</span><b>Zotero + Better BibTeX</b>gerenciador</div><p>Gerenciador oficial só para metadados (DOI, autores, ano, URL), com citekey = CÓDIGO; o PDF continua na pasta temática (anexo vinculado, não armazenado).</p></div>
+    <div class="tt"><div class="src"><span class="n">#014</span><b>CSL-JSON / BibTeX</b>exportação</div><p>Exportar o acervo gerado de matriz/ para que POPs, PPR e relatórios formatem referências automaticamente (ABNT via CSL).</p></div>
+    <div class="tt"><div class="src"><span class="n">#015</span><b>DOI + URL</b>vigência</div><p>DOI e URL de origem em cada ficha: checar automaticamente se saiu versão nova (vigência vira consulta, não lembrança).</p></div>
+    <div class="tt"><div class="src"><span class="n">#016</span><b>src-layout + pyproject.toml</b>empacotamento</div><p>Hoje só requirements.txt, sem pyproject: fixa dependências de teste (PyMuPDF falta no requirements) e a versão do pacote num só lugar.</p></div>
+    <div class="tt"><div class="src"><span class="n">#017</span><b>optional-dependencies</b>extras</div><p>Separar requirements de execução, de teste e de build (PyInstaller) via extras <code>test</code>/<code>build</code> do pyproject.</p></div>
+    <div class="tt"><div class="src"><span class="n">#018</span><b>uv.lock / pip-tools</b>lockfile</div><p>Lock para o executável que vai à clínica: build reprodutível é exigência prática de 62304 (configuração identificada).</p></div>
+    <div class="tt"><div class="src"><span class="n">#019</span><b>Diátaxis</b>docs/</div><p>Separar tutorial (ROTEIRO_DA_IDA), how-to (INSTALAR_CONCENTRADORA, PEDIDO_TI), referência (AMBIENTE, BIBLIOTECAS_EXTERNAS) e explicação (PROPOSTA_*); hoje tudo numa pasta plana.</p></div>
+    <div class="tt"><div class="src"><span class="n">#020</span><b>arc42 / ADR</b>decisões</div><p>As AD-1..37 já existem; mover cada uma para <code>docs/adr/NNNN-titulo.md</code>, um arquivo por decisão, padrão que GitHub e ferramentas leem.</p></div>
+    <div class="tt"><div class="src"><span class="n">#021</span><b>Cookiecutter Data Science</b>layout</div><p>conhecimento/ já segue quase isso; renomear para dados/brutos (link para referencias), dados/derivados (texto), fichas, saídas (mapa, índices) deixa a intenção explícita.</p></div>
+    <div class="tt"><div class="src"><span class="n">#022</span><b>Obsidian / Zettelkasten</b>leitura</div><p>Fichas com YAML e links <code>[[CÓDIGO]]</code> abrem direto num vault como grafo navegável, sem mudar o formato; ganho grátis para leitura humana.</p></div>
+    <div class="tt"><div class="src"><span class="n">#023</span><b>PRISMA</b>revisão sistemática</div><p>Registrar a origem da descoberta e o motivo de inclusão/exclusão de cada fonte (_superadas é a exclusão; falta o “por quê” estruturado).</p></div>
+    <div class="tt"><div class="src"><span class="n">#024</span><b>ISO 9001 / RDC 657</b>controle de documentos</div><p>Versão, data de revisão, responsável e próxima revisão em cada POP de “10 POPs CLINICA”; hoje os POPs ficam junto do acervo externo.</p></div>
+    <div class="tt"><div class="src"><span class="n">#025</span><b>Documento interno ≠ bibliografia</b>controle</div><p>Tirar POPs CLINICA (10) e Incidentes - casos (11) de referencias/: são documentos INTERNOS controlados; área própria (documentos-do-servico/) com controle de revisão.</p></div>
+    <div class="tt"><div class="src"><span class="n">#026</span><b>Monorepo / meta-repo</b>repositórios</div><p>ISOCENTRO, conhecimento, ppr-streamlit, parallel-mu-check, preplan, scriptsvarian, Estruturas-auxiliares: 7 repos. Para equipe de 1 pessoa, monorepo por componente, ou ao menos meta-repo com submódulos em versões compatíveis.</p></div>
+    <div class="tt"><div class="src"><span class="n">#027</span><b>Git LFS / git-annex / DVC</b>binários</div><p>Versão e hash para PDFs e comissionamento sem pôr 5 GB no git; o Drive deixa de ser “cópia manual” e vira remoto do DVC.</p></div>
+    <div class="tt"><div class="src"><span class="n">#028</span><b>SHA-256</b>integridade</div><p>Hash de cada PDF no CATALOGO/matriz: detecta corrompido, duplicado com nome diferente e divergência Drive × local (substitui a conferência visual do robocopy).</p></div>
+    <div class="tt"><div class="src"><span class="n">#029</span><b>Make / just / nox</b>orquestrador</div><p><code>just acervo</code> roda catalogar → converter → gerar_matriz → gerar_mapa na ordem certa; hoje a ordem está no README e na memória.</p></div>
+    <div class="tt"><div class="src"><span class="n">#030</span><b>CI do GitHub</b>conhecimento</div><p>Rodar gerar_matriz e falhar se ficha citar código inexistente ou atividade sem ficha (o ISOCENTRO já tem .github/workflows).</p></div>
+    <div class="tt"><div class="src"><span class="n">#031</span><b>SBOM / SOUP</b>IEC 62304 §8.1.2</div><p>codigo-externo/ é biblioteca de estudo; separar formalmente “estudo” de “SOUP usado pelo executável” (pydicom, PyMuPDF...) com versão e justificativa.</p></div>
+    <div class="tt"><div class="src"><span class="n">#032</span><b>platformdirs / AppData</b>dados de execução</div><p>registro_fichas.json, sessoes.json, usuarios.json, preferencias.json e logs saem da raiz do repo para <code>%LOCALAPPDATA%\ISOCENTRO</code> em desenvolvimento.</p></div>
+    <div class="tt"><div class="src"><span class="n">#033</span><b>Twelve-Factor</b>config × código</div><p>config_servico.json, cadastro_sus.json e inventario_imobilizadores.json são de naturezas diferentes (config da estação, tabela de referência, cadastro do serviço) e merecem lugares diferentes.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== CAMPO 3 ===================== -->
+<section class="campo" id="c3" style="--cc:var(--c3)">
+<div class="wrap">
+  <div class="bev"><div class="ang">80°</div><div class="lab">Campo 3 · 16 ideias</div><h2>Assumption Reversal: inverter o que parece óbvio</h2></div>
+  <p class="lead">Em cima, a suposição riscada; embaixo, o inverso. Alguns cartões são regras derivadas de uma inversão anterior.</p>
+  <div class="grid">
+    <div class="rev"><div class="sup"><span class="n">#034</span> <s>Organizar por tema (01–11)</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">Pasta plana por CÓDIGO e toda a taxonomia nos metadados; evita o conflito entre as pastas 01–11 e as 14 etapas da cadeia do mapa.</div></div>
+    <div class="rev der"><div class="inv"><span class="tag3">#035 · variante equilibrada</span>Pasta física por TIPO de fonte (norma BR, norma internacional, TG/MPPG, artigo, livro, manual), que muda pouco; tema e etapa da cadeia viram tags, porque um documento serve várias etapas.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#036</span> <s>O Drive é cópia</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">O Drive é a fonte e o local é cache gerado (rclone sync unidirecional); acaba a regra “documento novo entra nos dois lugares”, fonte de divergência.</div></div>
+    <div class="rev der"><div class="inv"><span class="tag3">#037 · ou o contrário, rígido</span>Local é a fonte e o Drive é publicação gerada por um único script; o que importa é ter UM sentido, nunca dois.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#038</span> <s>catalogar só lê 1 nível, então achatar QUANTEC</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">A ferramenta se adapta à estrutura: catalogar recursivo, com subpasta = coleção (QUANTEC/, CLRP-GM12i/).</div></div>
+    <div class="rev"><div class="sup"><span class="n">#039</span> <s>Conhecimento fora do repo do programa</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">O que o ISOCENTRO consome em execução (constraints transcritos, tolerâncias do CQ, tabelas TG-43) entra no pacote como dado versionado e testado; o resto fica no repo conhecimento.</div></div>
+    <div class="rev der"><div class="inv"><span class="tag3">#040 · regra derivada</span>Valor numérico que o executável usa precisa ter UMA origem rastreável (ficha com página) e UMA cópia (no pacote, gerada da ficha); nunca digitado duas vezes.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#041</span> <s>texto/ é regenerável, então fora do git</s></div><div class="flip"><span>INVERSO PARCIAL</span></div><div class="inv">Versionar o hash do texto/ e a versão do conversor; se o conversor mudar, saber quais fichas foram conferidas contra texto antigo.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#042</span> <s>Junção de volta para o repo porque o código procura lá</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">O código procura pela variável <code>ISOCENTRO_DADOS</code>, com padrão em AppData; a junção some e o repo fica limpo.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#043</span> <s>Interface é a camada grande (27 mil linhas em 33 arquivos)</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">A interface deveria ser a mais FINA; regra de domínio que mora em tela (gui.py 2.900, fichinha.py 2.400) desce para dominio/ com teste.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#044</span> <s>tools/ é uma caixa de 60 utilitários</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">Separar o que é do USUÁRIO da clínica (.cmd/.bat de diagnóstico, LEIAME_CLINICA) do que é do DESENVOLVEDOR (gerar_*, mapear_*), em pastas diferentes.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#045</span> <s>Testes numa pasta plana (94 arquivos)</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">Espelhar a árvore do pacote (tests/dominio, tests/papel, tests/interface...) para ver cobertura por camada e rodar só a camada mexida.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#046</span> <s>NOTAS.md cabe numa leitura (~400 linhas)</s></div><div class="flip"><span>FATO: 1.920 LINHAS</span></div><div class="inv">A regra existe mas não é aplicada; inverter: script de fechamento que recusa NOTAS acima de N linhas.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#047</span> <s>Manuais são uma pasta à parte de referencias</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">Manual do fabricante é só mais um tipo de fonte com CÓDIGO (<code>VAR-ECL-15.6-RG</code>); unificar o catálogo, mantendo as pastas físicas separadas.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#048</span> <s>Comissionamento é acervo</s></div><div class="flip"><span>INVERSO</span></div><div class="inv">Comissionamento é DADO DO SERVIÇO por máquina; juntar comissionamento, PPR técnico e programa de CQ numa árvore <code>servico/&lt;CLINICA&gt;/&lt;MAQUINA&gt;/</code>.</div></div>
+    <div class="rev"><div class="sup"><span class="n">#049</span> <s>A ficha de atividade é o centro</s></div><div class="flip"><span>TESTE DE INVERSÃO</span></div><div class="inv">E se o centro fosse o REQUISITO (requisitos.csv)? Conclusão: atividade continua o centro para o físico; requisito é o centro para a auditoria; gerar as duas visões do mesmo dado (já é quase isso).</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== CAMPO 4 ===================== -->
+<section class="campo" id="c4" style="--cc:var(--c4)">
+<div class="wrap">
+  <div class="bev"><div class="ang">120°</div><div class="lab">Campo 4 · 14 ideias</div><h2>Worst Possible Idea: o pior jeito de organizar, e o que ele ensina</h2></div>
+  <p class="lead">Faixa de perigo em cima, lição embaixo. Vários “piores” já aconteceram de verdade.</p>
+  <div class="grid">
+    <div class="worst"><div class="pior"><b>PIOR · #050</b>Guardar o mesmo PDF em 4 lugares com nomes diferentes (Downloads, Drive raiz, referencias, _superadas).</div><div class="ens"><b>ENSINA</b>Detector de duplicata por hash e uma “caixa de entrada” única.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #051</b>Deixar a raiz do Drive SKILLS acumular PDFs soltos por semanas.</div><div class="ens"><b>ENSINA</b>Pasta _entrada/ explícita com script que classifica, renomeia e move (a triagem de 19 e 21/10 vira rotina).</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #052</b>Tolerância digitada na tela sem dizer de onde veio.</div><div class="ens"><b>ENSINA</b>O executável mostra [CÓDIGO p. N] ao lado de cada limite: a rastreabilidade do acervo chega ao usuário final.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #053</b>dist/ (530 MB) e build/ (140 MB) dentro da pasta do repo e sincronizados.</div><div class="ens"><b>ENSINA</b>Saída de build fora da árvore (ou ao menos fora do Drive/OneDrive) e só o zip em pacotes/.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #054</b>Logs stdout_gui.log/stderr_gui.log e *.lock na raiz do repo.</div><div class="ens"><b>ENSINA</b>Tudo que o programa escreve em execução vai para uma pasta de dados, nunca ao lado do código.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #055</b>Documento com CPF ir parar na pasta compartilhável.</div><div class="ens"><b>ENSINA</b>Pré-commit/pré-sync que procura padrão de CPF, nome de paciente da lista do registro e DICOM PatientName antes de copiar ao Drive.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #056</b>Cada sessão de Claude criar a própria pasta (como a 06/CLRP-GM12i, criada por outra sessão).</div><div class="ens"><b>ENSINA</b>Só scripts criam pasta no acervo; a sessão propõe, o script executa e registra.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #057</b>Duas sessões escrevendo fichas no mesmo repo sem saber.</div><div class="ens"><b>ENSINA</b>Lista de trabalho com “quem está em quê” (trava simples por arquivo ou ramo por frente, como o robô já faz no programa).</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #058</b>Decidir taxonomia nova a cada reorganização (temas 01–11, depois cadeia de 14 etapas, depois tipo de fonte).</div><div class="ens"><b>ENSINA</b>Escrever a taxonomia como dado (etapas.json já existe) e congelar com versão.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #059</b>Memória do assistente como único lugar da regra (“catalogar só lê 1 nível”, “nunca remendar o HTML”).</div><div class="ens"><b>ENSINA</b>Toda regra operacional vai para o README da pasta; a memória só aponta.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #060</b>Commit esquecido por dias (“Nada commitado no repo conhecimento”, ppr-streamlit sem push).</div><div class="ens"><b>ENSINA</b>Fechamento de sessão sempre com commit; lembrete automático de ramos sem push.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #061</b>Venv diferente por pasta (isocentro/.venv 422 MB, conhecimento/.venv) com versões divergentes de PyMuPDF.</div><div class="ens"><b>ENSINA</b>uv com lock por projeto, ou um ambiente de ferramentas compartilhado.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #062</b>Arquivos de 3.500 linhas (ficha_pdf.py).</div><div class="ens"><b>ENSINA</b>Limite de tamanho por módulo como regra do ruff/CI e fatiamento por seção da ficha.</div></div>
+    <div class="worst"><div class="pior"><b>PIOR · #063</b>Projeto paralelo (preplan) só local, sem remoto.</div><div class="ens"><b>ENSINA</b>Todo repo tem remoto privado e backup; “só local” é risco de perda.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== CAMPO 5 ===================== -->
+<section class="campo" id="c5" style="--cc:var(--c5)">
+<div class="wrap">
+  <div class="bev"><div class="ang">160°</div><div class="lab">Campo 5 · 14 ideias</div><h2>Ecosystem Thinking: quem alimenta quem, o que decai, o que falta</h2></div>
+  <p class="lead">O fluxo de cinco espécies do ecossistema. Uma seta ainda não existe.</p>
+
+  <svg class="eco-svg" viewBox="0 0 900 190" role="img" aria-label="Fluxo Fontes, Conhecimento, Serviço, Programa, Clínica; a seta Conhecimento para Programa está ausente">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink3)"/></marker>
+      <marker id="ahx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--bad)"/></marker>
+    </defs>
+    <g>
+      <rect x="10" y="40" width="150" height="70" rx="8" fill="var(--bg)" stroke="var(--c5)" stroke-width="1.5"/>
+      <text x="85" y="72" text-anchor="middle" font-size="15" font-weight="600">Fontes</text>
+      <text x="85" y="92" text-anchor="middle" class="sm">referencias · manuais · codigo-externo</text>
+
+      <rect x="195" y="40" width="150" height="70" rx="8" fill="var(--bg)" stroke="var(--c5)" stroke-width="1.5"/>
+      <text x="270" y="72" text-anchor="middle" font-size="15" font-weight="600">Conhecimento</text>
+      <text x="270" y="92" text-anchor="middle" class="sm">fichas · matriz</text>
+
+      <rect x="380" y="40" width="150" height="70" rx="8" fill="var(--bg)" stroke="var(--c5)" stroke-width="1.5"/>
+      <text x="455" y="72" text-anchor="middle" font-size="15" font-weight="600">Serviço</text>
+      <text x="455" y="92" text-anchor="middle" class="sm">PPR · CQ · comissionamento</text>
+
+      <rect x="565" y="40" width="150" height="70" rx="8" fill="var(--bg)" stroke="var(--c5)" stroke-width="1.5"/>
+      <text x="640" y="72" text-anchor="middle" font-size="15" font-weight="600">Programa</text>
+      <text x="640" y="92" text-anchor="middle" class="sm">ISOCENTRO · plug-ins</text>
+
+      <rect x="750" y="40" width="140" height="70" rx="8" fill="var(--bg)" stroke="var(--c5)" stroke-width="1.5"/>
+      <text x="820" y="72" text-anchor="middle" font-size="15" font-weight="600">Clínica</text>
+      <text x="820" y="92" text-anchor="middle" class="sm">papel na sala</text>
+
+      <line x1="160" y1="75" x2="193" y2="75" stroke="var(--ink3)" stroke-width="2" marker-end="url(#ah)"/>
+      <line x1="345" y1="75" x2="378" y2="75" stroke="var(--ink3)" stroke-width="2" marker-end="url(#ah)"/>
+      <line x1="530" y1="75" x2="563" y2="75" stroke="var(--ink3)" stroke-width="2" marker-end="url(#ah)"/>
+      <line x1="715" y1="75" x2="748" y2="75" stroke="var(--ink3)" stroke-width="2" marker-end="url(#ah)"/>
+
+      <path d="M270,112 C300,170 600,170 636,114" fill="none" stroke="var(--bad)" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ahx)"/>
+      <text x="453" y="176" text-anchor="middle" class="sm" style="fill:var(--bad)">Conhecimento → Programa: não existe formalmente (#065)</text>
+      <text x="450" y="24" text-anchor="middle" class="sm">cada seta deveria ter um script e um artefato verificável</text>
+    </g>
+  </svg>
+
+  <div class="grid">
+    <div class="eco"><span class="role r-mapa">mapa · #064</span><p>Fontes → Conhecimento → Serviço → Programa → Clínica: desenhar esse fluxo como figura única no README raiz.</p></div>
+    <div class="eco"><span class="role r-mapa">setas · #065</span><p>Cada seta deve ter um script e um artefato verificável; a seta Conhecimento → Programa não existe formalmente (codigo.csv lista onde o pylinac diverge, mas o ISOCENTRO não consome dado do conhecimento).</p></div>
+    <div class="eco"><span class="role r-decai">o que decai · #066</span><p>A vigência das normas. Rotina trimestral de “checar vigência” (a ANSN publica resoluções novas; NN-3.02 é de 2026), gerada de vigencia.json com links.</p></div>
+    <div class="eco"><span class="role r-decai">o que decai · #067</span><p>O código externo clonado (61 repos). atualizar.py mostra o diff de versão entre o clone e o que a ficha de código descreveu; se mudou, a ficha vira “a reconferir”.</p></div>
+    <div class="eco"><span class="role r-decai">o que decai · #068</span><p>As fichas conferidas contra uma versão do conversor de texto; o campo <code>conferida_contra: texto vX</code> resolve.</p></div>
+    <div class="eco"><span class="role r-pred">predador · #069</span><p>Sincronização ou backup que copia .venv (422 MB), dist (530 MB), build e .git; conferir as exclusões de qualquer backup de Documents\isocentro.</p></div>
+    <div class="eco"><span class="role r-simb">simbiose · #070</span><p>O mapa-conhecimento e o ISOCENTRO podem compartilhar o vocabulário de etapas (etapas.json) que a UX Torre de controle usa; um só arquivo de domínio.</p></div>
+    <div class="eco"><span class="role r-nicho">nicho vazio · #071</span><p>Não há glossário de domínio único; dicionario-projeto.txt (cspell), TG-263 e aliases.json são três dicionários. Unificar num glossario.csv que gera os três.</p></div>
+    <div class="eco"><span class="role r-nicho">nicho vazio · #072</span><p>Não há índice reverso “este módulo implementa estas exigências”; o campo <code>isocentro: []</code> das fichas está vazio; preencher dá a matriz requisito→código exigida pela 62304.</p></div>
+    <div class="eco"><span class="role r-nicho">nicho vazio · #073</span><p>Teste do ISOCENTRO que cita requisito (<code>@requisito('NN-6.10 art.17 IV')</code>) fecha o ciclo fonte→requisito→código→teste.</p></div>
+    <div class="eco"><span class="role r-inv">espécie invasora · #074</span><p>Arquivos de ferramenta do Windows (desktop.ini) dentro do acervo; ignorar no catálogo e no git.</p></div>
+    <div class="eco"><span class="role r-fluxo">fluxo de energia · #075</span><p>O gargalo do ecossistema é o tempo de UMA pessoa; toda sugestão deve reduzir passos manuais, não acrescentar burocracia.</p></div>
+    <div class="eco"><span class="role r-teia">teia · #076</span><p>Os 7 repositórios formam uma teia sem mapa: um REPOS.md na raiz com função, remoto, ramo ativo, dono e estado (ativo/congelado/a integrar) de cada um.</p></div>
+    <div class="eco"><span class="role r-teia">teia · #077</span><p>Projetos paralelos que “vão entrar na solução” (parallel-mu-check já portado para dominio/paralelo.py): marcar no REPOS.md quando viram congelados/arquivados, para não haver duas versões vivas do mesmo cálculo.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== CAMPO 6 ===================== -->
+<section class="campo" id="c6" style="--cc:var(--c6)">
+<div class="wrap">
+  <div class="bev"><div class="ang">200°</div><div class="lab">Campo 6 · 10 ideias</div><h2>Backcasting: o estado ideal daqui a 1 ano, e o primeiro passo</h2></div>
+  <p class="lead">Lido da direita para a esquerda: o futuro desejado puxa o primeiro passo possível hoje.</p>
+  <div class="bc-head"><span>primeiro passo (hoje)</span><span></span><span style="text-align:right">futuro (daqui a 1 ano)</span></div>
+  <ol class="bc">
+    <li><div class="hoje"><b>#078 · passo</b>Script raiz verificar.py que chama os que já existem.</div><div class="arr">→</div><div class="fut"><b>futuro</b>Um comando <code>isocentro verificar-tudo</code> roda testes do programa e validação do acervo (nomes, hashes, fichas órfãs, LGPD) e sai verde.</div></li>
+    <li><div class="hoje"><b>#079 · passo</b>Preencher <code>isocentro: []</code> nas fichas do CQ (área A).</div><div class="arr">→</div><div class="fut"><b>futuro</b>Um auditor da ANVISA/CNEN pede “mostre de onde vem a tolerância X” e a resposta é um link da tela para a ficha e a página.</div></li>
+    <li><div class="hoje"><b>#080 · passo</b>README raiz com o diagrama do ecossistema e “por onde começar” por perfil (físico, dev, auditor).</div><div class="arr">→</div><div class="fut"><b>futuro</b>Um segundo físico entra no serviço e entende tudo em 1 hora pelo README raiz.</div></li>
+    <li><div class="hoje"><b>#081 · passo</b>Separar o que é interno do CLINICA do que é bibliografia pública.</div><div class="arr">→</div><div class="fut"><b>futuro</b>O acervo é publicável como base aberta para outros serviços brasileiros (sem POPs internos nem dados).</div></li>
+    <li><div class="hoje"><b>#082 · passo</b>Varrer as memórias e mover cada regra operacional para o README da pasta correspondente.</div><div class="arr">→</div><div class="fut"><b>futuro</b>Nenhuma regra mora só na memória do assistente.</div></li>
+    <li><div class="hoje"><b>#083 · passo</b>Listar cada arquivo de execução da raiz e decidir o destino (AppData, _restrito, assets).</div><div class="arr">→</div><div class="fut"><b>futuro</b>A raiz do repositório do programa tem só código, docs, testes e config de projeto.</div></li>
+    <li><div class="hoje"><b>#084 · passo</b>pyproject + lock + gerar_executavel.py lendo a versão de um único lugar.</div><div class="arr">→</div><div class="fut"><b>futuro</b>Build reprodutível com hash publicado no Release.</div></li>
+    <li><div class="hoje"><b>#085 · passo</b>genealogia.csv + vinculos.csv já permitem a consulta; falta o script “impacto CÓDIGO”.</div><div class="arr">→</div><div class="fut"><b>futuro</b>Uma mudança de norma (ex.: NN-3.01 2025) dispara a lista de fichas, atividades, telas e POPs afetados.</div></li>
+    <li><div class="hoje"><b>#086 · passo</b>Escolher o sentido único e trocar o robocopy /MIR manual por um script com relatório.</div><div class="arr">→</div><div class="fut"><b>futuro</b>Drive e local nunca divergem.</div></li>
+    <li><div class="hoje"><b>#087 · passo</b>Um modelo de solução .NET comum e um README de padrões C#.</div><div class="arr">→</div><div class="fut"><b>futuro</b>Plug-ins C# (scriptsvarian, preplan, Estruturas-auxiliares) com a mesma disciplina do Python (testes, CHANGELOG, versão).</div></li>
+  </ol>
+</div>
+</section>
+
+<!-- ===================== CAMPO 7 ===================== -->
+<section class="campo" id="c7" style="--cc:var(--c7)">
+<div class="wrap">
+  <div class="bev"><div class="ang">240°</div><div class="lab">Campo 7 · 10 ideias</div><h2>Provocation: afirmações absurdas para extrair princípios</h2></div>
+  <p class="lead">A frase absurda em destaque; o princípio que sobra embaixo.</p>
+  <div class="grid">
+    <div class="prov"><span class="n">#088</span><q>Apagar referencias/.</q><p><b>Princípio</b> · Se os PDFs são reobtíveis por DOI/URL, o que precisa de cuidado são os NÃO reobtíveis (POPs, aulas, normas antigas revogadas, manuais do fabricante); priorizar o backup desses.</p></div>
+    <div class="prov"><span class="n">#089</span><q>O código lê os PDFs direto.</q><p><b>Princípio</b> · Constraints e tolerâncias deveriam ser dados lidos por máquina (CSV/JSON com fonte e página), não prosa em ficha; já começou com o QUANTEC transcrito.</p></div>
+    <div class="prov"><span class="n">#090</span><q>Uma ficha por página de norma.</q><p><b>Princípio</b> · A granularidade certa é o REQUISITO (art. 17 IV), não o documento; requisitos.csv deve ser a tabela mais cuidada.</p></div>
+    <div class="prov"><span class="n">#091</span><q>Nenhuma pasta tem mais de 7 itens.</q><p><b>Princípio</b> · interface/ com 33 arquivos e tools/ com 60 pedem subpastas por função.</p></div>
+    <div class="prov"><span class="n">#092</span><q>O README raiz é o único documento.</q><p><b>Princípio</b> · Há README raiz + 7 CATALOGO + LEIA-ME + CLAUDE + NOTAS + DESTINO + ARMADILHAS + README do conhecimento; cada um precisa de um papel único e declarado (um mapa de documentos).</p></div>
+    <div class="prov"><span class="n">#093</span><q>O assistente não tem memória.</q><p><b>Princípio</b> · Tudo que hoje depende da memória (raiz do BMad, sentido do Drive, onde salvar rascunho) deve estar no CLAUDE.md da pasta central, que qualquer sessão lê.</p></div>
+    <div class="prov"><span class="n">#094</span><q>Um único CLAUDE.md na raiz de Documents\isocentro.</q><p><b>Princípio</b> · Só o repo do programa tem CLAUDE.md; acervo e conhecimento são operados por sessões que não leem regras locais. Criar CLAUDE.md curto em isocentro/ e conhecimento/.</p></div>
+    <div class="prov"><span class="n">#095</span><q>A pasta _superadas não existe.</q><p><b>Princípio</b> · Superada é atributo (vigência), não lugar; manter a pasta só para tirar do caminho, com a verdade em vigencia.json.</p></div>
+    <div class="prov"><span class="n">#096</span><q>Cada clínica é um repo.</q><p><b>Princípio</b> · Os dados por clínica (CEL, BET, DUO) ficam juntos e identificados por máquina com número de série; a chave natural é CLINICA/MAQUINA-SERIE.</p></div>
+    <div class="prov"><span class="n">#097</span><q>Tudo em inglês.</q><p><b>Princípio</b> · O projeto decidiu pt-BR em tudo; falta coerência nos nomes herdados (dados_feixe × comissionamento × beam data); registrar os sinônimos no glossário.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== CAMPO 8 ===================== -->
+<section class="campo" id="c8" style="--cc:var(--c8)">
+<div class="wrap">
+  <div class="bev"><div class="ang">280°</div><div class="lab">Campo 8 · 8 ideias</div><h2>Six Thinking Hats: está de acordo com o usual?</h2></div>
+  <p class="lead">O campo do veredito. Seis chapéus, oito falas.</p>
+  <div class="hats">
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-branco)" stroke="var(--ink3)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-branco)" stroke="var(--ink3)"/></svg><div><h3>Branco · fatos · #098</h3><p>Acervo com catálogo, nome padronizado, separação LGPD, fichas com página e matriz gerada está ACIMA do usual para um serviço de RT; o usual é pasta de PDFs no Drive.</p></div></div>
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-branco)" stroke="var(--ink3)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-branco)" stroke="var(--ink3)"/></svg><div><h3>Branco · fatos · #099</h3><p>O repo do programa está ABAIXO do usual em empacotamento (sem pyproject, dependência de teste fora do requirements) e em higiene de raiz (dados de execução, logs, locks, build e dist misturados ao código).</p></div></div>
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-branco)" stroke="var(--ink3)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-branco)" stroke="var(--ink3)"/></svg><div><h3>Branco · fatos · #100</h3><p>A arquitetura em camadas (dominio, dados, banco, dicom, papel, interface) é a usual e boa; o desequilíbrio é de tamanho (interface: 27 mil de 54 mil linhas).</p></div></div>
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-vermelho)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-vermelho)"/></svg><div><h3>Vermelho · sensação · #101</h3><p>A sensação de “muitas pastas e muitos lugares” vem de 4 eixos misturados na raiz: fonte externa, conhecimento derivado, dado do serviço e software; nomear os 4 eixos acalma a estrutura.</p></div></div>
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-preto)" stroke="var(--ink3)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-preto)" stroke="var(--ink3)"/></svg><div><h3>Preto · riscos · #102</h3><p>Duas fontes de verdade (Drive e local), regras só na memória, commits atrasados, junções invisíveis e 7 repos sem mapa são os 5 riscos reais; nenhum é de taxonomia.</p></div></div>
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-amarelo)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-amarelo)"/></svg><div><h3>Amarelo · trunfo · #103</h3><p>O maior trunfo é a rastreabilidade fonte→página→requisito; poucos softwares comerciais de RT têm isso, e é exatamente o que IEC 62304 e RDC 657 pedem.</p></div></div>
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-verde)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-verde)"/></svg><div><h3>Verde · criação · #104</h3><p>Transformar o acervo em “pacote de dados de domínio” versionado que o ISOCENTRO importa (isocentro-conhecimento vira dependência com versão).</p></div></div>
+    <div class="hat"><svg viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="32" rx="22" ry="5" fill="var(--hat-azul)"/><path d="M12 32 Q12 8 24 8 Q36 8 36 32 Z" fill="var(--hat-azul)"/></svg><div><h3>Azul · processo · #105</h3><p>Não reorganizar tudo de uma vez: (1) higiene da raiz do repo e pyproject, (2) sentido único Drive/local, (3) regras da memória para READMEs, (4) rastreabilidade ficha→código, (5) taxonomia por tipo+tags.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== CAMPO 9 ===================== -->
+<section class="campo" id="c9" style="--cc:var(--c9)">
+<div class="wrap">
+  <div class="bev"><div class="ang">320°</div><div class="lab">Campo 9 · 11 ideias</div><h2>SCAMPER sobre a estrutura de pastas</h2></div>
+  <p class="lead">Sete verbos, onze cortes na árvore de pastas.</p>
+  <div class="scamper">
+    <div class="sc"><div class="L">S</div><div class="t"><b>Substituir · #106</b>robocopy /MIR manual por rclone/script com dry-run e relatório de diferenças.</div></div>
+    <div class="sc"><div class="L">C</div><div class="t"><b>Combinar · #107</b>catalogar.py (raiz), dicom-teste/catalogar.py e codigo-externo/atualizar.py num único CLI <code>acervo</code> com subcomandos.</div></div>
+    <div class="sc"><div class="L">C</div><div class="t"><b>Combinar · #108</b>aliases.json + nomes de arquivo + CATALOGO.md numa única tabela fontes.csv (código, título, emissor, ano, tipo, vigência, DOI, URL, hash, caminho).</div></div>
+    <div class="sc"><div class="L">A</div><div class="t"><b>Adaptar · #109</b>O conceito de “issue” do GitHub para PENDENCIAS.md e a lista de aquisição (57 itens): estado, data e rótulo sem editar Markdown.</div></div>
+    <div class="sc"><div class="L">M</div><div class="t"><b>Modificar · #110</b>O CATALOGO.md de cada pasta passa a ser 100% gerado de fontes.csv, com aviso “não editar à mão” no topo.</div></div>
+    <div class="sc"><div class="L">P</div><div class="t"><b>Pôr em outro uso · #111</b>O mapa-conhecimento serve também como checklist de auditoria (exportar a visão requisito→evidência em PDF).</div></div>
+    <div class="sc"><div class="L">E</div><div class="t"><b>Eliminar · #112</b>A pasta 09 Sistemas Varian (cópias), com 3 arquivos, que duplica manuais/Varian; virar atalho ou tag.</div></div>
+    <div class="sc"><div class="L">E</div><div class="t"><b>Eliminar · #113</b>Os 3 arquivos .spec do PyInstaller na raiz → pasta distribuicao/ ou build/specs, que já existe como conceito.</div></div>
+    <div class="sc"><div class="L">E</div><div class="t"><b>Eliminar · #114</b>notas_posicionamento.json, registro_fichas.json e sessoes.json da raiz em desenvolvimento; se forem dados de paciente, devem estar em _restrito como TCs_Teste.</div></div>
+    <div class="sc"><div class="L">R</div><div class="t"><b>Reverter · #115</b>Em vez de o código procurar dados na raiz (com junções), a instalação aponta o código para os dados (<code>ISOCENTRO_DADOS</code>).</div></div>
+    <div class="sc"><div class="L">R</div><div class="t"><b>Reverter · #116</b>Em vez de catalogar depois de mover, mover pelo script (<code>acervo adicionar arquivo.pdf --codigo X --tipo Y</code>), que já renomeia, cataloga, converte e registra.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== SÍNTESE ===================== -->
+<section class="sintese" id="sintese">
+<div class="wrap">
+  <div class="kicker">Isocentro · onde os nove campos se encontram</div>
+  <h2 class="big">A síntese</h2>
+
+  <!-- veredito -->
+  <div class="block">
+    <h3>1 · Veredito</h3>
+    <h4>Está de acordo com o usual? Depende de qual metade.</h4>
+    <div class="scale" aria-hidden="true">
+      <div class="bar"></div>
+      <span class="mk" style="left:86%;color:var(--ok)" title="Acervo e conhecimento"></span>
+      <span class="mk" style="left:50%;color:var(--ink3)" title="Arquitetura em camadas"></span>
+      <span class="mk" style="left:16%;color:var(--bad)" title="Repo do programa: empacotamento e raiz"></span>
+      <div class="ticks"><span>abaixo do usual</span><span>usual</span><span>acima do usual</span></div>
+    </div>
+    <div class="verd">
+      <div class="up"><b>▲ Acima do usual · acervo e conhecimento</b><p>Pipeline bruto→derivado→fichas→matriz gerada, citação com página, LGPD isolado. O usual num serviço de RT é uma pasta de PDFs no Drive.</p></div>
+      <div class="mid"><b>● Usual e boa · arquitetura em camadas</b><p>dominio, dados, banco, dicom, papel, interface. O desequilíbrio é de tamanho: interface tem 27 mil das 54 mil linhas.</p></div>
+      <div class="down"><b>▼ Abaixo do usual · repo do programa</b><p>Empacotamento (sem pyproject, dependência de teste fora do requirements) e higiene da raiz: dados de execução, logs, locks, build/dist, junções.</p></div>
+    </div>
+  </div>
+
+  <!-- riscos -->
+  <div class="block">
+    <h3>2 · Os 5 riscos reais</h3>
+    <h4>Pontos quentes no mapa de dose</h4>
+    <div class="risks">
+      <div class="risk"><div class="k">R1</div><p>Duas fontes de verdade: Drive e local.</p></div>
+      <div class="risk"><div class="k">R2</div><p>Regras que só existem na memória do assistente.</p></div>
+      <div class="risk"><div class="k">R3</div><p>Commits atrasados.</p></div>
+      <div class="risk"><div class="k">R4</div><p>Junções invisíveis.</p></div>
+      <div class="risk"><div class="k">R5</div><p>7 repositórios sem mapa.</p></div>
+    </div>
+    <div class="notax">nenhum dos riscos é de <s>taxonomia</s></div>
+  </div>
+
+  <!-- citekey -->
+  <div class="block">
+    <h3>3 · Conexão-chave</h3>
+    <h4>O CÓDIGO já é uma citekey: cinco ideias são uma só</h4>
+    <p class="txt">Com uma tabela <code>fontes.csv</code> (código, DOI, hash, vigência), o CÓDIGO da fonte unifica o que hoje são cinco frentes separadas.</p>
+    <svg class="hub" viewBox="-310 -190 620 380" role="img" aria-label="CÓDIGO no centro, ligado por fontes.csv a cinco frentes">
+      <g stroke="var(--iso)" stroke-width="1.5" fill="none">
+        <line x1="0" y1="0" x2="0" y2="-140"/>
+        <line x1="0" y1="0" x2="200" y2="-50"/>
+        <line x1="0" y1="0" x2="130" y2="130"/>
+        <line x1="0" y1="0" x2="-130" y2="130"/>
+        <line x1="0" y1="0" x2="-200" y2="-50"/>
+      </g>
+      <circle r="78" fill="var(--panel)" stroke="var(--iso)" stroke-dasharray="3 4"/>
+      <text y="-58" text-anchor="middle" class="m" font-size="10" style="fill:var(--ink3)">fontes.csv</text>
+      <circle r="44" fill="var(--iso-soft)" stroke="var(--iso)" stroke-width="2"/>
+      <text y="-4" text-anchor="middle" class="m" font-size="15" font-weight="bold" style="fill:var(--iso)">CÓDIGO</text>
+      <text y="14" text-anchor="middle" class="m" font-size="10" style="fill:var(--ink2)">TG-218</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="-70" y="-176" width="140" height="34" rx="17" fill="var(--bg)" stroke="var(--line)"/><text x="0" y="-154">CATALOGO.md</text>
+        <rect x="140" y="-68" width="140" height="34" rx="17" fill="var(--bg)" stroke="var(--line)"/><text x="210" y="-46">aliases</text>
+        <rect x="60" y="126" width="160" height="34" rx="17" fill="var(--bg)" stroke="var(--line)"/><text x="140" y="148">Zotero / CSL</text>
+        <rect x="-230" y="126" width="180" height="34" rx="17" fill="var(--bg)" stroke="var(--line)"/><text x="-140" y="148">detector de duplicata</text>
+        <rect x="-300" y="-68" width="180" height="34" rx="17" fill="var(--bg)" stroke="var(--line)"/><text x="-210" y="-46">sincronização Drive</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- seta -->
+  <div class="block">
+    <h3>4 · A seta que falta</h3>
+    <h4>Conhecimento → Programa</h4>
+    <p class="txt">É a seta que não existe no ecossistema. Fechá-la dá a rastreabilidade fonte→requisito→código→teste que a IEC 62304 pede e que é o maior trunfo do projeto.</p>
+    <div class="chain">
+      <div class="st">Fonte<small>[CÓDIGO p. N]</small></div>
+      <div class="st">Requisito<small>requisitos.csv</small></div>
+      <div class="st hot">Código<small>isocentro: [ ]</small></div>
+      <div class="st hot">Teste<small>@requisito</small></div>
+    </div>
+    <div class="mech">
+      <div>Preencher <code>isocentro: []</code> nas fichas.</div>
+      <div>Marcador <code>@requisito</code> nos testes.</div>
+      <div>Valor numérico <b>gerado da ficha</b>, nunca digitado duas vezes.</div>
+    </div>
+  </div>
+
+  <!-- taxonomia -->
+  <div class="block">
+    <h3>5 · Taxonomia</h3>
+    <h4>Pastas por tipo, temas como tags</h4>
+    <div class="tax">
+      <div><b>Pastas físicas por TIPO de fonte</b>Mudam pouco. Tema e etapa da cadeia ficam como tags em metadados; acaba o conflito entre 01–11 e as 14 etapas.</div>
+      <div><b>Documentos internos saem de referencias/</b>POPs CLINICA e incidentes internos vão para os documentos do serviço, com controle de revisão.</div>
+    </div>
+  </div>
+
+  <!-- ordem -->
+  <div class="block">
+    <h3>6 · Ordem sugerida</h3>
+    <h4>Seis frações, uma por vez</h4>
+    <p class="txt">Não reorganizar tudo de uma vez. Cada fração só é entregue quando a suíte de testes passa.</p>
+    <ol class="frac" id="frac">
+      <li data-i="1"><b>Higiene da raiz + pyproject/lock</b><small>dados de execução, logs, locks, build/dist fora do código</small></li>
+      <li data-i="2"><b>Sentido único Drive ↔ local</b><small>uma fonte, uma publicação</small></li>
+      <li data-i="3"><b>Regras da memória → README/CLAUDE.md das pastas</b><small>a memória só aponta</small></li>
+      <li data-i="4"><b>fontes.csv + CLI acervo</b><small>o CÓDIGO como citekey em todo lugar</small></li>
+      <li data-i="5"><b>Rastreabilidade ficha → código</b><small>isocentro: [ ] e @requisito</small></li>
+      <li data-i="6"><b>Taxonomia tipo + tags</b><small>por último, porque não é risco</small></li>
+    </ol>
+    <div class="aceite"><span class="pill">✓ aceite</span> a suíte de 2317 testes, depois de cada passo</div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    ISOCENTRO · brainstorm-organizacao-isocentro-2026-10-21 · 9 técnicas · 116 ideias · 6 conclusões
+    <div class="theme"><button type="button" id="tgl">alternar tema</button></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var cores=['--c1','--c2','--c3','--c4','--c5','--c6','--c7','--c8','--c9'];
+  var nomes=['O que funciona','Transplante','Inversão','Pior ideia','Ecossistema','Backcasting','Provocação','Seis chapéus','SCAMPER'];
+  var g=document.getElementById('beams'), ns='http://www.w3.org/2000/svg';
+  function pt(r,a){var t=(a-90)*Math.PI/180;return [r*Math.cos(t),r*Math.sin(t)];}
+  for(var i=0;i<9;i++){
+    var a=i*40, s1=pt(222,a-7), s2=pt(222,a+7), lab=pt(246,a);
+    var grp=document.createElementNS(ns,'g'); grp.setAttribute('class','beam'); grp.setAttribute('data-c','c'+(i+1));
+    var p=document.createElementNS(ns,'path');
+    p.setAttribute('d','M'+s1[0].toFixed(1)+','+s1[1].toFixed(1)+' L'+s2[0].toFixed(1)+','+s2[1].toFixed(1)+' L0,0 Z');
+    p.setAttribute('fill','var('+cores[i]+')');
+    var ln=document.createElementNS(ns,'line'); var e=pt(222,a);
+    ln.setAttribute('x1',e[0].toFixed(1));ln.setAttribute('y1',e[1].toFixed(1));ln.setAttribute('x2',0);ln.setAttribute('y2',0);
+    ln.setAttribute('stroke','var('+cores[i]+')');ln.setAttribute('stroke-width','1');ln.setAttribute('stroke-dasharray','2 4');
+    var hd=document.createElementNS(ns,'rect'); var h=pt(226,a);
+    hd.setAttribute('x',(h[0]-9).toFixed(1));hd.setAttribute('y',(h[1]-9).toFixed(1));hd.setAttribute('width',18);hd.setAttribute('height',18);hd.setAttribute('rx',3);
+    hd.setAttribute('fill','var('+cores[i]+')');hd.setAttribute('transform','rotate('+a+' '+h[0].toFixed(1)+' '+h[1].toFixed(1)+')');
+    var tx=document.createElementNS(ns,'text');
+    tx.setAttribute('x',lab[0].toFixed(1));tx.setAttribute('y',(lab[1]+4).toFixed(1));
+    tx.setAttribute('text-anchor', Math.abs(lab[0])<20?'middle':(lab[0]>0?'start':'end'));
+    tx.textContent=a+'° '+nomes[i];
+    var tt=document.createElementNS(ns,'title'); tt.textContent='Campo '+(i+1)+': '+nomes[i];
+    grp.appendChild(tt);grp.appendChild(p);grp.appendChild(ln);grp.appendChild(hd);grp.appendChild(tx);
+    (function(id){grp.addEventListener('click',function(){var el=document.getElementById(id);if(el)el.scrollIntoView();});})('c'+(i+1));
+    g.appendChild(grp);
+  }
+  // anéis de fração
+  var lis=document.querySelectorAll('#frac li');
+  for(var k=0;k<lis.length;k++){
+    var n=k+1, frac=n/6, C=2*Math.PI*22;
+    var box=document.createElement('div'); box.className='fx';
+    box.innerHTML='<svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="22" fill="none" stroke="var(--line)" stroke-width="5"/><circle cx="28" cy="28" r="22" fill="none" stroke="var(--iso)" stroke-width="5" stroke-linecap="round" stroke-dasharray="'+(C*frac).toFixed(1)+' '+C.toFixed(1)+'"/></svg><span>'+n+'</span>';
+    var body=document.createElement('div');
+    while(lis[k].firstChild) body.appendChild(lis[k].firstChild);
+    lis[k].appendChild(box); lis[k].appendChild(body);
+  }
+  // campo ativo durante a rolagem
+  var navs=document.querySelectorAll('#navc a'), beams=document.querySelectorAll('#beams .beam');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var id=en.target.id;
+        navs.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});
+        beams.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-c')===id);});
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('section.campo,section.sintese').forEach(function(s){io.observe(s);});
+  }
+  // tema
+  var root=document.documentElement;
+  try{var t=localStorage.getItem('tema-brainstorm');if(t)root.setAttribute('data-theme',t);}catch(e){}
+  document.getElementById('tgl').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var nv=dark?'light':'dark'; root.setAttribute('data-theme',nv);
+    try{localStorage.setItem('tema-brainstorm',nv);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

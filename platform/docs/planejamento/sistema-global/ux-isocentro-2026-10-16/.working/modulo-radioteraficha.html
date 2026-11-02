@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>ISOCENTRO — Radioteraficha (mockup)</title>
+<style>
+/* =====================================================================
+   MOCKUP 1:1 — MÓDULO Radioteraficha em tela cheia, tela Fichinha (1366×768)
+   Governado por:
+     DESIGN.md     → colors (DIA e -noite), typography (barra-de-modo, status-bar,
+                     escala própria da Fichinha no NOTE de Typography), rounded,
+                     Components (Faixa de telas, Botão Início = fantasma, Cartao,
+                     Chip, selo-degrau-fonte, status-bar)
+     EXPERIENCE.md → IA (Módulo em tela cheia: [Início] tela · tela · tela ☾/☀),
+                     "Os 9 cartões" (linha Radioteraficha), Component Patterns
+                     (Faixa do módulo, Barra de status, Selo), Questões em aberto U1
+   Fontes de fidelidade: fichinha.py (_estilo_modo 2164-2175, barra_de_modo 2366-2431,
+     _AlternarModo 2183-2215, _Bloco ~600-640, escala FONTE_* 83-89, docstring dos 5 blocos).
+   Perfil: físico → vê todas as telas da faixa. Radioteradados saiu (vira Indicadores).
+   Alternância dia/noite SEM JS: checkbox oculto + :has(). Padrão noite (estilo.py:96; U5 aberta).
+   ===================================================================== */
+:root{
+  --acao:#3FBFB6; --acao-forte:#55D2C9; --acao-clara:#5AD3C9; --acao-fundo:#123A38;
+  --acao-linha:#2E6E6A; --sobre-acao:#08191A;
+  --fundo-tela:#0F1518; --fundo-bloco:#161E22; --fundo-cartao:#161E22;
+  --fundo-campo:#1D272C; --fundo-fundo:#0B1013;
+  --texto:#E6EDEF; --texto-fraco:#97A6AC; --texto-apagado:#6B7A81;
+  --borda:#26333A; --borda-suave:#1F2A30; --borda-forte:#35454E;
+  --ambar:#E0A63A; --ambar-fundo:#3A2E15; --vermelho:#E4595E; --vermelho-linha:#7A3A3D;
+  --selecao:#2E6E6A; --sobre-selecao:#E6EDEF;
+}
+:root:has(#modo-dia:checked){
+  --acao:#0F7B7B; --acao-forte:#0C6262; --acao-clara:#12908F; --acao-fundo:#E3F1F0;
+  --acao-linha:#95C4C4; --sobre-acao:#FFFFFF;
+  --fundo-tela:#F4F6F8; --fundo-bloco:#FFFFFF; --fundo-cartao:#FFFFFF;
+  --fundo-campo:#FAFBFC; --fundo-fundo:#EDEFF2;
+  --texto:#1B2127; --texto-fraco:#5A6672; --texto-apagado:#8A95A1;
+  --borda:#D9E0E7; --borda-suave:#E4E9EE; --borda-forte:#B9C4CE;
+  --ambar:#B4690E; --ambar-fundo:#FBF0DC; --vermelho:#B3261E; --vermelho-linha:#DFA9A5;
+  --selecao:#0F7B7B; --sobre-selecao:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#555;font-family:"Segoe UI",system-ui,sans-serif;font-size:10pt}
+#modo-dia{position:absolute;opacity:0;pointer-events:none}
+.janela{width:1366px;height:768px;margin:20px auto;display:flex;flex-direction:column;
+  background:var(--fundo-tela);color:var(--texto);overflow:hidden}
+
+/* ---------- faixa do módulo (barra de modo, 38px, margens 10/4, vão 8) ---------- */
+.faixa{flex:none;height:38px;display:flex;align-items:center;gap:8px;padding:4px 10px;
+  background:var(--fundo-fundo);border-bottom:1px solid var(--borda)}
+/* Botão Início = botao-fantasma, na ponta esquerda [ASSUMPTION posição]; altura 28 para caber na faixa */
+.btn-fantasma{font:600 13px "Segoe UI",sans-serif;color:var(--texto-fraco);background:transparent;
+  border:1px solid transparent;border-radius:8px;height:28px;padding:0 14px;cursor:pointer}
+.btn-fantasma:hover{background:var(--fundo-campo);color:var(--texto)}
+.nome-modulo{font-size:12px;font-weight:700;color:var(--texto);letter-spacing:1px;text-transform:uppercase;
+  padding:0 14px 0 10px;border-left:1px solid var(--borda);margin-left:2px}
+/* _estilo_modo (fichinha.py:2164-2175): contorno acao-linha, raio 7, 12/600; escolhido = acao/sobre-acao */
+.tela{font:600 12px "Segoe UI",sans-serif;color:var(--acao);background:transparent;
+  border:1px solid var(--acao-linha);border-radius:7px;height:28px;min-width:108px;padding:2px 14px;cursor:pointer;position:relative}
+.tela:hover{border-color:var(--acao);background:var(--acao-fundo)}
+.tela.marcada{background:var(--acao);color:var(--sobre-acao);border-color:var(--acao)}
+/* ANOTAÇÃO DE MOCKUP (não é componente): destino em aberto, U1 */
+.tela.u1{border-style:dashed}
+.tela.u1::after{content:"U1";position:absolute;top:-6px;right:-6px;font-size:9px;font-weight:700;
+  color:var(--texto-apagado);background:var(--fundo-fundo);border:1px dashed var(--borda-forte);border-radius:6px;padding:0 3px;line-height:12px}
+.estica{flex:1}
+.nota-u1{font-size:10px;color:var(--texto-apagado);font-style:italic;margin-right:8px}
+.alterna{font-size:17px;color:var(--texto-fraco);width:30px;text-align:center;cursor:pointer;user-select:none}
+.alterna:hover{color:var(--acao)}
+.alterna .sol{display:none}
+:root:has(#modo-dia:checked) .alterna .lua{display:none}
+:root:has(#modo-dia:checked) .alterna .sol{display:inline}
+
+/* ---------- miolo da Fichinha: 5 blocos ---------- */
+.miolo{flex:1;min-height:0;display:grid;gap:10px;padding:14px 18px;
+  grid-template-columns:1.55fr 1fr;grid-template-rows:1fr 1fr 1fr auto;
+  grid-template-areas:"doc ult" "doc hist" "doc altas" "datas datas"}
+/* _Bloco: fundo-bloco; raio do spine (cartao 11px) — o código usa 14px, fora da escala */
+.bloco{background:var(--fundo-bloco);border:1px solid var(--borda-suave);border-radius:11px;
+  padding:12px 14px 10px 14px;display:flex;flex-direction:column;gap:6px;min-height:0;overflow:hidden}
+.bloco-cab{display:flex;align-items:baseline;gap:8px}
+/* legenda do bloco: FONTE_ETIQUETA 12, bold, 1.2px; cor texto-fraco (spine) em vez de texto-apagado do código */
+.bloco-titulo{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--texto-fraco)}
+.cracha{font-size:12px;font-weight:700;color:var(--acao)}
+.lista{display:flex;flex-direction:column;overflow:hidden}
+.item{display:flex;align-items:center;gap:10px;padding:5px 8px;border-radius:7px;min-height:34px}
+.item:hover,.item.hover{background:var(--acao-fundo)}
+.item .nome{font-size:16px;color:var(--texto);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .apoio{font-size:14px;color:var(--texto-fraco);white-space:nowrap}
+.item .esp{flex:1}
+/* ações da linha só no hover (_Linha); com palavra, não só emoji (Accessibility Floor) */
+.acoes{display:none;gap:6px}
+.item:hover .acoes,.item.hover .acoes{display:flex}
+.item:hover .apoio.some,.item.hover .apoio.some{display:none}
+.btn-linha{font:650 12.5px "Segoe UI",sans-serif;color:var(--acao);background:transparent;
+  border:1px solid var(--acao-linha);border-radius:8px;padding:4px 10px;cursor:pointer;white-space:nowrap}
+.btn-linha:hover{background:var(--acao-fundo);border-color:var(--acao)}
+.chip{display:inline-block;border-radius:14px;padding:2px 10px;font-size:12px;font-weight:600;background:var(--fundo-campo);color:var(--texto-fraco);border:1px solid var(--borda-suave)}
+.area-doc{grid-area:doc}.area-ult{grid-area:ult}.area-hist{grid-area:hist}.area-altas{grid-area:altas}.area-datas{grid-area:datas}
+.datas{display:flex;gap:10px}
+.data{flex:1;background:var(--fundo-campo);border:1px solid var(--borda-suave);border-radius:7px;padding:6px 10px}
+.data b{display:block;font-size:14px;color:var(--texto)}
+.data span{font-size:14px;color:var(--texto-fraco)}
+
+/* barra de status: igual ao Início */
+.status{flex:none;display:flex;align-items:center;gap:10px;height:28px;padding:0 12px;
+  background:var(--fundo-fundo);border-top:1px solid var(--borda);font-size:11px;color:var(--texto-fraco)}
+.status b{color:var(--texto);font-weight:600}
+.status .sep{color:var(--texto-apagado)}
+.selo-degrau{border-radius:14px;padding:2px 10px;font-weight:600;background:var(--fundo-campo);color:var(--texto-fraco);border:1px solid var(--borda-suave)}
+.relogio{color:var(--texto-fraco);min-width:110px;text-align:right}
+</style>
+</head>
+<body>
+<input type="checkbox" id="modo-dia" aria-label="Alternar dia/noite">
+<div class="janela">
+
+  <!-- FAIXA DO MÓDULO: [Início] · nome · telas checáveis exclusivas (recortadas pelo perfil) · ☾/☀ -->
+  <header class="faixa">
+    <button class="btn-fantasma" title="Início">◀ Início</button>
+    <span class="nome-modulo">Radioteraficha</span>
+    <button class="tela">Capa-Up</button>
+    <button class="tela marcada" aria-pressed="true">Fichinha</button>
+    <button class="tela">Total</button>
+    <!-- ANOTAÇÃO DO MOCKUP: CQ Plano e Virtual continuam aqui até decidir o destino (U1). Tracejado + "U1" NÃO vão para o app. -->
+    <button class="tela u1">CQ Plano</button>
+    <button class="tela u1">Virtual</button>
+    <button class="tela">Agenda</button>
+    <span class="estica"></span>
+    <span class="nota-u1">tracejado = destino em aberto (U1), só no mockup</span>
+    <label for="modo-dia" class="alterna" title="Modo noturno — clique para o modo claro"><span class="lua">☾</span><span class="sol">☀</span></label>
+  </header>
+
+  <!-- FICHINHA: cinco blocos (docstring de fichinha.py): Documentação disponível na coluna larga;
+       Suas últimas fichas, Histórico e Altas Prontas à direita; Datas Relevantes na base. Esboço. -->
+  <main class="miolo">
+
+    <section class="bloco area-doc">
+      <div class="bloco-cab"><span class="bloco-titulo">Documentação disponível</span><span class="cracha">7</span></div>
+      <div class="lista">
+        <div class="item hover"><span class="nome">PACIENTE FICTÍCIO DELTA</span><span class="esp"></span>
+          <span class="apoio some">Próstata 70 Gy/28 fr · TrueBeam</span>
+          <span class="acoes"><button class="btn-linha">👁 Visualizar</button><button class="btn-linha">✏ Editar</button><button class="btn-linha">🖨 Imprimir</button></span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO ALFA</span><span class="esp"></span><span class="apoio">Pulmão D 60 Gy/30 fr · TrueBeam</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO ÉPSILON</span><span class="esp"></span><span class="apoio">Mama E 40 Gy/15 fr · 6EX</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO ZETA</span><span class="esp"></span><span class="apoio">Cabeça e pescoço 70 Gy/35 fr · TrueBeam</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO ETA</span><span class="esp"></span><span class="apoio">Reto 50,4 Gy/28 fr · 6EX</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO TETA</span><span class="esp"></span><span class="apoio">Metástase óssea 8 Gy/1 fr · 6EX</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO IOTA</span><span class="esp"></span><span class="apoio">Colo uterino 45 Gy/25 fr · TrueBeam</span></div>
+      </div>
+    </section>
+
+    <section class="bloco area-ult">
+      <div class="bloco-cab"><span class="bloco-titulo">Suas últimas fichas</span></div>
+      <div class="lista">
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO BETA</span><span class="esp"></span><span class="apoio">hoje 07:51</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO GAMA</span><span class="esp"></span><span class="apoio">15/10 16:40</span></div>
+      </div>
+    </section>
+
+    <section class="bloco area-hist">
+      <div class="bloco-cab"><span class="bloco-titulo">Histórico</span></div>
+      <div class="lista">
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO KAPA</span><span class="esp"></span><span class="apoio">15/10 · A. Física</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO LAMBDA</span><span class="esp"></span><span class="apoio">15/10 · B. Físico</span></div>
+      </div>
+    </section>
+
+    <section class="bloco area-altas">
+      <div class="bloco-cab"><span class="bloco-titulo">Altas Prontas</span><span class="cracha">3</span></div>
+      <div class="lista">
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO MI</span><span class="esp"></span><span class="chip">CEL</span></div>
+        <div class="item"><span class="nome">PACIENTE FICTÍCIO NI</span><span class="esp"></span><span class="chip">BET</span></div>
+      </div>
+    </section>
+
+    <section class="bloco area-datas">
+      <div class="bloco-cab"><span class="bloco-titulo">Datas Relevantes</span></div>
+      <div class="datas">
+        <div class="data"><b>20/10</b><span>Manutenção preventiva — VitalBeam (DUO)</span></div>
+        <div class="data"><b>02/11</b><span>Finados — sem atendimento</span></div>
+        <div class="data"><b>15/11</b><span>Proclamação da República — sem atendimento</span></div>
+        <div class="data"><b>20/11</b><span>Consciência Negra — sem atendimento</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="status">
+    <span><b>Geovani Pena</b></span><span class="sep">·</span>
+    <span>físico (físico responsável)</span><span class="sep">·</span>
+    <span>Todas as clínicas</span>
+    <span class="estica"></span>
+    <span class="selo-degrau">variandw · dado de 16/10 07:42</span>
+    <span class="relogio">16/10/2026 08:06</span>
+  </footer>
+</div>
+
+<!-- =====================================================================
+  [ASSUMPTION] seguidas do DESIGN.md / EXPERIENCE.md neste mockup:
+  - Botão Início = botao-fantasma na ponta esquerda da faixa;
+  - CQ Plano e Virtual continuam na faixa do Radioteraficha até decidir (U1);
+  - dentro do módulo a clínica só aparece na barra de status, sem seletor;
+  - selo variandw neutro; nomes de papéis tipográficos e raios por papel.
+
+  DECISÕES VISUAIS EXTRAS (NÃO estão nos spines):
+  1. Alternância dia/noite por checkbox oculto + :has() (sem JS).
+  2. Nome do módulo na faixa, logo após o Início, em 12/700 MAIÚSCULO texto, separado por régua borda.
+  3. Botão Início com "◀ Início" e altura 28px (fantasma com padding 0/14) para caber na faixa de 38px.
+  4. Anotação U1 (só mockup): borda tracejada nas telas CQ Plano e Virtual, etiqueta "U1" 9px
+     texto-apagado e legenda em itálico 10px à direita.
+  5. Tela "Fichinha" escolhida aparece preenchida acao/sobre-acao (é o :checked real do _estilo_modo);
+     é estado de seletor, não botão de ação — a tela não tem botão sólido.
+  6. Blocos da Fichinha com raio 11px (rounded.cartao) e borda borda-suave; o código usa 14px sem borda.
+  7. Legenda do bloco em texto-fraco (cor de título de Cartao) em vez do texto-apagado do código,
+     pelo piso de contraste.
+  8. Ações da linha (Visualizar · Editar · Imprimir) como contorno pequeno com emoji + palavra,
+     só na linha em foco; os três aparecem habilitados (o mockup não mostra a regra "Impressão espera a Visualização").
+  9. Proporção das colunas 1,55 : 1 e Datas Relevantes como 4 blocos lado a lado na base.
+ 10. Chip de unidade em Altas Prontas reduzido (12px, padding 2/10, com borda) em vez do Chip 15px.
+ 11. Barra de status idêntica à do Início (Todas as clínicas), 28px.
+  ===================================================================== -->
+</body>
+</html>

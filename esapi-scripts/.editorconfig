@@ -1,0 +1,23 @@
+# EditorConfig — padrão do repositório (alinhado a tools/check_encoding.sh)
+root = true
+
+[*]
+charset = utf-8            # UTF-8 SEM BOM (repo é no-BOM)
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+
+[*.cs]
+indent_size = 4
+# Scripts ESAPI single-file: C# 5, warnings-as-error. Sem const, sem $"...",
+# sem membros de corpo-expressão (=>). Ver CLAUDE.md §5 e tools/check_csharp_traps.py.
+
+[*.py]
+indent_size = 4
+
+[*.{sh,ps1}]
+indent_size = 4
+
+[*.csproj]
+indent_size = 2

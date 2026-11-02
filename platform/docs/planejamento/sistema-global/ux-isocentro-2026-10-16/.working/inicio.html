@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>ISOCENTRO — Início (mockup)</title>
+<style>
+/* =====================================================================
+   MOCKUP 1:1 — INÍCIO do shell global do ISOCENTRO (janela maximizada 1366×768)
+   Governado por:
+     DESIGN.md     → colors (DIA e -noite), typography, rounded, spacing,
+                     Components (Cartao, Chip, seletor-clinica, linha-pendencia,
+                     cartao-modulo, cartao-modulo-em-construcao, selo-degrau-fonte,
+                     selo-em-construcao, status-bar), Do's and Don'ts
+     EXPERIENCE.md → Information Architecture (Início = topo + painel + 9 cartões),
+                     "Os 9 cartões do Início", Clínica em contexto (Todas p/ físico
+                     responsável), Component Patterns (Topo do Início, Painel,
+                     Linha de pendência, Cartão de módulo, Seletor, Selo, Barra de
+                     status), State Patterns, Linguagem honesta, Voice and Tone
+   Estado canônico: Geovani (físico, físico responsável) com clínica = Todas (UJ-4).
+   Alternância dia/noite SEM JS (key-screens.md proíbe JS): checkbox oculto + :has().
+   Padrão noite porque estilo.py:96 usa noite (U5 continua aberta).
+   ===================================================================== */
+
+/* --- tokens: NOITE (padrão de fábrica, estilo.py:96) --- */
+:root{
+  --acao:#3FBFB6; --acao-forte:#55D2C9; --acao-clara:#5AD3C9; --acao-fundo:#123A38;
+  --acao-linha:#2E6E6A; --sobre-acao:#08191A;
+  --fundo-tela:#0F1518; --fundo-bloco:#161E22; --fundo-cartao:#161E22;
+  --fundo-campo:#1D272C; --fundo-fundo:#0B1013;
+  --texto:#E6EDEF; --texto-fraco:#97A6AC; --texto-apagado:#6B7A81;
+  --borda:#26333A; --borda-suave:#1F2A30; --borda-forte:#35454E;
+  --ambar:#E0A63A; --ambar-fundo:#3A2E15; --vermelho:#E4595E; --vermelho-linha:#7A3A3D;
+  --selecao:#2E6E6A; --sobre-selecao:#E6EDEF;
+}
+/* --- tokens: DIA --- */
+:root:has(#modo-dia:checked){
+  --acao:#0F7B7B; --acao-forte:#0C6262; --acao-clara:#12908F; --acao-fundo:#E3F1F0;
+  --acao-linha:#95C4C4; --sobre-acao:#FFFFFF;
+  --fundo-tela:#F4F6F8; --fundo-bloco:#FFFFFF; --fundo-cartao:#FFFFFF;
+  --fundo-campo:#FAFBFC; --fundo-fundo:#EDEFF2;
+  --texto:#1B2127; --texto-fraco:#5A6672; --texto-apagado:#8A95A1;
+  --borda:#D9E0E7; --borda-suave:#E4E9EE; --borda-forte:#B9C4CE;
+  --ambar:#B4690E; --ambar-fundo:#FBF0DC; --vermelho:#B3261E; --vermelho-linha:#DFA9A5;
+  --selecao:#0F7B7B; --sobre-selecao:#FFFFFF;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#555;font-family:"Segoe UI",system-ui,sans-serif;font-size:10pt}
+#modo-dia{position:absolute;opacity:0;pointer-events:none}
+
+/* moldura da janela maximizada */
+.janela{width:1366px;height:768px;margin:20px auto;display:flex;flex-direction:column;
+  background:var(--fundo-tela);color:var(--texto);overflow:hidden}
+
+/* ---------- topo do Início (faixa-margem 18/10/18/10) ---------- */
+.topo{flex:none;display:flex;align-items:center;gap:10px;padding:10px 18px;
+  background:var(--fundo-fundo);border-bottom:1px solid var(--borda)}
+/* marca: reaproveita typography.titulo-login (16/700, cor acao) — decisão extra */
+.marca{font-size:16px;font-weight:700;color:var(--acao);letter-spacing:.5px;margin-right:14px}
+.seletor{display:flex;gap:8px}
+/* seletor-clinica: contorno quando não escolhido; escolhido = acao-fundo/acao
+   (DESIGN.md components.seletor-clinica). [ASSUMPTION] uso do seletor checável.
+   Diverge do _estilo_btn_sel real (escolhido = sólido acao): o spine manda acao-fundo,
+   o que também preserva "um sólido por tela". */
+.sel{font:650 13px "Segoe UI",sans-serif;color:var(--acao);background:transparent;
+  border:1px solid var(--acao-linha);border-radius:8px;padding:9.5px 16px;cursor:pointer}
+.sel:hover{border-color:var(--acao);background:var(--acao-fundo)}
+.sel.marcado{background:var(--acao-fundo);color:var(--acao);border-color:var(--acao)}
+.estica{flex:1}
+/* ☾/☀ (_AlternarModo): rótulo 17px texto-fraco, hover acao; mostra o modo EM VIGOR */
+.alterna{font-size:17px;color:var(--texto-fraco);width:30px;text-align:center;cursor:pointer;user-select:none}
+.alterna:hover{color:var(--acao)}
+.alterna .sol{display:none}
+:root:has(#modo-dia:checked) .alterna .lua{display:none}
+:root:has(#modo-dia:checked) .alterna .sol{display:inline}
+/* usuário: texto-fraco, sem menu ([ASSUMPTION] clique não decidido) */
+.usuario{font-size:12.5px;color:var(--texto-fraco);padding-left:6px}
+.usuario b{color:var(--texto);font-weight:600}
+
+/* ---------- miolo ---------- */
+.miolo{flex:1;display:flex;flex-direction:column;gap:10px;padding:14px 18px;min-height:0}
+
+/* Cartao (ui.py:223-262) */
+.cartao{background:var(--fundo-bloco);border:1px solid var(--borda-suave);border-radius:11px;
+  padding:13px 16px 14px 16px}
+.titulo-cartao{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--texto-fraco)}
+
+/* painel "O que precisa de ação" */
+.painel{display:flex;flex-direction:column;gap:10px}
+.painel-cab{display:flex;align-items:baseline;gap:12px}
+.painel-cab .filtro{font-size:10px;color:var(--texto-fraco)}
+.pendencias{border:1px solid var(--borda-suave);border-radius:7px;overflow:hidden}
+/* cabeçalho de grade 11,5/700 */
+.cab-grade,.linha{display:grid;grid-template-columns:118px 1fr 150px 190px 62px 210px;align-items:center;column-gap:12px}
+.cab-grade{font-size:11.5px;font-weight:700;color:var(--texto-fraco);padding:6px 12px;
+  background:var(--fundo-bloco);border-bottom:1px solid var(--borda-suave)}
+/* linha-pendencia: fundo-campo, régua borda-suave, hover acao-fundo [ASSUMPTION hover] */
+.linha{font-size:12.5px;background:var(--fundo-campo);border-bottom:1px solid var(--borda-suave);
+  padding:4px 12px;min-height:38px;cursor:pointer}
+.linha:last-child{border-bottom:none}
+.linha:hover,.linha.hover{background:var(--acao-fundo)}
+.linha .oque{color:var(--texto)}
+.linha .oque small{display:block;font-size:10px;color:var(--texto-fraco);margin-top:1px}
+.linha .prazo,.linha .modulo,.linha .clinica{color:var(--texto-fraco)}
+.linha .prazo b{color:var(--texto);font-weight:600}
+.linha .estado{display:flex;align-items:center;justify-content:flex-end;gap:8px;color:var(--texto-fraco);font-size:11px}
+.linha.visto .oque{color:var(--texto-fraco)}
+
+/* Chip (ui.py:468-498): pílula raio 14, 15/600, padding 6/16 */
+.chip{display:inline-block;border-radius:14px;padding:6px 16px;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.chip.alta{background:var(--ambar-fundo);color:var(--vermelho)}     /* chip-vermelho */
+.chip.atencao{background:var(--ambar-fundo);color:var(--ambar)}     /* chip-ambar */
+.chip.informativo{background:var(--fundo-bloco);color:var(--texto-fraco);border:1px solid var(--borda-suave)} /* chip-neutro [ASSUMPTION] — ver rodapé */
+.chip.neutro{background:var(--fundo-campo);color:var(--texto-fraco)}
+
+/* botão contorno (estilo.py:258) — "Marcar como visto"; só na linha em foco */
+.btn-contorno{font:650 12.5px "Segoe UI",sans-serif;color:var(--acao);background:transparent;
+  border:1px solid var(--acao-linha);border-radius:8px;padding:5px 12px;cursor:pointer;white-space:nowrap}
+.btn-contorno:hover{background:var(--acao-fundo);border-color:var(--acao)}
+.linha .acao-linha{display:none}
+.linha:hover .acao-linha,.linha.hover .acao-linha{display:inline-block}
+.linha:hover .rotulo-estado,.linha.hover .rotulo-estado{display:none}
+
+/* grade dos 9 cartões de módulo — 5 colunas (número de colunas não decidido: decisão extra) */
+.modulos{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;flex:1;min-height:0}
+.modulo{display:flex;flex-direction:column;gap:8px;cursor:pointer}
+.modulo:hover{border-color:var(--acao-linha)}     /* [ASSUMPTION] cartão clicável sem precedente */
+.modulo .frase{font-size:12.5px;color:var(--texto-fraco);line-height:1.35}
+.modulo.construcao .titulo-cartao{color:var(--texto-apagado)}
+/* selo-em-construcao: chip neutro, tinta texto-apagado [ASSUMPTION] */
+.selo-construcao{align-self:flex-start;margin-top:auto;border-radius:14px;padding:3px 10px;font-size:11px;font-weight:600;
+  background:var(--fundo-campo);color:var(--texto-apagado)}
+
+/* barra de status (aparencia.py:139): fundo-fundo, 11px */
+.status{flex:none;display:flex;align-items:center;gap:10px;height:28px;padding:0 12px;
+  background:var(--fundo-fundo);border-top:1px solid var(--borda);font-size:11px;color:var(--texto-fraco)}
+.status b{color:var(--texto);font-weight:600}
+.status .sep{color:var(--texto-apagado)}
+/* selo-degrau-fonte: variandw = chip neutro [ASSUMPTION]; reduzido à altura da barra */
+.selo-degrau{border-radius:14px;padding:2px 10px;font-weight:600;background:var(--fundo-campo);color:var(--texto-fraco);border:1px solid var(--borda-suave)}
+.relogio{color:var(--texto-fraco);min-width:110px;text-align:right}
+</style>
+</head>
+<body>
+<input type="checkbox" id="modo-dia" aria-label="Alternar dia/noite">
+<div class="janela">
+
+  <!-- TOPO: marca · seletor de clínica · ☾/☀ · usuário (EXPERIENCE → Topo do Início) -->
+  <header class="topo">
+    <span class="marca">ISOCENTRO</span>
+    <!-- Físico responsável: CEL · BET · DUO · Todas (U6 resolvida). Escolhida: Todas (UJ-4). -->
+    <nav class="seletor" aria-label="Clínica">
+      <button class="sel">CEL</button>
+      <button class="sel">BET</button>
+      <button class="sel">DUO</button>
+      <button class="sel marcado" aria-pressed="true">Todas</button>
+    </nav>
+    <span class="estica"></span>
+    <label for="modo-dia" class="alterna" title="Modo noturno — clique para o modo claro"><span class="lua">☾</span><span class="sol">☀</span></label>
+    <span class="usuario"><b>Geovani Pena</b></span>
+  </header>
+
+  <main class="miolo">
+
+    <!-- PAINEL "O QUE PRECISA DE AÇÃO": filtrado por perfil e clínica; ordenado alta → atenção → informativo e, dentro, por prazo (FR-41) -->
+    <section class="cartao painel">
+      <div class="painel-cab">
+        <span class="titulo-cartao">O que precisa de ação</span>
+        <span class="filtro">físico · Todas as clínicas · 8 itens</span>
+      </div>
+      <div class="pendencias" role="table">
+        <div class="cab-grade" role="row">
+          <span>Severidade</span><span>O que é</span><span>Prazo</span><span>Módulo</span><span>Clínica</span><span style="text-align:right">Estado</span>
+        </div>
+
+        <div class="linha" role="row">
+          <span><span class="chip alta">alta</span></span>
+          <span class="oque">Alto risco não avaliado — Duplo Check antes da 1ª fração
+            <small>PACIENTE FICTÍCIO ALFA · ID TESTE-0001 · Pulmão D 60 Gy/30 fr · TrueBeam</small></span>
+          <span class="prazo"><b>1ª fração</b> · 17/10</span>
+          <span class="modulo">Plano</span>
+          <span class="clinica">CEL</span>
+          <span class="estado"><span class="rotulo-estado">aberto</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+
+        <!-- linha em foco (hover) para mostrar a ação "Marcar como visto" -->
+        <div class="linha hover" role="row">
+          <span><span class="chip alta">alta</span></span>
+          <span class="oque">CQ diário fora de tolerância — simetria do perfil 6 MV
+            <small>VitalBeam · lista do dia · ação prevista: chamar o físico antes do 1º paciente</small></span>
+          <span class="prazo"><b>hoje</b> · 16/10</span>
+          <span class="modulo">Garantia da Qualidade</span>
+          <span class="clinica">DUO</span>
+          <span class="estado"><span class="rotulo-estado">aberto</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+
+        <div class="linha" role="row">
+          <span><span class="chip alta">alta</span></span>
+          <span class="oque">Duplo Check pendente — prazo: 3ª fração
+            <small>PACIENTE FICTÍCIO BETA · ID TESTE-0002 · Mama E 50 Gy/25 fr · 6EX</small></span>
+          <span class="prazo"><b>3ª fração</b> · 20/10</span>
+          <span class="modulo">Plano</span>
+          <span class="clinica">BET</span>
+          <span class="estado"><span class="rotulo-estado">aberto</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+
+        <div class="linha visto" role="row">
+          <span><span class="chip alta">alta</span></span>
+          <span class="oque">Incidente com exposição não intencional — notificação e lista do art. 26
+            <small>Registro TESTE-INC-07 · NN-6.10 art. 26</small></span>
+          <span class="prazo"><b>30 dias</b> · 14/11</span>
+          <span class="modulo">Segurança do paciente</span>
+          <span class="clinica">CEL</span>
+          <span class="estado"><span class="rotulo-estado">visto · G. Pena 15/10 17:20</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+
+        <div class="linha" role="row">
+          <span><span class="chip atencao">atenção</span></span>
+          <span class="oque">Segunda checagem indeterminado: o cálculo não trata filtro
+            <small>PACIENTE FICTÍCIO GAMA · ID TESTE-0003 · campo 2 com filtro físico · Aprovação Física</small></span>
+          <span class="prazo"><b>Aprovação Física</b> · 17/10</span>
+          <span class="modulo">Plano</span>
+          <span class="clinica">BET</span>
+          <span class="estado"><span class="rotulo-estado">aberto</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+
+        <!-- "sem data": nunca vira em dia (FR-33). Ordenado no fim da sua severidade (decisão extra). -->
+        <div class="linha" role="row">
+          <span><span class="chip atencao">atenção</span></span>
+          <span class="oque">Treinamento anual de proteção radiológica — sem data de partida
+            <small>Equipe técnica · NN-6.10</small></span>
+          <span class="prazo"><b>sem data</b></span>
+          <span class="modulo">Documentação e conformidade</span>
+          <span class="clinica">DUO</span>
+          <span class="estado"><span class="rotulo-estado">aberto</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+
+        <div class="linha" role="row">
+          <span><span class="chip informativo">informativo</span></span>
+          <span class="oque">Calibração bienal do sistema de referência vence em 45 dias
+            <small>Eletrômetro + câmara de ionização de referência</small></span>
+          <span class="prazo"><b>45 dias</b> · 30/11</span>
+          <span class="modulo">Documentação e conformidade</span>
+          <span class="clinica">BET</span>
+          <span class="estado"><span class="rotulo-estado">aberto</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+
+        <div class="linha visto" role="row">
+          <span><span class="chip informativo">informativo</span></span>
+          <span class="oque">Aferição trimestral com fonte-teste vence em 52 dias
+            <small>Câmara de referência · decaimento corrigido</small></span>
+          <span class="prazo"><b>52 dias</b> · 07/12</span>
+          <span class="modulo">Documentação e conformidade</span>
+          <span class="clinica">CEL</span>
+          <span class="estado"><span class="rotulo-estado">visto · G. Pena 14/10 08:03</span><button class="btn-contorno acao-linha">Marcar como visto</button></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 CARTÕES DE MÓDULO (ordem do memlog [ASSUMPTION]); sem contagem (U4 aberta); sem ícone [ASSUMPTION] -->
+    <section class="modulos" aria-label="Módulos">
+      <article class="cartao modulo">
+        <span class="titulo-cartao">Radioteraficha</span>
+        <span class="frase">Ficha, capa e agenda: Capa-Up, Fichinha, Total, Agenda.</span>
+      </article>
+      <article class="cartao modulo construcao">
+        <span class="titulo-cartao">Plano</span>
+        <span class="frase">Segunda checagem; Aprovação Física e Duplo Check.</span>
+        <span class="selo-construcao">em construção</span>
+      </article>
+      <article class="cartao modulo construcao">
+        <span class="titulo-cartao">Tratamento</span>
+        <span class="frase">Leitura da 1ª fração e da contagem de frações.</span>
+        <span class="selo-construcao">em construção</span>
+      </article>
+      <article class="cartao modulo construcao">
+        <span class="titulo-cartao">Garantia da Qualidade</span>
+        <span class="frase">Programa de CQ por clínica e máquina, lista do dia, carta de controle.</span>
+        <span class="selo-construcao">em construção</span>
+      </article>
+      <article class="cartao modulo construcao">
+        <span class="titulo-cartao">Segurança do paciente</span>
+        <span class="frase">Incidentes e quase-incidentes, prazos do art. 26 e RDC 36.</span>
+        <span class="selo-construcao">em construção</span>
+      </article>
+      <article class="cartao modulo construcao">
+        <span class="titulo-cartao">Documentação e conformidade</span>
+        <span class="frase">Vencimentos, aferição com decaimento.</span>
+        <span class="selo-construcao">em construção</span>
+      </article>
+      <article class="cartao modulo construcao">
+        <span class="titulo-cartao">Software e sistemas</span>
+        <span class="frase">Cobertura, inventário SOUP, integridade, relatório de validação.</span>
+        <span class="selo-construcao">em construção</span>
+      </article>
+      <!-- Indicadores = antigo Radioteradados (protótipo existente) → sem selo -->
+      <article class="cartao modulo">
+        <span class="titulo-cartao">Indicadores</span>
+        <span class="frase">O antigo Radioteradados, saído do Radioteraficha.</span>
+      </article>
+      <article class="cartao modulo construcao">
+        <span class="titulo-cartao">Conhecimento</span>
+        <span class="frase">Proveniência de cada verificação.</span>
+        <span class="selo-construcao">em construção</span>
+      </article>
+    </section>
+  </main>
+
+  <!-- BARRA DE STATUS: esquerda usuário · perfil · clínica; direita degrau de fonte + data do dado -->
+  <footer class="status">
+    <span><b>Geovani Pena</b></span><span class="sep">·</span>
+    <span>físico (físico responsável)</span><span class="sep">·</span>
+    <span>Todas as clínicas</span>
+    <span class="estica"></span>
+    <span class="selo-degrau">variandw · dado de 16/10 07:42</span>
+    <span class="relogio">16/10/2026 08:05</span>
+  </footer>
+</div>
+
+<!-- =====================================================================
+  [ASSUMPTION] seguidas do DESIGN.md / EXPERIENCE.md neste mockup:
+  - nomes de papéis tipográficos, raios e espaçamentos por papel;
+  - moldura do Início (faixa de topo + Cartões sobre fundo-tela, vão 10px);
+  - cartão de módulo clicável com hover borda acao-linha; cartão sem ícone;
+  - hover acao-fundo na linha de pendência; "Marcar como visto" como ação explícita;
+  - chip informativo neutro; selo variandw neutro; selo "em construção" neutro/texto-apagado;
+  - seletor de clínica no estilo checável; escolhido = acao-fundo (spine), não o sólido real;
+  - ordem dos 9 cartões = ordem do memlog; usuário no topo sem menu;
+  - severidade "alta" para alto risco antes da 1ª fração e para Duplo Check com prazo.
+
+  DECISÕES VISUAIS EXTRAS (NÃO estão nos spines):
+  1. Alternância dia/noite por checkbox oculto + :has() (sem JS); símbolo mostra o modo em vigor.
+  2. Marca "ISOCENTRO" reaproveita typography.titulo-login (16/700, acao), letter-spacing .5px.
+  3. Grade de cartões em 5 colunas (5 + 4); colunas não decididas no spine.
+  4. Painel como grade de 6 colunas com cabeçalho (Severidade · O que é · Prazo · Módulo · Clínica · Estado)
+     e segunda linha miúda (10px, texto-fraco) com paciente/plano/norma.
+  5. "Marcar como visto" (contorno, 12.5px, padding reduzido 5/12) aparece só na linha em foco;
+     fora do foco a coluna mostra "aberto" ou "visto · quem data".
+  6. Linha "visto" com o texto principal em texto-fraco (rebaixa sem esconder).
+  7. "sem data" ordenado no fim da sua severidade (não tem prazo para ordenar).
+  8. Chip informativo com borda borda-suave e fundo fundo-bloco: chip-neutro (fundo-campo) ficaria
+     invisível sobre a linha, que já é fundo-campo.
+  9. Selo "em construção" e selo de degrau reduzidos (11px, padding 2–3/10) em vez do Chip 15px,
+     para caber no cartão e na barra de status de 28px.
+ 10. Indicadores sem selo "em construção" (é o protótipo Radioteradados, existe).
+ 11. Linha "filtro" ao lado do título do painel (perfil · clínica · nº de itens), 10px.
+ 12. Nenhum botão sólido no Início (não há passo que não se desfaz aqui).
+ 13. Barra de status 28px de altura; relógio à direita do selo.
+  ===================================================================== -->
+</body>
+</html>

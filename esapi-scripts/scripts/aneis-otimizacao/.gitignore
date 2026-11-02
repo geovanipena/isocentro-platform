@@ -1,0 +1,14 @@
+# DLLs da Varian — LICENCIADAS, nunca entram no repositório.
+# Copiar de C:\Program Files\Varian\RTM\<versão>\esapi\API. Ver o README.
+lib/
+*.dll
+
+# Saída de compilação
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# ILMerge, quando houver dependência externa
+ilmerge/

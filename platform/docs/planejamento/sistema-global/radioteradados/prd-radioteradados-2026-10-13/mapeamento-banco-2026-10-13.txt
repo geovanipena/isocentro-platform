@@ -1,0 +1,482 @@
+
+1. Quem está rodando
+  [ OK ] Usuário do Windows: GEOVANIPENA\geova
+         É esta identidade que o SQL vai receber — a autenticação é
+         integrada, não há senha em lugar nenhum.
+
+2. Biblioteca de acesso (pyodbc)
+  [ OK ] pyodbc 5.3.0
+
+3. Driver ODBC instalado na estação
+         · SQL Server
+  [AVISO] Só há o driver antigo (SQL Server).
+         Conecta, mas é depreciado e erra acentuação. Peça o
+         ODBC Driver 18 for SQL Server no MESMO chamado do acesso —
+         senão vira um segundo chamado depois.
+
+4. O servidor responde (SRVINSIGHT:1433)
+  [ OK ] Porta aberta.
+
+======================================================================
+1. MOTIVO DE ENCERRAMENTO DO CURSO
+======================================================================
+
+--- DWH.DimCourse ---
+  DimCourseID                                    VDT_SERIALNUMBER(8)  NOT NULL
+  DimPatientID                                   VDT_SERIALNUMBER(8)  NOT NULL
+  CourseId                                       VDT_STRING16(32)
+  CourseStartDateTime                            VDT_DATETIMESTAMP(8)
+  NoTxSessionPlanned                             VDT_INT(4)
+  NoTxSessionDelivered                           VDT_INT(4)
+  NoTxSessionRemaining                           VDT_INT(4)
+  DoseDelivered                                  VDT_FLOAT(8)
+  CourseDuration                                 VDT_INT(4)
+  Comment                                        VDT_STRING254(508)
+  ctrCourseSer                                   VDT_SERIALNUMBER(8)
+  DimLookupID_ClinicalStatus                     VDT_SERIALNUMBER(8)
+  DimLookupID_TreatmentIntentType                VDT_SERIALNUMBER(8)
+  DimDxSiteID                                    VDT_SERIALNUMBER(8)  NOT NULL
+  LogID                                          VDT_INT(4)
+
+  Cursos por ClinicalStatus (todos):
+       17940  ACTIVE
+       13181  COMPLETED
+           1  (sem estado)
+
+  Cursos dos últimos 18 meses que entregaram MENOS que o planejado,
+  por ClinicalStatus (é isto que diz se o status separa alta de abandono):
+
+  Colunas com cara de motivo / óbito / encerramento, no banco todo:
+
+  coluna ~ Reason  (25):
+    DWH.Cube_FactPatientLabResult.MinReason
+    DWH.Cube_FactPatientLabResult.MaxReason
+    DWH.DimActivityTransaction.DimLookupID_CancelReasonType
+    DWH.DimErxAgt.ItemNotSentReason
+    DWH.DimErxAgt.DimLookup_ItemNotSentReason
+    DWH.DimMedoncPlanInterval.ToxicityReason
+    DWH.DimPatientDoctor.EndReasonCode
+    DWH.DimPatientJournal.JournalErrorReasonText
+    DWH.DimPatientPerformanceStatus.ErrorReasonText
+    DWH.DimRx.RxErrorReason
+    DWH.DimRxAdmin.RxAdminErrorReason
+    DWH.DimRxAgt.RxSubstitutionReason
+    DWH.DimRxAgt.RxReason
+    DWH.DimRxAgt.RxDiscontinueReason
+    DWH.DimRxAgt.DimLookupID_RxPrnReason
+    DWH.FactPatientLabResult.MinReason
+    DWH.FactPatientLabResult.MaxReason
+    DWH.FactPatientLabResult.ErroredReason
+    DWH.FactPatientLabTest.DimLookupID_SpecimenRejectReason
+    DWH.FactPatientMedicalHistory.MenopauseReason
+    DWH.FactPatientMedicalHistory.DimLookupID_MpauseReasonType
+    DWH.FactPatientToxicity.ToxicityReason
+    DWH.FactRxAdminAgtLevel.RxAdminAgtErrorReason
+    DWH.FactRxDispensary.RxDispHydraOverrideReason
+    DWH.FactRxDispensary.RxDispErrorReason
+
+  coluna ~ Complet  (25):
+    DWH.AuraUpgradeRuleSet.CompletedStatus
+    DWH.AuraUpgradeRuleSetExecHistory.CompletedStatus
+    DWH.AuraUpgradeRuleSetExecHistory.CompletedWithError
+    DWH.AuraUpgradeRuleSetExecHistory.UpgradeCompleteDateTime
+    DWH.BrachyTreatmentModel.DimDateID_CourseCompletedDateTime
+    DWH.BrachyTreatmentModel.CourseCompletedDateTime
+    DWH.CourseModel.CompletedByUserName
+    DWH.CourseModel.CompletedDateTime
+    DWH.Cube_DimActivityTransaction.MarkedCompletedYear
+    DWH.Cube_DimActivityTransaction.MarkedCompletedQuarterNo
+    DWH.Cube_DimActivityTransaction.MarkedCompletedQuarterName
+    DWH.Cube_DimActivityTransaction.MarkedCompletedMonthNo
+    DWH.Cube_DimActivityTransaction.MarkedCompletedMonthName
+    DWH.Cube_DimActivityTransaction.MarkedCompletedMonth
+    DWH.Cube_DimActivityTransaction.MarkedCompletedDate
+    DWH.Cube_DimActivityTransaction.CompletedYear
+    DWH.Cube_DimActivityTransaction.CompletedQuarterNo
+    DWH.Cube_DimActivityTransaction.CompletedQuarterName
+    DWH.Cube_DimActivityTransaction.CompletedMonthNo
+    DWH.Cube_DimActivityTransaction.CompletedMonthName
+    DWH.Cube_DimActivityTransaction.CompletedMonth
+    DWH.Cube_DimActivityTransaction.CompletedDateTime
+    DWH.Cube_DimActivityTransaction.CompletedDate
+    DWH.Cube_DimActivityTransaction.CompletedByUserLastName
+    DWH.Cube_DimActivityTransaction.CompletedByUserFullName
+
+  coluna ~ Discontin  (3):
+    DWH.DimRxAgt.RxDiscontinueDateID
+    DWH.DimRxAgt.RxDiscontinueEffectiveDateID
+    DWH.DimRxAgt.RxDiscontinueReason
+
+  coluna ~ Terminat  (9):
+    DWH.BrachyTreatmentModel.TerminationStatus
+    DWH.DimConstantResource.ResourceTerminationDate
+    DWH.DimDoctor.DoctorTerminationDate
+    DWH.DimStaff.StaffTerminationDate
+    DWH.FactBrachyTreatment.TerminationStatus
+    DWH.FactTreatmentHistory.TerminationStatus
+    DWH.FactTreatmentHistoryBrachyFlat.TerminationStatus
+    DWH.TempFactTreatment3_FullMig.TerminationStatus
+    DWH.TreatmentHstryModel.TerminationStatus
+
+  coluna ~ Deceas  (0):
+    (nada)
+
+  coluna ~ Death  (5):
+    DWH.DimPatient.PatientDeathStatus
+    DWH.DimPatient.PatientDeathDate
+    DWH.DimPatient.PatientDeathCause
+    DWH.FactPatient.DimLookupID_PatientDeathCause
+    DWH.FactPatientFamilyHistory.AgeAtDeath
+
+  coluna ~ Expired  (0):
+    (nada)
+
+  coluna ~ Closed  (0):
+    (nada)
+
+  coluna ~ EndDate  (25):
+    DWH.BrachyTreatmentModel.DimDateID_TreatmentEndDate
+    DWH.Cube_DimActivityTransaction.ScheduledEndDate
+    DWH.Cube_DimActivityTransaction.ActivityEndDate
+    DWH.Cube_FactActivity.DimDateID_ActivityEndDateTime
+    DWH.Cube_FactActivity.ActivityEndDateTime
+    DWH.DimActivity.EffectiveEndDate
+    DWH.DimActivityTransaction.ActivityEndDateTime
+    DWH.DimActivityTransaction.DimDateID_ActivityEndDateTime
+    DWH.DimPatientAdmissionStatus.EndDateTime
+    DWH.DimPatientDepartment.EffectiveEndDate
+    DWH.DimPatientDepartmentbyCUID.EffectiveEndDate
+    DWH.DimPatientDoctor.EffectiveEndDate
+    DWH.DimVisitEventDetail.EventEndDateTime
+    DWH.DimVisitEventDetail.DimDateID_EndDateTime
+    DWH.FactActivityBilling.AccountBillingCodeEndDate
+    DWH.FactActivityBillingNoCapture.AccountBillingCodeEndDate
+    DWH.FactBrachyTreatment.DimDateID_TreatmentEndDate
+    DWH.FactPatientLabTest.DimDateID_CollectionEndDate
+    DWH.FactPatientLabTest.CollectionEndDate
+    DWH.FactPatientMedoncTreatment.TreatmentPlanEndDate
+    DWH.FactPatientMedoncTreatment.TreatmentEndDate
+    DWH.FactPatientMedoncTreatment.DimDateID_TreatmentEndDate
+    DWH.FactPatientToxicity.DimDateID_AssessmentEndDateTime
+    DWH.FactPatientToxicity.AssessmentEndDateTime
+    DWH.FactRxAdminAgtLevel.RxAdminAgtEndDateID
+
+======================================================================
+2. FREQUÊNCIA PRESCRITA
+======================================================================
+
+--- DWH.DimPrescription ---
+  DimPrescriptionID                              VDT_SERIALNUMBER(8)  NOT NULL
+  PrescriptionName                               VDT_STRING64(128)
+  Status                                         VDT_STRING64(128)
+  Revision                                       VDT_STRING64(128)
+  Site                                           VDT_STRING64(128)
+  CreationDate                                   VDT_DATETIMESTAMP(8)  NOT NULL
+  CreationUserName                               VDT_USERNAME(510)
+  HstryUserName                                  VDT_USERNAME(510)  NOT NULL
+  HstryDateTime                                  VDT_DATETIMESTAMP(8)  NOT NULL
+  HstryTaskName                                  VDT_TASKNAME(64)
+  NumberOfFractions                              VDT_INT(4)
+  Technique                                      VDT_STRING256(512)
+  Notes                                          VDT_STRING1024(2048)
+  TimeGapType                                    VDT_STRING32(64)
+  PhaseGapNumberOfDays                           VDT_INT(4)
+  PhaseType                                      VDT_STRING32(64)
+  Gating                                         VDT_STRING32(64)
+  BolusFrequency                                 VDT_STRING256(512)
+  BolusThickness                                 VDT_STRING256(512)
+  SimulationNeeded                               VDT_FLAG(4)
+  ApprovedOn                                     VDT_DATETIMESTAMP(8)
+  ApprovedBy                                     VDT_USERNAME(510)
+  History                                        VDT_STRING1024(2048)
+  LinkedPlans                                    VDT_STRING256(512)
+  RelPrescriptionSer                             VDT_SERIALNUMBER(8)
+  ctrPrescriptionSer                             VDT_SERIALNUMBER(8)  NOT NULL
+  LogID                                          VDT_INT(4)
+
+--- DWH.DimPrescriptionProperty ---
+  DimPrescriptionPropertyID                      VDT_SERIALNUMBER(8)  NOT NULL
+  PropertyType                                   VDT_ENUM(2)  NOT NULL
+  PropertyValue                                  VDT_STRING64(128)  NOT NULL
+  HstryUserName                                  VDT_USERNAME(510)  NOT NULL
+  HstryDateTime                                  VDT_DATETIME(8)  NOT NULL
+  HstryTaskName                                  VDT_TASKNAME(64)
+  ItemType                                       VDT_ENUM(2)
+  ItemValue                                      VDT_STRING64(128)
+  ctrPrescriptionPropertySer                     VDT_SERIALNUMBER(8)  NOT NULL
+  ctrPrescriptionPropertyItemSer                 VDT_SERIALNUMBER(8)
+  ctrPrescriptionSer                             VDT_SERIALNUMBER(8)  NOT NULL
+  LogID                                          VDT_INT(4)
+
+  PropertyType da prescrição: quantos valores distintos cada um tem
+  (só os com até 30 valores são amostrados — o resto é texto livre):
+
+    PropertyType 0: 1 linha(s), 1 valor(es) distinto(s)
+            1  NA
+
+    PropertyType 1: 21153 linha(s), 3 valor(es) distinto(s)
+        21113  A definir
+           39  6X
+            1  GMP Ir-192 HDR
+
+    PropertyType 2: 21196 linha(s), 5 valor(es) distinto(s)
+        21033  PHOTON
+          118  ELECTRON
+           37  Fóton
+            7  BRACHYTHERAPY
+            1  Brachytherapy
+
+    PropertyType 3: 1167 linha(s), 5 valor(es) distinto(s)
+         1039  CBCT
+          119  MV
+            3  PORTAL IMAGE
+            3  MV: PreTx: After Every 5 Fractions,Every Quarta-feira
+            3  Imagem de Portal: PreTx: After Every 3 Fractions,Every Terça
+
+    PropertyType 5: 1 linha(s), 1 valor(es) distinto(s)
+            1  CBC
+
+    PropertyType 6: 2 linha(s), 2 valor(es) distinto(s)
+            1  DOSE
+            1  Dose
+
+    PropertyType 7: 21153 linha(s), 7 valor(es) distinto(s)
+      (não amostrado: texto livre)
+
+  Colunas com cara de frequência / regime, no banco todo:
+
+  coluna ~ Frequen  (8):
+    DWH.Cube_FactPatientPrescription.BolusFrequency
+    DWH.DimPrescription.BolusFrequency
+    DWH.DimRxAgt.RxAdminFrequencyUpper
+    DWH.DimRxAgt.RxAdminFrequency
+    DWH.DimRxAgt.DimLookupID_RxWeekFrequencyUnit
+    DWH.DimRxAgt.DimLookupID_RxDoseFrequencyUnit
+    DWH.DimRxAgt.DimLookupID_RxDayofWeekFrequencyUnit
+    DWH.DimRxAgt.DimLookupID_RxAdminFrequencyUnit
+
+  coluna ~ Regimen  (0):
+    (nada)
+
+  coluna ~ Pattern  (6):
+    DWH.Cube_FactTreatmentHistory.FractionPatternDigitsPerDay
+    DWH.Cube_FactTreatmentHistory.FractionPattern
+    DWH.DimPlan.FractionPatternDigitsPerDay
+    DWH.DimPlan.FractionPattern
+    DWH.PlanModel.FractionPatternDigitsPerDay
+    DWH.PlanModel.FractionPattern
+
+  coluna ~ PerWeek  (2):
+    DWH.DimPatient.NoAlcoholUsePerWeek
+    DWH.FactPatientSocialHistory.NoAlcoholUsePerWeek
+
+  coluna ~ Interval  (5):
+    DWH.BrachyTreatmentModel.DeliveredPulseRepetitionInterval
+    DWH.BrachyTreatmentModel.SpecifiedPulseRepetitionInterval
+    DWH.DimMedoncPlanInterval.DimMedoncPlanIntervalID
+    DWH.FactBrachyTreatment.DeliveredPulseRepetitionInterval
+    DWH.FactBrachyTreatment.SpecifiedPulseRepetitionInterval
+
+  coluna ~ BID  (0):
+    (nada)
+
+  coluna ~ Schedule  (25):
+    DWH.Cube_DimActivityTransaction.IsScheduled
+    DWH.Cube_DimActivityTransaction.ScheduledEndDate
+    DWH.Cube_DimActivityTransaction.ScheduledEndMonth
+    DWH.Cube_DimActivityTransaction.ScheduledEndMonthNo
+    DWH.Cube_DimActivityTransaction.ScheduledEndQuarter
+    DWH.Cube_DimActivityTransaction.ScheduledEndQuarterNo
+    DWH.Cube_DimActivityTransaction.ScheduledEndYear
+    DWH.Cube_DimActivityTransaction.ScheduledStartDate
+    DWH.Cube_DimActivityTransaction.ScheduledStartMonth
+    DWH.Cube_DimActivityTransaction.ScheduledStartMonthNo
+    DWH.Cube_DimActivityTransaction.ScheduledStartQuarter
+    DWH.Cube_DimActivityTransaction.ScheduledStartQuarterNo
+    DWH.Cube_DimActivityTransaction.ScheduledStartYear
+    DWH.Cube_FactActivity.ctrScheduledActivitySer
+    DWH.Cube_FactActivity.DimDateID_ScheduledEndTime
+    DWH.Cube_FactActivity.IsScheduled
+    DWH.Cube_FactActivity.ScheduledEndTime
+    DWH.DimActivityTransaction.ctrScheduledActivitySer
+    DWH.DimActivityTransaction.DimDateID_ScheduledEndTime
+    DWH.DimActivityTransaction.IsScheduled
+    DWH.DimActivityTransaction.ScheduledEndTime
+    DWH.DimInSightiveActivityTransactionWorkTable.IsScheduled
+    DWH.FactActivityBilling.IsScheduled
+    DWH.FactActivityBillingNoCapture.IsScheduled
+    DWH.InSightiveWaitTimeAppointments_TB.IsScheduled
+
+  Pausas REAIS entre dias de tratamento consecutivos do mesmo curso,
+  últimos 6 meses (dias corridos):
+    01 dia(s)       11335
+    02 dia(s)         744
+    03 dia(s)        2475
+    04 dia(s)         650
+    05 dia(s)          80
+    06 dia(s)          22
+    07 dia(s)          37
+    08-14 dias         52
+    15+ dias           20
+
+  Cursos dos últimos 6 meses pela pausa MEDIANA (≥ 6 dias sugere regime semanal):
+       1141  diário (<2)
+        242  alternado / 2-3x semana (2-4)
+         11  4-6 dias
+          4  semanal ou mais espaçado (6+)
+
+======================================================================
+3. SIMULAÇÃO E CONSULTA COMO ATIVIDADES
+======================================================================
+
+  Atividades do último ano cujo código ou nome contém um destes termos:
+  SIMUL, TOMOG, TC ,  TC, CT , CONSULT, PLANEJ, PRIMEIRA, INICIO, REVIS
+       7065  HORARIO PLANEJAMENTO             HORARIO PLANEJAMENTO
+        886  MAMA INICIO                      MAMA INICIO
+        472  SBRT INICIO                      SBRT INICIO
+        420  PROSTATA INICIO                  PROSTATA INICIO
+        402  PALIATIVO INICIO                 PALIATIVO INICIO
+        394  PELVE INICIO                     PELVE INICIO
+        225  PELE INICIO                      PELE INICIO
+        190  CP INICIO                        CP INICIO
+        175  CRANIO INICIO                    CRANIO INICIO
+        153  SBRT PROSTATA INICIO             SBRT PROSTATA INICIO
+        139  TORAX INICIO                     TORAX INICIO
+         95  RC INICIO                        RC INICIO
+         50  CUPULA INICIO                    CUPULA INICIO
+         37  EXTREMIDADE INICIO               EXTREMIDADE INICIO
+         34  ABDOMEN INICIO                   ABDOMEN INICIO
+         32  COMPLETA INICIO                  COMPLETA INICIO
+          8  Agendar Neuro                    Importar TC MAV
+          4  RTEF INICIO                      RTEF INICIO
+
+  As 40 atividades mais frequentes do último ano, sem filtro:
+      41092  Review Treatment Images          Revisar Imagens do Tratamento
+      10566  Aprovar Tratamento               Aprovação Física
+       9676  Documentação                     Documentação
+       8936  1a Consulta                      1a Consulta
+       8328  Importação de Imagens            Importar Imagens
+       8215  MAMA                             MAMA
+       7879  Aprovar Plano                    Analisar Plano
+       7338  Inserir Diagnóstico              Inserir Diagnóstico
+       7195  Duplo Check                      Duplo Check
+       7065  HORARIO PLANEJAMENTO             HORARIO PLANEJAMENTO
+       6990  PROSTATA                         PROSTATA
+       6848  Delineamento estruturas          Contorno do Alvo
+       6746  Planejamento                     Planejamento
+       6629  Delineamento                     Prescrever Tratamento
+       6552  PELVE                            PELVE
+       6417  Agendar Paciente                 Agendar Paciente CEL
+       6151  Alta de Tratamento               Concluir Curso
+       6040  Confeccionar Capa                Setup e Capa
+       5927  Processo Completo                Processo Completo CEL
+       5805  Execução PD                      Execução PD
+       5668  Exames Complementares            Exames Complementares
+       5576  Contorno OAR                     Contorno OAR
+       5399  Programar Fluxo                  Programar Fluxo CEL
+       4904  TOMO-DUO                        TOMO-ANA
+       4727  CP                               CP
+       4621  Aguardando Tratamento CEL        Aguardando Tratamento CEL
+       4550  Análise PD                       Análise PD
+       4540  Verificar Programação UNI        Verificar Programação CEL
+       4200  Preparação PD                    Preparação PD
+       4076  Fusão de Imagens                 Fusão de Imagens
+       3421  Imprimir Alta UNI                Imprimir Alta CEL
+       3354  Confecção de Acessórios          Confecção de Acessórios
+       3235  Checar Fusão de Imagens          Checar Fusão de Imagens
+       3015  UNI 3D                           CEL 3D Solicitado
+       2915  UNI 3D Autorizado                CEL 3D Autorizado
+       2732  Carimbar Ficha Técnica           Carimbar Ficha Técnica
+       2727  Duplo Check Médico               Duplo Check Médico
+       2686  CRANIO                           CRANIO
+       2259  TORAX                            TORAX
+       2135  Agendar Paciente BUE             Agendar Paciente BET
+
+======================================================================
+4. BRAQUITERAPIA NO ARIA
+======================================================================
+
+  Máquinas com fração entregue no último ano (dias de tratamento):
+       8478  6EX                        6EX
+       8237  TrueBeamSN1001             VitalBeam
+       6581  600CD                      600CD
+      10072  TBuniverSN1002             TB Universitario
+
+  Cursos com diagnóstico C53 (colo do útero), último ano, por máquina:
+         45 curso(s)  VitalBeam
+         31 curso(s)  6EX
+         17 curso(s)  600CD
+         11 curso(s)  TB Universitario
+
+  Colunas com cara de técnica / braquiterapia, no banco todo:
+
+  coluna ~ Brachy  (25):
+    DWH.BrachyTreatmentModel.BrachyTreatmentType
+    DWH.Cube_FactTreatmentHistory.IsBrachy
+    DWH.DimBrachyApplicator.DimBrachyApplicatorID
+    DWH.DimBrachyApplicator.ctrBrachyApplicatorSer
+    DWH.DimBrachyApplicator.BrachyApplicatorTypeInfo
+    DWH.DimBrachyApplicator.BrachyApplicatorName
+    DWH.DimBrachyApplicator.BrachyApplicatorId
+    DWH.DimBrachyField.DimPlanID_BrachySolidApplicator
+    DWH.DimBrachyField.DimBrachyFieldID
+    DWH.DimBrachyField.DimBrachyApplicatorID
+    DWH.DimBrachyField.ctrBrachySolidApplicatorSer
+    DWH.DimBrachyField.BrachySolidApplicatorPartFileName
+    DWH.DimBrachyField.BrachySolidApplicatorName
+    DWH.DimBrachyField.BrachySolidApplicatorId
+    DWH.DimBrachyField.BrachySolidApplicatorHstryUserName
+    DWH.DimBrachyField.BrachySolidApplicatorHstryDateTime
+    DWH.DimBrachyField.BrachySolidApplicatorDimUserID
+    DWH.DimBrachyField.BrachySolidApplicatorComment
+    DWH.DimBrachyField.BrachySolidApplicatorApplicatorPartUID
+    DWH.DimBrachyField.BrachyFieldTypeInfo
+    DWH.DimMachine.BrachyExportPostProcessor
+    DWH.FactBrachySourcePosition.DimBrachyFieldID
+    DWH.FactBrachySourcePosition.FactBrachySourcePositionID
+    DWH.FactBrachyTreatment.FactBrachyTreatmentID
+    DWH.FactBrachyTreatment.BrachyTreatmentType
+
+  coluna ~ HDR  (0):
+    (nada)
+
+  coluna ~ Afterload  (0):
+    (nada)
+
+  coluna ~ Technique  (25):
+    DWH.BrachyTreatmentModel.TechniqueLabel
+    DWH.Cube_FactDVH.TreatmentTechnique
+    DWH.Cube_FactPatientPrescription.Technique
+    DWH.Cube_FactTreatmentHistory.DimLookupID_Technique
+    DWH.Cube_FactTreatmentHistory.FieldTechnique
+    DWH.Cube_FactTreatmentHistory.RTTreatmentTechnique
+    DWH.Cube_FactTreatmentHistory.TreatmentTechnique
+    DWH.DimPlan.RTTreatmentTechnique
+    DWH.DimPlan.TreatmentTechnique
+    DWH.DimPrescription.Technique
+    DWH.FactBrachyTreatment.DimLookupID_FieldTechnique
+    DWH.FactBrachyTreatment.DimLookupID_TechniqueLabel
+    DWH.FactTreatmentHistory.ctrTechniqueSer
+    DWH.FactTreatmentHistory.DimLookupID_FieldTechnique
+    DWH.FactTreatmentHistory.DimLookupID_Technique
+    DWH.FactTreatmentHistory.DimLookupID_TechniqueLabel
+    DWH.FactTreatmentHistoryBrachyFlat.ctrTechniqueSer
+    DWH.FactTreatmentHistoryBrachyFlat.DimLookupID_FieldTechnique
+    DWH.FieldModel.FieldTechnique
+    DWH.FieldModel.TechniqueSer
+    DWH.FieldModel_FullMig.FieldTechnique
+    DWH.FieldModel_FullMig.TechniqueSer
+    DWH.PlanModel.RTTreatmentTechnique
+    DWH.PlanModel.TreatmentTechnique
+    DWH.TempFactTreatment_FullMig.DimLookupID_FieldTechnique
+
+  coluna ~ Modality  (1):
+    DWH.FactPatientMedoncTreatment.TreatmentModality
+
+  coluna ~ TreatmentType  (4):
+    DWH.BrachyTreatmentModel.BrachyTreatmentType
+    DWH.BrachyTreatmentModel.PlanTreatmentType
+    DWH.FactBrachyTreatment.BrachyTreatmentType
+    DWH.FactBrachyTreatment.PlanTreatmentType
+
+(nenhuma linha de paciente foi lida: só catálogos e contagens)

@@ -1,0 +1,477 @@
+<title>Rota do SGQ-RT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: coluna editorial de 1120px; hero em duas colunas (tese + diagrama de 4 campos), depois seções em grade que empilham no celular. A cor forte mora só no colorwash de isodose (fases e feixes). */
+:root{
+  --bg:#f3f6f8; --surface:#ffffff; --ink:#0f1c24; --muted:#536673; --line:#d5dee4;
+  --accent:#0e6f86; --accent-soft:#dcedf2;
+  --ok:#2f7d4f; --ok-soft:#e0f0e6; --warn:#a2650a; --warn-soft:#f8ead2; --crit:#b23a2f; --crit-soft:#f7e0dd; --idle:#5d6b75; --idle-soft:#e6ebee;
+  --iso0:#3b5ba5; --iso1:#2f84b8; --iso2:#22a3a6; --iso3:#4c9f4a; --iso4:#c7a31f; --iso5:#d9772b; --iso6:#c9433a;
+  --font-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0c151b; --surface:#121f27; --ink:#e3edf2; --muted:#93a7b3; --line:#22343f;
+  --accent:#5cc3db; --accent-soft:#163541;
+  --ok:#6fcf93; --ok-soft:#173326; --warn:#e8b25a; --warn-soft:#3a2c14; --crit:#f08a7f; --crit-soft:#3d1d1a; --idle:#9fb0ba; --idle-soft:#1d2b34;
+  --iso0:#7f9be0; --iso1:#5eb1e3; --iso2:#4dcfcf; --iso3:#7dcc72; --iso4:#e6c84a; --iso5:#f0995a; --iso6:#ee7268;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0c151b; --surface:#121f27; --ink:#e3edf2; --muted:#93a7b3; --line:#22343f;
+  --accent:#5cc3db; --accent-soft:#163541;
+  --ok:#6fcf93; --ok-soft:#173326; --warn:#e8b25a; --warn-soft:#3a2c14; --crit:#f08a7f; --crit-soft:#3d1d1a; --idle:#9fb0ba; --idle-soft:#1d2b34;
+  --iso0:#7f9be0; --iso1:#5eb1e3; --iso2:#4dcfcf; --iso3:#7dcc72; --iso4:#e6c84a; --iso5:#f0995a; --iso6:#ee7268;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.55; padding-inline:20px; padding-block:0 64px}
+.wrap{max-width:1120px; margin:0 auto}
+h1,h2,h3{font-family:var(--font-display); text-wrap:balance; margin:0; line-height:1.08}
+h2{font-size:clamp(1.6rem,3.2vw,2.3rem); font-weight:800; letter-spacing:-.01em}
+h3{font-size:1.08rem; font-weight:600}
+p{margin:0}
+.eyebrow{font-family:var(--font-mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.mono{font-family:var(--font-mono)}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* topo */
+.top{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding-block:22px; border-bottom:1px solid var(--line)}
+.top .mark{font-family:var(--font-display); font-weight:800; font-size:1.05rem; letter-spacing:.02em}
+.top .meta{font-family:var(--font-mono); font-size:.76rem; color:var(--muted)}
+
+/* hero */
+.hero{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:40px; align-items:center; padding-block:56px 40px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem); font-weight:800; letter-spacing:-.025em}
+.hero h1 em{font-style:normal; color:var(--accent)}
+.hero .lede{margin-top:20px; font-size:1.14rem; max-width:34em; color:var(--muted)}
+.hero .lede strong{color:var(--ink); font-weight:600}
+.legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:26px; font-family:var(--font-mono); font-size:.78rem; color:var(--muted)}
+.legend span{display:inline-flex; align-items:center; gap:7px}
+.legend i{width:22px; height:3px; border-radius:2px; display:inline-block}
+.field{width:100%; max-width:440px; justify-self:center}
+.field svg{width:100%; height:auto; display:block}
+.field text{font-family:var(--font-mono)}
+
+/* seção */
+section{padding-block:56px; border-top:1px solid var(--line)}
+.head{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:32px; align-items:end; margin-bottom:32px}
+.head p{color:var(--muted); max-width:44em}
+
+/* chips de estado */
+.chip{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.04em; padding:3px 9px; border-radius:999px; white-space:nowrap}
+.chip::before{content:""; width:7px; height:7px; border-radius:50%; background:currentColor}
+.c-ok{color:var(--ok); background:var(--ok-soft)}
+.c-warn{color:var(--warn); background:var(--warn-soft)}
+.c-crit{color:var(--crit); background:var(--crit-soft)}
+.c-idle{color:var(--idle); background:var(--idle-soft)}
+.sup{font-family:var(--font-mono); font-size:.68rem; letter-spacing:.06em; color:var(--warn); border:1px dashed var(--warn); padding:1px 6px; border-radius:4px; white-space:nowrap}
+
+/* ilhas */
+.islands{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px}
+.island{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px; display:flex; flex-direction:column; gap:10px; min-width:0}
+.island .where{font-family:var(--font-mono); font-size:.74rem; color:var(--muted)}
+.island p{font-size:.93rem; color:var(--muted)}
+.island .becomes{margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); font-size:.86rem}
+.island .becomes b{font-family:var(--font-mono); font-weight:500; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:2px}
+
+/* correções */
+.fixes{display:grid; gap:0; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+.fix{display:grid; grid-template-columns:minmax(0,1fr) 36px minmax(0,1.25fr) auto; gap:16px; align-items:center; padding:16px 20px; border-top:1px solid var(--line)}
+.fix:first-child{border-top:0}
+.fix .was{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--crit); text-decoration-thickness:1.5px}
+.fix .arrow{font-family:var(--font-mono); color:var(--muted); text-align:center}
+.fix .src{font-family:var(--font-mono); font-size:.74rem; color:var(--muted); text-align:right}
+.callout{margin-top:18px; display:grid; grid-template-columns:auto minmax(0,1fr); gap:16px; align-items:start; padding:20px; border-radius:10px; background:var(--crit-soft)}
+.callout .k{font-family:var(--font-display); font-weight:800; font-size:1.6rem; color:var(--crit); line-height:1}
+.callout p{color:var(--ink)}
+
+/* catálogo */
+.areas{display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:8px}
+.area{border-top:3px solid var(--accent); padding-top:10px; min-width:0}
+.area .ac{font-family:var(--font-mono); font-size:.74rem; color:var(--muted)}
+.area .an{display:block; font-family:var(--font-display); font-weight:800; font-size:2.1rem; line-height:1.05}
+.area p{font-size:.82rem; color:var(--muted)}
+.levels{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:28px}
+.level{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px; display:flex; flex-direction:column; gap:8px; min-width:0}
+.level p{color:var(--muted); font-size:.93rem}
+.level .tally{margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); font-family:var(--font-mono); font-size:.76rem; color:var(--accent)}
+.facts{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin-top:28px}
+.fact{display:flex; flex-direction:column; gap:4px; min-width:0}
+.fact b{font-family:var(--font-display); font-weight:800; font-size:1.5rem; color:var(--accent)}
+.fact span{font-size:.84rem; color:var(--muted)}
+@media (max-width: 960px){ .areas{grid-template-columns:repeat(4,minmax(0,1fr))} .facts{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width: 760px){ .levels{grid-template-columns:minmax(0,1fr)} }
+
+/* motor */
+.engine{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px; align-items:start}
+.code{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px; overflow-x:auto; font-family:var(--font-mono); font-size:.84rem; line-height:1.7; min-width:0}
+.code .k{color:var(--accent)} .code .s{color:var(--ok)} .code .c{color:var(--muted)}
+.rules{display:grid; gap:14px}
+.rule{display:grid; grid-template-columns:28px minmax(0,1fr); gap:12px}
+.rule .dot{width:28px; height:28px; border-radius:50%; border:1.5px solid var(--accent); display:grid; place-items:center; font-family:var(--font-mono); font-size:.74rem; color:var(--accent)}
+.rule p{color:var(--muted); font-size:.95rem}
+.rule p b{color:var(--ink); font-weight:600}
+.triggers{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:28px}
+.trig{padding:14px; border-radius:8px; background:var(--accent-soft); min-width:0}
+.trig .t{font-family:var(--font-mono); font-size:.78rem; font-weight:500; color:var(--accent); letter-spacing:.06em; text-transform:uppercase}
+.trig p{font-size:.88rem; margin-top:4px}
+.trig small{display:block; margin-top:6px; color:var(--muted); font-size:.78rem}
+
+/* rota */
+.track{position:relative; display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:10px}
+.v1{grid-column:1 / span 3; grid-row:1; border:1.5px solid var(--accent); border-bottom:0; border-radius:10px 10px 0 0; height:14px; position:relative}
+.v1 span{position:absolute; top:-11px; left:14px; background:var(--bg); padding:0 8px; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.1em; color:var(--accent); text-transform:uppercase}
+.later{grid-column:4 / span 4; grid-row:1; border:1.5px dashed var(--line); border-bottom:0; border-radius:10px 10px 0 0; height:14px; position:relative}
+.later span{position:absolute; top:-11px; left:14px; background:var(--bg); padding:0 8px; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase}
+.phase{grid-row:2; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 14px 16px; display:flex; flex-direction:column; gap:8px; min-width:0; position:relative; overflow:hidden}
+.phase::before{content:""; position:absolute; inset:0 0 auto 0; height:5px; background:var(--iso)}
+.phase .n{font-family:var(--font-display); font-weight:800; font-size:2rem; color:var(--iso); line-height:1; margin-top:4px}
+.phase h3{font-size:.98rem}
+.phase p{font-size:.84rem; color:var(--muted)}
+.phase .acc{margin-top:auto; padding-top:8px; border-top:1px dashed var(--line); font-size:.78rem}
+.phase .acc b{display:block; font-family:var(--font-mono); font-weight:500; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.phase .gate{font-family:var(--font-mono); font-size:.7rem; color:var(--warn)}
+.p0{--iso:var(--iso0)} .p1{--iso:var(--iso1)} .p2{--iso:var(--iso2)} .p3{--iso:var(--iso3)} .p4{--iso:var(--iso4)} .p5{--iso:var(--iso5)} .p6{--iso:var(--iso6)}
+
+/* decisões */
+.cols{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+.col{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px; min-width:0}
+.col h3{display:flex; align-items:center; gap:10px; margin-bottom:14px}
+.col ul{list-style:none; margin:0; padding:0; display:grid; gap:12px}
+.col li{font-size:.93rem; padding-left:16px; position:relative}
+.col li::before{content:""; position:absolute; left:0; top:.62em; width:7px; height:1.5px; background:var(--muted)}
+.col li small{display:block; color:var(--muted); font-size:.8rem}
+
+/* fecho */
+.files{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+.file{padding:16px; border-radius:8px; border:1px solid var(--line); min-width:0}
+.file .p{font-family:var(--font-mono); font-size:.76rem; color:var(--accent); overflow-wrap:anywhere}
+.file p{font-size:.88rem; color:var(--muted); margin-top:6px}
+.foot{margin-top:40px; font-family:var(--font-mono); font-size:.74rem; color:var(--muted)}
+
+@media (max-width: 960px){
+  .islands{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .track{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .v1,.later{display:none}
+  .phase{grid-row:auto}
+  .cols,.files{grid-template-columns:minmax(0,1fr)}
+  .triggers{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 760px){
+  .hero,.head,.engine{grid-template-columns:minmax(0,1fr)}
+  .hero{padding-block:36px 28px; gap:28px}
+  .fix{grid-template-columns:minmax(0,1fr); gap:6px}
+  .fix .arrow{display:none} .fix .src{text-align:left}
+}
+@media (max-width: 480px){
+  .islands,.track,.triggers{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion: no-preference){
+  .beam{animation:pulse 4.8s ease-in-out infinite}
+  .beam.b2{animation-delay:1.2s} .beam.b3{animation-delay:2.4s} .beam.b4{animation-delay:3.6s}
+  @keyframes pulse{0%,100%{opacity:.55} 50%{opacity:.95}}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="mark">Radioteraficha → SGQ-RT</span>
+    <span class="meta">sistema global · planejamento · 13/10/2026</span>
+  </header>
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">De onde saímos, para onde vamos</p>
+      <h1>Do arquipélago ao <em>isocentro</em>.</h1>
+      <p class="lede">Hoje a qualidade do serviço está espalhada em <strong>sete lugares</strong> que não se conversam. O SGQ-RT leva tudo para <strong>um motor de verificação</strong>: quatro gatilhos, como os quatro campos de um box, convergem num só log e numa só auditoria. O motor avisa e registra. Quem decide continua sendo o físico.</p>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:var(--iso0)"></i>evento</span>
+        <span><i style="background:var(--iso2)"></i>calendário</span>
+        <span><i style="background:var(--iso4)"></i>prazo</span>
+        <span><i style="background:var(--iso6)"></i>estado</span>
+      </div>
+    </div>
+
+    <figure class="field" role="img" aria-label="Diagrama de quatro campos: os gatilhos evento, calendário, prazo e estado convergem no motor único, cercado por curvas de isodose.">
+      <svg viewBox="0 0 420 420">
+        <defs>
+          <linearGradient id="gT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--iso0)" stop-opacity=".05"/><stop offset="1" stop-color="var(--iso0)" stop-opacity=".5"/></linearGradient>
+          <linearGradient id="gR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="var(--iso2)" stop-opacity=".05"/><stop offset="1" stop-color="var(--iso2)" stop-opacity=".5"/></linearGradient>
+          <linearGradient id="gB" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="var(--iso4)" stop-opacity=".05"/><stop offset="1" stop-color="var(--iso4)" stop-opacity=".5"/></linearGradient>
+          <linearGradient id="gL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--iso6)" stop-opacity=".05"/><stop offset="1" stop-color="var(--iso6)" stop-opacity=".5"/></linearGradient>
+        </defs>
+        <circle cx="210" cy="210" r="196" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+        <g font-size="9" fill="var(--muted)">
+          <text x="210" y="10" text-anchor="middle">0°</text>
+          <text x="414" y="213" text-anchor="end">90°</text>
+          <text x="210" y="416" text-anchor="middle">180°</text>
+          <text x="6" y="213">270°</text>
+        </g>
+        <rect class="beam" x="178" y="40" width="64" height="170" fill="url(#gT)"/>
+        <rect class="beam b2" x="210" y="178" width="170" height="64" fill="url(#gR)"/>
+        <rect class="beam b3" x="178" y="210" width="64" height="170" fill="url(#gB)"/>
+        <rect class="beam b4" x="40" y="178" width="170" height="64" fill="url(#gL)"/>
+        <rect x="162" y="162" width="96" height="96" rx="30" fill="none" stroke="var(--iso1)" stroke-width="1.4"/>
+        <rect x="170" y="170" width="80" height="80" rx="24" fill="none" stroke="var(--iso3)" stroke-width="1.4"/>
+        <rect x="178" y="178" width="64" height="64" rx="18" fill="none" stroke="var(--iso4)" stroke-width="1.4"/>
+        <rect x="186" y="186" width="48" height="48" rx="12" fill="var(--surface)" stroke="var(--iso6)" stroke-width="1.6"/>
+        <line x1="204" y1="210" x2="216" y2="210" stroke="var(--ink)" stroke-width="1.2"/>
+        <line x1="210" y1="204" x2="210" y2="216" stroke="var(--ink)" stroke-width="1.2"/>
+        <g font-size="11" font-weight="500">
+          <text x="210" y="32" text-anchor="middle" fill="var(--iso0)">EVENTO · plan check</text>
+          <text x="392" y="168" text-anchor="end" fill="var(--iso2)">CALENDÁRIO</text>
+          <text x="392" y="260" text-anchor="end" fill="var(--muted)" font-size="9.5">QA de máquina</text>
+          <text x="210" y="398" text-anchor="middle" fill="var(--iso4)">PRAZO · PPR e normas</text>
+          <text x="28" y="168" fill="var(--iso6)">ESTADO</text>
+          <text x="28" y="260" fill="var(--muted)" font-size="9.5">fluxo clínico</text>
+        </g>
+        <g font-size="8.5" fill="var(--muted)">
+          <text x="264" y="158">107%</text>
+          <text x="256" y="168">95%</text>
+        </g>
+        <text x="210" y="280" text-anchor="middle" font-size="10.5" fill="var(--ink)" font-weight="500">motor único</text>
+        <text x="210" y="294" text-anchor="middle" font-size="9" fill="var(--muted)">um log · uma auditoria</text>
+      </svg>
+    </figure>
+  </div>
+
+  <section id="origem">
+    <div class="head">
+      <div><p class="eyebrow">01 · De onde saímos</p><h2>Sete ilhas, nenhuma ponte</h2></div>
+      <p>O estado de cada peça em 13/10/2026, tirado do <span class="mono">DESTINO.md</span>, do <span class="mono">escopo.md</span> e do planejamento já gravado. Embaixo de cada uma, o papel que ela ganha no SGQ-RT.</p>
+    </div>
+    <div class="islands">
+      <article class="island">
+        <span class="chip c-ok">em uso</span>
+        <h3>Radioteraficha</h3>
+        <span class="where">ficha-py · PyQt5</span>
+        <p>Ficha, capa, mapa de frações, alta e imagens em PDF a partir do DICOM. Registro versionado por paciente. <span class="mono">gui.py</span> de 5.728 para 2.595 linhas.</p>
+        <div class="becomes"><b>vira</b>shell e design system da plataforma</div>
+      </article>
+      <article class="island">
+        <span class="chip c-warn">falta instalar</span>
+        <h3>Fluxo sem papel</h3>
+        <span class="where">pilar 1 · concentradora</span>
+        <p>Código verde: C-MOVE, varredura sem o app aberto. Falta a TI apontar o destino no <span class="mono">clinica-python01</span>.</p>
+        <div class="becomes"><b>depende de</b>R-08</div>
+      </article>
+      <article class="island">
+        <span class="chip c-warn">experimental</span>
+        <h3>Painel de tratamento</h3>
+        <span class="where">pilar 2 · variandw</span>
+        <p>SQL pronto, 0,40 s. <span class="mono">LISTA_VERIFICADA_EM</span> vazio até os 165 cursos serem conferidos contra o ARIA.</p>
+        <div class="becomes"><b>vira</b>fonte do gatilho de estado · R-07</div>
+      </article>
+      <article class="island">
+        <span class="chip c-crit">sem veredito</span>
+        <h3>Paralelo e CQ Plano</h3>
+        <span class="where">pilar 3 · dados_feixe</span>
+        <p><span class="mono">CALIBRADO = False</span>. As tabelas de feixe são de outro serviço, então nenhum plano daqui recebe veredito.</p>
+        <div class="becomes"><b>vira</b>avaliador de dose sob CEP · R-09, R-10</div>
+      </article>
+      <article class="island">
+        <span class="chip c-ok">PRD final</span>
+        <h3>Radioteradados</h3>
+        <span class="where">aba de indicadores</span>
+        <p>Indicadores da RDC 20/2006 e camada operacional. Classe 62304 A, arquitetura escrita, protótipo da aba.</p>
+        <div class="becomes"><b>vira</b>a Fase 5, absorvida sem refazer</div>
+      </article>
+      <article class="island">
+        <span class="chip c-idle">outro repositório</span>
+        <h3>Scripts ESAPI</h3>
+        <span class="where">scriptsvarian · C#</span>
+        <p>Constraints de DVH, índices, checklist pré-tratamento. Os graváveis (FiF, estruturas) só depois de validação fora da clínica.</p>
+        <div class="becomes"><b>vira</b>avaliadores pelo contrato JSON</div>
+      </article>
+      <article class="island">
+        <span class="chip c-crit">dado sai</span>
+        <h3>PPR e vencimentos</h3>
+        <span class="where">ppr-streamlit</span>
+        <p>PDF do PPR e aba Vencimentos. A leitura dos ASOs ainda manda o texto para uma API externa.</p>
+        <div class="becomes"><b>vira</b>gatilho de prazo · R-15 antes</div>
+      </article>
+      <article class="island">
+        <span class="chip c-idle">à mão</span>
+        <h3>Planilhas, SSRS e QA de máquina</h3>
+        <span class="where">fora de sistema <span class="sup">suposição</span></span>
+        <p>Indicadores montados à mão, lógica no custom code dos relatórios, QA de máquina e auditoria externa sem registro central.</p>
+        <div class="becomes"><b>vira</b>calendário e canal de entrega</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="verificado">
+    <div class="head">
+      <div><p class="eyebrow">02 · O que a verificação corrigiu</p><h2>O brief v0.5 conferido na fonte</h2></div>
+      <p>Três verificadores leram as fontes primárias: a maior parte dos números confere e os autores que faltavam foram achados. Cinco afirmações mudam antes de entrar no PRD.</p>
+    </div>
+    <div class="fixes">
+      <div class="fix"><span class="was">Revisão física detecta 31,8% dos incidentes</span><span class="arrow">→</span><span>De 31,3% a 87,5% conforme o modo de falha; 31,8% só em "plano subótimo"</span><span class="src">Riegel 2022</span></div>
+      <div class="fix"><span class="was">TG-275 propõe 151 itens de checagem</span><span class="arrow">→</span><span>151 é a contagem do survey. Os modos de falha são 112 · 55 · 24 prótons · 48 HDR</span><span class="src">Ford 2020</span></div>
+      <div class="fix"><span class="was">69 de 71 itens ficaram mais viáveis</span><span class="arrow">→</span><span>Os 69 foram reavaliados, e nem todos mudaram de categoria</span><span class="src">Xu 2021</span></div>
+      <div class="fix"><span class="was">Processo de quatro para cinco sigma</span><span class="arrow">→</span><span>Só o shift de isocentro chegou a 5σ; prescrição/plano ficou em 4σ</span><span class="src">Liu 2019</span></div>
+      <div class="fix"><span class="was">½ FTE em 3 anos sobre 1169 planos</span><span class="arrow">→</span><span>Dois artigos: −20% de tempo e ½ FTE estimado (Berry 2020); 1169 planos sem medir tempo (Stuhr 2022)</span><span class="src">MSKCC</span></div>
+    </div>
+    <div class="callout">
+      <span class="k">RDC 657</span>
+      <p>A dispensa de registro do software feito no próprio serviço vale <b>só para as classes de risco ANVISA I e II</b>, para uso exclusivo do serviço e sem comercializar nem doar. O registro da validação fica guardado por <b>10 anos após o descarte</b>. Para outro serviço só pode ir a biblioteca de regras; o software, não.</p>
+    </div>
+  </section>
+
+  <section id="catalogo">
+    <div class="head">
+      <div><p class="eyebrow">03 · O que "completo" quer dizer</p><h2>74 obrigações, em dois níveis</h2></div>
+      <p>O SGQ-RT cobre todas as atividades do físico médico. Para que "todas" tenha um número, a espinha é um catálogo de obrigações, cada uma com norma, periodicidade, responsável, evidência e guarda. O produto está completo quando cada linha tem verificação ativa.</p>
+    </div>
+    <div class="areas">
+      <div class="area"><span class="ac">A</span><span class="an num">16</span><p>Equipamento e dosimetria</p></div>
+      <div class="area"><span class="ac">B</span><span class="an num">7</span><p>Sistemas e software</p></div>
+      <div class="area"><span class="ac">C</span><span class="an num">9</span><p>Planejamento</p></div>
+      <div class="area"><span class="ac">D</span><span class="an num">6</span><p>Tratamento</p></div>
+      <div class="area"><span class="ac">E</span><span class="an num">6</span><p>Braquiterapia HDR</p></div>
+      <div class="area"><span class="ac">F</span><span class="an num">12</span><p>Proteção e licenciamento</p></div>
+      <div class="area"><span class="ac">G</span><span class="an num">13</span><p>Qualidade e documentação</p></div>
+      <div class="area"><span class="ac">H</span><span class="an num">5</span><p>Ferramentas da rotina</p></div>
+    </div>
+    <div class="levels">
+      <div class="level">
+        <span class="eyebrow">nível 1 · obrigação</span>
+        <h3>O que a norma exige</h3>
+        <p>Uma linha por exigência, estável e contável. Exemplo: <span class="mono">NN 6.10, art. 35, II</span>, o teste diário do fator de calibração. É o denominador da cobertura normativa.</p>
+        <p class="tally num">58 do relatório · 6 corrigidas · 10 acrescentadas</p>
+      </div>
+      <div class="level">
+        <span class="eyebrow">nível 2 · item de verificação</span>
+        <h3>Como o serviço cumpre</h3>
+        <p>Gerado das tabelas dos protocolos adotados, com tolerância e frequência. O serviço adota todos (TG-142 e MPPG 8, TRS-398 e TG-51…), e cada item guarda a sua origem. A RDC 20/2006, 6.8, exige protocolos validados.</p>
+        <p class="tally">próximo passo: extrair as tabelas</p>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><b class="num">1 : 600</b><span>um radioterapeuta e um físico para cada 600 pacientes novos por ano · NN 6.10, art. 15, VI</span></div>
+      <div class="fact"><b class="num">30 dias</b><span>relatório de incidente à ANSN, depois da investigação imediata · art. 26</span></div>
+      <div class="fact"><b class="num">72 h</b><span>notificação de evento adverso com óbito · RDC 36/2013, art. 10</span></div>
+      <div class="fact"><b>vida útil</b><span>guarda dos registros de equipamento e CQ · RDC 20/2006, 8.1(b)</span></div>
+    </div>
+  </section>
+
+  <section id="motor">
+    <div class="head">
+      <div><p class="eyebrow">04 · O que muda por dentro</p><h2>Uma verificação é sempre a mesma coisa</h2></div>
+      <p>Uma regra com fonte normativa, um gatilho, um responsável, um avaliador e um resultado com evidência. O núcleo, em Python, não sabe nada de radioterapia; os avaliadores ESAPI ficam na fronteira e respondem em JSON.</p>
+    </div>
+    <div class="engine">
+<pre class="code">{
+  <span class="k">"id"</span>: <span class="s">"VER_PRESC_FRACOES"</span>,
+  <span class="k">"gatilho"</span>: { <span class="k">"tipo"</span>: <span class="s">"evento"</span>,
+               <span class="k">"evento"</span>: <span class="s">"plano.aprovado_medico"</span> },
+  <span class="k">"proveniencia"</span>: {
+    <span class="k">"fontes"</span>: [<span class="s">"TG-275"</span>, <span class="s">"MPPG 11.a"</span>],
+    <span class="k">"rpn_referencia"</span>: 168, <span class="k">"rpn_local"</span>: null },
+  <span class="k">"severidade"</span>: <span class="s">"alta"</span>,   <span class="c">// alta · atencao · informativo</span>
+  <span class="k">"avaliador"</span>: <span class="s">"esapi:PrescFracoes"</span>,
+  <span class="k">"estado"</span>: <span class="s">"sombra"</span>      <span class="c">// sombra · ativa · podada</span>
+}
+<span class="c">// cada execução</span>
+{ <span class="k">"resultado"</span>: <span class="s">"indeterminado"</span>,
+  <span class="k">"origem"</span>: <span class="s">"semeado"</span> }   <span class="c">// produção · semeado</span></pre>
+      <div class="rules">
+        <div class="rule"><span class="dot">a</span><p><b>Advisory, nunca bloqueante.</b> O antigo "bloqueante" virou o nível mais alto de alerta. Nada trava o fluxo clínico.</p></div>
+        <div class="rule"><span class="dot">b</span><p><b>Sem fonte, não entra.</b> O esquema rejeita verificação sem proveniência.</p></div>
+        <div class="rule"><span class="dot">c</span><p><b>Dado ausente nunca vira conforme.</b> <span class="mono">indeterminado</span> é resultado de primeira classe.</p></div>
+        <div class="rule"><span class="dot">d</span><p><b>30 dias em sombra.</b> A regra grava sem aparecer e só é promovida depois de comparada com o achado humano.</p></div>
+        <div class="rule"><span class="dot">e</span><p><b>Erro semeado todo mês</b> e depois de cada upgrade do ARIA ou do Eclipse. A sensibilidade medida é o registro de validação que a RDC 657 pede.</p></div>
+        <div class="rule"><span class="dot">f</span><p><b>Log encadeado</b>, só de acréscimo, guardado 10 anos após o descarte.</p></div>
+      </div>
+    </div>
+    <div class="triggers">
+      <div class="trig"><span class="t">evento</span><p>Plano aprovado, curso alterado</p><small>TG-275 · MPPG 11.a</small></div>
+      <div class="trig"><span class="t">calendário</span><p>Diário, mensal, bienal, quadrienal</p><small>NN 6.10 arts. 35–36 · RDC 20/2006</small></div>
+      <div class="trig"><span class="t">prazo</span><p>Vencimento se aproxima</p><small>PPR · NN 6.10</small></div>
+      <div class="trig"><span class="t">estado</span><p>Objeto parado além do limite</p><small>fluxo clínico</small></div>
+    </div>
+  </section>
+
+  <section id="rota">
+    <div class="head">
+      <div><p class="eyebrow">05 · Para onde vamos</p><h2>Sete fases, como níveis de isodose</h2></div>
+      <p>O motor nasce ao lado do que existe, e nada é reescrito de uma vez. A v1 prova o núcleo sem tocar decisão de dose; o plan check só chega quando a classe de risco estiver decidida. <span class="sup">suposição: v1 = fases 0 a 2</span></p>
+    </div>
+    <div class="track">
+      <div class="v1" aria-hidden="true"><span>v1</span></div>
+      <div class="later" aria-hidden="true"><span>depois</span></div>
+      <article class="phase p0"><span class="n">0</span><h3>Núcleo</h3><p>Verificação, contrato de avaliador, log, vocabulário TG-263</p><div class="acc"><b>aceite</b>regra-piloto ponta a ponta sem o núcleo conhecer radioterapia</div></article>
+      <article class="phase p1"><span class="n">1</span><h3>Shell</h3><p>Tema e widgets do Radioteraficha como design system</p><div class="acc"><b>aceite</b>duas telas, nenhum estilo duplicado</div></article>
+      <article class="phase p2"><span class="n">2</span><h3>Vencimentos</h3><p>PPR pelo gatilho de prazo: o teste de generalidade do núcleo</p><span class="gate">portão: R-15</span><div class="acc"><b>aceite</b>item vence e alerta sem código de PPR</div></article>
+      <article class="phase p3"><span class="n">3</span><h3>Plan check</h3><p>~20 regras de maior RPN do TG-275, 30 dias em sombra</p><span class="gate">portão: classe ANVISA e 62304</span><div class="acc"><b>aceite</b><span class="num">&lt;30 s · FP &lt;1 · sens. &gt;0,85</span></div></article>
+      <article class="phase p4"><span class="n">4</span><h3>Calendário</h3><p>QA de máquina, NN 6.10, auditoria espelhada pelo GT 2302</p><span class="gate">portão: R-09, R-10</span><div class="acc"><b>aceite</b>desvio visto por tendência antes da tolerância</div></article>
+      <article class="phase p5"><span class="n">5</span><h3>Fluxo e índice</h3><p>Aging, TC→1ª sessão em mediana e P90, Radioteradados, índice mensal</p><span class="gate">portão: R-07</span><div class="acc"><b>aceite</b>índice 3 meses seguidos sem mão</div></article>
+      <article class="phase p6"><span class="n">6</span><h3>Braquiterapia e anomalia</h3><p>Braquiterapia no mesmo modelo; escore de anomalia ordenando a fila</p><div class="acc"><b>aceite</b>achar o plano problemático mais rápido</div></article>
+    </div>
+  </section>
+
+  <section id="decisoes">
+    <div class="head">
+      <div><p class="eyebrow">06 · O que está decidido e o que não está</p><h2>Decisões, pendências e riscos</h2></div>
+      <p>As decisões tomadas viram fato para o PRD. As pendentes são suas: o BMad aponta a lacuna, mas não decide.</p>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3><span class="chip c-ok">decidido</span></h3>
+        <ul>
+          <li>Radioteraficha é o núcleo; PPR e ESAPI entram aos poucos<small>13/10/2026 · escopo.md</small></li>
+          <li>Motor só advisory<small>13/10/2026</small></li>
+          <li>Núcleo em Python, ESAPI na fronteira<small>13/10/2026</small></li>
+          <li>Não escreve no ARIA nem no data warehouse<small>escopo.md</small></li>
+          <li>Nenhum dado pessoal vai a terceiros<small>escopo.md · R-15</small></li>
+          <li>Radioteradados e <span class="mono">dominio/ritmo</span> são classe A<small>classificacao-62304.md</small></li>
+          <li>IORT (INTRABEAM) fora do projeto<small>13/10/2026</small></li>
+          <li>Serviço tem braquiterapia HDR: área E no catálogo<small>13/10/2026</small></li>
+          <li>Catálogo v1 mantido; todos os protocolos candidatos geram itens<small>13/10/2026</small></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="chip c-warn">pendente</span></h3>
+        <ul>
+          <li>Classe ANVISA e classe 62304 do plan check<small>antes do PRD da Fase 3</small></li>
+          <li>Banco do log: PostgreSQL ou SQLite<small>liga com a R-08</small></li>
+          <li>Hospedagem do motor<small>clínica, máquina dedicada ou servidor de relatórios</small></li>
+          <li>Piloto do plan check: mama ou próstata</li>
+          <li>Ambição regulatória: uso interno ou dossiê</li>
+          <li>Perfis de usuário<small>tabela vazia no escopo.md</small></li>
+          <li>Protocolo de referência por grandeza<small>NN 6.10, art. 24, I, b: o descrito no PPR</small></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="chip c-crit">risco</span></h3>
+        <ul>
+          <li>Manutenção de uma pessoa só<small>todo upgrade do ARIA ou do Eclipse pode quebrar avaliadores</small></li>
+          <li>Falha silenciosa da automação<small>o TG-275 adverte; o erro semeado mede</small></li>
+          <li>"Produto para outros serviços" exige regularização<small>RDC 657, art. 5º, §1º</small></li>
+          <li>Alteração da 657 pelas RDC 751/2022 ou 830/2023<small>não verificado</small></li>
+          <li>Tabela "lacuna" contra produto comercial<small>sem fonte, afirmação do autor</small></li>
+          <li>Guarda de registros sem prazo<small>incidente, auditoria, treinamento, dosimetria pessoal</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="arquivos">
+    <div class="head">
+      <div><p class="eyebrow">07 · Onde está escrito</p><h2>Os documentos por trás desta página</h2></div>
+      <p>Tudo em <span class="mono">ficha-py/docs/planejamento/sistema-global/</span>, ainda sem commit. O próximo passo é você corrigir as suposições do brief; depois vêm o PRD das Fases 0 a 2 e a arquitetura do núcleo.</p>
+    </div>
+    <div class="files">
+      <div class="file"><span class="p">research-sgq-rt-referencias-2026-10-13/research.md</span><p>As 29 referências conferidas, com a redação corrigida e 21 fontes citadas.</p></div>
+      <div class="file"><span class="p">brief-sgq-rt-2026-10-13/brief.md</span><p>O brief do sistema global, em rascunho, com as suposições marcadas. Fecha a R-14.</p></div>
+      <div class="file"><span class="p">research-catalogo-…-2026-10-13/catalogo-v1.csv</span><p>As 74 obrigações, com norma, periodicidade, responsável, evidência, guarda e o que foi verificado.</p></div>
+      <div class="file"><span class="p">brief-sgq-rt-2026-10-13/addendum.md</span><p>Gatilhos, objeto Verificação, fases, base das inovações e números para o PRD.</p></div>
+    </div>
+    <p class="foot">SGQ-RT · sistema advisory, não substitui a decisão do físico responsável</p>
+  </section>
+</div>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{520102EB-6484-4CAF-851C-C494D3EDF1D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AneisOtimizacao</RootNamespace>
+
+    <!-- O Eclipse só reconhece como plug-in o assembly cujo nome termina em
+         ".esapi". Sem o sufixo o arquivo compila e o Eclipse simplesmente
+         não o oferece na lista de scripts, sem dizer por quê. -->
+    <AssemblyName>AneisOtimizacao.esapi</AssemblyName>
+
+    <!-- v4.5 porque é o TargetFramework das PRÓPRIAS DLLs da ESAPI 15.6
+         (lido por reflexão em 03/09/2026). Mirar mais alto que o host é o
+         erro que não aparece na compilação: o Eclipse simplesmente não
+         carrega o plug-in, sem dizer por quê. -->
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- DLLs licenciadas da Varian: ESAPI 15.6 (AssemblyVersion 1.0.300.11,
+       FileVersion 15.6.8.73). Ficam em lib\, que o .gitignore barra — elas
+       NÃO são versionadas. Ver o README para de onde copiar.
+       Para compilar contra outra instalação:
+         msbuild /p:EsapiDir="C:\Program Files\Varian\RTM\17.0\esapi\API" -->
+  <PropertyGroup>
+    <EsapiDir Condition=" '$(EsapiDir)' == '' ">$(MSBuildProjectDirectory)\..\..\..\lib</EsapiDir>
+  </PropertyGroup>
+
+  <!-- x64 explícito nas duas configurações. O padrão do Visual Studio é
+       AnyCPU, e um plug-in AnyCPU não carrega no Eclipse. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="VMS.TPS.Common.Model.API">
+      <HintPath>$(EsapiDir)\VMS.TPS.Common.Model.API.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VMS.TPS.Common.Model.Types">
+      <HintPath>$(EsapiDir)\VMS.TPS.Common.Model.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+
+    <!-- A janela de escolha é WPF montada em código, sem XAML: evita todo o
+         aparato de <Page>/App.xaml num projeto de uma tela só. -->
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Script.cs" />
+    <Compile Include="JanelaEscolha.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <!-- Falha cedo e com o motivo escrito. Sem isto, a ausência das DLLs vira
+       uma cascata de "tipo não encontrado" que não diz o que está faltando. -->
+  <Target Name="ConferirEsapi" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(EsapiDir)\VMS.TPS.Common.Model.API.dll')"
+           Text="ESAPI não encontrado em '$(EsapiDir)'. Ajustar EsapiDir no .csproj para a versão do Eclipse desta estação, ou passar /p:EsapiDir=... Ver o README." />
+  </Target>
+</Project>

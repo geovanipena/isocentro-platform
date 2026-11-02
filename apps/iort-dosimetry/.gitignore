@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# Dados locais (carregados em runtime, não versionados)
+data/

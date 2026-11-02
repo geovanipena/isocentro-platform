@@ -1,0 +1,77 @@
+// Que skills este projeto USA, quais ficam DESLIGADAS e quais BLOQUEADAS —
+// o par do `.vscode/extensions.json`, conferido pelo `tools/manutencao.py`
+// (eixo `skills`).
+//
+// Por que existe (22/10/2026): skill de usuário vale para TODA sessão, e a
+// descrição de cada uma entra no contexto a cada turno. Nada avisava quando
+// chegava uma nova: o BMad veio inteiro (29 skills) e a `bmad-build` passou a
+// se oferecer em todo pedido de mudança — o trabalho que aqui é da fila do
+// `DESTINO.md`, do `tools/testar.py` e do `/fechar` —, enquanto o
+// `CLAUDE.md` diz "o BMad é só planejamento". Uma atualização do BMad
+// reinstala o que foi desligado, em silêncio. Só medindo.
+//
+// Só comentário em linha própria (`//` no começo): o leitor tira essas
+// linhas e passa o resto ao `json.loads`.
+{
+  // Skills de usuário (`~/.claude/skills`) que ficam. O BMad do PLANEJAMENTO:
+  // pesquisa, brief, PRD, arquitetura, spec, UX, épicos e as que só rodam
+  // quando pedidas pelo nome (review, walkthrough, party-mode).
+  "usadas": [
+    "bmad-advanced-elicitation",
+    "bmad-agent-analyst",
+    "bmad-agent-architect",
+    "bmad-agent-pm",
+    "bmad-agent-ux-designer",
+    "bmad-architecture",
+    "bmad-brainstorming",
+    "bmad-create-epics-and-stories",
+    "bmad-customize",
+    "bmad-deep-recon",
+    "bmad-forge-idea",
+    "bmad-help",
+    "bmad-party-mode",
+    "bmad-prd",
+    "bmad-prfaq",
+    "bmad-product-brief",
+    "bmad-review",
+    "bmad-spec",
+    "bmad-ux",
+    "bmad-walkthrough",
+    "esapi"
+  ],
+
+  // O BMad da EXECUÇÃO. Movidas para `~/.claude/skills-desligadas/` (não
+  // apagadas: voltar é mover de novo). `bmad-build`, `-build-auto` e
+  // `agent-dev` concorrem com a fila e com o `tools/robo.py`; review,
+  // sprint, retro e correct-course são o ciclo de execução do BMad; a
+  // `project-context` escreve um AGENTS.md, segunda fonte de instrução ao lado
+  // do `CLAUDE.md`. Reaparecer em `~/.claude/skills` é achado GRAVE.
+  "desligadas": [
+    "bmad-build",
+    "bmad-build-auto",
+    "bmad-agent-dev",
+    "bmad-code-review",
+    "bmad-qa-generate-e2e-tests",
+    "bmad-sprint-planning",
+    "bmad-retrospective",
+    "bmad-correct-course",
+    "bmad-project-context"
+  ],
+
+  // Sincronizadas do claude.ai: mover a pasta não adianta, a sincronização a
+  // traz de volta. Ficam negadas no `permissions.deny` do
+  // `.claude/settings.json`; a ferramenta confere que a negação está lá.
+  // A `ui-ux-pro-max` dispara com "tela" e "componente", em português, e puxa
+  // para design web/React — contra "tela nova começa pelo `ui.py`".
+  "bloqueadas": [
+    "anthropic-skills:ui-ux-pro-max"
+  ],
+
+  // Citadas no `CLAUDE.md` como o caminho para banco/DICOM e ESAPI. Sumir uma
+  // delas não dá erro: a instrução continua dizendo "a skill `/clinica` os
+  // carrega" e nada carrega.
+  "obrigatorias": [
+    "clinica",
+    "esapi"
+  ]
+}

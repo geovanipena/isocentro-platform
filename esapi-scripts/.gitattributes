@@ -1,0 +1,20 @@
+# Fim-de-linha determinístico (independe de core.autocrlf de cada máquina).
+# Blobs no git ficam sempre LF; working tree também LF onde marcado abaixo.
+* text=auto eol=lf
+
+*.cs      text eol=lf
+*.csproj  text eol=lf
+*.py      text eol=lf
+*.sh      text eol=lf
+*.md      text eol=lf
+*.json    text eol=lf
+*.ps1     text eol=lf
+*.xml     text eol=lf
+
+# Vendor: docs de referência da Varian — deixar EXATAMENTE como estão (não
+# renormalizar EOL; evita diff espúrio em arquivos que não são nossos).
+vendor/** -text
+
+# Binários (não normalizar)
+*.dll     binary
+*.png     binary

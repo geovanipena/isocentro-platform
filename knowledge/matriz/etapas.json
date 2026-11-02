@@ -1,0 +1,19 @@
+{
+ "descricao": "Cadeia da radioterapia usada no Mapa do Conhecimento. Cada atividade pertence a uma única etapa. 'grupo' separa a cadeia do equipamento e do paciente das etapas transversais.",
+ "etapas": [
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Aceitação e comissionamento", "atividades": ["A01", "A02", "A19", "B01", "B02"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Calibração e dosimetria de referência", "atividades": ["A03", "A04", "A05", "A06", "A11", "A15", "A16"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "CQ periódico de equipamentos", "atividades": ["A07", "A08", "A09", "A10", "A13", "A14", "A17", "A20", "H05"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Simulação e imagem", "atividades": ["C02"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Prescrição, contorno e nomenclatura", "atividades": ["C01", "C03", "C09", "I04", "I06"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Planejamento e avaliação do plano", "atividades": ["I01", "I02", "I03", "I05", "H03", "H06"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Revisão do plano e 2º cálculo", "atividades": ["C04", "C05", "C10", "C11", "B04", "H01"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "QA específico do paciente", "atividades": ["C06", "C07", "A18"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Tratamento e IGRT", "atividades": ["C08", "D01", "D04", "H04"]},
+  {"grupo": "Cadeia do equipamento e do paciente", "nome": "Acompanhamento e fim de tratamento", "atividades": ["D02", "D03", "D05", "D06"]},
+  {"grupo": "Transversais", "nome": "Braquiterapia HDR", "atividades": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "H02"]},
+  {"grupo": "Transversais", "nome": "Proteção radiológica e licenciamento", "atividades": ["F01", "F02", "F03", "F04", "F05", "F06", "F07", "F09", "F10", "F11", "F12", "F13", "A12"]},
+  {"grupo": "Transversais", "nome": "Qualidade, risco e segurança do paciente", "atividades": ["G01", "G02", "G03", "G04", "G05", "G06", "F08", "G09", "G10", "G11", "G12", "G13", "G14", "G15", "G16", "G17", "G19"]},
+  {"grupo": "Transversais", "nome": "Software, dados e prontuário", "atividades": ["B03", "B05", "B06", "B07", "B08", "B09", "B10", "G07", "G08", "G18"]}
+ ]
+}

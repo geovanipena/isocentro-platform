@@ -1,0 +1,18 @@
+# Ambiente e cache
+.venv/
+__pycache__/
+*.pyc
+
+# Texto integral dos documentos do acervo: tem direito autoral e é regenerado
+# a partir dos PDFs por scripts/converter_referencias.py e converter_manuais.py
+texto/
+
+# Arquivos do Windows e do Drive
+desktop.ini
+Thumbs.db
+
+# Mapa gerado por scripts/gerar_mapa.py
+mapa/mapa-conhecimento.html
+
+# Versão do Mapa para o artefato (página + dados.js), também gerada
+mapa/publicar/

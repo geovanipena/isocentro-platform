@@ -1,0 +1,79 @@
+{
+ "descricao": "Código no acervo (nome do arquivo) -> outros códigos pelos quais o mesmo documento é citado em requisitos, vigência ou aquisição. GERADO de fontes.csv (python acervo.py catalogar).",
+ "aliases": {
+  "COVINGTON-2024-263U1": [
+   "TG-263U1-SURVEY"
+  ],
+  "IEC-80001-1-2021": [
+   "IEC-80001-1"
+  ],
+  "MPPG-9b-SRS": [
+   "MPPG-9b"
+  ],
+  "NN-6.10": [
+   "NN-6.10-2021"
+  ],
+  "PQRT-CALIB-IR192-2005": [
+   "PQRT-CALIB-IR192"
+  ],
+  "QUANTEC-ESOFAGO": [
+   "QUANTEC-ORGAOS"
+  ],
+  "TG-275S": [
+   "AAPM-275S"
+  ],
+  "TG-307": [
+   "AAPM-307"
+  ]
+ },
+ "parciais": {
+  "descricao": "Documento do acervo que cobre só parte de um item de aquisição; o item continua na lista.",
+  "ASTRO-BONEMETS-2017": "ASTRO-BONEMETS-2024",
+  "BALLESTER-2004-ERRATUM": "BALLESTER-2001",
+  "CLRP-GM12i": "CLRP-TG43-DB",
+  "IPEM-81": "IPEM-81v2",
+  "PENTEC-2023": "PENTEC",
+  "RECOG-CASOS-2026": "RECOG-DOSE-2026",
+  "TRS-483-RESUMO": "TRS-483"
+ },
+ "atividades_extra": {
+  "descricao": "Atividades de documentos que não vieram da lista de aquisição.",
+  "ASTRO-BONEMETS-2017": [
+   "I01"
+  ],
+  "BALLESTER-2004-ERRATUM": [
+   "E03",
+   "E07"
+  ],
+  "CLRP-GM12i": [
+   "E03",
+   "E07"
+  ],
+  "CORSAIR-2022": [
+   "I01"
+  ],
+  "IPEM-81": [
+   "A07",
+   "A08"
+  ],
+  "PENTEC-2023": [
+   "I01",
+   "C09"
+  ],
+  "QUANTEC-MARKS-2010": [
+   "I01",
+   "H03"
+  ],
+  "RECOG-CASOS-2026": [
+   "H03",
+   "I03"
+  ],
+  "REIRR-SPC-SUPL-B": [
+   "I03"
+  ],
+  "TRS-483-RESUMO": [
+   "A03",
+   "A17"
+  ]
+ }
+}

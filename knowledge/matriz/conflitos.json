@@ -1,0 +1,1328 @@
+[
+ {
+  "id": "K01",
+  "tema": "Periodicidade da auditoria ou avaliação externa",
+  "fontes": [
+   "NN-6.10",
+   "RDC-20-2006"
+  ],
+  "descricao": "NN-6.10 Art. 36: auditoria externa e independente dos parâmetros físicos e processos a cada ≤2 anos. RDC-20 6.9: avaliação externa da qualidade a cada 4 anos, com 6 indicadores (6.11). O escopo difere em parte (físico e dosimétrico contra indicadores assistenciais). Usar 2 anos como prazo-mestre e incluir os indicadores 6.11 ao menos a cada 4 anos.",
+  "atividades": [
+   "G02",
+   "G03",
+   "G12"
+  ],
+  "regra_adotada": "Prazo-mestre de 2 anos para a auditoria externa (NN-6.10 Art. 36), incluindo os indicadores do item 6.11 da RDC-20 ao menos a cada 4 anos.",
+  "criterio": "norma-br",
+  "decide": "fisico",
+  "regra_proposta": "Prazo-mestre de 2 anos para a auditoria externa (NN-6.10 Art. 36), incluindo os indicadores do item 6.11 da RDC-20 ao menos a cada 4 anos.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K02",
+  "tema": "Comprimento da pinça de emergência HDR",
+  "fontes": [
+   "NN-6.10",
+   "RDC-20-2006"
+  ],
+  "descricao": "NN-6.10 Art. 63 IV-b: pinça de ≥15 cm. RDC-20 5.5.9 b2: pinças interfixas de ≥20 cm na sala. Adotar ≥20 cm, que atende às duas.",
+  "atividades": [
+   "E04"
+  ],
+  "regra_adotada": "Pinça de emergência com ≥20 cm, que atende às duas normas.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Pinça de emergência com ≥20 cm, que atende às duas normas.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K03",
+  "tema": "Dimensionamento de radioterapeutas e físicos",
+  "fontes": [
+   "NN-6.10",
+   "RDC-20-2006",
+   "GUIA-CNEN-RT"
+  ],
+  "descricao": "NN-6.10 Art. 15 VI: 1 radioterapeuta e 1 físico para cada 600 novos pacientes por ano. RDC-20 5.2.3.1: 3 h trabalhadas por paciente novo por ano para cada categoria (600 pacientes equivalem a 1800 h/ano, menos de 1 FTE de 40 h). O GUIA conta cada sítio como caso novo, o que aumenta a contagem. O guia também cita 'Art. 15 inciso IV' (o correto é VI) e traz 4 físicos e 3 radioterapeutas na faixa 1801-2400 (incoerente). Calcular pelas três regras e exigir o maior valor.",
+  "atividades": [
+   "G11"
+  ],
+  "regra_adotada": "Calcular pelas três regras (NN-6.10, RDC-20, GUIA-CNEN-RT) e exigir o maior número.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Calcular pelas três regras (NN-6.10, RDC-20, GUIA-CNEN-RT) e exigir o maior número.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K04",
+  "tema": "Dimensionamento de técnicos",
+  "fontes": [
+   "NN-6.10",
+   "RDC-20-2006"
+  ],
+  "descricao": "NN-6.10 Art. 15 VII: ≥2 técnicos por turno e por máquina. RDC-20 5.2.3.1 d: 10 h de técnico para cada 50 pacientes tratados ou simulados por dia. Aplicar o maior valor.",
+  "atividades": [
+   "G11"
+  ],
+  "regra_adotada": "Aplicar o maior número entre NN-6.10 e RDC-20.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Aplicar o maior número entre NN-6.10 e RDC-20.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K05",
+  "tema": "Trabalhadora gestante",
+  "fontes": [
+   "NR-32",
+   "NN-3.01"
+  ],
+  "descricao": "NR-32 32.4.4: afastamento obrigatório de atividades com radiação ionizante após confirmação da gravidez. NN-3.01 Art. 53: adaptar as condições para que o embrião ou feto tenha proteção de nível público (não exige afastamento). A NR-32 é mais restritiva e vale no vínculo trabalhista.",
+  "atividades": [
+   "F04",
+   "F10"
+  ],
+  "regra_adotada": "Afastar a trabalhadora das atividades com radiação ionizante ao confirmar a gravidez (NR-32 32.4.4); isso já atende a NN-3.01 Art. 53.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Afastar a trabalhadora das atividades com radiação ionizante ao confirmar a gravidez (NR-32 32.4.4); isso já atende a NN-3.01 Art. 53.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K06",
+  "tema": "Guarda dos registros ocupacionais e do prontuário médico do IOE",
+  "fontes": [
+   "NN-3.01",
+   "NR-32",
+   "NR-7"
+  ],
+  "descricao": "NN-3.01 Art. 72 e NR-7 Anexo V 5.4: até os 75 anos de idade e ≥30 anos após o fim do trabalho. NR-32 32.4.7 e 32.4.8: 30 anos após o término. NR-7 7.6.1.1 (regra geral): 20 anos. Adotar o maior entre 75 anos de idade e 30 anos.",
+  "atividades": [
+   "F04",
+   "F10"
+  ],
+  "regra_adotada": "Guardar até o maior entre 75 anos de idade do trabalhador e 30 anos após o fim do trabalho.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Guardar até o maior entre 75 anos de idade do trabalhador e 30 anos após o fim do trabalho.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K07",
+  "tema": "Laboratório de calibração aceito",
+  "fontes": [
+   "NN-6.10",
+   "RDC-20-2006",
+   "NN-3.01",
+   "NN-3.02"
+  ],
+  "descricao": "NN-6.10: acreditado na Rede Brasileira de Calibração. RDC-20 5.3.7 f: autorizado pelo LNMRI por delegação do INMETRO. NN-3.02 6.5.4.1: entidade autorizada pela ANSN. NN-3.01 Art. 55 §1º e 91 VI: autorizado pela ANSN e acreditado INMETRO/ILAC (Art. 55 §1º em vigor em 07/07/2029). Na prática, exigir as duas coisas: autorização ANSN e acreditação RBC.",
+  "atividades": [
+   "A04",
+   "A11",
+   "A12",
+   "E02",
+   "F07"
+  ],
+  "regra_adotada": "Exigir as duas coisas do laboratório: autorização da ANSN e acreditação na RBC (INMETRO/ILAC).",
+  "criterio": "cumulativo",
+  "decide": "fisico",
+  "regra_proposta": "Exigir as duas coisas do laboratório: autorização da ANSN e acreditação na RBC (INMETRO/ILAC).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K08",
+  "tema": "Terminologia calibração x aferição de barômetro, termômetro, régua e nível",
+  "fontes": [
+   "NN-6.10"
+  ],
+  "descricao": "Art. 52 par. único diz 'aferidos' por laboratório (RBC ou 'credenciado'), enquanto o catálogo diz 'calibração'. O valor é o mesmo (2 e 5 anos); só a terminologia diverge.",
+  "atividades": [
+   "A11"
+  ],
+  "regra_adotada": "Sem conflito de valor: usar o termo 'calibração', com 2 anos (barômetro e termômetro) e 5 anos (régua e nível), citando o Art. 52.",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "Sem conflito de valor: usar o termo 'calibração', com 2 anos (barômetro e termômetro) e 5 anos (régua e nível), citando o Art. 52.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K09",
+  "tema": "Prazo e destinatário da comunicação de evento",
+  "fontes": [
+   "NN-6.10",
+   "RDC-20-2006",
+   "NN-3.01"
+  ],
+  "descricao": "Não é contradição: há obrigações cumulativas. ANSN: relatório em 30 dias (NN-6.10 Art. 26), com gatilhos ampliados pela NN-3.01 Art. 98. VISA: notificação de evento adverso grave em 24 h (RDC-20 7.2). O fluxo de F08 deve disparar as duas.",
+  "atividades": [
+   "F08"
+  ],
+  "regra_adotada": "Obrigações cumulativas: o fluxo de F08 dispara as duas comunicações, cada uma no seu prazo.",
+  "criterio": "cumulativo",
+  "decide": "fisico",
+  "regra_proposta": "Obrigações cumulativas: o fluxo de F08 dispara as duas comunicações, cada uma no seu prazo.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K10",
+  "tema": "Limites de projeto de blindagem",
+  "fontes": [
+   "PQRT-BLINDAGEM",
+   "NN-3.01"
+  ],
+  "descricao": "PQRT (2000) usa limite ocupacional de 50 mSv/ano (1 mSv/semana) e público de 1 mSv/ano (0,02 mSv/semana). A NN-3.01 vigente fixa 20 mSv/ano ocupacional (Art. 52) e restrição de 0,3 mSv/ano por fonte para o público (Art. 47 §2º). Os limites do PQRT não devem mais ser usados.",
+  "atividades": [
+   "F13"
+  ],
+  "regra_adotada": "Usar os limites da NN-3.01 vigente (20 mSv/ano ocupacional; 0,3 mSv/ano por fonte para o público). O PQRT serve só para o método de cálculo.",
+  "criterio": "norma-br",
+  "decide": "fisico",
+  "regra_proposta": "Usar os limites da NN-3.01 vigente (20 mSv/ano ocupacional; 0,3 mSv/ano por fonte para o público). O PQRT serve só para o método de cálculo.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K11",
+  "tema": "Periodicidade da revisão de protocolos",
+  "fontes": [
+   "SAES-1399-2019",
+   "RDC-20-2006"
+  ],
+  "descricao": "RDC-20 5.3.3 d: protocolos estabelecidos e modificados quando necessário, sem prazo. Portaria SAES 1.399 Art. 16 e: rotina revisada pelo menos a cada 4 anos (serviços SUS). Adotar 4 anos como prazo máximo.",
+  "atividades": [
+   "G01",
+   "G13"
+  ],
+  "regra_adotada": "Revisar os protocolos no máximo a cada 4 anos (Portaria SAES 1.399), e sempre que houver mudança.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Revisar os protocolos no máximo a cada 4 anos (Portaria SAES 1.399), e sempre que houver mudança.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K12",
+  "tema": "Tolerância do cálculo independente",
+  "fontes": [
+   "MPPG-11a",
+   "TG-114",
+   "TG-219"
+  ],
+  "descricao": "MPPG-11a fixa <5% único; TG-114 vai de 2–5% conforme geometria/algoritmo; TG-219 vai de 3–10% e decide pelo composto",
+  "atividades": [
+   "C04",
+   "C05",
+   "H01"
+  ],
+  "regra_adotada": "Tolerância por técnica: 5% para cálculo de ponto em 3D (TG-114, MPPG-11a); para IMRT/VMAT, o critério do TG-219 para o cálculo composto.",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "Tolerância por técnica: 5% para cálculo de ponto em 3D (TG-114, MPPG-11a); para IMRT/VMAT, o critério do TG-219 para o cálculo composto.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K13",
+  "tema": "Critério γ comissionamento × rotina",
+  "fontes": [
+   "TG-218",
+   "MPPG-5b-TPS"
+  ],
+  "descricao": "TG-218: ≥95%/≥90% em 3%/2 mm global; MPPG-5b Tab. 9: sem taxa mínima, investigar em 2%/2 mm local (o resumo pede >95%)",
+  "atividades": [
+   "B02",
+   "C06"
+  ],
+  "regra_adotada": "Usos diferentes: QA de paciente na rotina pelo TG-218 (3%/2 mm global, tolerância 95%, ação 90%); comissionamento do TPS pelo MPPG-5b (investigar em 2%/2 mm local).",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "Usos diferentes: QA de paciente na rotina pelo TG-218 (3%/2 mm global, tolerância 95%, ação 90%); comissionamento do TPS pelo MPPG-5b (investigar em 2%/2 mm local).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K14",
+  "tema": "Limite de ação γ composto",
+  "fontes": [
+   "TG-218",
+   "TG-219"
+  ],
+  "descricao": "TG-219 aceita 88–90% para composto; TG-218 fixa 90%",
+  "atividades": [
+   "C05",
+   "C06"
+  ],
+  "regra_adotada": "Limite de ação de 90% (TG-218).",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Limite de ação de 90% (TG-218).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K15",
+  "tema": "Unidade de dose na nomenclatura",
+  "fontes": [
+   "TG-263"
+  ],
+  "descricao": "Nomes de alvo em cGy ou nível relativo × métricas DVH em Gy",
+  "atividades": [
+   "C03",
+   "I06"
+  ],
+  "regra_adotada": "Sem conflito de valor: nome do alvo em cGy (TG-263) e métricas de DVH em Gy.",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "Sem conflito de valor: nome do alvo em cGy (TG-263) e métricas de DVH em Gy.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K16",
+  "tema": "Comprimento do nome",
+  "fontes": [
+   "TG-263",
+   "DICOM-RT"
+  ],
+  "descricao": "TG-263 limita a 16 caracteres; DICOM ROI Name permite 64",
+  "atividades": [
+   "C03",
+   "C11"
+  ],
+  "regra_adotada": "Nomes com até 16 caracteres (TG-263), o que cabe no limite de 64 do DICOM.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Nomes com até 16 caracteres (TG-263), o que cabe no limite de 64 do DICOM.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K17",
+  "tema": "Valor do QA de IMRT medido",
+  "fontes": [
+   "FORD-2012-ILS",
+   "TG-218",
+   "TG-219"
+  ],
+  "descricao": "Ford: QA de IMRT detecta 1,4% dos incidentes graves; os TGs mantêm o QA medido e advertem que o cálculo não detecta erros de entrega",
+  "atividades": [
+   "C06",
+   "G17"
+  ],
+  "regra_adotada": "Manter o QA medido de IMRT/VMAT (TG-218, TG-219) e somar a revisão do plano e os checklists, que pegam o que a medida não pega.",
+  "criterio": "cumulativo",
+  "decide": "fisico",
+  "regra_proposta": "Manter o QA medido de IMRT/VMAT (TG-218, TG-219) e somar a revisão do plano e os checklists, que pegam o que a medida não pega.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K18",
+  "tema": "Prazo do cálculo independente",
+  "fontes": [
+   "TG-114",
+   "TG-275",
+   "MPPG-11a"
+  ],
+  "descricao": "TG-114 admite até a 3ª fração/10% da dose; TG-275 e MPPG-11a exigem revisão antes da 1ª fração",
+  "atividades": [
+   "C04",
+   "C05"
+  ],
+  "regra_adotada": "Revisão física e 2º cálculo antes da 1ª fração (TG-275, MPPG-11a). O piso legal da RDC-20 9.7(c) é até a 3ª fração.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Revisão física e 2º cálculo antes da 1ª fração (TG-275, MPPG-11a). O piso legal da RDC-20 9.7(c) é até a 3ª fração.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K19",
+  "tema": "Medula — ponto em 5 fx",
+  "fontes": [
+   "TG-101",
+   "TIMMERMAN-2021",
+   "ASTRO-CONSTR-2025",
+   "HYTEC-SPINALCORD",
+   "UK-SABR-2022",
+   "UK-SABR-2017"
+  ],
+  "descricao": "30 (TG-101) vs 28 (Timmerman; ASTRO pulmão) vs 25 D0.5cc (ASTRO fígado) vs 25,3 (HyTEC; UK 2022) vs 23 ótimo/30 obrigatório (UK 2017)",
+  "atividades": [
+   "I02"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Ponto da medula em 5 frações: 25,3 Gy (HyTEC; UK 2022), o consenso mais recente e o mais conservador entre os vigentes."
+ },
+ {
+  "id": "K20",
+  "tema": "Medula — ponto em 3 fx",
+  "fontes": [
+   "TG-101",
+   "TIMMERMAN-2021",
+   "ASTRO-CONSTR-2025",
+   "QUANTEC",
+   "HYTEC-SPINALCORD"
+  ],
+  "descricao": "21,9 (TG-101) vs 22,5 (Timmerman; ASTRO fígado) vs 20,3 (HyTEC; ASTRO pulmão) vs 20 Gy = 1 % (QUANTEC)",
+  "atividades": [
+   "I02"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Ponto da medula em 3 frações: 20,3 Gy (HyTEC)."
+ },
+ {
+  "id": "K21",
+  "tema": "Esôfago 3 e 5 fx",
+  "fontes": [
+   "TG-101",
+   "TIMMERMAN-2021",
+   "ASTRO-CONSTR-2025",
+   "UK-SABR-2022"
+  ],
+  "descricao": "3 fx ponto: 25,2 (TG-101) vs 32,4 (Timmerman) vs 27 (ASTRO). 5 fx ponto: 35 (TG-101; UK 2022) vs 38 (Timmerman; ASTRO pulmão) vs D0.5cc 32 (ASTRO fígado); <5 cc: 19,5 vs 32,5",
+  "atividades": [
+   "I02"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Esôfago: ponto de 25,2 Gy em 3 frações e 35 Gy em 5 frações (TG-101; UK 2022 em 5 frações)."
+ },
+ {
+  "id": "K22",
+  "tema": "Via óptica SRS",
+  "fontes": [
+   "TG-101",
+   "TIMMERMAN-2021",
+   "QUANTEC",
+   "HYTEC-OPTIC",
+   "UK-SABR-2017"
+  ],
+  "descricao": "1 fx: 10 (TG-101/Timmerman; HyTEC) vs <12 = <10 % (QUANTEC) vs 8 (UK 2017). 3 fx: 17,4 vs <20 (HyTEC) vs 15 (UK)",
+  "atividades": [
+   "I02",
+   "C07"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Via óptica: 10 Gy em 1 fração (TG-101, HyTEC) e 17,4 Gy em 3 frações (TG-101), o valor mais conservador entre os vigentes."
+ },
+ {
+  "id": "K23",
+  "tema": "Reto SBRT 5 fx",
+  "fontes": [
+   "TG-101",
+   "TIMMERMAN-2021",
+   "ASTRO-CONSTR-2025"
+  ],
+  "descricao": "Ponto 38 (TG-101) vs 55 (Timmerman); <20 cc 25 vs 37,5. ASTRO próstata usa métricas diferentes (V36 <1 cc)",
+  "atividades": [
+   "I02"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Reto em 5 frações: ponto de 38 Gy (TG-101); em próstata, as métricas próprias da ASTRO."
+ },
+ {
+  "id": "K24",
+  "tema": "Coração SBRT 5 fx por sítio",
+  "fontes": [
+   "ASTRO-CONSTR-2025",
+   "TG-101",
+   "UK-SABR-2022"
+  ],
+  "descricao": "Pulmão D0.035cc ≤38 e D15cc ≤32 vs fígado D0.03cc ≤52,5* e D30cc ≤30 na mesma diretriz; UK 2022 29/38 (D0.1cc)",
+  "atividades": [
+   "I02"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Coração: a tabela do sítio tratado (ASTRO 2025); em oligometástase, o UK 2022."
+ },
+ {
+  "id": "K25",
+  "tema": "Tronco e medula convencional",
+  "fontes": [
+   "QUANTEC",
+   "ASTRO-CONSTR-2025",
+   "TIMMERMAN-2021"
+  ],
+  "descricao": "Tronco: Dmax <54 (QUANTEC) vs ≤50/<52 (ASTRO cabeça e pescoço) vs máx. 60/<5 cc 52 (Timmerman). Medula: 50 = 0,2 % (QUANTEC) vs 45/50 (ASTRO cabeça e pescoço) vs 50,5/52 (ASTRO pulmão) vs 52,8 (Timmerman)",
+  "atividades": [
+   "I01"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Tronco Dmax 54 Gy (QUANTEC); medula Dmax 45 Gy, aceitando até 50 Gy (ASTRO cabeça e pescoço; QUANTEC)."
+ },
+ {
+  "id": "K26",
+  "tema": "Pulmão V20 convencional",
+  "fontes": [
+   "QUANTEC",
+   "ASTRO-CONSTR-2025",
+   "TIMMERMAN-2021"
+  ],
+  "descricao": "≤30 % (QUANTEC) vs ≤33 %/≤37 % (ASTRO) vs <37 % (Timmerman)",
+  "atividades": [
+   "I01"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Pulmão V20 ≤30% como objetivo (QUANTEC) e ≤37% como limite (ASTRO, Timmerman)."
+ },
+ {
+  "id": "K27",
+  "tema": "Volume que define o 'ponto'",
+  "fontes": [
+   "TG-101",
+   "TIMMERMAN-2021",
+   "ASTRO-CONSTR-2025",
+   "UK-SABR-2022"
+  ],
+  "descricao": "0,035 cc (TG-101, Timmerman, ASTRO SBRT) vs 0,03 cc (ASTRO convencional/fígado) vs 0,1 ou 0,5 cc (UK)",
+  "atividades": [
+   "I01",
+   "I02"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Ponto = 0,035 cc (TG-101, ASTRO SBRT), salvo quando a diretriz usada definir outro volume."
+ },
+ {
+  "id": "K28",
+  "tema": "α/β da medula",
+  "fontes": [
+   "QUANTEC",
+   "RCR-INTERR-2019",
+   "REIRR-SPC-IMPL",
+   "HARDCASTLE-2024"
+  ],
+  "descricao": "0,87 (QUANTEC) vs 2 (RCR) vs 3 padrão (Price) vs 1 (Hardcastle, cenário de estudo)",
+  "atividades": [
+   "H03",
+   "H06",
+   "I03"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "α/β da medula = 2 Gy como padrão (RCR), com análise de sensibilidade em 0,87 Gy (QUANTEC)."
+ },
+ {
+  "id": "K29",
+  "tema": "Fatores de recuperação na reirradiação",
+  "fontes": [
+   "ESTRO-REIRR-2022",
+   "REIRR-SPC-IMPL",
+   "QUANTEC",
+   "HYTEC-SPINALCORD",
+   "RECOG-CONSTR",
+   "HARDCASTLE-2024"
+  ],
+  "descricao": "ESTRO: sem recomendação fora de SNC/medula. Price: 0/25/50 % para quase todos os órgãos. QUANTEC: ≥25 % aos 6 m (medula). HyTEC: intervalo ≥5 m sem desconto explícito. ReCOG glioma: nenhum estudo usou TRF. Hardcastle: centros usam 25–75 % e recomenda relatar sem recuperação",
+  "atividades": [
+   "I03",
+   "H03"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "Relatar a dose acumulada sem recuperação (ReCOG, Hardcastle); aplicar fator de recuperação só com justificativa clínica escrita (Price: 0/25/50% conforme o intervalo)."
+ },
+ {
+  "id": "K30",
+  "tema": "Modelo de conversão em alta dose por fração",
+  "fontes": [
+   "TIMMERMAN-2021",
+   "HYTEC-BRAIN",
+   "REIRR-SPC-IMPL"
+  ],
+  "descricao": "Timmerman: LQ superestima a potência em 1 fx (usou modelo universal). HyTEC brain: conversão por LQ (α/β 2), notando que pode superestimar. Price: cautela acima de ≈6 Gy/fx",
+  "atividades": [
+   "H06",
+   "I02"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "LQ com cautela acima de cerca de 6 Gy por fração; em 1 fração, usar as tabelas próprias de dose única em vez de converter."
+ },
+ {
+  "id": "K31",
+  "tema": "Exatidão de posição do MLC",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-8b",
+   "MPPG-9b"
+  ],
+  "descricao": "TG-142: semanal qualitativo (picket fence visual) e mensal 1 mm (IMRT); TG-198 mantém o visual ±2 mm com ângulo rotativo. MPPG-8b: semanal quantitativo 0,5 mm e diz que o visual é insuficiente. MPPG-9b: diário (mínimo semanal) 0,5 mm.",
+  "atividades": [
+   "A07",
+   "A17"
+  ],
+  "regra_adotada": "MLC: 0,5 mm quantitativo, diário nas máquinas de SRS/SBRT (MPPG-9b) e semanal nas demais (MPPG-8b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "MLC: 0,5 mm quantitativo, diário nas máquinas de SRS/SBRT (MPPG-9b) e semanal nas demais (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K32",
+  "tema": "Constância de perfil (mensal) e referência anual",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-8b",
+   "TECDOC-1151"
+  ],
+  "descricao": "TG-142/198: 1% vs baseline (mensal) e planura/simetria 1% (anual). MPPG-8b: 2% (diário/mensal) e anual 2% vs OAF do TPS (PRD), não vs comissionamento. TECDOC: 2–3% com aumento absoluto ≤2%.",
+  "atividades": [
+   "A07",
+   "A13"
+  ],
+  "regra_adotada": "Constância de perfil a 2% no diário e no mensal, e anual a 2% contra o OAF do TPS (MPPG-8b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Constância de perfil a 2% no diário e no mensal, e anual a 2% contra o OAF do TPS (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K33",
+  "tema": "Indicadores angulares gantry/colimador",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-8b",
+   "TECDOC-1151"
+  ],
+  "descricao": "1,0° (TG-142, TG-198 ±1°, TECDOC 1°) vs 0,5° (MPPG-8b, incluindo o encoder do sistema de imagem).",
+  "atividades": [
+   "A07"
+  ],
+  "regra_adotada": "Indicadores angulares a 0,5°, incluindo o encoder do sistema de imagem (MPPG-8b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Indicadores angulares a 0,5°, incluindo o encoder do sistema de imagem (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K34",
+  "tema": "Isocentricidade e Winston-Lutz: frequência e limite",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-8b",
+   "MPPG-9b",
+   "TECDOC-1151"
+  ],
+  "descricao": "TG-142: anual ±1 mm vs baseline por eixo; rad×mec ±2/±1 mm. TG-198: absolutos. MPPG-8b: anual 2 mm de diâmetro (WL raio 1 mm). MPPG-9b: diário 1,0/1,5 mm em posições limitadas e mensal na faixa completa. TECDOC: 2 mm de diâmetro anual.",
+  "atividades": [
+   "A07",
+   "A17"
+  ],
+  "regra_adotada": "Winston-Lutz diário a 1,0 mm nas máquinas de SRS/SBRT (MPPG-9b); isocentricidade anual a 2 mm de diâmetro nas demais (MPPG-8b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Winston-Lutz diário a 1,0 mm nas máquinas de SRS/SBRT (MPPG-9b); isocentricidade anual a 2 mm de diâmetro nas demais (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K35",
+  "tema": "Coincidência imagem-tratamento em máquinas SRS/SBRT",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "TG-179",
+   "MPPG-IGRT-2021",
+   "MPPG-9b"
+  ],
+  "descricao": "TG-142 Tabela VI: diário ≤1 mm para SRS/SBRT. TG-198/TG-179: ≤2 mm, com ≤1 mm apenas no dia de SRS. MPPG 2.b: 2 mm (semanal aceitável no convencional) e 1 mm no composto SRS. MPPG-9b: 1 mm SRS / 2 mm SBRT.",
+  "atividades": [
+   "A08",
+   "A17"
+  ],
+  "regra_adotada": "Coincidência imagem-tratamento: 1 mm em SRS e 2 mm em SBRT (MPPG-9b); 2 mm no convencional (MPPG 2.b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Coincidência imagem-tratamento: 1 mm em SRS e 2 mm em SBRT (MPPG-9b); 2 mm no convencional (MPPG 2.b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K36",
+  "tema": "Lasers",
+  "fontes": [
+   "TG-142",
+   "MPPG-8b",
+   "MPPG-9b",
+   "TECDOC-1151"
+  ],
+  "descricao": "TG-142: diário 2/1,5/1 mm e mensal ±2/±1/<±1 mm por tipo de máquina. MPPG-8b: diário 2 mm e mensal 1 mm para qualquer dispositivo de posicionamento. MPPG-9b: 1 mm diário se o laser for usado para alvo. TECDOC: 2 mm diário.",
+  "atividades": [
+   "A10"
+  ],
+  "regra_adotada": "Lasers: 2 mm no diário e 1 mm no mensal (MPPG-8b); 1 mm no diário se o laser for usado para posicionar alvo de SRS (MPPG-9b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Lasers: 2 mm no diário e 1 mm no mensal (MPPG-8b); 1 mm no diário se o laser for usado para posicionar alvo de SRS (MPPG-9b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K37",
+  "tema": "Coincidência luz-radiação e frequência",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-8b"
+  ],
+  "descricao": "TG-142: mensal 2 mm ou 1%/lado (assimétrico 1 mm). TG-198: mensal ±2 mm/jaw. MPPG-8b: anual 2 mm/jaw (mais frequente se a luz for usada clinicamente).",
+  "atividades": [
+   "A07"
+  ],
+  "regra_adotada": "Coincidência luz-radiação mensal a 2 mm enquanto o campo de luz for usado na clínica (TG-142); anual se não for (MPPG-8b).",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Coincidência luz-radiação mensal a 2 mm enquanto o campo de luz for usado na clínica (TG-142); anual se não for (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K38",
+  "tema": "Fatores de campo pequeno",
+  "fontes": [
+   "TG-142",
+   "MPPG-8b",
+   "MPPG-9b"
+  ],
+  "descricao": "TG-142: anual 2% (<4×4) e 1% (≥4×4) vs baseline. MPPG-8b: 2% do TPS (jaw e MLC ≤2×2), 5% ≤1×1. MPPG-9b: ±2% >1 cm e ±5% ≤1 cm vs TPS.",
+  "atividades": [
+   "A07",
+   "A17",
+   "B02"
+  ],
+  "regra_adotada": "Fatores de campo pequeno a 2% acima de 1 cm e 5% até 1 cm, contra o TPS (MPPG-8b, MPPG-9b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Fatores de campo pequeno a 2% acima de 1 cm e 5% até 1 cm, contra o TPS (MPPG-8b, MPPG-9b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K39",
+  "tema": "Transmissão do MLC",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-9b"
+  ],
+  "descricao": "TG-142/198: ±0,5% (pontos percentuais) da baseline. MPPG-9b: 5% (relativo) do valor do TPS.",
+  "atividades": [
+   "A07",
+   "A17"
+  ],
+  "regra_adotada": "Transmissão do MLC a 5% (relativo) do valor do TPS (MPPG-9b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Transmissão do MLC a 5% (relativo) do valor do TPS (MPPG-9b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K40",
+  "tema": "Energia do feixe de elétrons",
+  "fontes": [
+   "TG-142",
+   "MPPG-8b"
+  ],
+  "descricao": "Anual R50 ±1 mm (TG-142/198) vs 2 mm (MPPG-8b).",
+  "atividades": [
+   "A07"
+  ],
+  "regra_adotada": "Energia de elétrons: R50 anual a 2 mm (MPPG-8b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Energia de elétrons: R50 anual a 2 mm (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K41",
+  "tema": "Energia de fótons: frequência",
+  "fontes": [
+   "TG-142",
+   "MPPG-8b",
+   "TECDOC-1151"
+  ],
+  "descricao": "TG-142: apenas anual ±1%. MPPG-8b: mensal e anual 1%. TECDOC: mensal 2%.",
+  "atividades": [
+   "A07"
+  ],
+  "regra_adotada": "Energia de fótons mensal e anual a 1% (MPPG-8b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Energia de fótons mensal e anual a 1% (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K42",
+  "tema": "Dose de imagem: critério",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-IGRT-2021"
+  ],
+  "descricao": "TG-142: baseline. TG-198: relativo (kV ±20%, MV ±5%). MPPG 2.b: absoluto (±1 cGy, ±3 mGy, ±1 cGy/min) e também após troca de tubo.",
+  "atividades": [
+   "A08"
+  ],
+  "regra_adotada": "Dose de imagem por critério absoluto, também após troca de tubo (MPPG 2.b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Dose de imagem por critério absoluto, também após troca de tubo (MPPG 2.b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K43",
+  "tema": "Frequência de qualidade de imagem IGRT",
+  "fontes": [
+   "TG-142",
+   "TG-179",
+   "MPPG-IGRT-2021"
+  ],
+  "descricao": "TG-142: mensal. TG-179: mensal, semestral após estabilidade. MPPG 2.b: anual (escala semestral).",
+  "atividades": [
+   "A08"
+  ],
+  "regra_adotada": "Qualidade de imagem IGRT anual (MPPG 2.b), mensal na implantação até mostrar estabilidade.",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Qualidade de imagem IGRT anual (MPPG 2.b), mensal na implantação até mostrar estabilidade.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K44",
+  "tema": "Revisão do QA diário pelo físico",
+  "fontes": [
+   "TG-142",
+   "TG-198"
+  ],
+  "descricao": "TG-142: mínimo mensal. TG-198: mínimo semanal (preferencialmente diário).",
+  "atividades": [
+   "A07",
+   "A13"
+  ],
+  "regra_adotada": "Revisão do QA diário pelo físico no mínimo semanal (TG-198).",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Revisão do QA diário pelo físico no mínimo semanal (TG-198).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K45",
+  "tema": "Linearidade de UM em poucas UM",
+  "fontes": [
+   "TG-142",
+   "MPPG-8b"
+  ],
+  "descricao": "TG-142: ±5% para 2–4 UM (IMRT/SRS). MPPG-8b: 2% em toda a faixa clínica, incluindo UM/segmento mínimo.",
+  "atividades": [
+   "A07"
+  ],
+  "regra_adotada": "Linearidade de UM a 2% em toda a faixa clínica, incluindo a UM mínima por segmento (MPPG-8b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Linearidade de UM a 2% em toda a faixa clínica, incluindo a UM mínima por segmento (MPPG-8b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K46",
+  "tema": "Modo arco",
+  "fontes": [
+   "TG-142",
+   "TG-198",
+   "MPPG-8b",
+   "MPPG-9b"
+  ],
+  "descricao": "TG-142: ±1% (arco) e SRS 1,0 UM/2% e 1,0°/2%. TG-198: ±1% não-SRS. MPPG-8b: 2% e 2°. MPPG-9b: 1 UM e 1°.",
+  "atividades": [
+   "A07",
+   "A17"
+  ],
+  "regra_adotada": "Modo arco a 2% e 2° (MPPG-8b); em SRS, 1 UM e 1° (MPPG-9b).",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Modo arco a 2% e 2° (MPPG-8b); em SRS, 1 UM e 1° (MPPG-9b).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K47",
+  "tema": "Periodicidade de instrumentos (monitor de área, barômetro)",
+  "fontes": [
+   "TECDOC-1151",
+   "NN-6.10"
+  ],
+  "descricao": "TECDOC Tabela XIII: monitor de área anual e barômetro 'trimestral' (OCR). O catálogo atribui à NN-6.10 calibração bienal para barômetro/termômetro e monitores. Conferir os dois textos.",
+  "atividades": [
+   "A11",
+   "A12"
+  ],
+  "regra_adotada": "Calibração bienal (NN-6.10) até reler a Tabela XIII da TECDOC-1151 na imagem da página, já que o texto veio de OCR.",
+  "criterio": "confirmar-fonte",
+  "decide": "fisico",
+  "regra_proposta": "Calibração bienal (NN-6.10) até reler a Tabela XIII da TECDOC-1151 na imagem da página, já que o texto veio de OCR.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K48",
+  "tema": "Protocolo de dosimetria de referência",
+  "fontes": [
+   "TRS-398-R1",
+   "TG-51"
+  ],
+  "descricao": "TRS-398 Rev.1 (2024) e TG-51 + adendos (2014 fótons, 2024 elétrons) usam formalismos ND,w equivalentes, mas kQ e o tratamento de elétrons diferem. O adendo de elétrons pode dar até ~2% a mais por UM. A matriz deve fixar um único protocolo por serviço.",
+  "atividades": [
+   "A03",
+   "A15"
+  ],
+  "regra_adotada": "Um protocolo só no serviço: TRS-398 Rev. 1, coerente com o certificado de calibração da câmara (laboratório brasileiro, rede IAEA).",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "Um protocolo só no serviço: TRS-398 Rev. 1, coerente com o certificado de calibração da câmara (laboratório brasileiro, rede IAEA).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K49",
+  "tema": "QA de ortovoltagem",
+  "fontes": [
+   "TECDOC-1151",
+   "TG-61",
+   "TRS-398-R1"
+  ],
+  "descricao": "Só a TECDOC dá tolerâncias de QA de kV (mensal 3%). TG-61 e TRS-398 cap. 8 dão formalismo de dosimetria, não tabela de QA, e diferem no método (ar vs água/fantoma).",
+  "atividades": [
+   "A20"
+  ],
+  "regra_adotada": "QA mensal de ortovoltagem a 3% (TECDOC-1151, a única com tabela) e dosimetria pelo TRS-398 Rev. 1, cap. 8, coerente com K48.",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "QA mensal de ortovoltagem a 3% (TECDOC-1151, a única com tabela) e dosimetria pelo TRS-398 Rev. 1, cap. 8, coerente com K48.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K50",
+  "tema": "Tolerância de posição da fonte",
+  "fontes": [
+   "MPPG-HDR-A",
+   "TG-56",
+   "CPQR-AFTERLOADER"
+  ],
+  "descricao": "MPPG: 1 mm recomendado e 2 mm exigido (troca de fonte e diário). TG-56: ±2 mm razoável no texto, mas 1 mm no diário (Tab. V) e 0.5 mm fonte × dummy no trimestral (Tab. VI). CPQR: 2 mm no dia de tratamento e 1 mm no trimestral. NRC: 1 mm. NN 6.10 não fixa valor.",
+  "atividades": [
+   "E03",
+   "E08"
+  ],
+  "regra_adotada": "Posição da fonte a 1 mm (MPPG, TG-56, NRC), com 2 mm como limite de bloqueio.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Posição da fonte a 1 mm (MPPG, TG-56, NRC), com 2 mm como limite de bloqueio.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K51",
+  "tema": "Tolerância Sk medida × certificado",
+  "fontes": [
+   "MPPG-HDR-A",
+   "TG-56",
+   "GEC-ESTRO-ACROP-CALIB-2022",
+   "CPQR-AFTERLOADER"
+  ],
+  "descricao": "MPPG: 5% bloqueia o tratamento (típico 3%). TG-56: 3% investigar, 5% comunicar. ACROP 2022: 3.0%. CPQR: 5%. PQRT e TECDOC-1274 não fixam valor.",
+  "atividades": [
+   "E06",
+   "E03"
+  ],
+  "regra_adotada": "Sk medida contra o certificado: investigar acima de 3% (ACROP, TG-56) e bloquear o tratamento acima de 5% (MPPG, CPQR).",
+  "criterio": "cumulativo",
+  "decide": "fisico",
+  "regra_proposta": "Sk medida contra o certificado: investigar acima de 3% (ACROP, TG-56) e bloquear o tratamento acima de 5% (MPPG, CPQR).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K52",
+  "tema": "Periodicidade de calibração da câmara poço",
+  "fontes": [
+   "NN-6.10",
+   "MPPG-HDR-A",
+   "TG-56",
+   "PQRT-CALIB-IR192",
+   "GEC-ESTRO-ACROP-CALIB-2022",
+   "IAEA-TECDOC-1274"
+  ],
+  "descricao": "2 anos é obrigatório pela NN 6.10 e recomendado por MPPG, TG-56 e PQRT. O ACROP 2022 permite até 5 anos com redundância rigorosa (a norma nacional prevalece). O TECDOC-1274 parte de 5 anos e reduz para 2 com CQ abreviado.",
+  "atividades": [
+   "E02"
+  ],
+  "regra_adotada": "Calibração da câmara poço a cada 2 anos (NN-6.10, obrigatório).",
+  "criterio": "norma-br",
+  "decide": "fisico",
+  "regra_proposta": "Calibração da câmara poço a cada 2 anos (NN-6.10, obrigatório).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K53",
+  "tema": "Constância da câmara poço",
+  "fontes": [
+   "PQRT-CALIB-IR192",
+   "NN-6.10",
+   "IAEA-TECDOC-1274",
+   "TG-43U1"
+  ],
+  "descricao": "PQRT: mensal, ±0.5% em 1 ano. NN 6.10: pelo menos trimestral, ±1% (legal). TECDOC-1274: ≥4 vezes por ano, ±1% (fonte de checagem ±0.5%). TG-43U1, citando a AAPM: a cada uso, dentro de 2%.",
+  "atividades": [
+   "E02"
+  ],
+  "regra_adotada": "Constância da câmara poço a cada troca de fonte e no mínimo trimestral, a ±1% (NN-6.10); mensal a ±0,5% (PQRT) como boa prática.",
+  "criterio": "norma-br",
+  "decide": "fisico",
+  "regra_proposta": "Constância da câmara poço a cada troca de fonte e no mínimo trimestral, a ±1% (NN-6.10); mensal a ±0,5% (PQRT) como boa prática.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K54",
+  "tema": "Obrigatoriedade do cálculo independente",
+  "fontes": [
+   "NN-6.10",
+   "MPPG-HDR-A",
+   "TG-59"
+  ],
+  "descricao": "NN 6.10 Art. 15, XI, e exige segundo sistema de cálculo. MPPG-HDR-A Sec. 8.3.4 declara o cálculo secundário opcional, por falta de independência real. TG-59 privilegia a revisão independente e o cálculo manual com tolerância 'esperada'.",
+  "atividades": [
+   "E07",
+   "H01"
+  ],
+  "regra_adotada": "Cálculo independente obrigatório em HDR (NN-6.10 Art. 15 XI e); a ressalva do MPPG sobre independência vira requisito de método, não dispensa.",
+  "criterio": "norma-br",
+  "decide": "fisico",
+  "regra_proposta": "Cálculo independente obrigatório em HDR (NN-6.10 Art. 15 XI e); a ressalva do MPPG sobre independência vira requisito de método, não dispensa.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K55",
+  "tema": "Exatidão e linearidade do temporizador",
+  "fontes": [
+   "MPPG-HDR-A",
+   "CPQR-AFTERLOADER"
+  ],
+  "descricao": "MPPG: 1 s ou 1% (diário e troca de fonte) e linearidade 1% (3%) após serviço. CPQR: tempo de permanência 2% no dia de tratamento e 1% anual, com linearidade 1% anual.",
+  "atividades": [
+   "E03"
+  ],
+  "regra_adotada": "Temporizador a 1 s ou 1% no diário e na troca de fonte; linearidade a 1% anual e após serviço.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Temporizador a 1 s ou 1% no diário e na troca de fonte; linearidade a 1% anual e após serviço.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K56",
+  "tema": "Presença do físico durante o tratamento",
+  "fontes": [
+   "NN-6.10",
+   "MPPG-HDR-A",
+   "TG-59"
+  ],
+  "descricao": "NN 6.10: físico na sala no primeiro dia de tratamento. MPPG (NRC): AMP no início de todos os tratamentos e imediatamente disponível. TG-59: físico presente em todos os tratamentos HDR.",
+  "atividades": [
+   "E04"
+  ],
+  "regra_adotada": "Físico presente no início de todos os tratamentos HDR (MPPG, TG-59) e na sala no primeiro dia (NN-6.10).",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Físico presente no início de todos os tratamentos HDR (MPPG, TG-59) e na sala no primeiro dia (NN-6.10).",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K57",
+  "tema": "Simulado de emergência",
+  "fontes": [
+   "MPPG-HDR-A",
+   "NN-6.10"
+  ],
+  "descricao": "MPPG: simulado de emergência inicial e anual para todos os envolvidos. NN 6.10: treinamento anual em situações de acidente, sem exigir exercício simulado explicitamente.",
+  "atividades": [
+   "E04"
+  ],
+  "regra_adotada": "Simulado de emergência inicial e anual para todos os envolvidos (MPPG), o que atende o treinamento anual da NN-6.10.",
+  "criterio": "mais-restritivo",
+  "decide": "fisico",
+  "regra_proposta": "Simulado de emergência inicial e anual para todos os envolvidos (MPPG), o que atende o treinamento anual da NN-6.10.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K58",
+  "tema": "HR-CTV D90 no EMBRACE II",
+  "fontes": [
+   "EMBRACE-II-PROTOCOL"
+  ],
+  "descricao": "O protocolo cita ≥85 Gy (Sec. 3.3.1) e 90–95 Gy (Sec. 2.5). Reconcilia-se como limite (≥85) e meta (>90 e <95), conforme a tabela reproduzida por Chimeno 2021.",
+  "atividades": [
+   "I01",
+   "E07"
+  ],
+  "regra_adotada": "pendente",
+  "criterio": "decisao-clinica",
+  "decide": "radioterapeuta",
+  "regra_proposta": "HR-CTV D90 com limite ≥85 Gy e meta entre 90 e 95 Gy (EMBRACE II, Sec. 2.5 e 3.3.1)."
+ },
+ {
+  "id": "K59",
+  "tema": "Regra de classificação de SaMD citada na RDC 657",
+  "fontes": [
+   "RDC-657",
+   "RDC-751-2022",
+   "ANVISA-RDC657-PR"
+  ],
+  "descricao": "A RDC 657 Art. 4º e as respostas do P&R (2022) usam as regras da RDC 185/2001, revogada pela RDC 751/2022 (vigente desde 01/03/2023); hoje vale a Regra 11 da RDC 751",
+  "atividades": [
+   "B07"
+  ],
+  "regra_adotada": "Classificar o software pela Regra 11 da RDC 751/2022, vigente; a RDC 185 citada na RDC 657 foi revogada.",
+  "criterio": "norma-vigente",
+  "decide": "fisico",
+  "regra_proposta": "Classificar o software pela Regra 11 da RDC 751/2022, vigente; a RDC 185 citada na RDC 657 foi revogada.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K60",
+  "tema": "Classe mínima de software informativo",
+  "fontes": [
+   "RDC-751-2022",
+   "IMDRF-N12-2014"
+  ],
+  "descricao": "A Regra 11 coloca software que informa decisão terapêutica no mínimo na classe II (III/IV por gravidade); a N12 permite categoria I para 'inform' em situação não séria ou séria. A dispensa in-house (RDC 657 Art. 5º) depende da classe brasileira",
+  "atividades": [
+   "B07",
+   "B06"
+  ],
+  "regra_adotada": "Vale a classe brasileira (Regra 11, no mínimo classe II); a IMDRF N12 fica como referência.",
+  "criterio": "norma-br",
+  "decide": "fisico",
+  "regra_proposta": "Vale a classe brasileira (Regra 11, no mínimo classe II); a IMDRF N12 fica como referência.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K61",
+  "tema": "Prazos de comunicação de eventos",
+  "fontes": [
+   "RDC-36-2013",
+   "RES-ANPD-15-2024",
+   "NN-6.10",
+   "CNEN-GUIA-EXP-NAO-PLANEJADA-2020"
+  ],
+  "descricao": "ANVISA: mensal até o 15º dia útil e óbito em 72 h; ANPD: 3 dias úteis para incidente de dados; CNEN/ANSN: notificação obrigatória (NN 6.10 Art. 26 IV) com prazo não confirmado (catálogo diz 30 dias). Um mesmo evento (p.ex., falha de software que expõe dados e altera dose) pode acionar três canais com relógios diferentes",
+  "atividades": [
+   "G05",
+   "F08",
+   "G08"
+  ],
+  "regra_adotada": "Três canais com prazos próprios: ANVISA (mensal; óbito em 72 h), ANPD (3 dias úteis) e ANSN (30 dias, a confirmar). O fluxo dispara todos os que se aplicarem ao evento.",
+  "criterio": "cumulativo",
+  "decide": "fisico",
+  "regra_proposta": "Três canais com prazos próprios: ANVISA (mensal; óbito em 72 h), ANPD (3 dias úteis) e ANSN (30 dias, a confirmar). O fluxo dispara todos os que se aplicarem ao evento.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K62",
+  "tema": "Origem da escala FMEA",
+  "fontes": [
+   "TG-100",
+   "SNA-2019"
+  ],
+  "descricao": "A SNA 3.4.5 descreve O/S/D 'de zero a dez'; o TG-100 usa de 1 a 10 para evitar RPN zero (observado em FORD-2012)",
+  "atividades": [
+   "G14"
+  ],
+  "regra_adotada": "Escala de 1 a 10 (TG-100), que evita RPN zero.",
+  "criterio": "mais-recente",
+  "decide": "fisico",
+  "regra_proposta": "Escala de 1 a 10 (TG-100), que evita RPN zero.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "CQ de equipamento pelo MPPG-8b/9b, o documento mais recente da AAPM"
+ },
+ {
+  "id": "K63",
+  "tema": "Severidade TG-100 × Ford",
+  "fontes": [
+   "TG-100",
+   "FORD-2012-ILS"
+  ],
+  "descricao": "Ford separa severidade médica e dosimétrica e declara que sua escala difere da do TG-100; não reaproveitar o S da FMEA como severidade de incidente sem mapeamento",
+  "atividades": [
+   "G14",
+   "G15"
+  ],
+  "regra_adotada": "Manter as escalas separadas: severidade de FMEA (TG-100) e severidade de incidente (Ford); mapear antes de reaproveitar.",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "Manter as escalas separadas: severidade de FMEA (TG-100) e severidade de incidente (Ford); mapear antes de reaproveitar.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K64",
+  "tema": "Versões de norma citadas na RDC 657",
+  "fontes": [
+   "RDC-657",
+   "ISO-14971",
+   "IEC-62304"
+  ],
+  "descricao": "Art. 13 cita ISO 14971:2007 e IEC 62304:2006; o acervo tem 14971:2019 e 62304+A1:2015; o parágrafo único admite versões mais atuais; só a citação precisa ajuste",
+  "atividades": [
+   "B08"
+  ],
+  "regra_adotada": "Usar ISO 14971:2019 e IEC 62304+A1:2015, admitidas pelo parágrafo único do Art. 13.",
+  "criterio": "norma-vigente",
+  "decide": "fisico",
+  "regra_proposta": "Usar ISO 14971:2019 e IEC 62304+A1:2015, admitidas pelo parágrafo único do Art. 13.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K65",
+  "tema": "Requisitos essenciais citados na RDC 657",
+  "fontes": [
+   "RDC-657",
+   "RDC-848-2024"
+  ],
+  "descricao": "RDC 657 Art. 17 remete à RDC 546/2021, revogada pela RDC 848/2024",
+  "atividades": [
+   "B08"
+  ],
+  "regra_adotada": "Requisitos essenciais pela RDC 848/2024, que revogou a RDC 546/2021 citada na RDC 657.",
+  "criterio": "norma-vigente",
+  "decide": "fisico",
+  "regra_proposta": "Requisitos essenciais pela RDC 848/2024, que revogou a RDC 546/2021 citada na RDC 657.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ },
+ {
+  "id": "K66",
+  "tema": "Validação GPSV × CSA",
+  "fontes": [
+   "FDA-GPSV-2002",
+   "FDA-CSA-2026"
+  ],
+  "descricao": "A seção 6 da GPSV (software de QMS) foi substituída pela CSA; a GPSV vale para os princípios gerais (4.7–4.9) e a CSA para ferramentas de qualidade internas",
+  "atividades": [
+   "B06",
+   "B10"
+  ],
+  "regra_adotada": "GPSV para os princípios gerais (4.7–4.9) e CSA para as ferramentas internas de qualidade.",
+  "criterio": "escopo",
+  "decide": "fisico",
+  "regra_proposta": "GPSV para os princípios gerais (4.7–4.9) e CSA para as ferramentas internas de qualidade.",
+  "aprovada_em": "2026-10-21",
+  "aprovada_por": "físico responsável",
+  "politica": "aprovação em bloco das propostas de física"
+ }
+]
